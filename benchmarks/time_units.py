@@ -1,4 +1,5 @@
 from astropy import units as u
+import copy
 
 
 def time_unit_compose():
@@ -23,3 +24,8 @@ def time_very_simple_unit_parse():
 
 def mem_unit():
     return u.erg
+
+
+def time_compose_to_bases():
+    x = copy.copy(u.Ry)
+    x.cgs
