@@ -4,6 +4,8 @@ python:
 install:
   - sudo pip install git+git://github.com/spacetelescope/asv.git@master
   - cp machine.json $HOME/.asv-machine.json
+  - echo $HOME/.asv-machine.json
+  - python -c "import os; print(os.path.expanduser('~/.asv-machine.json'))"
 
 script:
   - asv run -q master
