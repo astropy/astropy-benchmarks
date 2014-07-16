@@ -8,7 +8,7 @@ matrix:
 install:
   - sudo pip install git+git://github.com/spacetelescope/asv.git@master
   - cp machine.json $HOME/.asv-machine.json
-  - alias python3.3=/opt/pyenv/versions/3.3.5/bin/python3.3
+  - export PATH=/opt/pyenv/versions/3.3.5/bin/:$PATH
 
 script:
   - asv run -q --machine-defaults master
