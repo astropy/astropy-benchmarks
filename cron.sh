@@ -2,6 +2,7 @@
 export PATH=~/bin:$PATH
 source ~/.zshrc
 git checkout master
+git pull
 asv run NEW
 git add -A
 git commit -m "New results"
