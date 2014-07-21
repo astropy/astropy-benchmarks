@@ -1,0 +1,17 @@
+python:
+  - 2.7
+  - 3.3
+
+matrix:
+  - python: 2.7
+
+install:
+  - sudo apt-get install mlocate
+  - sudo pip install git+git://github.com/spacetelescope/asv.git@master
+  - cp machine.json $HOME/.asv-machine.json
+  - export PATH=/opt/python/3.3.5/bin/:$PATH
+
+script:
+  - sudo updatedb
+  - locate python3.3
+  - asv run -q --machine-defaults master
