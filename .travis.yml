@@ -11,5 +11,6 @@ install:
   - export PATH=/opt/python/3.3.5/bin/:$PATH
 
 script:
-  - ls /opt/python/
+  - updatedb
+  - locate python3.3
   - asv run -q --machine-defaults master
