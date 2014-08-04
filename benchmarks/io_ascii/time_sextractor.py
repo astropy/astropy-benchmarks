@@ -1,10 +1,13 @@
 from astropy.io.ascii import sextractor
 import random
-import string
+try:
+    from string import uppercase
+except ImportError:
+    from string import ascii_uppercase as uppercase
 
 def randword():
-    return ''.join([random.choice(string.uppercase) for i in range(10)])
-    
+    return ''.join([random.choice(uppercase) for i in range(10)])
+
 class SExtractorSuite:
     def setup(self):
         self.header = sextractor.SExtractorHeader()

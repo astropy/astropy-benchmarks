@@ -1,6 +1,6 @@
 from astropy.io import ascii
 from astropy.io.ascii.ipac import IpacHeader, IpacHeaderSplitter, IpacData
-import six
+
 
 class IPACSuite:
     def setup(self):
@@ -10,25 +10,25 @@ class IPACSuite:
         self.splitter = IpacHeaderSplitter()
         self.vals = [str(i + 1) for i in range(1000)]
         self.widths = [i + 1 for i in range(1000)]
-        f = open('benchmarks/files/ipac/string.txt')
+        f = open('benchmarks/io_ascii/files/ipac/string.txt')
         self.lines = f.read().split('\n')
         f.close()
-        self.table = ascii.read('benchmarks/files/ipac/string.txt',
+        self.table = ascii.read('benchmarks/io_ascii/files/ipac/string.txt',
                                 format='ipac', guess=False)
-        
+
     def time_splitter(self):
         self.splitter.join(self.vals, self.widths)
-        
+
     def time_get_cols(self):
         self.header.get_cols(self.lines)
-        
+
     def time_header_str_vals(self):
         header = IpacHeader()
-        header.cols = list(six.itervalues(self.table.columns))
+        header.cols = list(self.table.columns.values())
         header.DBMS = False
         header.str_vals()
-        
+
     def time_data_str_vals(self):
         data = IpacData()
-        data.cols = list(six.itervalues(self.table.columns))
+        data.cols = list(self.table.columns.values())
         data.str_vals()

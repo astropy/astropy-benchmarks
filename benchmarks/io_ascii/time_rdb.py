@@ -4,7 +4,7 @@ class RDBSuite:
     def setup(self):
         self.header = basic.RdbHeader()
         self.header.splitter.delimiter = '\t'
-        f = open('benchmarks/files/rdb/string.txt')
+        f = open('benchmarks/io_ascii/files/rdb/string.txt')
         self.lines = f.read().split('\n')
         f.close()
     def time_get_cols(self):

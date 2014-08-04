@@ -1,15 +1,22 @@
 from astropy import table
 from astropy.io.ascii import core
-from itertools import izip
+try:
+    from itertools import izip
+except ImportError:
+    izip = zip
 import random
-import string
+try:
+    from string import uppercase
+except ImportError:
+    from string import ascii_uppercase as uppercase
+
 
 class TableSuite:
     def setup(self):
         self.lst = []
         self.lst.append([random.randint(-500, 500) for i in range(1000)])
         self.lst.append([random.random() * 500 - 500 for i in range(1000)])
-        self.lst.append([''.join([random.choice(string.uppercase) for j in
+        self.lst.append([''.join([random.choice(uppercase) for j in
                             range(6)]) for i in range(1000)])
         self.cols = [core.Column(str(i + 1)) for i in range(3)]
         for col, x in izip(self.cols, self.lst):
