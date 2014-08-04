@@ -1,4 +1,9 @@
 from astropy.io import ascii
+try:
+    from cStringIO import StringIO
+    BytesIO = StringIO
+except ImportError:
+    from io import StringIO, BytesIO
 import io
 
 
@@ -6,7 +11,7 @@ class _ASCIISuite:
     def setup(self):
         self.tables = {}
         self.data = {}
-        self.output = io.StringIO()
+        self.output = StringIO()
         self.writers = {
             'csv': ascii.Csv,
             'rdb': ascii.Rdb,
@@ -28,7 +33,7 @@ class _ASCIISuite:
             self.table = self.read()
 
     def read(self):
-        return ascii.read(io.BytesIO(self.data), format=self.file_format, guess=False)
+        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)
 
     def write(self):
         ascii.write(self.table, self.output, Writer=self.writers[self.file_format])
