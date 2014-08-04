@@ -1,11 +1,12 @@
 from astropy.io import ascii
-from cStringIO import StringIO
+import io
 
-class ASCIISuite:
+
+class _ASCIISuite:
     def setup(self):
         self.tables = {}
         self.data = {}
-        self.output = StringIO()
+        self.output = io.StringIO()
         self.writers = {
             'csv': ascii.Csv,
             'rdb': ascii.Rdb,
@@ -20,245 +21,283 @@ class ASCIISuite:
             'latex': ascii.Latex,
             'aastex': ascii.AASTex
             }
-        for file_format in self.writers.keys() + ['sextractor']:
-            for data_type in ('string', 'int', 'float'):
-                f = open('benchmarks/files/{}/{}.txt'.format(file_format,
-                                                             data_type))
-                self.data[(file_format, data_type)] = f.read()
-                f.close()
-                if file_format != 'sextractor':
-                    self.tables[(file_format, data_type)] = self.read(
-                                                file_format, data_type)
-                
-    def read(self, file_format, data_type):
-        return ascii.read(StringIO(self.data[(file_format, data_type)]),
-                          format=file_format, guess=False)
+        with io.open('benchmarks/io_ascii/files/{}/{}.txt'.format(
+                self.file_format, self.data_type), 'rb') as f:
+            self.data = f.read()
+        if self.file_format != 'sextractor':
+            self.table = self.read()
 
-    def write(self, file_format, data_type):
-        ascii.write(self.tables[(file_format, data_type)], self.output,
-                    Writer=self.writers[file_format])
+    def read(self):
+        return ascii.read(io.BytesIO(self.data), format=self.file_format, guess=False)
 
-    def time_csv_read_string(self):
-        self.read('csv', 'string')
+    def write(self):
+        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])
 
-    def time_csv_read_int(self):
-        self.read('csv', 'int')
 
-    def time_csv_read_float(self):
-        self.read('csv', 'float')
+class CsvString(_ASCIISuite):
+    file_format = 'csv'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_rdb_read_string(self):
-        self.read('rdb', 'string')
 
-    def time_rdb_read_int(self):
-        self.read('rdb', 'int')
+class CsvInt(_ASCIISuite):
+    file_format = 'csv'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_rdb_read_float(self):
-        self.read('rdb', 'float')
 
-    def time_fixedwidth_read_string(self):
-        self.read('fixed_width', 'string')
+class CsvFloat(_ASCIISuite):
+    file_format = 'csv'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_fixedwidth_read_int(self):
-        self.read('fixed_width', 'int')
 
-    def time_fixedwidth_read_float(self):
-        self.read('fixed_width', 'float')
+class RdbString(_ASCIISuite):
+    file_format = 'rdb'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_fixedwidth_no_header_read_string(self):
-        self.read('fixed_width_no_header', 'string')
 
-    def time_fixedwidth_no_header_read_int(self):
-        self.read('fixed_width_no_header', 'int')
+class RdbInt(_ASCIISuite):
+    file_format = 'rdb'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_fixedwidth_no_header_read_float(self):
-        self.read('fixed_width_no_header', 'float')
 
-    def time_fixedwidth_two_line_read_string(self):
-        self.read('fixed_width_two_line', 'string')
+class RdbFloat(_ASCIISuite):
+    file_format = 'rdb'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_fixedwidth_two_line_read_int(self):
-        self.read('fixed_width_two_line', 'int')
 
-    def time_fixedwidth_two_line_read_float(self):
-        self.read('fixed_width_two_line', 'float')
+class FixedWidthString(_ASCIISuite):
+    file_format = 'fixed_width'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_tab_read_string(self):
-        self.read('tab', 'string')
 
-    def time_tab_read_int(self):
-        self.read('tab', 'int')
+class FixedWidthInt(_ASCIISuite):
+    file_format = 'fixed_width'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_tab_read_float(self):
-        self.read('tab', 'float')
 
-    def time_noheader_read_string(self):
-        self.read('no_header', 'string')
+class FixedWidthFloat(_ASCIISuite):
+    file_format = 'fixed_width'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_noheader_read_int(self):
-        self.read('no_header', 'int')
 
-    def time_noheader_read_float(self):
-        self.read('no_header', 'float')
+class FixedWidthNoHeaderString(_ASCIISuite):
+    file_format = 'fixed_width_no_header'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_commented_header_read_string(self):
-        self.read('commented_header', 'string')
 
-    def time_commented_header_read_int(self):
-        self.read('commented_header', 'int')
+class FixedWidthNoHeaderInt(_ASCIISuite):
+    file_format = 'fixed_width_no_header'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_commented_header_read_float(self):
-        self.read('commented_header', 'float')
 
-    def time_basic_read_string(self):
-        self.read('basic', 'string')
+class FixedWidthNoHeaderFloat(_ASCIISuite):
+    file_format = 'fixed_width_no_header'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_basic_read_int(self):
-        self.read('basic', 'int')
 
-    def time_basic_read_float(self):
-        self.read('basic', 'float')
+class FixedWidthTwoLineString(_ASCIISuite):
+    file_format = 'fixed_width_two_line'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_sextractor_read_string(self):
-        self.read('sextractor', 'string')
 
-    def time_sextractor_read_int(self):
-        self.read('sextractor', 'int')
+class FixedWidthTwoLineInt(_ASCIISuite):
+    file_format = 'fixed_width_two_line'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_sextractor_read_float(self):
-        self.read('sextractor', 'float')
 
-    def time_ipac_read_string(self):
-        self.read('ipac', 'string')
+class FixedWidthTwoLineFloat(_ASCIISuite):
+    file_format = 'fixed_width_two_line'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_ipac_read_int(self):
-        self.read('ipac', 'int')
 
-    def time_ipac_read_float(self):
-        self.read('ipac', 'float')
+class TabString(_ASCIISuite):
+    file_format = 'tab'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_latex_read_string(self):
-        self.read('latex', 'string')
 
-    def time_latex_read_int(self):
-        self.read('latex', 'int')
+class TabInt(_ASCIISuite):
+    file_format = 'tab'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_latex_read_float(self):
-        self.read('latex', 'float')
 
-    def time_aastex_read_string(self):
-        self.read('aastex', 'string')
+class TabFloat(_ASCIISuite):
+    file_format = 'tab'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_aastex_read_int(self):
-        self.read('aastex', 'int')
 
-    def time_aastex_read_float(self):
-        self.read('aastex', 'float')
+class NoHeaderString(_ASCIISuite):
+    file_format = 'no_header'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_csv_write_string(self):
-        self.write('csv', 'string')
 
-    def time_csv_write_int(self):
-        self.write('csv', 'int')
+class NoHeaderInt(_ASCIISuite):
+    file_format = 'no_header'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_csv_write_float(self):
-        self.write('csv', 'float')
 
-    def time_rdb_write_string(self):
-        self.write('rdb', 'string')
+class NoHeaderFloat(_ASCIISuite):
+    file_format = 'no_header'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_rdb_write_int(self):
-        self.write('rdb', 'int')
 
-    def time_rdb_write_float(self):
-        self.write('rdb', 'float')
+class CommentedHeaderString(_ASCIISuite):
+    file_format = 'commented_header'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_fixedwidth_write_string(self):
-        self.write('fixed_width', 'string')
 
-    def time_fixedwidth_write_int(self):
-        self.write('fixed_width', 'int')
+class CommentedHeaderInt(_ASCIISuite):
+    file_format = 'commented_header'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_fixedwidth_write_float(self):
-        self.write('fixed_width', 'float')
 
-    def time_fixedwidth_no_header_write_string(self):
-        self.write('fixed_width_no_header', 'string')
+class CommentedHeaderFloat(_ASCIISuite):
+    file_format = 'commented_header'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_fixedwidth_no_header_write_int(self):
-        self.write('fixed_width_no_header', 'int')
 
-    def time_fixedwidth_no_header_write_float(self):
-        self.write('fixed_width_no_header', 'float')
+class BasicString(_ASCIISuite):
+    file_format = 'basic'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_fixedwidth_two_line_write_string(self):
-        self.write('fixed_width_no_header', 'string')
 
-    def time_fixedwidth_two_line_write_int(self):
-        self.write('fixed_width_no_header', 'int')
+class BasicInt(_ASCIISuite):
+    file_format = 'basic'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_fixedwidth_two_line_write_float(self):
-        self.write('fixed_width_no_header', 'float')
 
-    def time_tab_write_string(self):
-        self.write('tab', 'string')
+class BasicFloat(_ASCIISuite):
+    file_format = 'basic'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_tab_write_int(self):
-        self.write('tab', 'int')
 
-    def time_tab_write_float(self):
-        self.write('tab', 'float')
+class SextractorString(_ASCIISuite):
+    file_format = 'sextractor'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
 
-    def time_noheader_write_string(self):
-        self.write('no_header', 'string')
 
-    def time_noheader_write_int(self):
-        self.write('no_header', 'int')
+class SextractorInt(_ASCIISuite):
+    file_format = 'sextractor'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
 
-    def time_noheader_write_float(self):
-        self.write('no_header', 'float')
 
-    def time_commented_header_write_string(self):
-        self.write('commented_header', 'string')
+class SextractorFloat(_ASCIISuite):
+    file_format = 'sextractor'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
 
-    def time_commented_header_write_int(self):
-        self.write('commented_header', 'int')
+class IpacString(_ASCIISuite):
+    file_format = 'ipac'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_commented_header_write_float(self):
-        self.write('commented_header', 'float')
 
-    def time_basic_write_string(self):
-        self.write('basic', 'string')
+class IpacInt(_ASCIISuite):
+    file_format = 'ipac'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_basic_write_int(self):
-        self.write('basic', 'int')
 
-    def time_basic_write_float(self):
-        self.write('basic', 'float')
+class IpacFloat(_ASCIISuite):
+    file_format = 'ipac'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_ipac_write_string(self):
-        self.write('ipac', 'string')
 
-    def time_ipac_write_int(self):
-        self.write('ipac', 'int')
+class LatexString(_ASCIISuite):
+    file_format = 'latex'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_ipac_write_float(self):
-        self.write('ipac', 'float')
 
-    def time_latex_write_string(self):
-        self.write('latex', 'string')
+class LatexInt(_ASCIISuite):
+    file_format = 'latex'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_latex_write_int(self):
-        self.write('latex', 'int')
 
-    def time_latex_write_float(self):
-        self.write('latex', 'float')
+class LatexFloat(_ASCIISuite):
+    file_format = 'latex'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_aastex_write_string(self):
-        self.write('aastex', 'string')
 
-    def time_aastex_write_int(self):
-        self.write('aastex', 'int')
+class AastexString(_ASCIISuite):
+    file_format = 'aastex'
+    data_type = 'string'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
 
-    def time_aastex_write_float(self):
-        self.write('aastex', 'float')
+
+class AastexInt(_ASCIISuite):
+    file_format = 'aastex'
+    data_type = 'int'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write
+
+
+class AastexFloat(_ASCIISuite):
+    file_format = 'aastex'
+    data_type = 'float'
+    time_read = _ASCIISuite.read
+    time_write = _ASCIISuite.write

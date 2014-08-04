@@ -7,7 +7,7 @@ class FixedWidthSuite:
         self.header.col_starts = None
         self.header.col_ends = None
         self.splitter = ascii.FixedWidthSplitter()
-        f = open('benchmarks/files/fixed_width/string.txt')
+        f = open('benchmarks/io_ascii/files/fixed_width/string.txt')
         self.lines = f.read().split('\n')
         f.close()
         self.header.get_cols(self.lines)

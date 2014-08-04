@@ -1,4 +1,208 @@
 {
+    "io_ascii.time_core.CoreSuite.time_base_splitter": {
+        "code": "def time_base_splitter(self):\n    core.BaseSplitter().process_val(self.line)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_core.CoreSuite.time_base_splitter", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_core.CoreSuite.time_continuation_inputter": {
+        "code": "def time_continuation_inputter(self):\n    core.ContinuationLinesInputter().process_lines(self.lines)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_core.CoreSuite.time_continuation_inputter", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_core.CoreSuite.time_convert_vals": {
+        "code": "def time_convert_vals(self):\n    core.TableOutputter()._convert_vals(self.cols)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_core.CoreSuite.time_convert_vals", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_core.CoreSuite.time_default_splitter_call": {
+        "code": "def time_default_splitter_call(self):\n    core.DefaultSplitter()(self.csv_line)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_core.CoreSuite.time_default_splitter_call", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_core.CoreSuite.time_default_splitter_join": {
+        "code": "def time_default_splitter_join(self):\n    core.DefaultSplitter().join(self.vals)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_core.CoreSuite.time_default_splitter_join", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_core.CoreSuite.time_whitespace_splitter": {
+        "code": "def time_whitespace_splitter(self):\n    core.WhitespaceSplitter().process_line(self.line)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_core.CoreSuite.time_whitespace_splitter", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_fixedwidth.FixedWidthSuite.time_header": {
+        "code": "def time_header(self):\n    self.header.get_cols(self.lines)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_fixedwidth.FixedWidthSuite.time_header", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_fixedwidth.FixedWidthSuite.time_splitter": {
+        "code": "def time_splitter(self):\n    self.splitter(self.lines[1:])\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_fixedwidth.FixedWidthSuite.time_splitter", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_ipac.IPACSuite.time_data_str_vals": {
+        "code": "def time_data_str_vals(self):\n    data = IpacData()\n    data.cols = list(self.table.columns.values())\n    data.str_vals()\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_ipac.IPACSuite.time_data_str_vals", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_ipac.IPACSuite.time_get_cols": {
+        "code": "def time_get_cols(self):\n    self.header.get_cols(self.lines)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_ipac.IPACSuite.time_get_cols", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_ipac.IPACSuite.time_header_str_vals": {
+        "code": "def time_header_str_vals(self):\n    header = IpacHeader()\n    header.cols = list(self.table.columns.values())\n    header.DBMS = False\n    header.str_vals()\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_ipac.IPACSuite.time_header_str_vals", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_ipac.IPACSuite.time_splitter": {
+        "code": "def time_splitter(self):\n    self.splitter.join(self.vals, self.widths)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_ipac.IPACSuite.time_splitter", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_rdb.RDBSuite.time_get_cols": {
+        "code": "def time_get_cols(self):\n    self.header.get_cols(self.lines)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_rdb.RDBSuite.time_get_cols", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_sextractor.SExtractorSuite.time_header": {
+        "code": "def time_header(self):\n    self.header.get_cols(self.lines)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_sextractor.SExtractorSuite.time_header", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_table.TableSuite.mem_table_init": {
+        "code": "def mem_table_init(self):\n    return table.Table(self.lst)\n", 
+        "name": "io_ascii.time_table.TableSuite.mem_table_init", 
+        "timeout": 60.0, 
+        "type": "memory", 
+        "unit": "bytes"
+    }, 
+    "io_ascii.time_table.TableSuite.mem_table_outputter": {
+        "code": "def mem_table_outputter(self):\n    return self.outputter(self.cols, {'table': {}})\n", 
+        "name": "io_ascii.time_table.TableSuite.mem_table_outputter", 
+        "timeout": 60.0, 
+        "type": "memory", 
+        "unit": "bytes"
+    }, 
+    "io_ascii.time_table.TableSuite.time_str_vals_float": {
+        "code": "def time_str_vals_float(self):\n    self.table_cols[1].iter_str_vals()\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_table.TableSuite.time_str_vals_float", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_table.TableSuite.time_str_vals_int": {
+        "code": "def time_str_vals_int(self):\n    self.table_cols[0].iter_str_vals()\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_table.TableSuite.time_str_vals_int", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_table.TableSuite.time_str_vals_str": {
+        "code": "def time_str_vals_str(self):\n    self.table_cols[2].iter_str_vals()\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_table.TableSuite.time_str_vals_str", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_table.TableSuite.time_table_init_from_list": {
+        "code": "def time_table_init_from_list(self):\n    self.table._init_from_list(self.table_cols, ['1', '2', '3'],\n                               [None, None, None], 3, True)\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_table.TableSuite.time_table_init_from_list", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "io_ascii.time_table.TableSuite.time_table_outputter": {
+        "code": "def time_table_outputter(self):\n    self.outputter(self.cols, {'table': {}})\n", 
+        "goal_time": 2.0, 
+        "name": "io_ascii.time_table.TableSuite.time_table_outputter", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
     "time_coordinates.SkyCoordBenchmarks.time_icrs_to_galactic": {
         "code": "def time_icrs_to_galactic(self):\n    self.coord.transform_to('galactic')\n", 
         "goal_time": 2.0, 

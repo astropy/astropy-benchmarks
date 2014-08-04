@@ -1,10 +1,18 @@
 from astropy.io.ascii import core
 import random
-import string
-from itertools import izip
+try:
+    from itertools import izip
+except ImportError:
+    izip = zip
+try:
+    from string import uppercase
+except ImportError:
+    from string import ascii_uppercase as uppercase
+
 
 def randword():
-    return ''.join([random.choice(string.uppercase) for i in range(10)])
+    return ''.join([random.choice(uppercase) for i in range(10)])
+
 
 class CoreSuite:
     def setup(self):
@@ -20,7 +28,7 @@ class CoreSuite:
         lst = []
         lst.append([random.randint(-500, 500) for i in range(1000)])
         lst.append([random.random() * 500 - 500 for i in range(1000)])
-        lst.append([''.join([random.choice(string.uppercase) for j in
+        lst.append([''.join([random.choice(uppercase) for j in
                             range(6)]) for i in range(1000)])
         self.cols = [core.Column(str(i + 1)) for i in range(3)]
         for col, x in izip(self.cols, lst):
