@@ -1,7 +1,7 @@
 import string
 import numpy as np
 
-from astropy.table import Table
+from astropy.table import Table, join, hstack, vstack
 
 
 class TimeTable:
@@ -15,6 +15,7 @@ class TimeTable:
 
         # Create column with mixed types
         np.random.seed(12345)
+        self.table['i'] = np.arange(1000)
         self.table['a'] = np.random.random(1000)  # float
         self.table['b'] = np.random.random(1000) > 0.5  # bool
         self.table['c'] = np.random.random((1000,10))  # 2d column
@@ -25,6 +26,13 @@ class TimeTable:
         self.extra_column = np.random.randint(0, 100, 1000)
 
         self.row_indices = np.where(self.table['a'] > 0.9)[0]
+
+        self.table_grouped = self.table.group_by('d')
+
+        self.other_table = Table(masked=self.masked)
+        self.other_table['i'] = np.arange(1,1000,3)
+        self.other_table['f'] = np.random.random()
+        self.other_table.sort('f')
 
     def time_table_slice_bool(self):
         table_subset = self.table[self.table['a'] > 0.6]
@@ -81,6 +89,21 @@ class TimeTable:
 
     def time_copy_column(self):
         self.table['a'].copy()
+
+    def time_group(self):
+        self.table.group_by('d')
+
+    def time_aggregate(self):
+        self.table_grouped.groups.aggregate(np.sum)
+
+    def time_sort(self):
+        self.table.sort('a')
+
+    def time_join_inner(self):
+        join(self.table, self.other_table, keys="i", join_type='inner')
+
+    def time_join_outer(self):
+        join(self.table, self.other_table, keys="i", join_type='outer')
 
 
 class TimeMaskedTable(TimeTable):
