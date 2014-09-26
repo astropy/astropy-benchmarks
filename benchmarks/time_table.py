@@ -105,7 +105,12 @@ class TimeTable:
         self.table.group_by('d')
 
     def time_aggregate(self):
+        # Test aggregate with a function that supports reduceat
         self.table_grouped.groups.aggregate(np.sum)
+
+    def time_aggregate_noreduceat(self):
+        # Test aggregate with a function that doesn't support reduceat
+        self.table_grouped.groups.aggregate(lambda x: np.sum(x))
 
     def time_sort(self):
         self.table.sort('a')
