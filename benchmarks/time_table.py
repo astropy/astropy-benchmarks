@@ -34,14 +34,16 @@ class TimeTable:
         self.other_table['f'] = np.random.random()
         self.other_table.sort('f')
 
+        self.bool_mask = self.table['a'] > 0.6
+
     def time_table_slice_bool(self):
-        table_subset = self.table[self.table['a'] > 0.6]
+        table_subset = self.table[self.bool_mask]
 
     def time_table_slice_int(self):
         table_subset = self.table[self.row_indices]
 
     def time_column_slice_bool(self):
-        col_subset = self.table['a'][self.table['a'] > 0.6]
+        col_subset = self.table['a'][self.bool_mask]
 
     def time_column_slice_int(self):
         col_subset = self.table['a'][self.row_indices]
@@ -52,11 +54,14 @@ class TimeTable:
     def time_column_set(self):
         self.table['a'] = 0.
 
+    def time_column_make_bool_mask(self):
+        self.table['a'] > 0.6
+
     def time_multi_column_get(self):
         self.table[('a','c')]
 
     def time_column_set_row_subset(self):
-        self.table['b'][self.table['a'] > 0.6] = True
+        self.table['b'][self.bool_mask] = True
 
     def time_row_get(self):
         self.table[300]
@@ -67,22 +72,28 @@ class TimeTable:
 
     def time_add_row(self):
         self.table.add_row(self.extra_row)
+    time_add_row.number = 1
+    time_add_row.repeat = 100
 
     def time_remove_row(self):
         self.table.remove_row(6)
-    time_remove_row.repeat = 1
+    time_remove_row.number = 1
+    time_remove_row.repeat = 100
 
     def time_remove_rows(self):
         self.table.remove_rows(self.row_indices)
-    time_remove_rows.repeat = 1
+    time_remove_rows.number = 1
+    time_remove_rows.repeat = 100
 
     def time_add_column(self):
         self.table['e'] = self.extra_column
-    time_add_column.repeat = 1
+    time_add_column.number = 1
+    time_add_column.repeat = 100
 
     def time_remove_column(self):
         self.table.remove_column('a')
-    time_remove_column.repeat = 1
+    time_remove_column.number = 1
+    time_remove_column.repeat = 100
 
     def time_copy_table(self):
         self.table.copy()
@@ -111,4 +122,4 @@ class TimeMaskedTable(TimeTable):
     masked = True
 
     def time_mask_column(self):
-        self.table['a'].mask = self.table['a'] < 0.2
+        self.table['a'].mask = self.bool_mask
