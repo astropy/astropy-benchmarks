@@ -73,27 +73,27 @@ class TimeTable:
     def time_add_row(self):
         self.table.add_row(self.extra_row)
     time_add_row.number = 1
-    time_add_row.repeat = 100
+    time_add_row.repeat = 1
 
     def time_remove_row(self):
         self.table.remove_row(6)
     time_remove_row.number = 1
-    time_remove_row.repeat = 100
+    time_remove_row.repeat = 1
 
     def time_remove_rows(self):
         self.table.remove_rows(self.row_indices)
     time_remove_rows.number = 1
-    time_remove_rows.repeat = 100
+    time_remove_rows.repeat = 1
 
     def time_add_column(self):
         self.table['e'] = self.extra_column
     time_add_column.number = 1
-    time_add_column.repeat = 100
+    time_add_column.repeat = 1
 
     def time_remove_column(self):
         self.table.remove_column('a')
     time_remove_column.number = 1
-    time_remove_column.repeat = 100
+    time_remove_column.repeat = 1
 
     def time_copy_table(self):
         self.table.copy()
@@ -128,3 +128,30 @@ class TimeMaskedTable(TimeTable):
 
     def time_mask_column(self):
         self.table['a'].mask = self.bool_mask
+
+
+if __name__ == "__main__":
+    
+    klass = TimeTable
+    method_name = 'time_remove_row'
+    
+    def from_class_method(cls, klass, method_name):
+        """
+        Create a benchmark object from a method.
+
+        Parameters
+        ----------
+        klass : type
+            The class containing the method.
+
+        method_name : str
+            The name of the method.
+        """
+        name = '.'.join(
+            [inspect.getmodule(klass).__name__, klass.__name__, method_name])
+        instance = klass()
+        with open('/tmp/logging', 'a') as f:
+            f.write(str(dir(instance.time_remove_row)))
+            f.write('\n' + '-' * 72 + '\n')
+        func = getattr(instance, method_name)
+        return cls(name, func, instance)
