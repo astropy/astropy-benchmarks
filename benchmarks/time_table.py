@@ -29,10 +29,16 @@ class TimeTable:
 
         self.table_grouped = self.table.group_by('d')
 
+        # Another table for testing joining
         self.other_table = Table(masked=self.masked)
         self.other_table['i'] = np.arange(1,1000,3)
         self.other_table['f'] = np.random.random()
         self.other_table.sort('f')
+
+        # Another table for testing hstack
+        self.other_table_2 = Table(masked=self.masked)
+        self.other_table_2['g'] = np.random.random(1000)
+        self.other_table_2['h'] = np.random.random((1000, 10))
 
         self.bool_mask = self.table['a'] > 0.6
 
@@ -126,6 +132,9 @@ class TimeTable:
 
     def time_join_outer(self):
         join(self.table, self.other_table, keys="i", join_type='outer')
+
+    def time_hstack(self):
+        hstack([self.table, self.other_table_2])
 
     def time_vstack(self):
         vstack([self.table, self.table])
