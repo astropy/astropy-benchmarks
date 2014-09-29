@@ -70,6 +70,12 @@ class TimeTable:
         for row in self.table:
             pass
 
+    def time_item_get_rowfirst(self):
+        self.table[300]['b']
+
+    def time_item_get_colfirst(self):
+        self.table['b'][300]
+
     def time_add_row(self):
         self.table.add_row(self.extra_row)
     time_add_row.number = 1
