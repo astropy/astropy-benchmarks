@@ -134,30 +134,3 @@ class TimeMaskedTable(TimeTable):
 
     def time_mask_column(self):
         self.table['a'].mask = self.bool_mask
-
-
-if __name__ == "__main__":
-    
-    klass = TimeTable
-    method_name = 'time_remove_row'
-    
-    def from_class_method(cls, klass, method_name):
-        """
-        Create a benchmark object from a method.
-
-        Parameters
-        ----------
-        klass : type
-            The class containing the method.
-
-        method_name : str
-            The name of the method.
-        """
-        name = '.'.join(
-            [inspect.getmodule(klass).__name__, klass.__name__, method_name])
-        instance = klass()
-        with open('/tmp/logging', 'a') as f:
-            f.write(str(dir(instance.time_remove_row)))
-            f.write('\n' + '-' * 72 + '\n')
-        func = getattr(instance, method_name)
-        return cls(name, func, instance)
