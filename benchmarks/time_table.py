@@ -127,6 +127,9 @@ class TimeTable:
     def time_join_outer(self):
         join(self.table, self.other_table, keys="i", join_type='outer')
 
+    def time_vstack(self):
+        vstack([self.table, self.table])
+
 
 class TimeMaskedTable(TimeTable):
 
