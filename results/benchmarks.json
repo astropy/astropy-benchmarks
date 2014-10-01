@@ -953,6 +953,36 @@
         "type": "time", 
         "unit": "seconds"
     }, 
+    "time_coordinates.FrameBenchmarks.time_init_array": {
+        "code": "def time_init_array(self):\n    coords.FK5(self.array_ra, self.array_dec)\n", 
+        "goal_time": 2.0, 
+        "name": "time_coordinates.FrameBenchmarks.time_init_array", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_coordinates.FrameBenchmarks.time_init_nodata": {
+        "code": "def time_init_nodata(self):\n    coords.FK5()\n", 
+        "goal_time": 2.0, 
+        "name": "time_coordinates.FrameBenchmarks.time_init_nodata", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_coordinates.FrameBenchmarks.time_init_scalar": {
+        "code": "def time_init_scalar(self):\n    coords.FK5(self.scalar_ra, self.scalar_dec)\n", 
+        "goal_time": 2.0, 
+        "name": "time_coordinates.FrameBenchmarks.time_init_scalar", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
     "time_coordinates.SkyCoordBenchmarks.time_icrs_to_galactic": {
         "code": "def time_icrs_to_galactic(self):\n    self.coord.transform_to('galactic')\n", 
         "goal_time": 2.0, 
@@ -974,7 +1004,7 @@
         "unit": "seconds"
     }, 
     "time_coordinates.time_latitude": {
-        "code": "def time_latitude():\n    coordinates.Latitude(3.2, units.degree)\n", 
+        "code": "def time_latitude():\n    coords.Latitude(3.2, u.degree)\n", 
         "goal_time": 2.0, 
         "name": "time_coordinates.time_latitude", 
         "number": 0, 
@@ -1027,6 +1057,576 @@
         "code": "def time_quantity_ufunc_sin():\n    np.sin(np.arange(10000) * u.degree)\n", 
         "goal_time": 2.0, 
         "name": "time_quantity.time_quantity_ufunc_sin", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_add_column": {
+        "code": "def time_add_column(self):\n    self.table['e'] = self.extra_column\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_add_column", 
+        "number": 1, 
+        "repeat": 1, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_add_row": {
+        "code": "def time_add_row(self):\n    self.table.add_row(self.extra_row)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_add_row", 
+        "number": 1, 
+        "repeat": 1, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_aggregate": {
+        "code": "def time_aggregate(self):\n    # Test aggregate with a function that supports reduceat\n    self.table_grouped.groups.aggregate(np.sum)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_aggregate", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_aggregate_noreduceat": {
+        "code": "def time_aggregate_noreduceat(self):\n    # Test aggregate with a function that doesn't support reduceat\n    self.table_grouped.groups.aggregate(lambda x: np.sum(x))\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_aggregate_noreduceat", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_column_get": {
+        "code": "def time_column_get(self):\n    self.table['c']\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_column_get", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_column_make_bool_mask": {
+        "code": "def time_column_make_bool_mask(self):\n    self.table['a'] > 0.6\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_column_make_bool_mask", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_column_set": {
+        "code": "def time_column_set(self):\n    self.table['a'] = 0.\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_column_set", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_column_set_row_subset": {
+        "code": "def time_column_set_row_subset(self):\n    self.table['b'][self.bool_mask] = True\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_column_set_row_subset", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_column_slice_bool": {
+        "code": "def time_column_slice_bool(self):\n    col_subset = self.table['a'][self.bool_mask]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_column_slice_bool", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_column_slice_int": {
+        "code": "def time_column_slice_int(self):\n    col_subset = self.table['a'][self.row_indices]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_column_slice_int", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_copy_column": {
+        "code": "def time_copy_column(self):\n    self.table['a'].copy()\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_copy_column", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_copy_table": {
+        "code": "def time_copy_table(self):\n    self.table.copy()\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_copy_table", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_group": {
+        "code": "def time_group(self):\n    self.table.group_by('d')\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_group", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_hstack": {
+        "code": "def time_hstack(self):\n    hstack([self.table, self.other_table_2])\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_hstack", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_item_get_colfirst": {
+        "code": "def time_item_get_colfirst(self):\n    self.table['b'][300]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_item_get_colfirst", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_item_get_rowfirst": {
+        "code": "def time_item_get_rowfirst(self):\n    self.table[300]['b']\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_item_get_rowfirst", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_iter_row": {
+        "code": "def time_iter_row(self):\n    for row in self.table:\n        pass\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_iter_row", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_join_inner": {
+        "code": "def time_join_inner(self):\n    join(self.table, self.other_table, keys=\"i\", join_type='inner')\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_join_inner", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_join_outer": {
+        "code": "def time_join_outer(self):\n    join(self.table, self.other_table, keys=\"i\", join_type='outer')\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_join_outer", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_mask_column": {
+        "code": "def time_mask_column(self):\n    self.table['a'].mask = self.bool_mask\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_mask_column", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_multi_column_get": {
+        "code": "def time_multi_column_get(self):\n    self.table[('a','c')]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_multi_column_get", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_remove_column": {
+        "code": "def time_remove_column(self):\n    self.table.remove_column('a')\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_remove_column", 
+        "number": 1, 
+        "repeat": 1, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_remove_row": {
+        "code": "def time_remove_row(self):\n    self.table.remove_row(6)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_remove_row", 
+        "number": 1, 
+        "repeat": 1, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_remove_rows": {
+        "code": "def time_remove_rows(self):\n    self.table.remove_rows(self.row_indices)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_remove_rows", 
+        "number": 1, 
+        "repeat": 1, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_row_get": {
+        "code": "def time_row_get(self):\n    self.table[300]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_row_get", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_sort": {
+        "code": "def time_sort(self):\n    self.table.sort('a')\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_sort", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_table_slice_bool": {
+        "code": "def time_table_slice_bool(self):\n    table_subset = self.table[self.bool_mask]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_table_slice_bool", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_table_slice_int": {
+        "code": "def time_table_slice_int(self):\n    table_subset = self.table[self.row_indices]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_table_slice_int", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_vstack": {
+        "code": "def time_vstack(self):\n    vstack([self.table, self.table])\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_vstack", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_add_column": {
+        "code": "def time_add_column(self):\n    self.table['e'] = self.extra_column\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_add_column", 
+        "number": 1, 
+        "repeat": 1, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_add_row": {
+        "code": "def time_add_row(self):\n    self.table.add_row(self.extra_row)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_add_row", 
+        "number": 1, 
+        "repeat": 1, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_aggregate": {
+        "code": "def time_aggregate(self):\n    # Test aggregate with a function that supports reduceat\n    self.table_grouped.groups.aggregate(np.sum)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_aggregate", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_aggregate_noreduceat": {
+        "code": "def time_aggregate_noreduceat(self):\n    # Test aggregate with a function that doesn't support reduceat\n    self.table_grouped.groups.aggregate(lambda x: np.sum(x))\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_aggregate_noreduceat", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_column_get": {
+        "code": "def time_column_get(self):\n    self.table['c']\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_column_get", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_column_make_bool_mask": {
+        "code": "def time_column_make_bool_mask(self):\n    self.table['a'] > 0.6\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_column_make_bool_mask", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_column_set": {
+        "code": "def time_column_set(self):\n    self.table['a'] = 0.\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_column_set", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_column_set_row_subset": {
+        "code": "def time_column_set_row_subset(self):\n    self.table['b'][self.bool_mask] = True\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_column_set_row_subset", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_column_slice_bool": {
+        "code": "def time_column_slice_bool(self):\n    col_subset = self.table['a'][self.bool_mask]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_column_slice_bool", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_column_slice_int": {
+        "code": "def time_column_slice_int(self):\n    col_subset = self.table['a'][self.row_indices]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_column_slice_int", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_copy_column": {
+        "code": "def time_copy_column(self):\n    self.table['a'].copy()\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_copy_column", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_copy_table": {
+        "code": "def time_copy_table(self):\n    self.table.copy()\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_copy_table", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_group": {
+        "code": "def time_group(self):\n    self.table.group_by('d')\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_group", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_hstack": {
+        "code": "def time_hstack(self):\n    hstack([self.table, self.other_table_2])\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_hstack", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_item_get_colfirst": {
+        "code": "def time_item_get_colfirst(self):\n    self.table['b'][300]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_item_get_colfirst", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_item_get_rowfirst": {
+        "code": "def time_item_get_rowfirst(self):\n    self.table[300]['b']\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_item_get_rowfirst", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_iter_row": {
+        "code": "def time_iter_row(self):\n    for row in self.table:\n        pass\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_iter_row", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_join_inner": {
+        "code": "def time_join_inner(self):\n    join(self.table, self.other_table, keys=\"i\", join_type='inner')\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_join_inner", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_join_outer": {
+        "code": "def time_join_outer(self):\n    join(self.table, self.other_table, keys=\"i\", join_type='outer')\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_join_outer", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_multi_column_get": {
+        "code": "def time_multi_column_get(self):\n    self.table[('a','c')]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_multi_column_get", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_remove_column": {
+        "code": "def time_remove_column(self):\n    self.table.remove_column('a')\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_remove_column", 
+        "number": 1, 
+        "repeat": 1, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_remove_row": {
+        "code": "def time_remove_row(self):\n    self.table.remove_row(6)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_remove_row", 
+        "number": 1, 
+        "repeat": 1, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_remove_rows": {
+        "code": "def time_remove_rows(self):\n    self.table.remove_rows(self.row_indices)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_remove_rows", 
+        "number": 1, 
+        "repeat": 1, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_row_get": {
+        "code": "def time_row_get(self):\n    self.table[300]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_row_get", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_sort": {
+        "code": "def time_sort(self):\n    self.table.sort('a')\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_sort", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_table_slice_bool": {
+        "code": "def time_table_slice_bool(self):\n    table_subset = self.table[self.bool_mask]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_table_slice_bool", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_table_slice_int": {
+        "code": "def time_table_slice_int(self):\n    table_subset = self.table[self.row_indices]\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_table_slice_int", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_vstack": {
+        "code": "def time_vstack(self):\n    vstack([self.table, self.table])\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_vstack", 
         "number": 0, 
         "repeat": 3, 
         "timeout": 60.0, 
