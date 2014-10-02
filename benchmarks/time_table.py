@@ -57,17 +57,23 @@ class TimeTable:
     def time_column_get(self):
         self.table['c']
 
-    def time_column_set(self):
-        self.table['a'] = 0.
-
     def time_column_make_bool_mask(self):
         self.table['a'] > 0.6
 
     def time_multi_column_get(self):
         self.table[('a','c')]
 
+    def time_column_set(self):
+        self.table['a'] = 0.
+
+    def time_column_set_all(self):
+        self.table['b'][:] = True
+
     def time_column_set_row_subset(self):
         self.table['b'][self.bool_mask] = True
+
+    def time_column_set_row_subset_int(self):
+        self.table['b'][self.row_indices] = True
 
     def time_row_get(self):
         self.table[300]
