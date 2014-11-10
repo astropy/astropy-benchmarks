@@ -21,6 +21,8 @@ class TimeTable:
         self.table['c'] = np.random.random((1000,10))  # 2d column
         self.table['d'] = np.random.choice(np.array(list(string.ascii_letters)),1000)
 
+        self.np_table = np.array(self.table)
+
         self.extra_row = {'a':1.2, 'b':True, 'c':np.repeat(1, 10), 'd': 'Z'}
 
         self.extra_column = np.random.randint(0, 100, 1000)
@@ -82,6 +84,10 @@ class TimeTable:
         for row in self.table:
             pass
 
+    def time_read_rows(self):
+        for row in self.table:
+            tuple(row)
+
     def time_item_get_rowfirst(self):
         self.table[300]['b']
 
@@ -112,6 +118,12 @@ class TimeTable:
         self.table.remove_column('a')
     time_remove_column.number = 1
     time_remove_column.repeat = 1
+
+    def time_init_from_np_array_no_copy(self):
+        Table(self.np_table, copy=False)
+
+    def time_init_from_np_array_copy(self):
+        Table(self.np_table, copy=True)
 
     def time_copy_table(self):
         self.table.copy()
