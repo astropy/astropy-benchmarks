@@ -1223,6 +1223,26 @@
         "type": "time", 
         "unit": "seconds"
     }, 
+    "time_table.TimeMaskedTable.time_init_from_np_array_copy": {
+        "code": "def time_init_from_np_array_copy(self):\n    Table(self.np_table, copy=True)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_init_from_np_array_copy", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_init_from_np_array_no_copy": {
+        "code": "def time_init_from_np_array_no_copy(self):\n    Table(self.np_table, copy=False)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_init_from_np_array_no_copy", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
     "time_table.TimeMaskedTable.time_item_get_colfirst": {
         "code": "def time_item_get_colfirst(self):\n    self.table['b'][300]\n", 
         "goal_time": 2.0, 
@@ -1287,6 +1307,16 @@
         "code": "def time_multi_column_get(self):\n    self.table[('a','c')]\n", 
         "goal_time": 2.0, 
         "name": "time_table.TimeMaskedTable.time_multi_column_get", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeMaskedTable.time_read_rows": {
+        "code": "def time_read_rows(self):\n    for row in self.table:\n        tuple(row)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeMaskedTable.time_read_rows", 
         "number": 0, 
         "repeat": 3, 
         "timeout": 60.0, 
@@ -1533,6 +1563,26 @@
         "type": "time", 
         "unit": "seconds"
     }, 
+    "time_table.TimeTable.time_init_from_np_array_copy": {
+        "code": "def time_init_from_np_array_copy(self):\n    Table(self.np_table, copy=True)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_init_from_np_array_copy", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_init_from_np_array_no_copy": {
+        "code": "def time_init_from_np_array_no_copy(self):\n    Table(self.np_table, copy=False)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_init_from_np_array_no_copy", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
     "time_table.TimeTable.time_item_get_colfirst": {
         "code": "def time_item_get_colfirst(self):\n    self.table['b'][300]\n", 
         "goal_time": 2.0, 
@@ -1587,6 +1637,16 @@
         "code": "def time_multi_column_get(self):\n    self.table[('a','c')]\n", 
         "goal_time": 2.0, 
         "name": "time_table.TimeTable.time_multi_column_get", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_table.TimeTable.time_read_rows": {
+        "code": "def time_read_rows(self):\n    for row in self.table:\n        tuple(row)\n", 
+        "goal_time": 2.0, 
+        "name": "time_table.TimeTable.time_read_rows", 
         "number": 0, 
         "repeat": 3, 
         "timeout": 60.0, 
