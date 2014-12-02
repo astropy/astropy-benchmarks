@@ -1,6 +1,7 @@
 """Time how long it takes to import each of the Astropy sub-packages.
 """
 
+
 def _time_import(module_name, method='sys'):
 	"""Time how long the import for a given module takes.
 
@@ -32,22 +33,15 @@ def _time_import(module_name, method='sys'):
 		raise ValueError('Unknown method: {0}'.format(method))
 
 
-def time_import_numpy():
-    # For comparison
-    _time_import('numpy', method='sys')
+# Save some boilerplate code by generating the `time_*` functions dynamically
+MODULES = ['subprocess', 'numpy', 'astropy',
+           'astropy.units', 'astropy.coordinates',
+           # TODO: add all astropy sub-packages here
+           ]
+METHODS = ['sys', 'subprocess']
 
-
-def time_import_astropy():
-    # The top-level package
-    _time_import('astropy', method='sys')
-
-def time_import_coordinates_sys():
-    _time_import('astropy.coordinates', method='sys')
-
-
-def time_import_coordinates_subprocess():
-    _time_import('astropy.coordinates', method='subprocess')
-
-
-def time_import_units():
-    import astropy.units
+from functools import partial
+for module in MODULES:
+	for method in METHODS:
+		function_name = 'time_import_{0}_{1}'.format(module.replace('.', '_'), method)
+		globals()[function_name] = partial(_time_import, module_name=module, method=method)
