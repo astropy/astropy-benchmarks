@@ -21,7 +21,10 @@ def _time_import(module_name, method='sys'):
 			del sys.modules[module_name]
 		except KeyError:
 			pass
-		__import__(module_name)
+		try:
+			__import__(module_name)
+		except ImportError as e:
+			print(e)
 	elif method == 'subprocess':
 		import sys
 		import subprocess
@@ -35,8 +38,23 @@ def _time_import(module_name, method='sys'):
 
 # Save some boilerplate code by generating the `time_*` functions dynamically
 MODULES = ['subprocess', 'numpy', 'astropy',
-           'astropy.units', 'astropy.coordinates',
-           # TODO: add all astropy sub-packages here
+		   'astropy.config',
+		   'astropy.constants',
+		   'astropy.convolution',
+		   'astropy.coordinates',
+		   'astropy.cosmology',
+		   'astropy.erfa',
+		   'astropy.io.ascii',
+		   'astropy.io.fits',
+		   'astropy.io.votable',
+		   'astropy.modeling',
+		   'astropy.nddata',
+		   'astropy.stats',
+		   'astropy.table',
+		   'astropy.time',
+		   'astropy.units',
+		   'astropy.vo',
+		   'astropy.wcs'
            ]
 METHODS = ['sys', 'subprocess']
 
@@ -45,3 +63,15 @@ for module in MODULES:
 	for method in METHODS:
 		function_name = 'time_import_{0}_{1}'.format(module.replace('.', '_'), method)
 		globals()[function_name] = partial(_time_import, module_name=module, method=method)
+
+if __name__ == '__main__':
+	import time
+	for module in MODULES:
+		print()
+		for method in METHODS:
+			function_name = 'time_import_{0}_{1}'.format(module.replace('.', '_'), method)
+			t = time.time()
+			globals()[function_name]()
+			t = time.time() - t
+			print('{0:>50s} : {1:12.3f} ms'.format(function_name, 1e3 * t))
+
