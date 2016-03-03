@@ -1,4 +1,7 @@
+import os
 from astropy.io import ascii
+
+HERE = os.path.abspath(os.path.dirname(__file__))
 
 class FixedWidthSuite:
     def setup(self):
@@ -7,7 +10,7 @@ class FixedWidthSuite:
         self.header.col_starts = None
         self.header.col_ends = None
         self.splitter = ascii.FixedWidthSplitter()
-        f = open('benchmarks/io_ascii/files/fixed_width/string.txt')
+        f = open(os.path.join(HERE, 'files', 'fixed_width', 'string.txt'))
         self.lines = f.read().split('\n')
         f.close()
         self.header.get_cols(self.lines)
