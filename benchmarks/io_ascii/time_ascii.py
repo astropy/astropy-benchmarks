@@ -1,3 +1,5 @@
+import os
+
 from astropy.io import ascii
 try:
     from cStringIO import StringIO
@@ -5,6 +7,9 @@ try:
 except ImportError:
     from io import StringIO, BytesIO
 import io
+
+
+HERE = os.path.abspath(os.path.dirname(__file__))
 
 
 class _ASCIISuite:
@@ -26,8 +31,7 @@ class _ASCIISuite:
             'latex': ascii.Latex,
             'aastex': ascii.AASTex
             }
-        with io.open('benchmarks/io_ascii/files/{}/{}.txt'.format(
-                self.file_format, self.data_type), 'rb') as f:
+        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:
             self.data = f.read()
         if self.file_format != 'sextractor':
             self.table = self.read()
