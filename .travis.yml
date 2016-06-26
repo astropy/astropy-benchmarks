@@ -1,13 +1,12 @@
 python:
   - 2.7
   - 3.4
-
-matrix:
-  - python: 2.7
+  - 3.5
 
 install:
   - sudo apt-get install mlocate
   - sudo pip install git+git://github.com/spacetelescope/asv.git@master
 
 script:
-  - asv run -q --machine=default master
+  - yes "" | asv machine
+  - asv run -q master
