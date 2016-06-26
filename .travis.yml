@@ -11,10 +11,12 @@ addons:
   apt:
     packages:
       mlocate
-          
+
 install:
-  - pip install git+git://github.com/spacetelescope/asv.git@master --user
+  - git clone git://github.com/astropy/ci-helpers.git
+  - source ci-helpers/travis/setup_conda_$TRAVIS_OS_NAME.sh
+  - pip install git+git://github.com/spacetelescope/asv.git@master
+  - yes "" | asv machine
 
 script:
-  - yes "" | asv machine
   - asv run -q master
