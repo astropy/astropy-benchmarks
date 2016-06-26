@@ -1,11 +1,19 @@
+language: python
+
+sudo: false
+
 python:
   - 2.7
   - 3.4
   - 3.5
 
+addons:
+  apt:
+    packages:
+      mlocate
+          
 install:
-  - sudo apt-get install mlocate
-  - sudo pip install git+git://github.com/spacetelescope/asv.git@master
+  - pip install git+git://github.com/spacetelescope/asv.git@master --user
 
 script:
   - yes "" | asv machine
