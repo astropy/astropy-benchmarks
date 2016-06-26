@@ -9,3 +9,6 @@ To view them, visit `this site
 
 The benchmarks are run using `airspeed velocity
 <http://spacetelescope.github.io/asv>`__.
+
+.. image:: https://travis-ci.org/astropy/astropy.svg
+    :target: https://travis-ci.org/astropy/astropy
