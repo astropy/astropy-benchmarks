@@ -1319,8 +1319,54 @@
         "type": "time", 
         "unit": "seconds"
     }, 
+    "time_cosmology.LambdaCDMBenchmarks.time_age": {
+        "code": "def time_age(self, cosmo):\n    self.cosmology.age(self.test_zs)\n", 
+        "goal_time": 2.0, 
+        "name": "time_cosmology.LambdaCDMBenchmarks.time_age", 
+        "number": 0, 
+        "param_names": [
+            "param1"
+        ], 
+        "params": [
+            [
+                "LambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Ode0=0.65, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)", 
+                "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=2.7 K, Neff=4, m_nu=[ 0.  0.  0.  0.] eV, Ob0=None)", 
+                "LambdaCDM(H0=65 km / (Mpc s), Om0=0.4, Ode0=0.2, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)", 
+                "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)", 
+                "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.05  0.1   0.15] eV, Ob0=None)"
+            ]
+        ], 
+        "pretty_name": "time_cosmology.LambdaCDMBenchmarks.time_age", 
+        "repeat": 0, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_cosmology.LambdaCDMBenchmarks.time_lumdist": {
+        "code": "def time_lumdist(self, cosmo):\n    self.cosmology.luminosity_distance(self.test_zs)\n", 
+        "goal_time": 2.0, 
+        "name": "time_cosmology.LambdaCDMBenchmarks.time_lumdist", 
+        "number": 0, 
+        "param_names": [
+            "param1"
+        ], 
+        "params": [
+            [
+                "LambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Ode0=0.65, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)", 
+                "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=2.7 K, Neff=4, m_nu=[ 0.  0.  0.  0.] eV, Ob0=None)", 
+                "LambdaCDM(H0=65 km / (Mpc s), Om0=0.4, Ode0=0.2, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)", 
+                "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)", 
+                "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.05  0.1   0.15] eV, Ob0=None)"
+            ]
+        ], 
+        "pretty_name": "time_cosmology.LambdaCDMBenchmarks.time_lumdist", 
+        "repeat": 0, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
     "time_quantity.time_quantity_array_conversion": {
-        "code": "def time_quantity_array_conversion():\n    (np.arange(100000) * u.m / u.s).to(u.km / u.hour)\n", 
+        "code": "def time_quantity_array_conversion():\n    (a * u.m / u.s).to(u.km / u.hour)\n", 
         "goal_time": 2.0, 
         "name": "time_quantity.time_quantity_array_conversion", 
         "number": 0, 
@@ -1332,8 +1378,34 @@
         "type": "time", 
         "unit": "seconds"
     }, 
+    "time_quantity.time_quantity_creation": {
+        "code": "def time_quantity_creation():\n    u.Quantity(a, u.m)\n", 
+        "goal_time": 2.0, 
+        "name": "time_quantity.time_quantity_creation", 
+        "number": 0, 
+        "param_names": [], 
+        "params": [], 
+        "pretty_name": "time_quantity.time_quantity_creation", 
+        "repeat": 0, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_quantity.time_quantity_creation_nocopy": {
+        "code": "def time_quantity_creation_nocopy():\n    u.Quantity(a, u.m, copy=False)\n", 
+        "goal_time": 2.0, 
+        "name": "time_quantity.time_quantity_creation_nocopy", 
+        "number": 0, 
+        "param_names": [], 
+        "params": [], 
+        "pretty_name": "time_quantity.time_quantity_creation_nocopy", 
+        "repeat": 0, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
     "time_quantity.time_quantity_init_array": {
-        "code": "def time_quantity_init_array():\n    np.arange(100000) * u.m / u.s\n", 
+        "code": "def time_quantity_init_array():\n    a * u.m / u.s\n", 
         "goal_time": 2.0, 
         "name": "time_quantity.time_quantity_init_array", 
         "number": 0, 
@@ -1371,14 +1443,53 @@
         "type": "time", 
         "unit": "seconds"
     }, 
+    "time_quantity.time_quantity_times_quantity": {
+        "code": "def time_quantity_times_quantity():\n    q1 * q0\n", 
+        "goal_time": 2.0, 
+        "name": "time_quantity.time_quantity_times_quantity", 
+        "number": 0, 
+        "param_names": [], 
+        "params": [], 
+        "pretty_name": "time_quantity.time_quantity_times_quantity", 
+        "repeat": 0, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_quantity.time_quantity_times_unit": {
+        "code": "def time_quantity_times_unit():\n    q1 * u.m\n", 
+        "goal_time": 2.0, 
+        "name": "time_quantity.time_quantity_times_unit", 
+        "number": 0, 
+        "param_names": [], 
+        "params": [], 
+        "pretty_name": "time_quantity.time_quantity_times_unit", 
+        "repeat": 0, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
     "time_quantity.time_quantity_ufunc_sin": {
-        "code": "def time_quantity_ufunc_sin():\n    np.sin(np.arange(10000) * u.degree)\n", 
+        "code": "def time_quantity_ufunc_sin():\n    np.sin(q2)\n", 
         "goal_time": 2.0, 
         "name": "time_quantity.time_quantity_ufunc_sin", 
         "number": 0, 
         "param_names": [], 
         "params": [], 
         "pretty_name": "time_quantity.time_quantity_ufunc_sin", 
+        "repeat": 0, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "time_quantity.time_quantity_view": {
+        "code": "def time_quantity_view():\n    q1.view(u.Quantity)\n", 
+        "goal_time": 2.0, 
+        "name": "time_quantity.time_quantity_view", 
+        "number": 0, 
+        "param_names": [], 
+        "params": [], 
+        "pretty_name": "time_quantity.time_quantity_view", 
         "repeat": 0, 
         "timeout": 60.0, 
         "type": "time", 
