@@ -3,9 +3,7 @@ language: python
 sudo: false
 
 python:
-  - 2.7
-  - 3.4
-  - 3.5
+  - 3.6
 
 addons:
   apt:
@@ -14,8 +12,8 @@ addons:
 
 install:
   - git clone git://github.com/astropy/ci-helpers.git
-  - source ci-helpers/travis/setup_conda_$TRAVIS_OS_NAME.sh
-  - pip install git+git://github.com/spacetelescope/asv.git@master
+  - source ci-helpers/travis/setup_conda.sh
+  - pip install asv
   - yes "" | asv machine
 
 script:
