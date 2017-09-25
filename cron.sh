@@ -17,12 +17,12 @@ git pull origin master
 # that in future.
 
 # On Linux - using taskset -c 0 ensures that the same core is always used when running the benchmarks.
-# taskset -c 0 asv run NEW || true
-# taskset -c 0 asv run ALL --steps 2 --skip-existing-commits || true
+taskset -c 0 asv run NEW || true
+taskset -c 0 asv run ALL --steps 10 --skip-existing-commits || true
 
 # On MacOSX:
-asv run NEW || true
-asv run ALL --steps 3 --skip-existing-commits || true
+# asv run NEW || true
+# asv run ALL --steps 10 --skip-existing-commits || true
 
 git add results/$MACHINE
 git commit -m "New results from $MACHINE"
