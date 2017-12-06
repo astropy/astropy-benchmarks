@@ -1,10 +1,10 @@
 import numpy as np
-from astropy import coordinates as coords
+from astropy.coordinates import SkyCoord, FK5, Latitude
 from astropy import units as u
 
 
 def time_latitude():
-    coords.Latitude(3.2, u.degree)
+    Latitude(3.2, u.degree)
 
 
 class FrameBenchmarks:
@@ -18,24 +18,47 @@ class FrameBenchmarks:
         self.array_dec = np.linspace(-90., 90., 1000) * u.deg
 
     def time_init_nodata(self):
-        coords.FK5()
+        FK5()
 
     def time_init_scalar(self):
-        coords.FK5(self.scalar_ra, self.scalar_dec)
+        FK5(self.scalar_ra, self.scalar_dec)
 
     def time_init_array(self):
-        coords.FK5(self.array_ra, self.array_dec)
+        FK5(self.array_ra, self.array_dec)
 
 
 class SkyCoordBenchmarks:
 
     def setup(self):
+
+        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')
+
+        lon, lat = np.ones(1000), np.ones(1000)
+        self.coord_array_1 = SkyCoord(lon, lat, unit='deg', frame='icrs')
+
+        lon, lat = np.ones(1000000), np.ones(1000000)
+        self.coord_array_2 = SkyCoord(lon, lat, unit='deg', frame='icrs')
+
+    def time_init_scalar(self):
+        SkyCoord(1, 2, unit='deg', frame='icrs')
+
+    def time_init_array(self):
         N = int(1e6)
         lon, lat = np.ones(N), np.ones(N)
-        self.coord = coords.SkyCoord(lon, lat, unit='deg', frame='icrs')
+        SkyCoord(lon, lat, unit='deg', frame='icrs')
 
-    def time_repr(self):
-        repr(self.coord)
+    def time_repr_scalar(self):
+        repr(self.coord_scalar)
 
-    def time_icrs_to_galactic(self):
-        self.coord.transform_to('galactic')
+    def time_repr_array(self):
+        repr(self.coord_array_1)
+
+    def time_icrs_to_galactic_scalar(self):
+        self.coord_scalar.transform_to('galactic')
+
+    def time_icrs_to_galactic_array(self):
+        self.coord_array_2.transform_to('galactic')
+
+    def time_iter_array(self):
+        for c in self.coord_array_1:
+            pass
