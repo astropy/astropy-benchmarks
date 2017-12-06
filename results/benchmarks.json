@@ -1242,7 +1242,7 @@
         "unit": "seconds"
     },
     "time_coordinates.FrameBenchmarks.time_init_array": {
-        "code": "def time_init_array(self):\n    coords.FK5(self.array_ra, self.array_dec)\n",
+        "code": "def time_init_array(self):\n    FK5(self.array_ra, self.array_dec)\n",
         "goal_time": 2.0,
         "name": "time_coordinates.FrameBenchmarks.time_init_array",
         "number": 0,
@@ -1255,7 +1255,7 @@
         "unit": "seconds"
     },
     "time_coordinates.FrameBenchmarks.time_init_nodata": {
-        "code": "def time_init_nodata(self):\n    coords.FK5()\n",
+        "code": "def time_init_nodata(self):\n    FK5()\n",
         "goal_time": 2.0,
         "name": "time_coordinates.FrameBenchmarks.time_init_nodata",
         "number": 0,
@@ -1268,7 +1268,7 @@
         "unit": "seconds"
     },
     "time_coordinates.FrameBenchmarks.time_init_scalar": {
-        "code": "def time_init_scalar(self):\n    coords.FK5(self.scalar_ra, self.scalar_dec)\n",
+        "code": "def time_init_scalar(self):\n    FK5(self.scalar_ra, self.scalar_dec)\n",
         "goal_time": 2.0,
         "name": "time_coordinates.FrameBenchmarks.time_init_scalar",
         "number": 0,
@@ -1280,34 +1280,99 @@
         "type": "time",
         "unit": "seconds"
     },
-    "time_coordinates.SkyCoordBenchmarks.time_icrs_to_galactic": {
-        "code": "def time_icrs_to_galactic(self):\n    self.coord.transform_to('galactic')\n",
+    "time_coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": {
+        "code": "def time_icrs_to_galactic_array(self):\n    self.coord_array_2.transform_to('galactic')\n",
         "goal_time": 2.0,
-        "name": "time_coordinates.SkyCoordBenchmarks.time_icrs_to_galactic",
+        "name": "time_coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array",
         "number": 0,
         "param_names": [],
         "params": [],
-        "pretty_name": "time_coordinates.SkyCoordBenchmarks.time_icrs_to_galactic",
+        "pretty_name": "time_coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array",
         "repeat": 0,
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds"
     },
-    "time_coordinates.SkyCoordBenchmarks.time_repr": {
-        "code": "def time_repr(self):\n    repr(self.coord)\n",
+    "time_coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": {
+        "code": "def time_icrs_to_galactic_scalar(self):\n    self.coord_scalar.transform_to('galactic')\n",
         "goal_time": 2.0,
-        "name": "time_coordinates.SkyCoordBenchmarks.time_repr",
+        "name": "time_coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar",
         "number": 0,
         "param_names": [],
         "params": [],
-        "pretty_name": "time_coordinates.SkyCoordBenchmarks.time_repr",
+        "pretty_name": "time_coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds"
+    },
+    "time_coordinates.SkyCoordBenchmarks.time_init_array": {
+        "code": "def time_init_array(self):\n    N = int(1e6)\n    lon, lat = np.ones(N), np.ones(N)\n    SkyCoord(lon, lat, unit='deg', frame='icrs')\n",
+        "goal_time": 2.0,
+        "name": "time_coordinates.SkyCoordBenchmarks.time_init_array",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "pretty_name": "time_coordinates.SkyCoordBenchmarks.time_init_array",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds"
+    },
+    "time_coordinates.SkyCoordBenchmarks.time_init_scalar": {
+        "code": "def time_init_scalar(self):\n    SkyCoord(1, 2, unit='deg', frame='icrs')\n",
+        "goal_time": 2.0,
+        "name": "time_coordinates.SkyCoordBenchmarks.time_init_scalar",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "pretty_name": "time_coordinates.SkyCoordBenchmarks.time_init_scalar",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds"
+    },
+    "time_coordinates.SkyCoordBenchmarks.time_iter_array": {
+        "code": "def time_iter_array(self):\n    for c in self.coord_array_1:\n        pass\n",
+        "goal_time": 2.0,
+        "name": "time_coordinates.SkyCoordBenchmarks.time_iter_array",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "pretty_name": "time_coordinates.SkyCoordBenchmarks.time_iter_array",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds"
+    },
+    "time_coordinates.SkyCoordBenchmarks.time_repr_array": {
+        "code": "def time_repr_array(self):\n    repr(self.coord_array_1)\n",
+        "goal_time": 2.0,
+        "name": "time_coordinates.SkyCoordBenchmarks.time_repr_array",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "pretty_name": "time_coordinates.SkyCoordBenchmarks.time_repr_array",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds"
+    },
+    "time_coordinates.SkyCoordBenchmarks.time_repr_scalar": {
+        "code": "def time_repr_scalar(self):\n    repr(self.coord_scalar)\n",
+        "goal_time": 2.0,
+        "name": "time_coordinates.SkyCoordBenchmarks.time_repr_scalar",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "pretty_name": "time_coordinates.SkyCoordBenchmarks.time_repr_scalar",
         "repeat": 0,
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds"
     },
     "time_coordinates.time_latitude": {
-        "code": "def time_latitude():\n    coords.Latitude(3.2, u.degree)\n",
+        "code": "def time_latitude():\n    Latitude(3.2, u.degree)\n",
         "goal_time": 2.0,
         "name": "time_coordinates.time_latitude",
         "number": 0,
@@ -1360,6 +1425,45 @@
             ]
         ],
         "pretty_name": "time_cosmology.LambdaCDMBenchmarks.time_lumdist",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds"
+    },
+    "time_fits.FITSBinTableHDU.time_from_columns_bytes": {
+        "code": "def time_from_columns_bytes(self):\n    x = np.repeat(b'a', 2_000_000)\n    array = np.array(x, dtype=[('col', 'S1')])\n    BinTableHDU.from_columns(array)\n",
+        "goal_time": 2.0,
+        "name": "time_fits.FITSBinTableHDU.time_from_columns_bytes",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "pretty_name": "time_fits.FITSBinTableHDU.time_from_columns_bytes",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds"
+    },
+    "time_fits.FITSHighLevelTableBenchmarks.time_read_nommap": {
+        "code": "def time_read_nommap(self):\n    self.table_bytes.seek(0)\n    try:\n        Table.read(self.table_bytes, format='fits', memmap=False)\n    except TypeError:\n        Table.read(self.table_bytes, format='fits')\n",
+        "goal_time": 2.0,
+        "name": "time_fits.FITSHighLevelTableBenchmarks.time_read_nommap",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "pretty_name": "time_fits.FITSHighLevelTableBenchmarks.time_read_nommap",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds"
+    },
+    "time_fits.FITSHighLevelTableBenchmarks.time_write": {
+        "code": "def time_write(self):\n    N = 1_000_000\n    table_bytes = BytesIO()\n    t = Table()\n    t['floats'] = np.random.random(N)\n    t['ints'] = np.random.randint(0, 100, N)\n    t['strings'] = b'some strings'\n    t['booleans'] = t['floats'] > 0.5\n    t.write(table_bytes, format='fits')\n",
+        "goal_time": 2.0,
+        "name": "time_fits.FITSHighLevelTableBenchmarks.time_write",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "pretty_name": "time_fits.FITSHighLevelTableBenchmarks.time_write",
         "repeat": 0,
         "timeout": 60.0,
         "type": "time",
