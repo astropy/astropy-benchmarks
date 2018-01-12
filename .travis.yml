@@ -23,4 +23,4 @@ script:
   - asv gh-pages --no-push
   - git config --global user.name "astrobot"
   - git config --global user.email "astrobot"
-  - git push -q -f https://$GITHUB_USER:$GITHUB_API_KEY@github.com/$TRAVIS_REPO_SLUG gh-pages
+  - if [[ $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == results ]]; then git push -q -f https://$GITHUB_USER:$GITHUB_API_KEY@github.com/$TRAVIS_REPO_SLUG gh-pages; fi
