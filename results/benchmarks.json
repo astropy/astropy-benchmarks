@@ -369,9 +369,9 @@
         "version": "66d8365cd4fe318c5c52d8736597f2fc458b67b38ab4e7a58e9d121340f0d372",
         "warmup_time": -1
     },
-    "io_ascii.main.AastexFloat.read": {
+    "io_ascii.main.AastexFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.AastexFloat.read",
+        "name": "io_ascii.main.AastexFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -383,9 +383,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.AastexFloat.write": {
+    "io_ascii.main.AastexFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.AastexFloat.write",
+        "name": "io_ascii.main.AastexFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -397,9 +397,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.AastexInt.read": {
+    "io_ascii.main.AastexInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.AastexInt.read",
+        "name": "io_ascii.main.AastexInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -411,9 +411,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.AastexInt.write": {
+    "io_ascii.main.AastexInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.AastexInt.write",
+        "name": "io_ascii.main.AastexInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -425,9 +425,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.AastexString.read": {
+    "io_ascii.main.AastexString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.AastexString.read",
+        "name": "io_ascii.main.AastexString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -439,9 +439,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.AastexString.write": {
+    "io_ascii.main.AastexString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.AastexString.write",
+        "name": "io_ascii.main.AastexString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -453,9 +453,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.BasicFloat.read": {
+    "io_ascii.main.BasicFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.BasicFloat.read",
+        "name": "io_ascii.main.BasicFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -467,9 +467,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.BasicFloat.write": {
+    "io_ascii.main.BasicFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.BasicFloat.write",
+        "name": "io_ascii.main.BasicFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -481,9 +481,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.BasicInt.read": {
+    "io_ascii.main.BasicInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.BasicInt.read",
+        "name": "io_ascii.main.BasicInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -495,9 +495,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.BasicInt.write": {
+    "io_ascii.main.BasicInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.BasicInt.write",
+        "name": "io_ascii.main.BasicInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -509,9 +509,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.BasicString.read": {
+    "io_ascii.main.BasicString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.BasicString.read",
+        "name": "io_ascii.main.BasicString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -523,9 +523,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.BasicString.write": {
+    "io_ascii.main.BasicString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.BasicString.write",
+        "name": "io_ascii.main.BasicString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -537,9 +537,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.CommentedHeaderFloat.read": {
+    "io_ascii.main.CommentedHeaderFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CommentedHeaderFloat.read",
+        "name": "io_ascii.main.CommentedHeaderFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -551,9 +551,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.CommentedHeaderFloat.write": {
+    "io_ascii.main.CommentedHeaderFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CommentedHeaderFloat.write",
+        "name": "io_ascii.main.CommentedHeaderFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -565,9 +565,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.CommentedHeaderInt.read": {
+    "io_ascii.main.CommentedHeaderInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CommentedHeaderInt.read",
+        "name": "io_ascii.main.CommentedHeaderInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -579,9 +579,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.CommentedHeaderInt.write": {
+    "io_ascii.main.CommentedHeaderInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CommentedHeaderInt.write",
+        "name": "io_ascii.main.CommentedHeaderInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -593,9 +593,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.CommentedHeaderString.read": {
+    "io_ascii.main.CommentedHeaderString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CommentedHeaderString.read",
+        "name": "io_ascii.main.CommentedHeaderString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -607,9 +607,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.CommentedHeaderString.write": {
+    "io_ascii.main.CommentedHeaderString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CommentedHeaderString.write",
+        "name": "io_ascii.main.CommentedHeaderString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -621,9 +621,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.CsvFloat.read": {
+    "io_ascii.main.CsvFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CsvFloat.read",
+        "name": "io_ascii.main.CsvFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -635,9 +635,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.CsvFloat.write": {
+    "io_ascii.main.CsvFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CsvFloat.write",
+        "name": "io_ascii.main.CsvFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -649,9 +649,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.CsvInt.read": {
+    "io_ascii.main.CsvInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CsvInt.read",
+        "name": "io_ascii.main.CsvInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -663,9 +663,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.CsvInt.write": {
+    "io_ascii.main.CsvInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CsvInt.write",
+        "name": "io_ascii.main.CsvInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -677,9 +677,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.CsvString.read": {
+    "io_ascii.main.CsvString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CsvString.read",
+        "name": "io_ascii.main.CsvString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -691,9 +691,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.CsvString.write": {
+    "io_ascii.main.CsvString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.CsvString.write",
+        "name": "io_ascii.main.CsvString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -705,9 +705,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthFloat.read": {
+    "io_ascii.main.FixedWidthFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthFloat.read",
+        "name": "io_ascii.main.FixedWidthFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -719,9 +719,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthFloat.write": {
+    "io_ascii.main.FixedWidthFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthFloat.write",
+        "name": "io_ascii.main.FixedWidthFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -733,9 +733,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthInt.read": {
+    "io_ascii.main.FixedWidthInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthInt.read",
+        "name": "io_ascii.main.FixedWidthInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -747,9 +747,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthInt.write": {
+    "io_ascii.main.FixedWidthInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthInt.write",
+        "name": "io_ascii.main.FixedWidthInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -761,9 +761,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthNoHeaderFloat.read": {
+    "io_ascii.main.FixedWidthNoHeaderFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthNoHeaderFloat.read",
+        "name": "io_ascii.main.FixedWidthNoHeaderFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -775,9 +775,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthNoHeaderFloat.write": {
+    "io_ascii.main.FixedWidthNoHeaderFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthNoHeaderFloat.write",
+        "name": "io_ascii.main.FixedWidthNoHeaderFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -789,9 +789,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthNoHeaderInt.read": {
+    "io_ascii.main.FixedWidthNoHeaderInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthNoHeaderInt.read",
+        "name": "io_ascii.main.FixedWidthNoHeaderInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -803,9 +803,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthNoHeaderInt.write": {
+    "io_ascii.main.FixedWidthNoHeaderInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthNoHeaderInt.write",
+        "name": "io_ascii.main.FixedWidthNoHeaderInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -817,9 +817,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthNoHeaderString.read": {
+    "io_ascii.main.FixedWidthNoHeaderString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthNoHeaderString.read",
+        "name": "io_ascii.main.FixedWidthNoHeaderString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -831,9 +831,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthNoHeaderString.write": {
+    "io_ascii.main.FixedWidthNoHeaderString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthNoHeaderString.write",
+        "name": "io_ascii.main.FixedWidthNoHeaderString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -845,9 +845,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthString.read": {
+    "io_ascii.main.FixedWidthString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthString.read",
+        "name": "io_ascii.main.FixedWidthString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -859,9 +859,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthString.write": {
+    "io_ascii.main.FixedWidthString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthString.write",
+        "name": "io_ascii.main.FixedWidthString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -873,9 +873,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthTwoLineFloat.read": {
+    "io_ascii.main.FixedWidthTwoLineFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthTwoLineFloat.read",
+        "name": "io_ascii.main.FixedWidthTwoLineFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -887,9 +887,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthTwoLineFloat.write": {
+    "io_ascii.main.FixedWidthTwoLineFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthTwoLineFloat.write",
+        "name": "io_ascii.main.FixedWidthTwoLineFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -901,9 +901,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthTwoLineInt.read": {
+    "io_ascii.main.FixedWidthTwoLineInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthTwoLineInt.read",
+        "name": "io_ascii.main.FixedWidthTwoLineInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -915,9 +915,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthTwoLineInt.write": {
+    "io_ascii.main.FixedWidthTwoLineInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthTwoLineInt.write",
+        "name": "io_ascii.main.FixedWidthTwoLineInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -929,9 +929,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthTwoLineString.read": {
+    "io_ascii.main.FixedWidthTwoLineString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthTwoLineString.read",
+        "name": "io_ascii.main.FixedWidthTwoLineString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -943,9 +943,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.FixedWidthTwoLineString.write": {
+    "io_ascii.main.FixedWidthTwoLineString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.FixedWidthTwoLineString.write",
+        "name": "io_ascii.main.FixedWidthTwoLineString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -957,9 +957,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.IpacFloat.read": {
+    "io_ascii.main.IpacFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.IpacFloat.read",
+        "name": "io_ascii.main.IpacFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -971,9 +971,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.IpacFloat.write": {
+    "io_ascii.main.IpacFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.IpacFloat.write",
+        "name": "io_ascii.main.IpacFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -985,9 +985,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.IpacInt.read": {
+    "io_ascii.main.IpacInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.IpacInt.read",
+        "name": "io_ascii.main.IpacInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -999,9 +999,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.IpacInt.write": {
+    "io_ascii.main.IpacInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.IpacInt.write",
+        "name": "io_ascii.main.IpacInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1013,9 +1013,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.IpacString.read": {
+    "io_ascii.main.IpacString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.IpacString.read",
+        "name": "io_ascii.main.IpacString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1027,9 +1027,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.IpacString.write": {
+    "io_ascii.main.IpacString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.IpacString.write",
+        "name": "io_ascii.main.IpacString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1041,9 +1041,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.LatexFloat.read": {
+    "io_ascii.main.LatexFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.LatexFloat.read",
+        "name": "io_ascii.main.LatexFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1055,9 +1055,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.LatexFloat.write": {
+    "io_ascii.main.LatexFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.LatexFloat.write",
+        "name": "io_ascii.main.LatexFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1069,9 +1069,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.LatexInt.read": {
+    "io_ascii.main.LatexInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.LatexInt.read",
+        "name": "io_ascii.main.LatexInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1083,9 +1083,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.LatexInt.write": {
+    "io_ascii.main.LatexInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.LatexInt.write",
+        "name": "io_ascii.main.LatexInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1097,9 +1097,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.LatexString.read": {
+    "io_ascii.main.LatexString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.LatexString.read",
+        "name": "io_ascii.main.LatexString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1111,9 +1111,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.LatexString.write": {
+    "io_ascii.main.LatexString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.LatexString.write",
+        "name": "io_ascii.main.LatexString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1125,9 +1125,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.NoHeaderFloat.read": {
+    "io_ascii.main.NoHeaderFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.NoHeaderFloat.read",
+        "name": "io_ascii.main.NoHeaderFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1139,9 +1139,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.NoHeaderFloat.write": {
+    "io_ascii.main.NoHeaderFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.NoHeaderFloat.write",
+        "name": "io_ascii.main.NoHeaderFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1153,9 +1153,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.NoHeaderInt.read": {
+    "io_ascii.main.NoHeaderInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.NoHeaderInt.read",
+        "name": "io_ascii.main.NoHeaderInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1167,9 +1167,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.NoHeaderInt.write": {
+    "io_ascii.main.NoHeaderInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.NoHeaderInt.write",
+        "name": "io_ascii.main.NoHeaderInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1181,9 +1181,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.NoHeaderString.read": {
+    "io_ascii.main.NoHeaderString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.NoHeaderString.read",
+        "name": "io_ascii.main.NoHeaderString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1195,9 +1195,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.NoHeaderString.write": {
+    "io_ascii.main.NoHeaderString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.NoHeaderString.write",
+        "name": "io_ascii.main.NoHeaderString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1209,9 +1209,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.RdbFloat.read": {
+    "io_ascii.main.RdbFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.RdbFloat.read",
+        "name": "io_ascii.main.RdbFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1223,9 +1223,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.RdbFloat.write": {
+    "io_ascii.main.RdbFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.RdbFloat.write",
+        "name": "io_ascii.main.RdbFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1237,9 +1237,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.RdbInt.read": {
+    "io_ascii.main.RdbInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.RdbInt.read",
+        "name": "io_ascii.main.RdbInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1251,9 +1251,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.RdbInt.write": {
+    "io_ascii.main.RdbInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.RdbInt.write",
+        "name": "io_ascii.main.RdbInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1265,9 +1265,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.RdbString.read": {
+    "io_ascii.main.RdbString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.RdbString.read",
+        "name": "io_ascii.main.RdbString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1279,9 +1279,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.RdbString.write": {
+    "io_ascii.main.RdbString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.RdbString.write",
+        "name": "io_ascii.main.RdbString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1293,9 +1293,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.SextractorFloat.read": {
+    "io_ascii.main.SextractorFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.SextractorFloat.read",
+        "name": "io_ascii.main.SextractorFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1307,9 +1307,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.SextractorInt.read": {
+    "io_ascii.main.SextractorInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.SextractorInt.read",
+        "name": "io_ascii.main.SextractorInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1321,9 +1321,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.SextractorString.read": {
+    "io_ascii.main.SextractorString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.SextractorString.read",
+        "name": "io_ascii.main.SextractorString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1335,9 +1335,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.TabFloat.read": {
+    "io_ascii.main.TabFloat.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.TabFloat.read",
+        "name": "io_ascii.main.TabFloat.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1349,9 +1349,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.TabFloat.write": {
+    "io_ascii.main.TabFloat.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.TabFloat.write",
+        "name": "io_ascii.main.TabFloat.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1363,9 +1363,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.TabInt.read": {
+    "io_ascii.main.TabInt.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.TabInt.read",
+        "name": "io_ascii.main.TabInt.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1377,9 +1377,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.TabInt.write": {
+    "io_ascii.main.TabInt.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.TabInt.write",
+        "name": "io_ascii.main.TabInt.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1391,9 +1391,9 @@
         "version": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
         "warmup_time": -1
     },
-    "io_ascii.main.TabString.read": {
+    "io_ascii.main.TabString.time_read": {
         "code": "class _ASCIISuite:\n    def read(self):\n        return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.TabString.read",
+        "name": "io_ascii.main.TabString.time_read",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -1405,9 +1405,9 @@
         "version": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
         "warmup_time": -1
     },
-    "io_ascii.main.TabString.write": {
+    "io_ascii.main.TabString.time_write": {
         "code": "class _ASCIISuite:\n    def write(self):\n        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])\n\n    def setup(self):\n        self.tables = {}\n        self.data = {}\n        self.output = StringIO()\n        self.writers = {\n            'csv': ascii.Csv,\n            'rdb': ascii.Rdb,\n            'fixed_width': ascii.FixedWidth,\n            'fixed_width_no_header': ascii.FixedWidthNoHeader,\n            'fixed_width_two_line': ascii.FixedWidthTwoLine,\n            'tab': ascii.Tab,\n            'no_header': ascii.NoHeader,\n            'commented_header': ascii.CommentedHeader,\n            'basic': ascii.Basic,\n            'ipac': ascii.Ipac,\n            'latex': ascii.Latex,\n            'aastex': ascii.AASTex\n            }\n        with io.open(os.path.join(HERE, 'files', self.file_format, '{0}.txt'.format(self.data_type)), 'rb') as f:\n            self.data = f.read()\n        if self.file_format != 'sextractor':\n            self.table = self.read()",
-        "name": "io_ascii.main.TabString.write",
+        "name": "io_ascii.main.TabString.time_write",
         "number": 0,
         "param_names": [],
         "params": [],
