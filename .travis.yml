@@ -14,7 +14,7 @@ install:
   - git clone git://github.com/astropy/ci-helpers.git
   - source ci-helpers/travis/setup_conda.sh
   - pip install asv
-  - yes "" | asv machine
+  - asv machine --machine Travis --os unknown --arch unknown --cpu unknown --ram unknown
 
 script:
   - asv run -q
