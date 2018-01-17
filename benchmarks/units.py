@@ -35,6 +35,11 @@ def time_compose_to_bases():
     x.cgs
 
 
+def time_compose_complex():
+    # Composing a complex unit can be very inefficient
+    (u.kg / u.s ** 3 * u.au ** 2.5 / u.yr ** 0.5 / u.sr ** 2).compose()
+
+
 # Quantity tests
 
 a = np.arange(100000.)
