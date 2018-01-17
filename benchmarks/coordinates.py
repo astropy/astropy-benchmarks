@@ -1,10 +1,28 @@
 import numpy as np
-from astropy.coordinates import SkyCoord, FK5, Latitude
+from astropy.coordinates import SkyCoord, FK5, Latitude, Angle
 from astropy import units as u
 
 
 def time_latitude():
     Latitude(3.2, u.degree)
+
+
+ANGLES = Angle(np.ones(10000), u.deg)
+
+
+def time_angle_array_repr():
+    # Prior to Astropy 3.0, this was very inefficient
+    repr(ANGLES)
+
+
+def time_angle_array_str():
+    # Prior to Astropy 3.0, this was very inefficient
+    str(ANGLES)
+
+
+def time_angle_array_repr_latex():
+    # Prior to Astropy 3.0, this was very inefficient
+    ANGLES._repr_latex_()
 
 
 class FrameBenchmarks:
