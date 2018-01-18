@@ -7,9 +7,11 @@ class LambdaCDMBenchmarks:
     H0 = 65 * u.km / u.s / u.Mpc
     TCMB0 = 2.7 * u.K
     params = [
+        LambdaCDM(H0, 0.6, 0.7, 0),
         LambdaCDM(H0, 0.25, 0.65, TCMB0, 3.04),
         LambdaCDM(H0, 0.6, 0.7, TCMB0, 4),
         LambdaCDM(H0, 0.4, 0.2, TCMB0, 3.04),
+        FlatLambdaCDM(H0, 0.25, 0),
         FlatLambdaCDM(H0, 0.25, TCMB0, 3.04),
         FlatLambdaCDM(H0, 0.25, TCMB0, 3.04,
                       [0.05, 0.1, 0.15] * u.eV)
