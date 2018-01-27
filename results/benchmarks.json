@@ -139,6 +139,48 @@
         "version": "9144e2f52d729a4ec838dcce3d3f15bbec89a3b187a26affc5feb41e59fb91d1",
         "warmup_time": -1
     },
+    "coordinates.time_angle_array_repr": {
+        "code": "def time_angle_array_repr():\n    # Prior to Astropy 3.0, this was very inefficient\n    repr(ANGLES)",
+        "name": "coordinates.time_angle_array_repr",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "f7358d7eaaa2c43a08c409093a9da4c8824ee2c56f680a47906562bb1ce67d7c",
+        "warmup_time": -1
+    },
+    "coordinates.time_angle_array_repr_latex": {
+        "code": "def time_angle_array_repr_latex():\n    # Prior to Astropy 3.0, this was very inefficient\n    ANGLES._repr_latex_()",
+        "name": "coordinates.time_angle_array_repr_latex",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "d791293d91b6bf48d25ec937a4650655e13e232dd2136182811357cc4641fdef",
+        "warmup_time": -1
+    },
+    "coordinates.time_angle_array_str": {
+        "code": "def time_angle_array_str():\n    # Prior to Astropy 3.0, this was very inefficient\n    str(ANGLES)",
+        "name": "coordinates.time_angle_array_str",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "bb01074796e6a03b8b0c30b44045048769af753ecbe7b2ec8bf460be6bb73160",
+        "warmup_time": -1
+    },
     "coordinates.time_latitude": {
         "code": "def time_latitude():\n    Latitude(3.2, u.degree)",
         "name": "coordinates.time_latitude",
@@ -162,9 +204,11 @@
         ],
         "params": [
             [
+                "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
                 "LambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Ode0=0.65, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
                 "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=2.7 K, Neff=4, m_nu=[ 0.  0.  0.  0.] eV, Ob0=None)",
                 "LambdaCDM(H0=65 km / (Mpc s), Om0=0.4, Ode0=0.2, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
                 "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
                 "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.05  0.1   0.15] eV, Ob0=None)"
             ]
@@ -186,9 +230,11 @@
         ],
         "params": [
             [
+                "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
                 "LambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Ode0=0.65, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
                 "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=2.7 K, Neff=4, m_nu=[ 0.  0.  0.  0.] eV, Ob0=None)",
                 "LambdaCDM(H0=65 km / (Mpc s), Om0=0.4, Ode0=0.2, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
                 "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
                 "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.05  0.1   0.15] eV, Ob0=None)"
             ]
@@ -2527,6 +2573,20 @@
         "unit": "bytes",
         "version": "3a897822d63f1fc4ebc8b6f605d236642698676d05ca2a2f415a55cee964d2b8"
     },
+    "units.time_compose_complex": {
+        "code": "def time_compose_complex():\n    # Composing a complex unit can be very inefficient\n    (u.kg / u.s ** 3 * u.au ** 2.5 / u.yr ** 0.5 / u.sr ** 2).compose()",
+        "name": "units.time_compose_complex",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "52ea1360a73607e97f50ceef1e3f3e3e848ad83b0b5362a19e4aa3fb3dceca04",
+        "warmup_time": -1
+    },
     "units.time_compose_to_bases": {
         "code": "def time_compose_to_bases():\n    x = copy.copy(u.Ry)\n    x.cgs",
         "name": "units.time_compose_to_bases",
@@ -2751,5 +2811,47 @@
         "version": "21b39993087943b0334e5ed6ac90834c28d709457c414dde5c53f37387b41fdf",
         "warmup_time": -1
     },
-    "version": 1
+    "version": 1,
+    "visualization.wcsaxes.time_basic_plot": {
+        "code": "def time_basic_plot():\n\n    fig = Figure()\n    canvas = FigureCanvas(fig)\n\n    ax = WCSAxes(fig, [0.15, 0.15, 0.7, 0.7], wcs=MSX_WCS)\n    fig.add_axes(ax)\n\n    ax.set_xlim(-0.5, 148.5)\n    ax.set_ylim(-0.5, 148.5)\n\n    canvas.draw()",
+        "name": "visualization.wcsaxes.time_basic_plot",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "7ec5695860cae34277828c35c0b049fd50bffd8ae413a6e3db7d7f934f1843db",
+        "warmup_time": -1
+    },
+    "visualization.wcsaxes.time_basic_plot_with_grid": {
+        "code": "def time_basic_plot_with_grid():\n\n    fig = Figure()\n    canvas = FigureCanvas(fig)\n\n    ax = WCSAxes(fig, [0.15, 0.15, 0.7, 0.7], wcs=MSX_WCS)\n    fig.add_axes(ax)\n\n    ax.grid(color='red', alpha=0.5, linestyle='solid')\n\n    ax.set_xlim(-0.5, 148.5)\n    ax.set_ylim(-0.5, 148.5)\n\n    canvas.draw()",
+        "name": "visualization.wcsaxes.time_basic_plot_with_grid",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "27a3a0412eced0052cba10bab2b0ac3f13129808dfac0dc0ebaa1d469475412d",
+        "warmup_time": -1
+    },
+    "visualization.wcsaxes.time_basic_plot_with_grid_and_overlay": {
+        "code": "def time_basic_plot_with_grid_and_overlay():\n\n    fig = Figure()\n    canvas = FigureCanvas(fig)\n\n    ax = WCSAxes(fig, [0.15, 0.15, 0.7, 0.7], wcs=MSX_WCS)\n    fig.add_axes(ax)\n\n    ax.grid(color='red', alpha=0.5, linestyle='solid')\n\n    ax.set_xlim(-0.5, 148.5)\n    ax.set_ylim(-0.5, 148.5)\n\n    overlay = ax.get_coords_overlay('fk5')\n    overlay.grid(color='purple', ls='dotted')\n\n    canvas.draw()",
+        "name": "visualization.wcsaxes.time_basic_plot_with_grid_and_overlay",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "af06e413366d2baecf8ed41973c1c393c8ac99f49857791375ebbbcd51e9785e",
+        "warmup_time": -1
+    }
 }
