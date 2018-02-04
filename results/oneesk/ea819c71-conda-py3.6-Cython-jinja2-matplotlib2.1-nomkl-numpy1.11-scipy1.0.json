@@ -1,203 +1,415 @@
 {
+    "benchmark_version": {
+        "coordinates.FrameBenchmarks.time_init_array": "c674b97d5a26e5c61c240678ebdcc4a8fbb346db4aacedbb7868aefb3230f080",
+        "coordinates.FrameBenchmarks.time_init_nodata": "c3d603a1d100c4d8f50750ddfac91c7db732186bbe5091b354ab1ee7bd4703d5",
+        "coordinates.FrameBenchmarks.time_init_scalar": "defe667485d7109897f4a6a2770d80eb89ff9295c31bc941252bf4b8f6e15288",
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": "03a8d659ce76024b25427f931b691a4cdd160fa0aeb99e0b9f6c8831df6a832b",
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": "50cb34073decb62c5e47dc358fa84c4496c41a70eedc12d430de14dd6b2eaca7",
+        "coordinates.SkyCoordBenchmarks.time_init_array": "efd1c95143b17aa70b359c057d501cf1f21c675354fc145e7362fad20e746143",
+        "coordinates.SkyCoordBenchmarks.time_init_scalar": "72be933df1c75170846adad4c31fa6b2034a6061a7af30a127e14b9599b468a5",
+        "coordinates.SkyCoordBenchmarks.time_iter_array": "6bf1ec9b68eb8af4cf3dff787c3e22c9c549ce973d4d29c025175379b6275fec",
+        "coordinates.SkyCoordBenchmarks.time_repr_array": "441c7f643c000bea0aae55a16a88d01a8a89b91cbf3f3c080945963a3d85a914",
+        "coordinates.SkyCoordBenchmarks.time_repr_scalar": "9144e2f52d729a4ec838dcce3d3f15bbec89a3b187a26affc5feb41e59fb91d1",
+        "coordinates.time_angle_array_repr": "f7358d7eaaa2c43a08c409093a9da4c8824ee2c56f680a47906562bb1ce67d7c",
+        "coordinates.time_angle_array_repr_latex": "d791293d91b6bf48d25ec937a4650655e13e232dd2136182811357cc4641fdef",
+        "coordinates.time_angle_array_str": "bb01074796e6a03b8b0c30b44045048769af753ecbe7b2ec8bf460be6bb73160",
+        "coordinates.time_latitude": "d37e722e0c0f585281e1f368dc32f3943dd8cf1ec4009924181467dd2c3a6cd0",
+        "cosmology.LambdaCDMBenchmarks.time_age": "9d18698d04bfa5d55ddcae0f12ee69266bfed44f4b0fd81018487132da078301",
+        "cosmology.LambdaCDMBenchmarks.time_lumdist": "5bac457205366118e159292716591c45c0cfc49c2e2729149b83abfbb3e6ed3e",
+        "io_ascii.core.CoreSuite.time_base_splitter": "ef95250cdacbcad30d437c583c0005f2e0f100ed28e242aea22dfd55507626f2",
+        "io_ascii.core.CoreSuite.time_continuation_inputter": "406566039a7c4a88ddbba6da758e5757bc52acdbf7fe159d5324696a33b7f960",
+        "io_ascii.core.CoreSuite.time_convert_vals": "0c660365b4b3180a53e83e7b346bbb72270cbb17c23a7b9c343b9e62bd6be16d",
+        "io_ascii.core.CoreSuite.time_default_splitter_call": "9b11dacb692c8e31688afc0031aa584030b2b4311f16ab0de8e61d1111f68568",
+        "io_ascii.core.CoreSuite.time_default_splitter_join": "306bb839233283dd45a91d2646131b786fecc79198f55c91a843d8d05bbf062a",
+        "io_ascii.core.CoreSuite.time_whitespace_splitter": "ab9241b763369886db83aff56a4a41a13296bdc6de02fd6cca426503e4195b81",
+        "io_ascii.fixedwidth.FixedWidthSuite.time_header": "ab31959770db8530c2a7211c49c8d5a7db6c42b75ff8fb0bac4be7689f1837ea",
+        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": "a8f2eed392691b8fede23e560b4b933aef960db35ac1dafac4857c53e839ecf0",
+        "io_ascii.ipac.IPACSuite.time_data_str_vals": "47e34452c6c6cea6ff597dbd27faa2d6b83a1b1e77978c28cd3482d1ee83666e",
+        "io_ascii.ipac.IPACSuite.time_get_cols": "b9db559aa8e7052afe0b952515629cdc112d29661dc35db39d3ff11729eebc29",
+        "io_ascii.ipac.IPACSuite.time_header_str_vals": "aa060983b5957fd31ff49679e66aefc332677decfd9212e9adbd53c00e2bfddd",
+        "io_ascii.ipac.IPACSuite.time_splitter": "66d8365cd4fe318c5c52d8736597f2fc458b67b38ab4e7a58e9d121340f0d372",
+        "io_ascii.main.AastexFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.AastexFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.AastexInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.AastexInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.AastexString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.AastexString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.BasicFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.BasicFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.BasicInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.BasicInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.BasicString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.BasicString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CommentedHeaderFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CommentedHeaderFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CommentedHeaderInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CommentedHeaderInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CommentedHeaderString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CommentedHeaderString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CsvFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CsvFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CsvInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CsvInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CsvString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CsvString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthNoHeaderInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthNoHeaderInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthNoHeaderString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthNoHeaderString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthTwoLineFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthTwoLineFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthTwoLineInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthTwoLineInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthTwoLineString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthTwoLineString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.IpacFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.IpacFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.IpacInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.IpacInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.IpacString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.IpacString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.LatexFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.LatexFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.LatexInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.LatexInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.LatexString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.LatexString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.NoHeaderFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.NoHeaderFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.NoHeaderInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.NoHeaderInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.NoHeaderString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.NoHeaderString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.RdbFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.RdbFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.RdbInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.RdbInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.RdbString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.RdbString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.SextractorFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.SextractorInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.SextractorString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.TabFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.TabFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.TabInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.TabInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.TabString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.TabString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.rdb.RDBSuite.time_get_cols": "37775e9215e57ff1ba0ec99edd94cbc2a293a129a551ed55f92e669007bad661",
+        "io_ascii.sextractor.SExtractorSuite.time_header": "a9db4d189763ff1473f14cb8d568fbe618facb3d376edc5a200bf69eefc7a110",
+        "io_ascii.table.TableSuite.mem_table_init": "f93dd63923309c0a3643cbc5565c4081d6525256c63f4845d5f94ba6e4ea0bd6",
+        "io_ascii.table.TableSuite.mem_table_outputter": "0ee6f7a393d03abd1ac6cdfa55936a4462adde546042fddc5ba7189476e0507b",
+        "io_ascii.table.TableSuite.time_str_vals_float": "2d818883f1301a824cb3809cdc36587446e6edba5a2fcb67f00410e94f731669",
+        "io_ascii.table.TableSuite.time_str_vals_int": "9109ab1ddedde92cafdb2a0644f73936b59cd52b967369db71cbf0532cd65d46",
+        "io_ascii.table.TableSuite.time_str_vals_str": "854ab35dbba7720bbe4729cc5ca9aaf04d856af1f4e0d32f1c7c7504f29a46f8",
+        "io_ascii.table.TableSuite.time_table_init_from_list": "ebc1f5751e08f92ba669a08cb5144ce1c72d750daf659f9e933b18c5fcf92d69",
+        "io_ascii.table.TableSuite.time_table_outputter": "c9cda8c5462696d451d132a464ef7a0319161924c36a82031904e8c6a0b7fd9b",
+        "io_fits.FITSBinTableHDU.time_from_columns_bytes": "0ced98097e668afc55cb7c214f0ec629dac253341826ca667d7fb28428f6db1a",
+        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": "aad5f871ef8603c05f0a64ae405c585e95d081798cb3576da10a6bd73d17d3bf",
+        "io_fits.FITSHighLevelTableBenchmarks.time_write": "dbe7f96c19284a4c494c1f35313cd7f12a367d222c3dffb9c45dab2372722556",
+        "table.TimeMaskedTable.time_add_column": "b2c0ad0af05e6ff645357e4e21fbb3c31b647579f850c111c9494b69fecab587",
+        "table.TimeMaskedTable.time_add_row": "c3da92e8384276af12dd0b284b378baea2170c58c83b6d61874804cd715d6a5f",
+        "table.TimeMaskedTable.time_aggregate": "d87a6eadd3a4c94d95d33449d19c6c00474eeb1ada4b13633a28ec4e47eb57f6",
+        "table.TimeMaskedTable.time_aggregate_noreduceat": "6607870ad7344f17d4ccea4ca0a86ce464eeccd21fe98d970ff2c699f03c7e17",
+        "table.TimeMaskedTable.time_column_get": "f863a90229743a65604d98100febf2400d345032ae27cbd7f0450db596a88956",
+        "table.TimeMaskedTable.time_column_make_bool_mask": "6dfae7f99d875b90ce8bb45b2232e8c9448734810edacf42fcafd45e522d1ff0",
+        "table.TimeMaskedTable.time_column_set": "3b94497b8947080e3a7ad68c0d27b547fda203e3a82a6f9aef412c5b38553ce2",
+        "table.TimeMaskedTable.time_column_set_all": "42a14616589c8ebefc8d09c74be3c4b4081dc5025fc1dc68c45b04046129c898",
+        "table.TimeMaskedTable.time_column_set_row_subset": "f5286a927031d2e4c72969b4294ad326f835625ffff8cab42d5a0fb0fc66d5fc",
+        "table.TimeMaskedTable.time_column_set_row_subset_int": "7a46311bfa2b1cc228c79ef31d83d80d7211b6f720c0efc76645408ecb0cc88b",
+        "table.TimeMaskedTable.time_column_slice_bool": "606fa21ee4fae7dd015b43a97a9d3ba938acd3ba1c2b34262dd6bf6d51f33f54",
+        "table.TimeMaskedTable.time_column_slice_int": "1d1818da027642ddf329e814913cf0be71476438e4a90444aa085d5f92f6fbe2",
+        "table.TimeMaskedTable.time_copy_column": "f1684c651fd087a764de4d038893b4c9610489a81f8162fa217742e1a0921bff",
+        "table.TimeMaskedTable.time_copy_table": "9dfee0ffd435859c66c9d478df0b81fb8b7497a2a81897f10c557f39f695c328",
+        "table.TimeMaskedTable.time_group": "00833c0817e383400bfaa81fbed6cd67f6bf8e38ab39dad34bf18acb12eb6240",
+        "table.TimeMaskedTable.time_hstack": "0bb53b6f70a1c0e044582584e8e4e16e12b0a6d2de3a8031520e683f725548a0",
+        "table.TimeMaskedTable.time_init_from_np_array_copy": "4336289776445bd679565fab2aff50641d5bb4d8e1f21f2c8d37a26af69f59f8",
+        "table.TimeMaskedTable.time_init_from_np_array_no_copy": "b13e3a0b7c95d73514fa4353bd5e2fc362b0a2133200cfbca7578616000b7c88",
+        "table.TimeMaskedTable.time_item_get_colfirst": "0dd32efbfedd563aa310767ea5c4ed044e744ee7a4fbbd06b2d67f39b0646c2a",
+        "table.TimeMaskedTable.time_item_get_rowfirst": "09093997db41771a090f840eefd60e7d2577c519a976b9b88d799aa21d242a1b",
+        "table.TimeMaskedTable.time_iter_row": "5c031f2eb8938c243423fa5dabd4c66ced4063a63b583bd3f54270bc1f211fae",
+        "table.TimeMaskedTable.time_join_inner": "0c28429345963649f5df731dce5bbd22588b0f465f5112c20ac6e8fc367697c7",
+        "table.TimeMaskedTable.time_join_outer": "4c3bf2e6aaf0b0fa9873b63128ace026c611e846f2b72ceb1c4a7170dd790984",
+        "table.TimeMaskedTable.time_mask_column": "8199306b947c7320fcf35aa5e9c87146b8bb91f9cba9d25fb9290a8ff006cee7",
+        "table.TimeMaskedTable.time_multi_column_get": "f078ef4c7d77390944802d30e7ef0381d6372c9dd211c3bb6163265eb8a8a0d9",
+        "table.TimeMaskedTable.time_read_rows": "b8c9879da2aac0e2ec1225c2f64e3b30c8ca22ad100b1eea118285204166f604",
+        "table.TimeMaskedTable.time_remove_column": "ac775b1968a61183af601e5a5ebd1443c52d1e28bdb86520ac2fef19d4c38088",
+        "table.TimeMaskedTable.time_remove_row": "a649c857c45262e8ad834755d02de13041d4fc893ecc1a30d7297f4c36541290",
+        "table.TimeMaskedTable.time_remove_rows": "1b7c4ed8b6c2a92d93e9b2ce007c596b7c79317f1427056e26f65f9873a510ef",
+        "table.TimeMaskedTable.time_row_get": "045657db9d7ef5938a36c9885c2627d0a0a8806f51a24693858d11245a8641b0",
+        "table.TimeMaskedTable.time_sort": "c5563d6c2ba316f51667e1e02e88372d03a0d46ce635fcf28c99a19b8a47f364",
+        "table.TimeMaskedTable.time_table_slice_bool": "aa3e39b38985bb5ece815375cfeeac330868d465afe58025e987d4e6ee7b6f16",
+        "table.TimeMaskedTable.time_table_slice_int": "d371f5b0e33a94248be0e224cef150f53d07c64f2e16111a308b57b90ad93080",
+        "table.TimeMaskedTable.time_vstack": "398d840ff2c40a226540b887b02f1c56020693a589a7526505fd59479cc7256b",
+        "table.TimeTable.time_add_column": "b2c0ad0af05e6ff645357e4e21fbb3c31b647579f850c111c9494b69fecab587",
+        "table.TimeTable.time_add_row": "c3da92e8384276af12dd0b284b378baea2170c58c83b6d61874804cd715d6a5f",
+        "table.TimeTable.time_aggregate": "d87a6eadd3a4c94d95d33449d19c6c00474eeb1ada4b13633a28ec4e47eb57f6",
+        "table.TimeTable.time_aggregate_noreduceat": "6607870ad7344f17d4ccea4ca0a86ce464eeccd21fe98d970ff2c699f03c7e17",
+        "table.TimeTable.time_column_get": "f863a90229743a65604d98100febf2400d345032ae27cbd7f0450db596a88956",
+        "table.TimeTable.time_column_make_bool_mask": "6dfae7f99d875b90ce8bb45b2232e8c9448734810edacf42fcafd45e522d1ff0",
+        "table.TimeTable.time_column_set": "3b94497b8947080e3a7ad68c0d27b547fda203e3a82a6f9aef412c5b38553ce2",
+        "table.TimeTable.time_column_set_all": "42a14616589c8ebefc8d09c74be3c4b4081dc5025fc1dc68c45b04046129c898",
+        "table.TimeTable.time_column_set_row_subset": "f5286a927031d2e4c72969b4294ad326f835625ffff8cab42d5a0fb0fc66d5fc",
+        "table.TimeTable.time_column_set_row_subset_int": "7a46311bfa2b1cc228c79ef31d83d80d7211b6f720c0efc76645408ecb0cc88b",
+        "table.TimeTable.time_column_slice_bool": "606fa21ee4fae7dd015b43a97a9d3ba938acd3ba1c2b34262dd6bf6d51f33f54",
+        "table.TimeTable.time_column_slice_int": "1d1818da027642ddf329e814913cf0be71476438e4a90444aa085d5f92f6fbe2",
+        "table.TimeTable.time_copy_column": "f1684c651fd087a764de4d038893b4c9610489a81f8162fa217742e1a0921bff",
+        "table.TimeTable.time_copy_table": "9dfee0ffd435859c66c9d478df0b81fb8b7497a2a81897f10c557f39f695c328",
+        "table.TimeTable.time_group": "00833c0817e383400bfaa81fbed6cd67f6bf8e38ab39dad34bf18acb12eb6240",
+        "table.TimeTable.time_hstack": "0bb53b6f70a1c0e044582584e8e4e16e12b0a6d2de3a8031520e683f725548a0",
+        "table.TimeTable.time_init_from_np_array_copy": "4336289776445bd679565fab2aff50641d5bb4d8e1f21f2c8d37a26af69f59f8",
+        "table.TimeTable.time_init_from_np_array_no_copy": "b13e3a0b7c95d73514fa4353bd5e2fc362b0a2133200cfbca7578616000b7c88",
+        "table.TimeTable.time_item_get_colfirst": "0dd32efbfedd563aa310767ea5c4ed044e744ee7a4fbbd06b2d67f39b0646c2a",
+        "table.TimeTable.time_item_get_rowfirst": "09093997db41771a090f840eefd60e7d2577c519a976b9b88d799aa21d242a1b",
+        "table.TimeTable.time_iter_row": "5c031f2eb8938c243423fa5dabd4c66ced4063a63b583bd3f54270bc1f211fae",
+        "table.TimeTable.time_join_inner": "0c28429345963649f5df731dce5bbd22588b0f465f5112c20ac6e8fc367697c7",
+        "table.TimeTable.time_join_outer": "4c3bf2e6aaf0b0fa9873b63128ace026c611e846f2b72ceb1c4a7170dd790984",
+        "table.TimeTable.time_multi_column_get": "f078ef4c7d77390944802d30e7ef0381d6372c9dd211c3bb6163265eb8a8a0d9",
+        "table.TimeTable.time_read_rows": "b8c9879da2aac0e2ec1225c2f64e3b30c8ca22ad100b1eea118285204166f604",
+        "table.TimeTable.time_remove_column": "ac775b1968a61183af601e5a5ebd1443c52d1e28bdb86520ac2fef19d4c38088",
+        "table.TimeTable.time_remove_row": "a649c857c45262e8ad834755d02de13041d4fc893ecc1a30d7297f4c36541290",
+        "table.TimeTable.time_remove_rows": "1b7c4ed8b6c2a92d93e9b2ce007c596b7c79317f1427056e26f65f9873a510ef",
+        "table.TimeTable.time_row_get": "045657db9d7ef5938a36c9885c2627d0a0a8806f51a24693858d11245a8641b0",
+        "table.TimeTable.time_sort": "c5563d6c2ba316f51667e1e02e88372d03a0d46ce635fcf28c99a19b8a47f364",
+        "table.TimeTable.time_table_slice_bool": "aa3e39b38985bb5ece815375cfeeac330868d465afe58025e987d4e6ee7b6f16",
+        "table.TimeTable.time_table_slice_int": "d371f5b0e33a94248be0e224cef150f53d07c64f2e16111a308b57b90ad93080",
+        "table.TimeTable.time_vstack": "398d840ff2c40a226540b887b02f1c56020693a589a7526505fd59479cc7256b",
+        "units.mem_unit": "3a897822d63f1fc4ebc8b6f605d236642698676d05ca2a2f415a55cee964d2b8",
+        "units.time_compose_complex": "52ea1360a73607e97f50ceef1e3f3e3e848ad83b0b5362a19e4aa3fb3dceca04",
+        "units.time_compose_to_bases": "efa81d39b97d426d435dbe325a091874c13cd833db4885fd5e9e1ec35b231e35",
+        "units.time_quantity_array_conversion": "453720a338fd6209fec908aeca1d32fd167c1889d2cf194fb9cc93798ba4f918",
+        "units.time_quantity_creation": "57da636a893f32b10c058bef66b505734774f0254e5ec31d8102670ea3749ba1",
+        "units.time_quantity_creation_nocopy": "1b32a659e9bbcfc671c6339f519316d7f3586bf52e9adfff2524d9ed7c3efe92",
+        "units.time_quantity_init_array": "957f8f9cf4974efcf01e8818e1f02c7f19f8d19c00d1a379e4038026c1a12d44",
+        "units.time_quantity_init_scalar": "1f7132881f0240f773268d410a62cf9914eff40bd73ad1fd726217c1fb31dc3e",
+        "units.time_quantity_scalar_conversion": "0bc23b508de4b7bbd0fe029aa99741c170acb5975e60e82d95df92c5c4ae0a94",
+        "units.time_quantity_times_quantity": "33b450d74c52eb7359c2d056eff45d449f4158a1a0c433bd7a4ab035544b3344",
+        "units.time_quantity_times_unit": "18101a547d2f59990d20d563f3734a998e00684852452c7778f2425883693063",
+        "units.time_quantity_ufunc_sin": "6782df2b41ecd8117cefb86c1097ead62fbc89a35d3b19a64b90f3036ea24e15",
+        "units.time_quantity_view": "26ddf3059fc7b8c7c4410ec065066c9f1d29eee90d7da6033ef7fd194dc03c0e",
+        "units.time_simple_unit_parse": "18937913b36f94725f1c97a07a4783897c64f748e4ca3438d8a366ec405ff794",
+        "units.time_unit_compose": "c411870dd43a755992fbca4dc50586233a3eb250670f7ecd6e3861bdc3713d04",
+        "units.time_unit_parse": "197b3554fa4d3e39fa3aae6a308abe51ad542092cad5f0868867bc8fa021781f",
+        "units.time_unit_to": "6da60807eb0884de058d60357ad655c1d2db3bae2d58d75ddbc21222a2210610",
+        "units.time_very_simple_unit_parse": "21b39993087943b0334e5ed6ac90834c28d709457c414dde5c53f37387b41fdf",
+        "visualization.wcsaxes.time_basic_plot": "7ec5695860cae34277828c35c0b049fd50bffd8ae413a6e3db7d7f934f1843db",
+        "visualization.wcsaxes.time_basic_plot_with_grid": "27a3a0412eced0052cba10bab2b0ac3f13129808dfac0dc0ebaa1d469475412d",
+        "visualization.wcsaxes.time_basic_plot_with_grid_and_overlay": "af06e413366d2baecf8ed41973c1c393c8ac99f49857791375ebbbcd51e9785e"
+    },
     "commit_hash": "ea819c71008f324860ced8a6a618bf3020ccc4b9",
     "date": 1401770450000,
     "ended_at": {
-        "io_ascii.main.AastexFloat.time_read": 1515530549000,
-        "io_ascii.main.AastexFloat.time_write": 1515530549000,
-        "io_ascii.main.AastexInt.time_read": 1515530549000,
-        "io_ascii.main.AastexInt.time_write": 1515530549000,
-        "io_ascii.main.AastexString.time_read": 1515530549000,
-        "io_ascii.main.AastexString.time_write": 1515530549000,
-        "io_ascii.main.BasicFloat.time_read": 1515530549000,
-        "io_ascii.main.BasicFloat.time_write": 1515530549000,
-        "io_ascii.main.BasicInt.time_read": 1515530549000,
-        "io_ascii.main.BasicInt.time_write": 1515530549000,
-        "io_ascii.main.BasicString.time_read": 1515530549000,
-        "io_ascii.main.BasicString.time_write": 1515530549000,
-        "io_ascii.main.CommentedHeaderFloat.time_read": 1515530549000,
-        "io_ascii.main.CommentedHeaderFloat.time_write": 1515530549000,
-        "io_ascii.main.CommentedHeaderInt.time_read": 1515530549000,
-        "io_ascii.main.CommentedHeaderInt.time_write": 1515530549000,
-        "io_ascii.main.CommentedHeaderString.time_read": 1515530549000,
-        "io_ascii.main.CommentedHeaderString.time_write": 1515530549000,
-        "io_ascii.main.CsvFloat.time_read": 1515530549000,
-        "io_ascii.main.CsvFloat.time_write": 1515530549000,
-        "io_ascii.main.CsvInt.time_read": 1515530549000,
-        "io_ascii.main.CsvInt.time_write": 1515530549000,
-        "io_ascii.main.CsvString.time_read": 1515530549000,
-        "io_ascii.main.CsvString.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthFloat.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthFloat.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthInt.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthInt.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderString.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderString.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthString.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthString.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineInt.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineInt.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineString.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineString.time_write": 1515530549000,
-        "io_ascii.main.IpacFloat.time_read": 1515530549000,
-        "io_ascii.main.IpacFloat.time_write": 1515530549000,
-        "io_ascii.main.IpacInt.time_read": 1515530549000,
-        "io_ascii.main.IpacInt.time_write": 1515530549000,
-        "io_ascii.main.IpacString.time_read": 1515530549000,
-        "io_ascii.main.IpacString.time_write": 1515530549000,
-        "io_ascii.main.LatexFloat.time_read": 1515530549000,
-        "io_ascii.main.LatexFloat.time_write": 1515530549000,
-        "io_ascii.main.LatexInt.time_read": 1515530549000,
-        "io_ascii.main.LatexInt.time_write": 1515530549000,
-        "io_ascii.main.LatexString.time_read": 1515530549000,
-        "io_ascii.main.LatexString.time_write": 1515530549000,
-        "io_ascii.main.NoHeaderFloat.time_read": 1515530549000,
-        "io_ascii.main.NoHeaderFloat.time_write": 1515530549000,
-        "io_ascii.main.NoHeaderInt.time_read": 1515530549000,
-        "io_ascii.main.NoHeaderInt.time_write": 1515530549000,
-        "io_ascii.main.NoHeaderString.time_read": 1515530549000,
-        "io_ascii.main.NoHeaderString.time_write": 1515530549000,
-        "io_ascii.main.RdbFloat.time_read": 1515530549000,
-        "io_ascii.main.RdbFloat.time_write": 1515530549000,
-        "io_ascii.main.RdbInt.time_read": 1515530549000,
-        "io_ascii.main.RdbInt.time_write": 1515530549000,
-        "io_ascii.main.RdbString.time_read": 1515530549000,
-        "io_ascii.main.RdbString.time_write": 1515530549000,
-        "io_ascii.main.SextractorFloat.time_read": 1515530549000,
-        "io_ascii.main.SextractorInt.time_read": 1515530549000,
-        "io_ascii.main.SextractorString.time_read": 1515530549000,
-        "io_ascii.main.TabFloat.time_read": 1515530549000,
-        "io_ascii.main.TabFloat.time_write": 1515530549000,
-        "io_ascii.main.TabInt.time_read": 1515530549000,
-        "io_ascii.main.TabInt.time_write": 1515530549000,
-        "io_ascii.main.TabString.time_read": 1515530549000,
-        "io_ascii.main.TabString.time_write": 1515530549000,
-        "io_ascii.core.CoreSuite.time_base_splitter": 1515530549000,
-        "io_ascii.core.CoreSuite.time_continuation_inputter": 1515530549000,
-        "io_ascii.core.CoreSuite.time_convert_vals": 1515530549000,
-        "io_ascii.core.CoreSuite.time_default_splitter_call": 1515530549000,
-        "io_ascii.core.CoreSuite.time_default_splitter_join": 1515530549000,
-        "io_ascii.core.CoreSuite.time_whitespace_splitter": 1515530549000,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_header": 1515530549000,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": 1515530549000,
-        "io_ascii.ipac.IPACSuite.time_data_str_vals": 1515530549000,
-        "io_ascii.ipac.IPACSuite.time_get_cols": 1515530549000,
-        "io_ascii.ipac.IPACSuite.time_header_str_vals": 1515530549000,
-        "io_ascii.ipac.IPACSuite.time_splitter": 1515530549000,
-        "io_ascii.rdb.RDBSuite.time_get_cols": 1515530549000,
-        "io_ascii.sextractor.SExtractorSuite.time_header": 1515530549000,
-        "io_ascii.table.TableSuite.mem_table_init": 1515530549000,
-        "io_ascii.table.TableSuite.mem_table_outputter": 1515530549000,
-        "io_ascii.table.TableSuite.time_str_vals_float": 1515530549000,
-        "io_ascii.table.TableSuite.time_str_vals_int": 1515530549000,
-        "io_ascii.table.TableSuite.time_str_vals_str": 1515530549000,
-        "io_ascii.table.TableSuite.time_table_init_from_list": 1515530549000,
-        "io_ascii.table.TableSuite.time_table_outputter": 1515530549000,
-        "coordinates.FrameBenchmarks.time_init_array": 1515530549000,
-        "coordinates.FrameBenchmarks.time_init_nodata": 1515530549000,
-        "coordinates.FrameBenchmarks.time_init_scalar": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_init_array": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_init_scalar": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_iter_array": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_repr_array": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_repr_scalar": 1515530549000,
-        "coordinates.time_latitude": 1515530549000,
-        "cosmology.LambdaCDMBenchmarks.time_age": 1515530549000,
-        "cosmology.LambdaCDMBenchmarks.time_lumdist": 1515530549000,
-        "io_fits.FITSBinTableHDU.time_from_columns_bytes": 1515530549000,
-        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": 1515530549000,
-        "io_fits.FITSHighLevelTableBenchmarks.time_write": 1515530549000,
-        "units.time_quantity_array_conversion": 1515530549000,
-        "units.time_quantity_creation": 1515530549000,
-        "units.time_quantity_creation_nocopy": 1515530549000,
-        "units.time_quantity_init_array": 1515530549000,
-        "units.time_quantity_init_scalar": 1515530549000,
-        "units.time_quantity_scalar_conversion": 1515530549000,
-        "units.time_quantity_times_quantity": 1515530549000,
-        "units.time_quantity_times_unit": 1515530549000,
-        "units.time_quantity_ufunc_sin": 1515530549000,
-        "units.time_quantity_view": 1515530549000,
-        "table.TimeMaskedTable.time_add_column": 1515530549000,
-        "table.TimeMaskedTable.time_add_row": 1515530549000,
-        "table.TimeMaskedTable.time_aggregate": 1515530549000,
-        "table.TimeMaskedTable.time_aggregate_noreduceat": 1515530549000,
-        "table.TimeMaskedTable.time_column_get": 1515530549000,
-        "table.TimeMaskedTable.time_column_make_bool_mask": 1515530549000,
-        "table.TimeMaskedTable.time_column_set": 1515530549000,
-        "table.TimeMaskedTable.time_column_set_all": 1515530549000,
-        "table.TimeMaskedTable.time_column_set_row_subset": 1515530549000,
-        "table.TimeMaskedTable.time_column_set_row_subset_int": 1515530549000,
-        "table.TimeMaskedTable.time_column_slice_bool": 1515530549000,
-        "table.TimeMaskedTable.time_column_slice_int": 1515530549000,
-        "table.TimeMaskedTable.time_copy_column": 1515530549000,
-        "table.TimeMaskedTable.time_copy_table": 1515530549000,
-        "table.TimeMaskedTable.time_group": 1515530549000,
-        "table.TimeMaskedTable.time_hstack": 1515530549000,
-        "table.TimeMaskedTable.time_init_from_np_array_copy": 1515530549000,
-        "table.TimeMaskedTable.time_init_from_np_array_no_copy": 1515530549000,
-        "table.TimeMaskedTable.time_item_get_colfirst": 1515530549000,
-        "table.TimeMaskedTable.time_item_get_rowfirst": 1515530549000,
-        "table.TimeMaskedTable.time_iter_row": 1515530549000,
-        "table.TimeMaskedTable.time_join_inner": 1515530549000,
-        "table.TimeMaskedTable.time_join_outer": 1515530549000,
-        "table.TimeMaskedTable.time_mask_column": 1515530549000,
-        "table.TimeMaskedTable.time_multi_column_get": 1515530549000,
-        "table.TimeMaskedTable.time_read_rows": 1515530549000,
-        "table.TimeMaskedTable.time_remove_column": 1515530549000,
-        "table.TimeMaskedTable.time_remove_row": 1515530549000,
-        "table.TimeMaskedTable.time_remove_rows": 1515530549000,
-        "table.TimeMaskedTable.time_row_get": 1515530549000,
-        "table.TimeMaskedTable.time_sort": 1515530549000,
-        "table.TimeMaskedTable.time_table_slice_bool": 1515530549000,
-        "table.TimeMaskedTable.time_table_slice_int": 1515530549000,
-        "table.TimeMaskedTable.time_vstack": 1515530549000,
-        "table.TimeTable.time_add_column": 1515530549000,
-        "table.TimeTable.time_add_row": 1515530549000,
-        "table.TimeTable.time_aggregate": 1515530549000,
-        "table.TimeTable.time_aggregate_noreduceat": 1515530549000,
-        "table.TimeTable.time_column_get": 1515530549000,
-        "table.TimeTable.time_column_make_bool_mask": 1515530549000,
-        "table.TimeTable.time_column_set": 1515530549000,
-        "table.TimeTable.time_column_set_all": 1515530549000,
-        "table.TimeTable.time_column_set_row_subset": 1515530549000,
-        "table.TimeTable.time_column_set_row_subset_int": 1515530549000,
-        "table.TimeTable.time_column_slice_bool": 1515530549000,
-        "table.TimeTable.time_column_slice_int": 1515530549000,
-        "table.TimeTable.time_copy_column": 1515530549000,
-        "table.TimeTable.time_copy_table": 1515530549000,
-        "table.TimeTable.time_group": 1515530549000,
-        "table.TimeTable.time_hstack": 1515530549000,
-        "table.TimeTable.time_init_from_np_array_copy": 1515530549000,
-        "table.TimeTable.time_init_from_np_array_no_copy": 1515530549000,
-        "table.TimeTable.time_item_get_colfirst": 1515530549000,
-        "table.TimeTable.time_item_get_rowfirst": 1515530549000,
-        "table.TimeTable.time_iter_row": 1515530549000,
-        "table.TimeTable.time_join_inner": 1515530549000,
-        "table.TimeTable.time_join_outer": 1515530549000,
-        "table.TimeTable.time_multi_column_get": 1515530549000,
-        "table.TimeTable.time_read_rows": 1515530549000,
-        "table.TimeTable.time_remove_column": 1515530549000,
-        "table.TimeTable.time_remove_row": 1515530549000,
-        "table.TimeTable.time_remove_rows": 1515530549000,
-        "table.TimeTable.time_row_get": 1515530549000,
-        "table.TimeTable.time_sort": 1515530549000,
-        "table.TimeTable.time_table_slice_bool": 1515530549000,
-        "table.TimeTable.time_table_slice_int": 1515530549000,
-        "table.TimeTable.time_vstack": 1515530549000,
-        "units.mem_unit": 1515530549000,
-        "units.time_compose_to_bases": 1515530549000,
-        "units.time_simple_unit_parse": 1515530549000,
-        "units.time_unit_compose": 1515530549000,
-        "units.time_unit_parse": 1515530549000,
-        "units.time_unit_to": 1515530549000,
-        "units.time_very_simple_unit_parse": 1515530549000
+        "coordinates.FrameBenchmarks.time_init_array": 1517684795000,
+        "coordinates.FrameBenchmarks.time_init_nodata": 1517684798000,
+        "coordinates.FrameBenchmarks.time_init_scalar": 1517684800000,
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": 1517684804000,
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": 1517684807000,
+        "coordinates.SkyCoordBenchmarks.time_init_array": 1517684810000,
+        "coordinates.SkyCoordBenchmarks.time_init_scalar": 1517684813000,
+        "coordinates.SkyCoordBenchmarks.time_iter_array": 1517684818000,
+        "coordinates.SkyCoordBenchmarks.time_repr_array": 1517684821000,
+        "coordinates.SkyCoordBenchmarks.time_repr_scalar": 1517684824000,
+        "coordinates.time_angle_array_repr": 1517684827000,
+        "coordinates.time_angle_array_repr_latex": 1517684830000,
+        "coordinates.time_angle_array_str": 1517684832000,
+        "coordinates.time_latitude": 1517684835000,
+        "cosmology.LambdaCDMBenchmarks.time_age": 1517684858000,
+        "cosmology.LambdaCDMBenchmarks.time_lumdist": 1517684873000,
+        "io_ascii.core.CoreSuite.time_base_splitter": 1517684876000,
+        "io_ascii.core.CoreSuite.time_continuation_inputter": 1517684879000,
+        "io_ascii.core.CoreSuite.time_convert_vals": 1517684882000,
+        "io_ascii.core.CoreSuite.time_default_splitter_call": 1517684886000,
+        "io_ascii.core.CoreSuite.time_default_splitter_join": 1517684889000,
+        "io_ascii.core.CoreSuite.time_whitespace_splitter": 1517684892000,
+        "io_ascii.fixedwidth.FixedWidthSuite.time_header": 1517684895000,
+        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": 1517684898000,
+        "io_ascii.ipac.IPACSuite.time_data_str_vals": 1517684902000,
+        "io_ascii.ipac.IPACSuite.time_get_cols": 1517684906000,
+        "io_ascii.ipac.IPACSuite.time_header_str_vals": 1517684910000,
+        "io_ascii.ipac.IPACSuite.time_splitter": 1517684914000,
+        "io_ascii.main.AastexFloat.time_read": 1517684919000,
+        "io_ascii.main.AastexFloat.time_write": 1517684925000,
+        "io_ascii.main.AastexInt.time_read": 1517684929000,
+        "io_ascii.main.AastexInt.time_write": 1517684933000,
+        "io_ascii.main.AastexString.time_read": 1517684937000,
+        "io_ascii.main.AastexString.time_write": 1517684943000,
+        "io_ascii.main.BasicFloat.time_read": 1517684947000,
+        "io_ascii.main.BasicFloat.time_write": 1517684951000,
+        "io_ascii.main.BasicInt.time_read": 1517684955000,
+        "io_ascii.main.BasicInt.time_write": 1517684959000,
+        "io_ascii.main.BasicString.time_read": 1517684963000,
+        "io_ascii.main.BasicString.time_write": 1517684968000,
+        "io_ascii.main.CommentedHeaderFloat.time_read": 1517684972000,
+        "io_ascii.main.CommentedHeaderFloat.time_write": 1517684976000,
+        "io_ascii.main.CommentedHeaderInt.time_read": 1517684980000,
+        "io_ascii.main.CommentedHeaderInt.time_write": 1517684984000,
+        "io_ascii.main.CommentedHeaderString.time_read": 1517684988000,
+        "io_ascii.main.CommentedHeaderString.time_write": 1517684993000,
+        "io_ascii.main.CsvFloat.time_read": 1517684998000,
+        "io_ascii.main.CsvFloat.time_write": 1517685001000,
+        "io_ascii.main.CsvInt.time_read": 1517685005000,
+        "io_ascii.main.CsvInt.time_write": 1517685009000,
+        "io_ascii.main.CsvString.time_read": 1517685014000,
+        "io_ascii.main.CsvString.time_write": 1517685019000,
+        "io_ascii.main.FixedWidthFloat.time_read": 1517685023000,
+        "io_ascii.main.FixedWidthFloat.time_write": 1517685027000,
+        "io_ascii.main.FixedWidthInt.time_read": 1517685031000,
+        "io_ascii.main.FixedWidthInt.time_write": 1517685035000,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": 1517685040000,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": 1517685044000,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_read": 1517685048000,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_write": 1517685052000,
+        "io_ascii.main.FixedWidthNoHeaderString.time_read": 1517685056000,
+        "io_ascii.main.FixedWidthNoHeaderString.time_write": 1517685062000,
+        "io_ascii.main.FixedWidthString.time_read": 1517685066000,
+        "io_ascii.main.FixedWidthString.time_write": 1517685072000,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_read": 1517685076000,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_write": 1517685080000,
+        "io_ascii.main.FixedWidthTwoLineInt.time_read": 1517685084000,
+        "io_ascii.main.FixedWidthTwoLineInt.time_write": 1517685088000,
+        "io_ascii.main.FixedWidthTwoLineString.time_read": 1517685092000,
+        "io_ascii.main.FixedWidthTwoLineString.time_write": 1517685098000,
+        "io_ascii.main.IpacFloat.time_read": 1517685102000,
+        "io_ascii.main.IpacFloat.time_write": 1517685106000,
+        "io_ascii.main.IpacInt.time_read": 1517685110000,
+        "io_ascii.main.IpacInt.time_write": 1517685114000,
+        "io_ascii.main.IpacString.time_read": 1517685118000,
+        "io_ascii.main.IpacString.time_write": 1517685123000,
+        "io_ascii.main.LatexFloat.time_read": 1517685127000,
+        "io_ascii.main.LatexFloat.time_write": 1517685133000,
+        "io_ascii.main.LatexInt.time_read": 1517685138000,
+        "io_ascii.main.LatexInt.time_write": 1517685141000,
+        "io_ascii.main.LatexString.time_read": 1517685146000,
+        "io_ascii.main.LatexString.time_write": 1517685151000,
+        "io_ascii.main.NoHeaderFloat.time_read": 1517685155000,
+        "io_ascii.main.NoHeaderFloat.time_write": 1517685159000,
+        "io_ascii.main.NoHeaderInt.time_read": 1517685163000,
+        "io_ascii.main.NoHeaderInt.time_write": 1517685167000,
+        "io_ascii.main.NoHeaderString.time_read": 1517685171000,
+        "io_ascii.main.NoHeaderString.time_write": 1517685177000,
+        "io_ascii.main.RdbFloat.time_read": 1517685180000,
+        "io_ascii.main.RdbFloat.time_write": 1517685184000,
+        "io_ascii.main.RdbInt.time_read": 1517685188000,
+        "io_ascii.main.RdbInt.time_write": 1517685192000,
+        "io_ascii.main.RdbString.time_read": 1517685196000,
+        "io_ascii.main.RdbString.time_write": 1517685201000,
+        "io_ascii.main.SextractorFloat.time_read": 1517685205000,
+        "io_ascii.main.SextractorInt.time_read": 1517685208000,
+        "io_ascii.main.SextractorString.time_read": 1517685211000,
+        "io_ascii.main.TabFloat.time_read": 1517685215000,
+        "io_ascii.main.TabFloat.time_write": 1517685219000,
+        "io_ascii.main.TabInt.time_read": 1517685223000,
+        "io_ascii.main.TabInt.time_write": 1517685227000,
+        "io_ascii.main.TabString.time_read": 1517685231000,
+        "io_ascii.main.TabString.time_write": 1517685236000,
+        "io_ascii.rdb.RDBSuite.time_get_cols": 1517685239000,
+        "io_ascii.sextractor.SExtractorSuite.time_header": 1517685247000,
+        "io_ascii.table.TableSuite.mem_table_init": 1517685249000,
+        "io_ascii.table.TableSuite.mem_table_outputter": 1517685251000,
+        "io_ascii.table.TableSuite.time_str_vals_float": 1517685254000,
+        "io_ascii.table.TableSuite.time_str_vals_int": 1517685257000,
+        "io_ascii.table.TableSuite.time_str_vals_str": 1517685260000,
+        "io_ascii.table.TableSuite.time_table_init_from_list": 1517685263000,
+        "io_ascii.table.TableSuite.time_table_outputter": 1517685266000,
+        "io_fits.FITSBinTableHDU.time_from_columns_bytes": 1517685268000,
+        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": 1517685277000,
+        "io_fits.FITSHighLevelTableBenchmarks.time_write": 1517685285000,
+        "table.TimeMaskedTable.time_add_column": 1517685287000,
+        "table.TimeMaskedTable.time_add_row": 1517685289000,
+        "table.TimeMaskedTable.time_aggregate": 1517685292000,
+        "table.TimeMaskedTable.time_aggregate_noreduceat": 1517685295000,
+        "table.TimeMaskedTable.time_column_get": 1517685299000,
+        "table.TimeMaskedTable.time_column_make_bool_mask": 1517685302000,
+        "table.TimeMaskedTable.time_column_set": 1517685305000,
+        "table.TimeMaskedTable.time_column_set_all": 1517685308000,
+        "table.TimeMaskedTable.time_column_set_row_subset": 1517685312000,
+        "table.TimeMaskedTable.time_column_set_row_subset_int": 1517685315000,
+        "table.TimeMaskedTable.time_column_slice_bool": 1517685318000,
+        "table.TimeMaskedTable.time_column_slice_int": 1517685321000,
+        "table.TimeMaskedTable.time_copy_column": 1517685325000,
+        "table.TimeMaskedTable.time_copy_table": 1517685328000,
+        "table.TimeMaskedTable.time_group": 1517685331000,
+        "table.TimeMaskedTable.time_hstack": 1517685334000,
+        "table.TimeMaskedTable.time_init_from_np_array_copy": 1517685337000,
+        "table.TimeMaskedTable.time_init_from_np_array_no_copy": 1517685339000,
+        "table.TimeMaskedTable.time_item_get_colfirst": 1517685342000,
+        "table.TimeMaskedTable.time_item_get_rowfirst": 1517685346000,
+        "table.TimeMaskedTable.time_iter_row": 1517685349000,
+        "table.TimeMaskedTable.time_join_inner": 1517685351000,
+        "table.TimeMaskedTable.time_join_outer": 1517685352000,
+        "table.TimeMaskedTable.time_mask_column": 1517685355000,
+        "table.TimeMaskedTable.time_multi_column_get": 1517685359000,
+        "table.TimeMaskedTable.time_read_rows": 1517685362000,
+        "table.TimeMaskedTable.time_remove_column": 1517685364000,
+        "table.TimeMaskedTable.time_remove_row": 1517685366000,
+        "table.TimeMaskedTable.time_remove_rows": 1517685368000,
+        "table.TimeMaskedTable.time_row_get": 1517685371000,
+        "table.TimeMaskedTable.time_sort": 1517685374000,
+        "table.TimeMaskedTable.time_table_slice_bool": 1517685377000,
+        "table.TimeMaskedTable.time_table_slice_int": 1517685381000,
+        "table.TimeMaskedTable.time_vstack": 1517685384000,
+        "table.TimeTable.time_add_column": 1517685385000,
+        "table.TimeTable.time_add_row": 1517685387000,
+        "table.TimeTable.time_aggregate": 1517685390000,
+        "table.TimeTable.time_aggregate_noreduceat": 1517685394000,
+        "table.TimeTable.time_column_get": 1517685397000,
+        "table.TimeTable.time_column_make_bool_mask": 1517685400000,
+        "table.TimeTable.time_column_set": 1517685403000,
+        "table.TimeTable.time_column_set_all": 1517685406000,
+        "table.TimeTable.time_column_set_row_subset": 1517685409000,
+        "table.TimeTable.time_column_set_row_subset_int": 1517685412000,
+        "table.TimeTable.time_column_slice_bool": 1517685415000,
+        "table.TimeTable.time_column_slice_int": 1517685418000,
+        "table.TimeTable.time_copy_column": 1517685421000,
+        "table.TimeTable.time_copy_table": 1517685424000,
+        "table.TimeTable.time_group": 1517685428000,
+        "table.TimeTable.time_hstack": 1517685431000,
+        "table.TimeTable.time_init_from_np_array_copy": 1517685434000,
+        "table.TimeTable.time_init_from_np_array_no_copy": 1517685436000,
+        "table.TimeTable.time_item_get_colfirst": 1517685439000,
+        "table.TimeTable.time_item_get_rowfirst": 1517685442000,
+        "table.TimeTable.time_iter_row": 1517685445000,
+        "table.TimeTable.time_join_inner": 1517685446000,
+        "table.TimeTable.time_join_outer": 1517685448000,
+        "table.TimeTable.time_multi_column_get": 1517685451000,
+        "table.TimeTable.time_read_rows": 1517685454000,
+        "table.TimeTable.time_remove_column": 1517685456000,
+        "table.TimeTable.time_remove_row": 1517685458000,
+        "table.TimeTable.time_remove_rows": 1517685460000,
+        "table.TimeTable.time_row_get": 1517685463000,
+        "table.TimeTable.time_sort": 1517685466000,
+        "table.TimeTable.time_table_slice_bool": 1517685469000,
+        "table.TimeTable.time_table_slice_int": 1517685472000,
+        "table.TimeTable.time_vstack": 1517685475000,
+        "units.mem_unit": 1517685476000,
+        "units.time_compose_complex": 1517685482000,
+        "units.time_compose_to_bases": 1517685485000,
+        "units.time_quantity_array_conversion": 1517685487000,
+        "units.time_quantity_creation": 1517685490000,
+        "units.time_quantity_creation_nocopy": 1517685492000,
+        "units.time_quantity_init_array": 1517685495000,
+        "units.time_quantity_init_scalar": 1517685498000,
+        "units.time_quantity_scalar_conversion": 1517685500000,
+        "units.time_quantity_times_quantity": 1517685503000,
+        "units.time_quantity_times_unit": 1517685505000,
+        "units.time_quantity_ufunc_sin": 1517685508000,
+        "units.time_quantity_view": 1517685511000,
+        "units.time_simple_unit_parse": 1517685513000,
+        "units.time_unit_compose": 1517685516000,
+        "units.time_unit_parse": 1517685518000,
+        "units.time_unit_to": 1517685521000,
+        "units.time_very_simple_unit_parse": 1517685523000,
+        "visualization.wcsaxes.time_basic_plot": 1517685525000,
+        "visualization.wcsaxes.time_basic_plot_with_grid": 1517685526000,
+        "visualization.wcsaxes.time_basic_plot_with_grid_and_overlay": 1517685527000
     },
     "env_name": "conda-py3.6-Cython-jinja2-matplotlib2.1-nomkl-numpy1.11-scipy1.0",
     "params": {
@@ -206,12 +418,12 @@
         "cpu": "Intel(R) Celeron(R) CPU N3450 @ 1.10GHz",
         "jinja2": "",
         "machine": "oneesk",
+        "matplotlib": "2.1",
         "nomkl": "",
         "numpy": "1.11",
         "os": "Linux 4.10.0-40-generic",
         "python": "3.6",
         "ram": "3885480",
-        "matplotlib": "2.1",
         "scipy": "1.0"
     },
     "profiles": {},
@@ -219,406 +431,2597 @@
     "requirements": {
         "Cython": "",
         "jinja2": "",
+        "matplotlib": "2.1",
         "nomkl": "",
         "numpy": "1.11",
-        "matplotlib": "2.1",
         "scipy": "1.0"
     },
     "results": {
-        "io_ascii.main.AastexFloat.time_read": null,
-        "io_ascii.main.AastexFloat.time_write": null,
-        "io_ascii.main.AastexInt.time_read": null,
-        "io_ascii.main.AastexInt.time_write": null,
-        "io_ascii.main.AastexString.time_read": null,
-        "io_ascii.main.AastexString.time_write": null,
-        "io_ascii.main.BasicFloat.time_read": null,
-        "io_ascii.main.BasicFloat.time_write": null,
-        "io_ascii.main.BasicInt.time_read": null,
-        "io_ascii.main.BasicInt.time_write": null,
-        "io_ascii.main.BasicString.time_read": null,
-        "io_ascii.main.BasicString.time_write": null,
-        "io_ascii.main.CommentedHeaderFloat.time_read": null,
-        "io_ascii.main.CommentedHeaderFloat.time_write": null,
-        "io_ascii.main.CommentedHeaderInt.time_read": null,
-        "io_ascii.main.CommentedHeaderInt.time_write": null,
-        "io_ascii.main.CommentedHeaderString.time_read": null,
-        "io_ascii.main.CommentedHeaderString.time_write": null,
-        "io_ascii.main.CsvFloat.time_read": null,
-        "io_ascii.main.CsvFloat.time_write": null,
-        "io_ascii.main.CsvInt.time_read": null,
-        "io_ascii.main.CsvInt.time_write": null,
-        "io_ascii.main.CsvString.time_read": null,
-        "io_ascii.main.CsvString.time_write": null,
-        "io_ascii.main.FixedWidthFloat.time_read": null,
-        "io_ascii.main.FixedWidthFloat.time_write": null,
-        "io_ascii.main.FixedWidthInt.time_read": null,
-        "io_ascii.main.FixedWidthInt.time_write": null,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": null,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": null,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_read": null,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_write": null,
-        "io_ascii.main.FixedWidthNoHeaderString.time_read": null,
-        "io_ascii.main.FixedWidthNoHeaderString.time_write": null,
-        "io_ascii.main.FixedWidthString.time_read": null,
-        "io_ascii.main.FixedWidthString.time_write": null,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_read": null,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_write": null,
-        "io_ascii.main.FixedWidthTwoLineInt.time_read": null,
-        "io_ascii.main.FixedWidthTwoLineInt.time_write": null,
-        "io_ascii.main.FixedWidthTwoLineString.time_read": null,
-        "io_ascii.main.FixedWidthTwoLineString.time_write": null,
-        "io_ascii.main.IpacFloat.time_read": null,
-        "io_ascii.main.IpacFloat.time_write": null,
-        "io_ascii.main.IpacInt.time_read": null,
-        "io_ascii.main.IpacInt.time_write": null,
-        "io_ascii.main.IpacString.time_read": null,
-        "io_ascii.main.IpacString.time_write": null,
-        "io_ascii.main.LatexFloat.time_read": null,
-        "io_ascii.main.LatexFloat.time_write": null,
-        "io_ascii.main.LatexInt.time_read": null,
-        "io_ascii.main.LatexInt.time_write": null,
-        "io_ascii.main.LatexString.time_read": null,
-        "io_ascii.main.LatexString.time_write": null,
-        "io_ascii.main.NoHeaderFloat.time_read": null,
-        "io_ascii.main.NoHeaderFloat.time_write": null,
-        "io_ascii.main.NoHeaderInt.time_read": null,
-        "io_ascii.main.NoHeaderInt.time_write": null,
-        "io_ascii.main.NoHeaderString.time_read": null,
-        "io_ascii.main.NoHeaderString.time_write": null,
-        "io_ascii.main.RdbFloat.time_read": null,
-        "io_ascii.main.RdbFloat.time_write": null,
-        "io_ascii.main.RdbInt.time_read": null,
-        "io_ascii.main.RdbInt.time_write": null,
-        "io_ascii.main.RdbString.time_read": null,
-        "io_ascii.main.RdbString.time_write": null,
-        "io_ascii.main.SextractorFloat.time_read": null,
-        "io_ascii.main.SextractorInt.time_read": null,
-        "io_ascii.main.SextractorString.time_read": null,
-        "io_ascii.main.TabFloat.time_read": null,
-        "io_ascii.main.TabFloat.time_write": null,
-        "io_ascii.main.TabInt.time_read": null,
-        "io_ascii.main.TabInt.time_write": null,
-        "io_ascii.main.TabString.time_read": null,
-        "io_ascii.main.TabString.time_write": null,
-        "io_ascii.core.CoreSuite.time_base_splitter": null,
-        "io_ascii.core.CoreSuite.time_continuation_inputter": null,
-        "io_ascii.core.CoreSuite.time_convert_vals": null,
-        "io_ascii.core.CoreSuite.time_default_splitter_call": null,
-        "io_ascii.core.CoreSuite.time_default_splitter_join": null,
-        "io_ascii.core.CoreSuite.time_whitespace_splitter": null,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_header": null,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": null,
-        "io_ascii.ipac.IPACSuite.time_data_str_vals": null,
-        "io_ascii.ipac.IPACSuite.time_get_cols": null,
-        "io_ascii.ipac.IPACSuite.time_header_str_vals": null,
-        "io_ascii.ipac.IPACSuite.time_splitter": null,
-        "io_ascii.rdb.RDBSuite.time_get_cols": null,
-        "io_ascii.sextractor.SExtractorSuite.time_header": null,
-        "io_ascii.table.TableSuite.mem_table_init": null,
-        "io_ascii.table.TableSuite.mem_table_outputter": null,
-        "io_ascii.table.TableSuite.time_str_vals_float": null,
-        "io_ascii.table.TableSuite.time_str_vals_int": null,
-        "io_ascii.table.TableSuite.time_str_vals_str": null,
-        "io_ascii.table.TableSuite.time_table_init_from_list": null,
-        "io_ascii.table.TableSuite.time_table_outputter": null,
-        "coordinates.FrameBenchmarks.time_init_array": null,
-        "coordinates.FrameBenchmarks.time_init_nodata": null,
-        "coordinates.FrameBenchmarks.time_init_scalar": null,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": null,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": null,
-        "coordinates.SkyCoordBenchmarks.time_init_array": null,
-        "coordinates.SkyCoordBenchmarks.time_init_scalar": null,
-        "coordinates.SkyCoordBenchmarks.time_iter_array": null,
-        "coordinates.SkyCoordBenchmarks.time_repr_array": null,
-        "coordinates.SkyCoordBenchmarks.time_repr_scalar": null,
-        "coordinates.time_latitude": null,
-        "cosmology.LambdaCDMBenchmarks.time_age": null,
-        "cosmology.LambdaCDMBenchmarks.time_lumdist": null,
+        "coordinates.FrameBenchmarks.time_init_array": {
+            "result": [
+                0.0013509093687500027
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0013483130187499984,
+                        0.0014172988187499999
+                    ],
+                    "max": 0.0014252356999999993,
+                    "mean": 0.0013645694312499994,
+                    "min": 0.0013474770499999982,
+                    "n": 10,
+                    "q_25": 0.0013498705999999956,
+                    "q_75": 0.0013564173374999986,
+                    "std": 2.6744238737205484e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.FrameBenchmarks.time_init_nodata": {
+            "result": [
+                1.3367216059197654e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.3259251651174159e-05,
+                        1.3429582497553813e-05
+                    ],
+                    "max": 1.3438964652641843e-05,
+                    "mean": 1.3350932619863012e-05,
+                    "min": 1.32406086105675e-05,
+                    "n": 10,
+                    "q_25": 1.329119187255382e-05,
+                    "q_75": 1.3401093230185908e-05,
+                    "std": 6.46144358757878e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.FrameBenchmarks.time_init_scalar": {
+            "result": [
+                0.0010166725424528293
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0010067409245283028,
+                        0.0011080784528301913
+                    ],
+                    "max": 0.0010814841226415106,
+                    "mean": 0.0010329043028301887,
+                    "min": 0.001009480301886791,
+                    "n": 10,
+                    "q_25": 0.0010119364669811332,
+                    "q_75": 0.0010544770896226412,
+                    "std": 2.535163267493399e-05,
+                    "systematic": 4.0844773584904634e-05
+                }
+            ]
+        },
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": 1.239074305,
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": {
+            "result": [
+                0.019963925833333358
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.01910193683333335,
+                        0.02000703716666667
+                    ],
+                    "max": 0.02000703716666667,
+                    "mean": 0.019751339547619044,
+                    "min": 0.01910193683333335,
+                    "n": 7,
+                    "q_25": 0.019624970249999985,
+                    "q_75": 0.019968268249999976,
+                    "std": 0.00035539922989465383,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.SkyCoordBenchmarks.time_init_array": {
+            "result": [
+                0.05080677874999995
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.04671101249999998,
+                        0.05498951175
+                    ],
+                    "max": 0.05499804050000012,
+                    "mean": 0.05085709793749997,
+                    "min": 0.04669401299999998,
+                    "n": 8,
+                    "q_25": 0.046913809874999934,
+                    "q_75": 0.05489507199999996,
+                    "std": 0.004014165423541917,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.SkyCoordBenchmarks.time_init_scalar": {
+            "result": [
+                0.0016738210859374991
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0016707613359374998,
+                        0.0016855826796875022
+                    ],
+                    "max": 0.0016909782500000026,
+                    "mean": 0.0016762248945312503,
+                    "min": 0.0016702108281249975,
+                    "n": 8,
+                    "q_25": 0.0016729108789062513,
+                    "q_75": 0.00167706557421875,
+                    "std": 6.255876600272659e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.SkyCoordBenchmarks.time_iter_array": 4.14092872,
+        "coordinates.SkyCoordBenchmarks.time_repr_array": {
+            "result": [
+                0.024033983200000008
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.02379876139999997,
+                        0.024672159399999984
+                    ],
+                    "max": 0.024672159399999984,
+                    "mean": 0.024160622485714277,
+                    "min": 0.02379876139999997,
+                    "n": 7,
+                    "q_25": 0.023924268699999994,
+                    "q_75": 0.024385458000000006,
+                    "std": 0.0003147016662047092,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.SkyCoordBenchmarks.time_repr_scalar": {
+            "result": [
+                0.0012362287272727277
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0012347173409090915,
+                        0.0012396460056818218
+                    ],
+                    "max": 0.0012400237159090938,
+                    "mean": 0.0012367040994318197,
+                    "min": 0.0012344749659090907,
+                    "n": 8,
+                    "q_25": 0.001235327786931817,
+                    "q_75": 0.001237565701704549,
+                    "std": 1.8613858036555516e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.time_angle_array_repr": {
+            "result": [
+                0.000806145926470588
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0008055652794117648,
+                        0.00080905343014706
+                    ],
+                    "max": 0.0008091212132352963,
+                    "mean": 0.0008067557161764707,
+                    "min": 0.000805406352941175,
+                    "n": 10,
+                    "q_25": 0.0008059333566176469,
+                    "q_75": 0.0008074728694852936,
+                    "std": 1.3042172916047564e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.time_angle_array_repr_latex": 0.781758189,
+        "coordinates.time_angle_array_str": 0.761711086,
+        "coordinates.time_latitude": {
+            "result": [
+                0.00014888545752608036
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0001485381013412817,
+                        0.00014906844187779434
+                    ],
+                    "max": 0.00014913585991058084,
+                    "mean": 0.00014882337451564825,
+                    "min": 0.00014850280029806264,
+                    "n": 10,
+                    "q_25": 0.0001486503979135618,
+                    "q_75": 0.0001489718077496273,
+                    "std": 2.00962230218449e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "cosmology.LambdaCDMBenchmarks.time_age": {
+            "params": [
+                [
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Ode0=0.65, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=2.7 K, Neff=4, m_nu=[ 0.  0.  0.  0.] eV, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.4, Ode0=0.2, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.05  0.1   0.15] eV, Ob0=None)"
+                ]
+            ],
+            "result": [
+                0.49649887199999987,
+                0.832962127,
+                0.8156590369999996,
+                0.831493429,
+                0.5247924689999999,
+                0.8087932310000001,
+                3.454666379
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.49564252500000006,
+                        0.4973552189999997
+                    ],
+                    "max": 0.4973552189999997,
+                    "mean": 0.49649887199999987,
+                    "min": 0.49564252500000006,
+                    "n": 2,
+                    "q_25": 0.49607069849999996,
+                    "q_75": 0.4969270454999998,
+                    "std": 0.000856346999999813,
+                    "systematic": 0.0
+                },
+                null,
+                null,
+                null,
+                {
+                    "ci_99": [
+                        0.5240639279999999,
+                        0.5255210099999998
+                    ],
+                    "max": 0.5255210099999998,
+                    "mean": 0.5247924689999999,
+                    "min": 0.5240639279999999,
+                    "n": 2,
+                    "q_25": 0.5244281984999999,
+                    "q_75": 0.5251567394999999,
+                    "std": 0.0007285409999999715,
+                    "systematic": 0.0
+                },
+                null,
+                null
+            ]
+        },
+        "cosmology.LambdaCDMBenchmarks.time_lumdist": {
+            "params": [
+                [
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Ode0=0.65, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=2.7 K, Neff=4, m_nu=[ 0.  0.  0.  0.] eV, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.4, Ode0=0.2, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.05  0.1   0.15] eV, Ob0=None)"
+                ]
+            ],
+            "result": [
+                0.07640617500000013,
+                0.04926791549999987,
+                0.07093059349999997,
+                0.0472684914999999,
+                0.04840983849999991,
+                0.04871564999999989,
+                0.22871994499999992
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.07620644349999994,
+                        0.0777214224999998
+                    ],
+                    "max": 0.0787241169999997,
+                    "mean": 0.07664755639999996,
+                    "min": 0.07618002199999996,
+                    "n": 10,
+                    "q_25": 0.07634806074999995,
+                    "q_75": 0.07655573474999999,
+                    "std": 0.000708112129059178,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.04910671150000012,
+                        0.049835274000000096
+                    ],
+                    "max": 0.05003202799999995,
+                    "mean": 0.04937224130000002,
+                    "min": 0.04909288099999998,
+                    "n": 10,
+                    "q_25": 0.04917404875000009,
+                    "q_75": 0.04947827099999991,
+                    "std": 0.0002783521837234281,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.07068390750000009,
+                        0.07159721899999993
+                    ],
+                    "max": 0.07190553199999994,
+                    "mean": 0.07100690779999996,
+                    "min": 0.07067613900000014,
+                    "n": 10,
+                    "q_25": 0.07081007974999998,
+                    "q_75": 0.07101019574999984,
+                    "std": 0.00034402235286262706,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.04710746999999982,
+                        0.0475436199999999
+                    ],
+                    "max": 0.04761452399999988,
+                    "mean": 0.0473018619999999,
+                    "min": 0.04710696099999989,
+                    "n": 10,
+                    "q_25": 0.04716205074999996,
+                    "q_75": 0.04744096599999997,
+                    "std": 0.00016510475192738915,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.04824076250000009,
+                        0.04897245800000005
+                    ],
+                    "max": 0.049207198000000174,
+                    "mean": 0.0485263427,
+                    "min": 0.04821655300000005,
+                    "n": 10,
+                    "q_25": 0.048390026000000086,
+                    "q_75": 0.048631852749999926,
+                    "std": 0.0002743639996563362,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.04867408150000008,
+                        0.050354916500000124
+                    ],
+                    "max": 0.05129732900000006,
+                    "mean": 0.04904648690000002,
+                    "min": 0.04866778700000007,
+                    "n": 10,
+                    "q_25": 0.04869300074999999,
+                    "q_75": 0.04882266599999996,
+                    "std": 0.0007797389822968526,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.22828272799999993,
+                        0.2295563399999998
+                    ],
+                    "max": 0.2295563399999998,
+                    "mean": 0.22887454519999997,
+                    "min": 0.22828272799999993,
+                    "n": 5,
+                    "q_25": 0.228484189,
+                    "q_75": 0.22932952400000017,
+                    "std": 0.0004895664695811564,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_base_splitter": {
+            "result": [
+                9.43824524352063e-07
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        9.281241501324592e-07,
+                        9.554275227403257e-07
+                    ],
+                    "max": 9.624120306044953e-07,
+                    "mean": 9.41816909250717e-07,
+                    "min": 9.254719705811506e-07,
+                    "n": 9,
+                    "q_25": 9.353489505177936e-07,
+                    "q_75": 9.458481909631541e-07,
+                    "std": 1.017351270362141e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_continuation_inputter": {
+            "result": [
+                0.002338149913043476
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0022983070108695655,
+                        0.002356757967391306
+                    ],
+                    "max": 0.0023606313043478266,
+                    "mean": 0.002329995586956522,
+                    "min": 0.0022931786521739085,
+                    "n": 8,
+                    "q_25": 0.002303975793478263,
+                    "q_75": 0.0023502553913043503,
+                    "std": 2.4382543807043465e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_convert_vals": {
+            "result": [
+                1.2027429511278185e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.1720604734492479e-05,
+                        1.2354438792293232e-05
+                    ],
+                    "max": 1.2378739896616534e-05,
+                    "mean": 1.2014876827485377e-05,
+                    "min": 1.1689325657894742e-05,
+                    "n": 9,
+                    "q_25": 1.1766092927631589e-05,
+                    "q_75": 1.2251352913533856e-05,
+                    "std": 2.45579996637795e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_default_splitter_call": {
+            "result": [
+                3.954211393323655e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        3.89082935413643e-06,
+                        4.010229716981135e-06
+                    ],
+                    "max": 4.027464912917272e-06,
+                    "mean": 3.948840012699564e-06,
+                    "min": 3.881544956458639e-06,
+                    "n": 8,
+                    "q_25": 3.908615148766331e-06,
+                    "q_75": 3.974796298984026e-06,
+                    "std": 4.5961934842507525e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_default_splitter_join": {
+            "result": [
+                0.0008024644890510955
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0007963645218978096,
+                        0.0008071370072992694
+                    ],
+                    "max": 0.0008085543868613125,
+                    "mean": 0.0008019868640510946,
+                    "min": 0.0007954751605839408,
+                    "n": 8,
+                    "q_25": 0.0007982457883211674,
+                    "q_75": 0.0008054697463503641,
+                    "std": 4.266510340566288e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_whitespace_splitter": {
+            "result": [
+                0.0032991798939393897
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.003280260363636371,
+                        0.0033304043939394005
+                    ],
+                    "max": 0.003333137969696977,
+                    "mean": 0.003302365007575759,
+                    "min": 0.0032758604242424383,
+                    "n": 8,
+                    "q_25": 0.003286831121212123,
+                    "q_75": 0.003315674727272721,
+                    "std": 1.9172854157647246e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.fixedwidth.FixedWidthSuite.time_header": {
+            "result": [
+                0.0001776993384991847
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00017731508319739013,
+                        0.0001836846525285473
+                    ],
+                    "max": 0.0001842077096247955,
+                    "mean": 0.0001787935099510604,
+                    "min": 0.00017728308482871147,
+                    "n": 10,
+                    "q_25": 0.0001775825897226752,
+                    "q_75": 0.00017919580057096246,
+                    "std": 2.009963538449369e-06,
+                    "systematic": 1.6289445350728957e-06
+                }
+            ]
+        },
+        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": {
+            "result": [
+                0.00041497418679245263
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00041086499056603744,
+                        0.0004197005150943393
+                    ],
+                    "max": 0.000420910143396226,
+                    "mean": 0.00041516970415094313,
+                    "min": 0.00041064183773584993,
+                    "n": 10,
+                    "q_25": 0.00041265243490566026,
+                    "q_75": 0.0004174223830188678,
+                    "std": 3.1609768077990593e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.ipac.IPACSuite.time_data_str_vals": 0.7807703419999994,
+        "io_ascii.ipac.IPACSuite.time_get_cols": {
+            "result": [
+                0.003172226985294121
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0031430781764705917,
+                        0.0032013757941176503
+                    ],
+                    "max": 0.0032013757941176503,
+                    "mean": 0.003172226985294121,
+                    "min": 0.0031430781764705917,
+                    "n": 2,
+                    "q_25": 0.0031576525808823565,
+                    "q_75": 0.003186801389705886,
+                    "std": 2.914880882352931e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.ipac.IPACSuite.time_header_str_vals": {
+            "result": [
+                0.00048566555482456024
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00047825172807017404,
+                        0.0004930793815789464
+                    ],
+                    "max": 0.0004930793815789464,
+                    "mean": 0.00048566555482456024,
+                    "min": 0.00047825172807017404,
+                    "n": 2,
+                    "q_25": 0.0004819586414473671,
+                    "q_75": 0.0004893724682017533,
+                    "std": 7.413826754386175e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.ipac.IPACSuite.time_splitter": {
+            "result": [
+                0.001074360341346153
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0010684250384615384,
+                        0.0010802956442307675
+                    ],
+                    "max": 0.0010802956442307675,
+                    "mean": 0.001074360341346153,
+                    "min": 0.0010684250384615384,
+                    "n": 2,
+                    "q_25": 0.0010713926899038459,
+                    "q_75": 0.0010773279927884603,
+                    "std": 5.935302884614514e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.AastexFloat.time_read": 0.706628437,
+        "io_ascii.main.AastexFloat.time_write": 1.3374106499999998,
+        "io_ascii.main.AastexInt.time_read": 0.5965883779999999,
+        "io_ascii.main.AastexInt.time_write": 1.545259808,
+        "io_ascii.main.AastexString.time_read": 0.6799948639999998,
+        "io_ascii.main.AastexString.time_write": 0.9358221639999997,
+        "io_ascii.main.BasicFloat.time_read": 0.6178512449999998,
+        "io_ascii.main.BasicFloat.time_write": 1.5104898060000003,
+        "io_ascii.main.BasicInt.time_read": 0.5057748910000002,
+        "io_ascii.main.BasicInt.time_write": 1.6894550459999997,
+        "io_ascii.main.BasicString.time_read": 0.5978269849999998,
+        "io_ascii.main.BasicString.time_write": 1.0477211119999996,
+        "io_ascii.main.CommentedHeaderFloat.time_read": 0.616453157,
+        "io_ascii.main.CommentedHeaderFloat.time_write": 1.4914559989999998,
+        "io_ascii.main.CommentedHeaderInt.time_read": 0.5066707890000002,
+        "io_ascii.main.CommentedHeaderInt.time_write": 1.6701524989999998,
+        "io_ascii.main.CommentedHeaderString.time_read": 0.5977704569999998,
+        "io_ascii.main.CommentedHeaderString.time_write": 1.0362089799999996,
+        "io_ascii.main.CsvFloat.time_read": 0.6045146519999998,
+        "io_ascii.main.CsvFloat.time_write": 1.489575538,
+        "io_ascii.main.CsvInt.time_read": 0.5199642390000001,
+        "io_ascii.main.CsvInt.time_write": 1.671307547,
+        "io_ascii.main.CsvString.time_read": 0.5913528060000002,
+        "io_ascii.main.CsvString.time_write": 1.052665609,
+        "io_ascii.main.FixedWidthFloat.time_read": 0.6585675900000005,
+        "io_ascii.main.FixedWidthFloat.time_write": 1.461944258,
+        "io_ascii.main.FixedWidthInt.time_read": 0.5927972939999999,
+        "io_ascii.main.FixedWidthInt.time_write": 1.651086323,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": 0.6699102959999998,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": 1.4311571,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_read": 0.6067155199999998,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_write": 1.6702343149999996,
+        "io_ascii.main.FixedWidthNoHeaderString.time_read": 0.6842335010000005,
+        "io_ascii.main.FixedWidthNoHeaderString.time_write": 1.0387379580000005,
+        "io_ascii.main.FixedWidthString.time_read": 0.6733485369999994,
+        "io_ascii.main.FixedWidthString.time_write": 1.0829167750000002,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_read": 0.6666596499999997,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_write": 1.4332532349999996,
+        "io_ascii.main.FixedWidthTwoLineInt.time_read": 0.5784938089999998,
+        "io_ascii.main.FixedWidthTwoLineInt.time_write": 1.6346146729999997,
+        "io_ascii.main.FixedWidthTwoLineString.time_read": 0.6420753159999997,
+        "io_ascii.main.FixedWidthTwoLineString.time_write": 1.032329404,
+        "io_ascii.main.IpacFloat.time_read": 0.62215657,
+        "io_ascii.main.IpacFloat.time_write": 1.432614047,
+        "io_ascii.main.IpacInt.time_read": 0.5854130629999998,
+        "io_ascii.main.IpacInt.time_write": 1.6498230430000005,
+        "io_ascii.main.IpacString.time_read": 0.5409580270000003,
+        "io_ascii.main.IpacString.time_write": 1.084289144,
+        "io_ascii.main.LatexFloat.time_read": 0.6759952679999999,
+        "io_ascii.main.LatexFloat.time_write": 1.343377307,
+        "io_ascii.main.LatexInt.time_read": 0.5903312650000001,
+        "io_ascii.main.LatexInt.time_write": 1.5313799190000004,
+        "io_ascii.main.LatexString.time_read": 0.6896378829999996,
+        "io_ascii.main.LatexString.time_write": 0.9374578090000005,
+        "io_ascii.main.NoHeaderFloat.time_read": 0.6337995749999998,
+        "io_ascii.main.NoHeaderFloat.time_write": 1.5430149320000002,
+        "io_ascii.main.NoHeaderInt.time_read": 0.511549166,
+        "io_ascii.main.NoHeaderInt.time_write": 1.693556473,
+        "io_ascii.main.NoHeaderString.time_read": 0.608384177,
+        "io_ascii.main.NoHeaderString.time_write": 1.0447377859999998,
+        "io_ascii.main.RdbFloat.time_read": 0.5030141970000002,
+        "io_ascii.main.RdbFloat.time_write": 1.549208126,
+        "io_ascii.main.RdbInt.time_read": {
+            "result": [
+                0.38679633299999994
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.38556011199999984,
+                        0.38803255400000003
+                    ],
+                    "max": 0.38803255400000003,
+                    "mean": 0.38679633299999994,
+                    "min": 0.38556011199999984,
+                    "n": 2,
+                    "q_25": 0.3861782224999999,
+                    "q_75": 0.3874144435,
+                    "std": 0.0012362210000000928,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.RdbInt.time_write": 1.6586054040000002,
+        "io_ascii.main.RdbString.time_read": {
+            "result": [
+                0.36577916150000034
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.3657717390000004,
+                        0.3657865840000003
+                    ],
+                    "max": 0.3657865840000003,
+                    "mean": 0.36577916150000034,
+                    "min": 0.3657717390000004,
+                    "n": 2,
+                    "q_25": 0.36577545025000036,
+                    "q_75": 0.3657828727500003,
+                    "std": 7.4224999999650265e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.RdbString.time_write": 1.0481338809999996,
+        "io_ascii.main.SextractorFloat.time_read": {
+            "result": [
+                0.6263224095000002
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.6251623560000001,
+                        0.6274824630000002
+                    ],
+                    "max": 0.6274824630000002,
+                    "mean": 0.6263224095000002,
+                    "min": 0.6251623560000001,
+                    "n": 2,
+                    "q_25": 0.6257423827500002,
+                    "q_75": 0.6269024362500002,
+                    "std": 0.0011600535000000356,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.SextractorInt.time_read": {
+            "result": [
+                0.512996904
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.5127267149999999,
+                        0.5132670930000001
+                    ],
+                    "max": 0.5132670930000001,
+                    "mean": 0.512996904,
+                    "min": 0.5127267149999999,
+                    "n": 2,
+                    "q_25": 0.5128618094999999,
+                    "q_75": 0.5131319985,
+                    "std": 0.0002701890000000873,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.SextractorString.time_read": {
+            "result": [
+                0.610419995
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.6094386039999997,
+                        0.6114013860000003
+                    ],
+                    "max": 0.6114013860000003,
+                    "mean": 0.610419995,
+                    "min": 0.6094386039999997,
+                    "n": 2,
+                    "q_25": 0.6099292994999999,
+                    "q_75": 0.6109106905000001,
+                    "std": 0.0009813910000002757,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.TabFloat.time_read": 0.49975043500000016,
+        "io_ascii.main.TabFloat.time_write": 1.5034057329999997,
+        "io_ascii.main.TabInt.time_read": {
+            "result": [
+                0.3850197879999999
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.3845292690000002,
+                        0.38551030699999966
+                    ],
+                    "max": 0.38551030699999966,
+                    "mean": 0.3850197879999999,
+                    "min": 0.3845292690000002,
+                    "n": 2,
+                    "q_25": 0.38477452850000005,
+                    "q_75": 0.3852650474999998,
+                    "std": 0.000490518999999745,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.TabInt.time_write": 1.680442438,
+        "io_ascii.main.TabString.time_read": 0.4799094890000002,
+        "io_ascii.main.TabString.time_write": 1.037036073,
+        "io_ascii.rdb.RDBSuite.time_get_cols": {
+            "result": [
+                0.008918089541666674
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00887316412499999,
+                        0.008952192708333325
+                    ],
+                    "max": 0.008958343750000005,
+                    "mean": 0.00891404051666667,
+                    "min": 0.008867328916666658,
+                    "n": 10,
+                    "q_25": 0.008883111500000013,
+                    "q_75": 0.0089435161875,
+                    "std": 3.221664277608517e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.sextractor.SExtractorSuite.time_header": 1.0960140230000004,
+        "io_ascii.table.TableSuite.mem_table_init": 3000,
+        "io_ascii.table.TableSuite.mem_table_outputter": 3000,
+        "io_ascii.table.TableSuite.time_str_vals_float": {
+            "result": [
+                9.7624304090909e-07
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        9.659984818181805e-07,
+                        9.952558590909094e-07
+                    ],
+                    "max": 9.980185636363633e-07,
+                    "mean": 9.789669881818181e-07,
+                    "min": 9.656756636363613e-07,
+                    "n": 10,
+                    "q_25": 9.696830045454538e-07,
+                    "q_75": 9.890142704545457e-07,
+                    "std": 1.1172776774181021e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.table.TableSuite.time_str_vals_int": {
+            "result": [
+                9.833739727272729e-07
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        9.704096272727272e-07,
+                        9.967996272727263e-07
+                    ],
+                    "max": 1.0035505454545446e-06,
+                    "mean": 9.83320909090909e-07,
+                    "min": 9.63543509090908e-07,
+                    "n": 10,
+                    "q_25": 9.783111545454556e-07,
+                    "q_75": 9.876555409090906e-07,
+                    "std": 9.803596633200126e-09,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.table.TableSuite.time_str_vals_str": {
+            "result": [
+                9.99618177497052e-07
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        9.917759440214252e-07,
+                        1.0219917183886487e-06
+                    ],
+                    "max": 1.0343370140494877e-06,
+                    "mean": 1.002583345368787e-06,
+                    "min": 9.916007367526185e-07,
+                    "n": 10,
+                    "q_25": 9.951325309189304e-07,
+                    "q_75": 1.0037214508359302e-06,
+                    "std": 1.1842658768997957e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.table.TableSuite.time_table_init_from_list": {
+            "result": [
+                0.0011372332393616994
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0011321278563829803,
+                        0.0011536129840425545
+                    ],
+                    "max": 0.0011667564042553212,
+                    "mean": 0.0011392893414893617,
+                    "min": 0.0011320695638297894,
+                    "n": 10,
+                    "q_25": 0.0011327737792553205,
+                    "q_75": 0.0011402773962765958,
+                    "std": 9.77994232021608e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.table.TableSuite.time_table_outputter": {
+            "result": [
+                0.0016293901194029841
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.001616026395522387,
+                        0.001638918007462689
+                    ],
+                    "max": 0.001639431134328363,
+                    "mean": 0.001628547917910448,
+                    "min": 0.0016091094626865647,
+                    "n": 10,
+                    "q_25": 0.0016235504402985082,
+                    "q_75": 0.0016346570261194047,
+                    "std": 8.780461917711486e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "io_fits.FITSBinTableHDU.time_from_columns_bytes": null,
-        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": null,
-        "io_fits.FITSHighLevelTableBenchmarks.time_write": null,
-        "units.time_quantity_array_conversion": null,
-        "units.time_quantity_creation": null,
-        "units.time_quantity_creation_nocopy": null,
-        "units.time_quantity_init_array": null,
-        "units.time_quantity_init_scalar": null,
-        "units.time_quantity_scalar_conversion": null,
-        "units.time_quantity_times_quantity": null,
-        "units.time_quantity_times_unit": null,
-        "units.time_quantity_ufunc_sin": null,
-        "units.time_quantity_view": null,
-        "table.TimeMaskedTable.time_add_column": null,
-        "table.TimeMaskedTable.time_add_row": null,
-        "table.TimeMaskedTable.time_aggregate": null,
-        "table.TimeMaskedTable.time_aggregate_noreduceat": null,
-        "table.TimeMaskedTable.time_column_get": null,
-        "table.TimeMaskedTable.time_column_make_bool_mask": null,
-        "table.TimeMaskedTable.time_column_set": null,
-        "table.TimeMaskedTable.time_column_set_all": null,
-        "table.TimeMaskedTable.time_column_set_row_subset": null,
-        "table.TimeMaskedTable.time_column_set_row_subset_int": null,
-        "table.TimeMaskedTable.time_column_slice_bool": null,
-        "table.TimeMaskedTable.time_column_slice_int": null,
-        "table.TimeMaskedTable.time_copy_column": null,
-        "table.TimeMaskedTable.time_copy_table": null,
-        "table.TimeMaskedTable.time_group": null,
-        "table.TimeMaskedTable.time_hstack": null,
-        "table.TimeMaskedTable.time_init_from_np_array_copy": null,
+        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": 3.224562186,
+        "io_fits.FITSHighLevelTableBenchmarks.time_write": 2.096695068,
+        "table.TimeMaskedTable.time_add_column": 0.007236108999999935,
+        "table.TimeMaskedTable.time_add_row": 0.006123976000000031,
+        "table.TimeMaskedTable.time_aggregate": {
+            "result": [
+                0.13331028300000014
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.1328498859999998,
+                        0.13493614500000017
+                    ],
+                    "max": 0.13493614500000017,
+                    "mean": 0.13352095428571426,
+                    "min": 0.1328498859999998,
+                    "n": 7,
+                    "q_25": 0.13308901649999982,
+                    "q_75": 0.13368616649999998,
+                    "std": 0.0006633273105286619,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_aggregate_noreduceat": {
+            "result": [
+                0.134271869
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.13390359600000012,
+                        0.14195398999999975
+                    ],
+                    "max": 0.14195398999999975,
+                    "mean": 0.13537414771428577,
+                    "min": 0.13390359600000012,
+                    "n": 7,
+                    "q_25": 0.13414435400000013,
+                    "q_75": 0.13460043550000012,
+                    "std": 0.002697192191968498,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_get": {
+            "result": [
+                2.4947407461953887e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.4223121870397647e-06,
+                        2.532795962199313e-06
+                    ],
+                    "max": 2.5373925871379537e-06,
+                    "mean": 2.4839512303632803e-06,
+                    "min": 2.412095483554252e-06,
+                    "n": 8,
+                    "q_25": 2.451797281541478e-06,
+                    "q_75": 2.5173188144329917e-06,
+                    "std": 4.278734742320034e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_make_bool_mask": {
+            "result": [
+                0.00029862925820895543
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0002960763283582088,
+                        0.00030383681791044807
+                    ],
+                    "max": 0.000304359214925373,
+                    "mean": 0.00029940277350746255,
+                    "min": 0.000296044847761194,
+                    "n": 8,
+                    "q_25": 0.00029713636567164155,
+                    "q_75": 0.0003013222261194022,
+                    "std": 2.929459047860449e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_set": {
+            "result": [
+                2.4453839559387002e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.4136397749042125e-05,
+                        2.506368881704978e-05
+                    ],
+                    "max": 2.5237599856321817e-05,
+                    "mean": 2.4569413344109186e-05,
+                    "min": 2.40143225574712e-05,
+                    "n": 8,
+                    "q_25": 2.437195605842913e-05,
+                    "q_75": 2.4850697497605335e-05,
+                    "std": 3.6748763463895217e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_set_all": {
+            "result": [
+                0.00012180556953642389
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00012113375496688742,
+                        0.00012345704856512173
+                    ],
+                    "max": 0.00012345704856512173,
+                    "mean": 0.00012206598880479342,
+                    "min": 0.00012113375496688742,
+                    "n": 7,
+                    "q_25": 0.0001214826467991168,
+                    "q_75": 0.00012255012748344364,
+                    "std": 7.909170790802439e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_set_row_subset": {
+            "result": [
+                9.801541090909077e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        9.747030727272757e-05,
+                        9.846923454545459e-05
+                    ],
+                    "max": 9.846923454545459e-05,
+                    "mean": 9.796258090909087e-05,
+                    "min": 9.747030727272757e-05,
+                    "n": 7,
+                    "q_25": 9.772192772727268e-05,
+                    "q_75": 9.816962909090894e-05,
+                    "std": 3.345554518691417e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_set_row_subset_int": {
+            "result": [
+                6.796526923076927e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        6.766165587044547e-05,
+                        6.829934547908225e-05
+                    ],
+                    "max": 6.839798852901467e-05,
+                    "mean": 6.797417552294195e-05,
+                    "min": 6.752353306342784e-05,
+                    "n": 8,
+                    "q_25": 6.785155600539813e-05,
+                    "q_75": 6.810421153846136e-05,
+                    "std": 2.508094557734467e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_slice_bool": {
+            "result": [
+                0.0003836294312977098
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00038231736450381696,
+                        0.00038932572900763306
+                    ],
+                    "max": 0.00039286680916030556,
+                    "mean": 0.0003847351541030534,
+                    "min": 0.00038190267557252044,
+                    "n": 8,
+                    "q_25": 0.000382814018129771,
+                    "q_75": 0.00038481729484732806,
+                    "std": 3.276312840335648e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_slice_int": {
+            "result": [
+                0.00033457390963855324
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00033141689156626527,
+                        0.00033932316566265074
+                    ],
+                    "max": 0.00033932316566265074,
+                    "mean": 0.00033463665963855436,
+                    "min": 0.00033141689156626527,
+                    "n": 7,
+                    "q_25": 0.00033348798795180716,
+                    "q_75": 0.0003350833373493985,
+                    "std": 2.3196607937608062e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_copy_column": {
+            "result": [
+                0.0006612695126582276
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0006530794746835465,
+                        0.0006827899873417718
+                    ],
+                    "max": 0.0006827899873417718,
+                    "mean": 0.000663360487341773,
+                    "min": 0.0006530794746835465,
+                    "n": 7,
+                    "q_25": 0.0006578645917721527,
+                    "q_75": 0.00066532762658228,
+                    "std": 8.983071023108175e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_copy_table": {
+            "result": [
+                0.007894417230769233
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.007875199076923075,
+                        0.00792906146153848
+                    ],
+                    "max": 0.00792906146153848,
+                    "mean": 0.007902842714285716,
+                    "min": 0.007875199076923075,
+                    "n": 7,
+                    "q_25": 0.00788609757692308,
+                    "q_75": 0.007924513038461534,
+                    "std": 2.0831627166246197e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_group": {
+            "result": [
+                0.033570824666666756
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.03339922000000003,
+                        0.03411674433333337
+                    ],
+                    "max": 0.03411674433333337,
+                    "mean": 0.033664100238095254,
+                    "min": 0.03339922000000003,
+                    "n": 7,
+                    "q_25": 0.03348687983333335,
+                    "q_75": 0.03379407649999996,
+                    "std": 0.00026274594404695096,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_hstack": {
+            "result": [
+                0.014497813857142867
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.014408859999999952,
+                        0.014698240285714283
+                    ],
+                    "max": 0.014698240285714283,
+                    "mean": 0.01452658373469387,
+                    "min": 0.014408859999999952,
+                    "n": 7,
+                    "q_25": 0.014453238571428566,
+                    "q_75": 0.014587347428571422,
+                    "std": 0.00010157295455185783,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_init_from_np_array_copy": {
+            "result": [
+                0.0019219662000000027
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0019030977800000004,
+                        0.001986058770000001
+                    ],
+                    "max": 0.0019870788400000007,
+                    "mean": 0.0019374941500000004,
+                    "min": 0.0019004309000000053,
+                    "n": 8,
+                    "q_25": 0.0019082552149999965,
+                    "q_75": 0.0019727263999999986,
+                    "std": 3.458433614806703e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeMaskedTable.time_init_from_np_array_no_copy": null,
-        "table.TimeMaskedTable.time_item_get_colfirst": null,
-        "table.TimeMaskedTable.time_item_get_rowfirst": null,
-        "table.TimeMaskedTable.time_iter_row": null,
+        "table.TimeMaskedTable.time_item_get_colfirst": {
+            "result": [
+                0.00010951887326732652
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00010892112475247545,
+                        0.00011009104059405974
+                    ],
+                    "max": 0.00011009104059405974,
+                    "mean": 0.00010951403776520516,
+                    "min": 0.00010892112475247545,
+                    "n": 7,
+                    "q_25": 0.00010937492623762371,
+                    "q_75": 0.0001096586866336635,
+                    "std": 3.313593090155727e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_item_get_rowfirst": {
+            "result": [
+                0.00022002173723404287
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00021030033617021286,
+                        0.00022204198617021263
+                    ],
+                    "max": 0.0002226749297872335,
+                    "mean": 0.0002175026946808512,
+                    "min": 0.00020953604893617049,
+                    "n": 8,
+                    "q_25": 0.00021321256436170215,
+                    "q_75": 0.0002213759308510641,
+                    "std": 4.840509649030247e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_iter_row": {
+            "result": [
+                0.190783771
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.18985934900000023,
+                        0.19276170199999987
+                    ],
+                    "max": 0.19276170199999987,
+                    "mean": 0.19103275680000004,
+                    "min": 0.18985934900000023,
+                    "n": 5,
+                    "q_25": 0.1904100820000001,
+                    "q_75": 0.19134888000000005,
+                    "std": 0.000991543149080031,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeMaskedTable.time_join_inner": null,
         "table.TimeMaskedTable.time_join_outer": null,
-        "table.TimeMaskedTable.time_mask_column": null,
-        "table.TimeMaskedTable.time_multi_column_get": null,
-        "table.TimeMaskedTable.time_read_rows": null,
+        "table.TimeMaskedTable.time_mask_column": {
+            "result": [
+                2.3485205384434526e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.3338988948977186e-05,
+                        2.3752367505290352e-05
+                    ],
+                    "max": 2.385237573477539e-05,
+                    "mean": 2.3514614507406534e-05,
+                    "min": 2.3279915588995993e-05,
+                    "n": 8,
+                    "q_25": 2.340614636727016e-05,
+                    "q_75": 2.357930331530687e-05,
+                    "std": 1.6804658039657504e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_multi_column_get": {
+            "result": [
+                0.003603005696428574
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0035819001250000054,
+                        0.003644931928571428
+                    ],
+                    "max": 0.0036473481785714223,
+                    "mean": 0.0036076752857142885,
+                    "min": 0.0035794362142857234,
+                    "n": 8,
+                    "q_25": 0.003589240750000004,
+                    "q_75": 0.0036187742678571444,
+                    "std": 2.3630853406488613e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_read_rows": {
+            "result": [
+                0.28780102899999993
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.27455606500000007,
+                        0.29190600600000005
+                    ],
+                    "max": 0.29190600600000005,
+                    "mean": 0.28551603225,
+                    "min": 0.27455606500000007,
+                    "n": 4,
+                    "q_25": 0.2822479817499999,
+                    "q_75": 0.29106907950000005,
+                    "std": 0.0068786663978752565,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeMaskedTable.time_remove_column": null,
-        "table.TimeMaskedTable.time_remove_row": null,
-        "table.TimeMaskedTable.time_remove_rows": null,
-        "table.TimeMaskedTable.time_row_get": null,
-        "table.TimeMaskedTable.time_sort": null,
-        "table.TimeMaskedTable.time_table_slice_bool": null,
-        "table.TimeMaskedTable.time_table_slice_int": null,
-        "table.TimeMaskedTable.time_vstack": null,
-        "table.TimeTable.time_add_column": null,
-        "table.TimeTable.time_add_row": null,
-        "table.TimeTable.time_aggregate": null,
-        "table.TimeTable.time_aggregate_noreduceat": null,
-        "table.TimeTable.time_column_get": null,
-        "table.TimeTable.time_column_make_bool_mask": null,
-        "table.TimeTable.time_column_set": null,
-        "table.TimeTable.time_column_set_all": null,
-        "table.TimeTable.time_column_set_row_subset": null,
-        "table.TimeTable.time_column_set_row_subset_int": null,
-        "table.TimeTable.time_column_slice_bool": null,
-        "table.TimeTable.time_column_slice_int": null,
-        "table.TimeTable.time_copy_column": null,
-        "table.TimeTable.time_copy_table": null,
-        "table.TimeTable.time_group": null,
-        "table.TimeTable.time_hstack": null,
-        "table.TimeTable.time_init_from_np_array_copy": null,
+        "table.TimeMaskedTable.time_remove_row": 0.0045338969999999534,
+        "table.TimeMaskedTable.time_remove_rows": 0.004830161999999971,
+        "table.TimeMaskedTable.time_row_get": {
+            "result": [
+                0.0001871699605488858
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0001864215334476849,
+                        0.00018784680445969106
+                    ],
+                    "max": 0.00018784680445969106,
+                    "mean": 0.00018717461651556003,
+                    "min": 0.0001864215334476849,
+                    "n": 7,
+                    "q_25": 0.0001865954528301889,
+                    "q_75": 0.0001877965557461404,
+                    "std": 5.937674656934651e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_sort": {
+            "result": [
+                0.006433490437499995
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.006407356000000003,
+                        0.006544641249999983
+                    ],
+                    "max": 0.006544641249999983,
+                    "mean": 0.006456062776785708,
+                    "min": 0.006407356000000003,
+                    "n": 7,
+                    "q_25": 0.006424266249999991,
+                    "q_75": 0.006479209624999996,
+                    "std": 4.5843580849230464e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_table_slice_bool": {
+            "result": [
+                0.0027622615128205094
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0027536229999999984,
+                        0.0027684311025641096
+                    ],
+                    "max": 0.0027684311025641096,
+                    "mean": 0.0027620012564102555,
+                    "min": 0.0027536229999999984,
+                    "n": 7,
+                    "q_25": 0.002757381961538456,
+                    "q_75": 0.0027674646282051306,
+                    "std": 5.634908477280361e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_table_slice_int": {
+            "result": [
+                0.0025424984743589764
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0025302814358974367,
+                        0.0025674440769230776
+                    ],
+                    "max": 0.0025871255641025715,
+                    "mean": 0.0025447349487179496,
+                    "min": 0.002529904692307693,
+                    "n": 8,
+                    "q_25": 0.0025310259487179507,
+                    "q_75": 0.002546652955128203,
+                    "std": 1.7449085848715373e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_vstack": {
+            "result": [
+                0.01277290425000005
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.012646932624999996,
+                        0.012969118125000012
+                    ],
+                    "max": 0.012969118125000012,
+                    "mean": 0.012786852339285717,
+                    "min": 0.012646932624999996,
+                    "n": 7,
+                    "q_25": 0.012666597562499993,
+                    "q_75": 0.012892908124999991,
+                    "std": 0.00012708895272119805,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_add_column": 0.0018525590000000314,
+        "table.TimeTable.time_add_row": 0.0011870630000001547,
+        "table.TimeTable.time_aggregate": {
+            "result": [
+                0.018722743083333344
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.018655885583333344,
+                        0.01886100658333334
+                    ],
+                    "max": 0.01888526350000001,
+                    "mean": 0.01875395518333333,
+                    "min": 0.018651632833333338,
+                    "n": 10,
+                    "q_25": 0.01868639458333332,
+                    "q_75": 0.018833774499999994,
+                    "std": 8.089969406748911e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_aggregate_noreduceat": {
+            "result": [
+                0.019036977583333337
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.018984143666666675,
+                        0.019137314750000023
+                    ],
+                    "max": 0.01914902783333335,
+                    "mean": 0.01905367511666667,
+                    "min": 0.01897683316666665,
+                    "n": 10,
+                    "q_25": 0.019005752083333327,
+                    "q_75": 0.019107848458333354,
+                    "std": 5.75821993986875e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_get": {
+            "result": [
+                2.5466518707131914e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.503193437019706e-06,
+                        2.5626841006583644e-06
+                    ],
+                    "max": 2.565812102860552e-06,
+                    "mean": 2.5386440942353144e-06,
+                    "min": 2.4939374899639916e-06,
+                    "n": 10,
+                    "q_25": 2.525512742871559e-06,
+                    "q_75": 2.5547032034959795e-06,
+                    "std": 2.2027459881538737e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_make_bool_mask": {
+            "result": [
+                2.185282073585282e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.167805268946206e-05,
+                        2.22097176564687e-05
+                    ],
+                    "max": 2.227696300739854e-05,
+                    "mean": 2.1909535752849416e-05,
+                    "min": 2.1617392121575675e-05,
+                    "n": 10,
+                    "q_25": 2.181619641071784e-05,
+                    "q_75": 2.2013911317736485e-05,
+                    "std": 1.8566510192325465e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_set": {
+            "result": [
+                1.4290948075668608e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.4233962818003924e-05,
+                        1.446803000652318e-05
+                    ],
+                    "max": 1.4512448793215945e-05,
+                    "mean": 1.43182234311807e-05,
+                    "min": 1.42325311154599e-05,
+                    "n": 10,
+                    "q_25": 1.4270653359425987e-05,
+                    "q_75": 1.4331680626223092e-05,
+                    "std": 8.348454956038759e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_set_all": {
+            "result": [
+                6.183365460712266e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        6.127613284341447e-05,
+                        6.24631144714527e-05
+                    ],
+                    "max": 6.250871113623514e-05,
+                    "mean": 6.180972803843979e-05,
+                    "min": 6.125575805539855e-05,
+                    "n": 10,
+                    "q_25": 6.158324053137354e-05,
+                    "q_75": 6.1911992933861e-05,
+                    "std": 3.9354528781906496e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_set_row_subset": {
+            "result": [
+                1.619787048558423e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.5905196433990877e-05,
+                        1.7604368361153225e-05
+                    ],
+                    "max": 1.6913658421851273e-05,
+                    "mean": 1.63472840212443e-05,
+                    "min": 1.5960099999999976e-05,
+                    "n": 10,
+                    "q_25": 1.609384298179059e-05,
+                    "q_75": 1.6685846775417275e-05,
+                    "std": 3.59827589166444e-07,
+                    "systematic": 7.743694992412656e-07
+                }
+            ]
+        },
+        "table.TimeTable.time_column_set_row_subset_int": {
+            "result": [
+                5.120369833574896e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        5.081120595731935e-06,
+                        5.287123344494969e-06
+                    ],
+                    "max": 5.3351466340146845e-06,
+                    "mean": 5.161415642960671e-06,
+                    "min": 5.080093507921451e-06,
+                    "n": 10,
+                    "q_25": 5.104052426408125e-06,
+                    "q_75": 5.222715877854963e-06,
+                    "std": 8.071960054506952e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_slice_bool": {
+            "result": [
+                7.284704784053152e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        7.224269136212627e-05,
+                        7.358880897009965e-05
+                    ],
+                    "max": 7.396239999999993e-05,
+                    "mean": 7.284155673680321e-05,
+                    "min": 7.218770431893703e-05,
+                    "n": 9,
+                    "q_25": 7.24049588039867e-05,
+                    "q_75": 7.315799003322236e-05,
+                    "std": 5.294019471859174e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_slice_int": {
+            "result": [
+                5.562166944444447e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        5.528439083333324e-05,
+                        5.62873969444444e-05
+                    ],
+                    "max": 5.637489944444438e-05,
+                    "mean": 5.569333255555554e-05,
+                    "min": 5.525219499999981e-05,
+                    "n": 10,
+                    "q_25": 5.54909879166667e-05,
+                    "q_75": 5.5807047916666657e-05,
+                    "std": 3.4146580970579835e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_copy_column": {
+            "result": [
+                0.00013117683664021158
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00013000645039682563,
+                        0.00013327223478835996
+                    ],
+                    "max": 0.0001346168994708994,
+                    "mean": 0.00013128007883597893,
+                    "min": 0.00012994128571428611,
+                    "n": 10,
+                    "q_25": 0.00013058126223544967,
+                    "q_75": 0.00013131056812169329,
+                    "std": 1.250875649827655e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_copy_table": {
+            "result": [
+                0.002194493799999999
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0021585682199999987,
+                        0.002277847750000004
+                    ],
+                    "max": 0.002281401980000002,
+                    "mean": 0.002207173332000001,
+                    "min": 0.002158542379999999,
+                    "n": 10,
+                    "q_25": 0.002178251855000001,
+                    "q_75": 0.002231119450000001,
+                    "std": 4.2213411144504405e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_group": {
+            "result": [
+                0.005488624868421049
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.005476776394736841,
+                        0.005516932921052632
+                    ],
+                    "max": 0.005522307526315784,
+                    "mean": 0.005493495526315785,
+                    "min": 0.005472403578947364,
+                    "n": 10,
+                    "q_25": 0.005482430499999993,
+                    "q_75": 0.005505239697368404,
+                    "std": 1.5135833882111853e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_hstack": {
+            "result": [
+                0.004118940653846155
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.004106291711538462,
+                        0.004205680634615384
+                    ],
+                    "max": 0.004212047423076921,
+                    "mean": 0.004133195892307692,
+                    "min": 0.00409950492307692,
+                    "n": 10,
+                    "q_25": 0.00411402676923077,
+                    "q_75": 0.004121132846153845,
+                    "std": 3.6839722641494994e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_init_from_np_array_copy": {
+            "result": [
+                0.0019170297631578926
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0019114106052631565,
+                        0.0019281832017543827
+                    ],
+                    "max": 0.00193140070175438,
+                    "mean": 0.0019185450982456126,
+                    "min": 0.001911306684210526,
+                    "n": 10,
+                    "q_25": 0.0019133976052631593,
+                    "q_75": 0.0019230927236842106,
+                    "std": 6.370456633364201e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeTable.time_init_from_np_array_no_copy": null,
-        "table.TimeTable.time_item_get_colfirst": null,
-        "table.TimeTable.time_item_get_rowfirst": null,
-        "table.TimeTable.time_iter_row": null,
+        "table.TimeTable.time_item_get_colfirst": {
+            "result": [
+                2.827040786302753e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.807916185619006e-06,
+                        2.8711328672308472e-06
+                    ],
+                    "max": 2.8776079134674694e-06,
+                    "mean": 2.835256145267051e-06,
+                    "min": 2.7984750882698997e-06,
+                    "n": 10,
+                    "q_25": 2.8187498458779345e-06,
+                    "q_75": 2.853327229165501e-06,
+                    "std": 2.3426634363187334e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_item_get_rowfirst": {
+            "result": [
+                1.0092715490868619e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.0011145035691103e-05,
+                        1.0226499119310305e-05
+                    ],
+                    "max": 1.0269766385464011e-05,
+                    "mean": 1.0109182145174743e-05,
+                    "min": 9.985965699453065e-06,
+                    "n": 10,
+                    "q_25": 1.0045885649392787e-05,
+                    "q_75": 1.0174226963011015e-05,
+                    "std": 8.182304434059439e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_iter_row": {
+            "result": [
+                0.007007778800000008
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.006933077166666661,
+                        0.007084945566666664
+                    ],
+                    "max": 0.007097209466666661,
+                    "mean": 0.0070119216933333325,
+                    "min": 0.006914105799999988,
+                    "n": 10,
+                    "q_25": 0.006977539499999997,
+                    "q_75": 0.007063702733333321,
+                    "std": 5.604771178919438e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeTable.time_join_inner": null,
         "table.TimeTable.time_join_outer": null,
-        "table.TimeTable.time_multi_column_get": null,
-        "table.TimeTable.time_read_rows": null,
+        "table.TimeTable.time_multi_column_get": {
+            "result": [
+                0.0010934821161616166
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0010902000959595968,
+                        0.001106966373737373
+                    ],
+                    "max": 0.0011123406464646451,
+                    "mean": 0.001095877087878788,
+                    "min": 0.0010900577474747476,
+                    "n": 10,
+                    "q_25": 0.0010910179393939404,
+                    "q_75": 0.0010990536641414127,
+                    "std": 6.704598964611456e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_read_rows": {
+            "result": [
+                0.03493619100000004
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.034621601666666724,
+                        0.035312653833333305
+                    ],
+                    "max": 0.03548198533333332,
+                    "mean": 0.03495021050000001,
+                    "min": 0.03454485133333337,
+                    "n": 10,
+                    "q_25": 0.03483524158333332,
+                    "q_75": 0.035049999416666644,
+                    "std": 0.00024217520448316108,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeTable.time_remove_column": null,
-        "table.TimeTable.time_remove_row": null,
-        "table.TimeTable.time_remove_rows": null,
-        "table.TimeTable.time_row_get": null,
-        "table.TimeTable.time_sort": null,
-        "table.TimeTable.time_table_slice_bool": null,
-        "table.TimeTable.time_table_slice_int": null,
-        "table.TimeTable.time_vstack": null,
-        "units.mem_unit": null,
-        "units.time_compose_to_bases": null,
-        "units.time_simple_unit_parse": null,
-        "units.time_unit_compose": null,
-        "units.time_unit_parse": null,
-        "units.time_unit_to": null,
-        "units.time_very_simple_unit_parse": null
+        "table.TimeTable.time_remove_row": 0.001191937999999837,
+        "table.TimeTable.time_remove_rows": 0.001337758999999883,
+        "table.TimeTable.time_row_get": {
+            "result": [
+                5.617784987686045e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        5.538192954277752e-06,
+                        5.678077524360218e-06
+                    ],
+                    "max": 5.684516436449321e-06,
+                    "mean": 5.618103447906627e-06,
+                    "min": 5.49834928793232e-06,
+                    "n": 10,
+                    "q_25": 5.59075432326801e-06,
+                    "q_75": 5.664575583574253e-06,
+                    "std": 5.4052600321982084e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_sort": {
+            "result": [
+                0.001658548621212121
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0016462128939393925,
+                        0.0016891733181818177
+                    ],
+                    "max": 0.0016964645909090911,
+                    "mean": 0.0016630095060606053,
+                    "min": 0.001644912515151514,
+                    "n": 10,
+                    "q_25": 0.0016551428560606044,
+                    "q_75": 0.001669107143939392,
+                    "std": 1.5182805623608775e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_table_slice_bool": {
+            "result": [
+                0.0006886789808917181
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0006844783089171983,
+                        0.0007034335445859874
+                    ],
+                    "max": 0.0007113688662420387,
+                    "mean": 0.0006914210219391365,
+                    "min": 0.0006833271656050962,
+                    "n": 9,
+                    "q_25": 0.0006865283694267515,
+                    "q_75": 0.0006930596751592355,
+                    "std": 7.882292388060857e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_table_slice_int": {
+            "result": [
+                0.0006561785245398765
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0006549996288343564,
+                        0.0006634565981595092
+                    ],
+                    "max": 0.0006668558711656443,
+                    "mean": 0.0006577146644171783,
+                    "min": 0.0006545536257668723,
+                    "n": 10,
+                    "q_25": 0.0006556360904907985,
+                    "q_75": 0.0006583245904907982,
+                    "std": 3.4340058368251584e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_vstack": {
+            "result": [
+                0.003618651678571434
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.003600239374999996,
+                        0.0037405882857142903
+                    ],
+                    "max": 0.00378059296428571,
+                    "mean": 0.0036419073607142907,
+                    "min": 0.0035926503928571346,
+                    "n": 10,
+                    "q_25": 0.0036101991250000066,
+                    "q_75": 0.003643590357142865,
+                    "std": 5.4265900214517076e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.mem_unit": 208,
+        "units.time_compose_complex": 4.503747906,
+        "units.time_compose_to_bases": {
+            "result": [
+                0.009815192136363636
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.009806342681818167,
+                        0.009855822045454554
+                    ],
+                    "max": 0.00986559663636364,
+                    "mean": 0.009822127527272729,
+                    "min": 0.009804940454545457,
+                    "n": 10,
+                    "q_25": 0.009813205386363634,
+                    "q_75": 0.009820184454545466,
+                    "std": 1.7965685247339183e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_array_conversion": {
+            "result": [
+                0.002594752341463411
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0025907562317073205,
+                        0.002689872353658536
+                    ],
+                    "max": 0.0026907090975609727,
+                    "mean": 0.002610535826829267,
+                    "min": 0.00259169182926829,
+                    "n": 10,
+                    "q_25": 0.002593168006097561,
+                    "q_75": 0.0026180538719512156,
+                    "std": 2.949293188271448e-05,
+                    "systematic": 3.2172304878045135e-05
+                }
+            ]
+        },
+        "units.time_quantity_creation": {
+            "result": [
+                0.00019699793670886062
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00019686190144665468,
+                        0.00019731864918625676
+                    ],
+                    "max": 0.0001973740542495479,
+                    "mean": 0.00019704761446654606,
+                    "min": 0.00019684433273056072,
+                    "n": 10,
+                    "q_25": 0.00019688703707052411,
+                    "q_75": 0.00019716843083182655,
+                    "std": 1.7567700472308654e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_creation_nocopy": {
+            "result": [
+                1.4958043484359644e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.4889352223313224e-05,
+                        1.5028404053864488e-05
+                    ],
+                    "max": 1.5041028475241944e-05,
+                    "mean": 1.4961420563893943e-05,
+                    "min": 1.4856748351802481e-05,
+                    "n": 10,
+                    "q_25": 1.4935792221910511e-05,
+                    "q_75": 1.4998633609201804e-05,
+                    "std": 5.0498811940268806e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_init_array": {
+            "result": [
+                0.0018750115526315794
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0018726926578947352,
+                        0.0018849105350877185
+                    ],
+                    "max": 0.0018851720701754378,
+                    "mean": 0.001877412049122806,
+                    "min": 0.0018726794385964904,
+                    "n": 10,
+                    "q_25": 0.0018747950526315739,
+                    "q_75": 0.001880746995614038,
+                    "std": 4.4943319268901565e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_init_scalar": {
+            "result": [
+                0.0001877972297762479
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0001874174793459553,
+                        0.00018910273235800363
+                    ],
+                    "max": 0.00018970981755593846,
+                    "mean": 0.00018806619277108428,
+                    "min": 0.00018733196385542212,
+                    "n": 10,
+                    "q_25": 0.00018761177065404445,
+                    "q_75": 0.00018840935714285718,
+                    "std": 6.696579233119087e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_scalar_conversion": {
+            "result": [
+                0.0004040554871323532
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00040186484742647024,
+                        0.00041687442095588215
+                    ],
+                    "max": 0.00042532810661764705,
+                    "mean": 0.00040662347169117635,
+                    "min": 0.0004018002316176462,
+                    "n": 10,
+                    "q_25": 0.00040237758547794015,
+                    "q_75": 0.00040806826562499974,
+                    "std": 6.708142114928616e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_times_quantity": {
+            "result": [
+                0.0006429387470588235
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0006424663176470587,
+                        0.0006434706500000011
+                    ],
+                    "max": 0.0006435559000000009,
+                    "mean": 0.000642962965882353,
+                    "min": 0.0006423385705882346,
+                    "n": 10,
+                    "q_25": 0.0006428380647058823,
+                    "q_75": 0.0006431103338235286,
+                    "std": 3.361959097239967e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_times_unit": {
+            "result": [
+                0.00032401668303571403
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00032364813988095247,
+                        0.00033233200446428546
+                    ],
+                    "max": 0.00033663746130952306,
+                    "mean": 0.00032585499523809516,
+                    "min": 0.00032349294940476177,
+                    "n": 10,
+                    "q_25": 0.0003239169136904759,
+                    "q_75": 0.00032537332440476233,
+                    "std": 3.8143872097084884e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_ufunc_sin": {
+            "result": [
+                0.0013585788164556976
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0013578354493670884,
+                        0.0013626286265822777
+                    ],
+                    "max": 0.0013649095569620256,
+                    "mean": 0.0013591993835443037,
+                    "min": 0.001357749569620254,
+                    "n": 10,
+                    "q_25": 0.0013580662784810128,
+                    "q_75": 0.0013588831835443026,
+                    "std": 2.0268008221574194e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_view": {
+            "result": [
+                2.4383296664063372e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.410547316746626e-06,
+                        2.4820506638402353e-06
+                    ],
+                    "max": 2.489204105768159e-06,
+                    "mean": 2.4416948856409696e-06,
+                    "min": 2.4067471605489254e-06,
+                    "n": 10,
+                    "q_25": 2.4245618319759016e-06,
+                    "q_75": 2.45344234073413e-06,
+                    "std": 2.5329024472094474e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_simple_unit_parse": {
+            "result": [
+                0.000308884481049563
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00029042669970845485,
+                        0.00032292524489795955
+                    ],
+                    "max": 0.0003168378046647231,
+                    "mean": 0.00030801994314868825,
+                    "min": 0.0002995708338192416,
+                    "n": 10,
+                    "q_25": 0.0002999011071428573,
+                    "q_75": 0.00031485325510204114,
+                    "std": 7.54647554305319e-06,
+                    "systematic": 1.529774635568537e-05
+                }
+            ]
+        },
+        "units.time_unit_compose": {
+            "result": [
+                0.0013848239358974388
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0013801617307692307,
+                        0.0014044371153846156
+                    ],
+                    "max": 0.0014158126153846129,
+                    "mean": 0.001388363226923078,
+                    "min": 0.0013800210384615364,
+                    "n": 10,
+                    "q_25": 0.0013816785705128216,
+                    "q_75": 0.001390388092948718,
+                    "std": 1.0075656527399883e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_unit_parse": {
+            "result": [
+                0.0010451935388349533
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0010412881893203888,
+                        0.001051994310679612
+                    ],
+                    "max": 0.0010548943009708743,
+                    "mean": 0.0010459148456310689,
+                    "min": 0.0010410013398058269,
+                    "n": 10,
+                    "q_25": 0.001042984116504855,
+                    "q_75": 0.0010485725898058266,
+                    "std": 4.043539071021701e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_unit_to": {
+            "result": [
+                1.2817004645419269e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.2794224391391278e-05,
+                        1.299090679760084e-05
+                    ],
+                    "max": 1.3125973656356563e-05,
+                    "mean": 1.284682751969893e-05,
+                    "min": 1.279198729860052e-05,
+                    "n": 10,
+                    "q_25": 1.2801562448547555e-05,
+                    "q_75": 1.2829221568858047e-05,
+                    "std": 9.476563428323461e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_very_simple_unit_parse": {
+            "result": [
+                3.245020045045038e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        3.22847043543544e-05,
+                        3.271374084084082e-05
+                    ],
+                    "max": 3.279782792792791e-05,
+                    "mean": 3.2471747267267265e-05,
+                    "min": 3.2258625825825856e-05,
+                    "n": 10,
+                    "q_25": 3.235678716216217e-05,
+                    "q_75": 3.25567442192192e-05,
+                    "std": 1.5620652170861728e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "visualization.wcsaxes.time_basic_plot": null,
+        "visualization.wcsaxes.time_basic_plot_with_grid": null,
+        "visualization.wcsaxes.time_basic_plot_with_grid_and_overlay": null
     },
     "started_at": {
-        "io_ascii.main.AastexFloat.time_read": 1515530549000,
-        "io_ascii.main.AastexFloat.time_write": 1515530549000,
-        "io_ascii.main.AastexInt.time_read": 1515530549000,
-        "io_ascii.main.AastexInt.time_write": 1515530549000,
-        "io_ascii.main.AastexString.time_read": 1515530549000,
-        "io_ascii.main.AastexString.time_write": 1515530549000,
-        "io_ascii.main.BasicFloat.time_read": 1515530549000,
-        "io_ascii.main.BasicFloat.time_write": 1515530549000,
-        "io_ascii.main.BasicInt.time_read": 1515530549000,
-        "io_ascii.main.BasicInt.time_write": 1515530549000,
-        "io_ascii.main.BasicString.time_read": 1515530549000,
-        "io_ascii.main.BasicString.time_write": 1515530549000,
-        "io_ascii.main.CommentedHeaderFloat.time_read": 1515530549000,
-        "io_ascii.main.CommentedHeaderFloat.time_write": 1515530549000,
-        "io_ascii.main.CommentedHeaderInt.time_read": 1515530549000,
-        "io_ascii.main.CommentedHeaderInt.time_write": 1515530549000,
-        "io_ascii.main.CommentedHeaderString.time_read": 1515530549000,
-        "io_ascii.main.CommentedHeaderString.time_write": 1515530549000,
-        "io_ascii.main.CsvFloat.time_read": 1515530549000,
-        "io_ascii.main.CsvFloat.time_write": 1515530549000,
-        "io_ascii.main.CsvInt.time_read": 1515530549000,
-        "io_ascii.main.CsvInt.time_write": 1515530549000,
-        "io_ascii.main.CsvString.time_read": 1515530549000,
-        "io_ascii.main.CsvString.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthFloat.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthFloat.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthInt.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthInt.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderString.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthNoHeaderString.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthString.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthString.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineInt.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineInt.time_write": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineString.time_read": 1515530549000,
-        "io_ascii.main.FixedWidthTwoLineString.time_write": 1515530549000,
-        "io_ascii.main.IpacFloat.time_read": 1515530549000,
-        "io_ascii.main.IpacFloat.time_write": 1515530549000,
-        "io_ascii.main.IpacInt.time_read": 1515530549000,
-        "io_ascii.main.IpacInt.time_write": 1515530549000,
-        "io_ascii.main.IpacString.time_read": 1515530549000,
-        "io_ascii.main.IpacString.time_write": 1515530549000,
-        "io_ascii.main.LatexFloat.time_read": 1515530549000,
-        "io_ascii.main.LatexFloat.time_write": 1515530549000,
-        "io_ascii.main.LatexInt.time_read": 1515530549000,
-        "io_ascii.main.LatexInt.time_write": 1515530549000,
-        "io_ascii.main.LatexString.time_read": 1515530549000,
-        "io_ascii.main.LatexString.time_write": 1515530549000,
-        "io_ascii.main.NoHeaderFloat.time_read": 1515530549000,
-        "io_ascii.main.NoHeaderFloat.time_write": 1515530549000,
-        "io_ascii.main.NoHeaderInt.time_read": 1515530549000,
-        "io_ascii.main.NoHeaderInt.time_write": 1515530549000,
-        "io_ascii.main.NoHeaderString.time_read": 1515530549000,
-        "io_ascii.main.NoHeaderString.time_write": 1515530549000,
-        "io_ascii.main.RdbFloat.time_read": 1515530549000,
-        "io_ascii.main.RdbFloat.time_write": 1515530549000,
-        "io_ascii.main.RdbInt.time_read": 1515530549000,
-        "io_ascii.main.RdbInt.time_write": 1515530549000,
-        "io_ascii.main.RdbString.time_read": 1515530549000,
-        "io_ascii.main.RdbString.time_write": 1515530549000,
-        "io_ascii.main.SextractorFloat.time_read": 1515530549000,
-        "io_ascii.main.SextractorInt.time_read": 1515530549000,
-        "io_ascii.main.SextractorString.time_read": 1515530549000,
-        "io_ascii.main.TabFloat.time_read": 1515530549000,
-        "io_ascii.main.TabFloat.time_write": 1515530549000,
-        "io_ascii.main.TabInt.time_read": 1515530549000,
-        "io_ascii.main.TabInt.time_write": 1515530549000,
-        "io_ascii.main.TabString.time_read": 1515530549000,
-        "io_ascii.main.TabString.time_write": 1515530549000,
-        "io_ascii.core.CoreSuite.time_base_splitter": 1515530549000,
-        "io_ascii.core.CoreSuite.time_continuation_inputter": 1515530549000,
-        "io_ascii.core.CoreSuite.time_convert_vals": 1515530549000,
-        "io_ascii.core.CoreSuite.time_default_splitter_call": 1515530549000,
-        "io_ascii.core.CoreSuite.time_default_splitter_join": 1515530549000,
-        "io_ascii.core.CoreSuite.time_whitespace_splitter": 1515530549000,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_header": 1515530549000,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": 1515530549000,
-        "io_ascii.ipac.IPACSuite.time_data_str_vals": 1515530549000,
-        "io_ascii.ipac.IPACSuite.time_get_cols": 1515530549000,
-        "io_ascii.ipac.IPACSuite.time_header_str_vals": 1515530549000,
-        "io_ascii.ipac.IPACSuite.time_splitter": 1515530549000,
-        "io_ascii.rdb.RDBSuite.time_get_cols": 1515530549000,
-        "io_ascii.sextractor.SExtractorSuite.time_header": 1515530549000,
-        "io_ascii.table.TableSuite.mem_table_init": 1515530549000,
-        "io_ascii.table.TableSuite.mem_table_outputter": 1515530549000,
-        "io_ascii.table.TableSuite.time_str_vals_float": 1515530549000,
-        "io_ascii.table.TableSuite.time_str_vals_int": 1515530549000,
-        "io_ascii.table.TableSuite.time_str_vals_str": 1515530549000,
-        "io_ascii.table.TableSuite.time_table_init_from_list": 1515530549000,
-        "io_ascii.table.TableSuite.time_table_outputter": 1515530549000,
-        "coordinates.FrameBenchmarks.time_init_array": 1515530549000,
-        "coordinates.FrameBenchmarks.time_init_nodata": 1515530549000,
-        "coordinates.FrameBenchmarks.time_init_scalar": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_init_array": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_init_scalar": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_iter_array": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_repr_array": 1515530549000,
-        "coordinates.SkyCoordBenchmarks.time_repr_scalar": 1515530549000,
-        "coordinates.time_latitude": 1515530549000,
-        "cosmology.LambdaCDMBenchmarks.time_age": 1515530549000,
-        "cosmology.LambdaCDMBenchmarks.time_lumdist": 1515530549000,
-        "io_fits.FITSBinTableHDU.time_from_columns_bytes": 1515530549000,
-        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": 1515530549000,
-        "io_fits.FITSHighLevelTableBenchmarks.time_write": 1515530549000,
-        "units.time_quantity_array_conversion": 1515530549000,
-        "units.time_quantity_creation": 1515530549000,
-        "units.time_quantity_creation_nocopy": 1515530549000,
-        "units.time_quantity_init_array": 1515530549000,
-        "units.time_quantity_init_scalar": 1515530549000,
-        "units.time_quantity_scalar_conversion": 1515530549000,
-        "units.time_quantity_times_quantity": 1515530549000,
-        "units.time_quantity_times_unit": 1515530549000,
-        "units.time_quantity_ufunc_sin": 1515530549000,
-        "units.time_quantity_view": 1515530549000,
-        "table.TimeMaskedTable.time_add_column": 1515530549000,
-        "table.TimeMaskedTable.time_add_row": 1515530549000,
-        "table.TimeMaskedTable.time_aggregate": 1515530549000,
-        "table.TimeMaskedTable.time_aggregate_noreduceat": 1515530549000,
-        "table.TimeMaskedTable.time_column_get": 1515530549000,
-        "table.TimeMaskedTable.time_column_make_bool_mask": 1515530549000,
-        "table.TimeMaskedTable.time_column_set": 1515530549000,
-        "table.TimeMaskedTable.time_column_set_all": 1515530549000,
-        "table.TimeMaskedTable.time_column_set_row_subset": 1515530549000,
-        "table.TimeMaskedTable.time_column_set_row_subset_int": 1515530549000,
-        "table.TimeMaskedTable.time_column_slice_bool": 1515530549000,
-        "table.TimeMaskedTable.time_column_slice_int": 1515530549000,
-        "table.TimeMaskedTable.time_copy_column": 1515530549000,
-        "table.TimeMaskedTable.time_copy_table": 1515530549000,
-        "table.TimeMaskedTable.time_group": 1515530549000,
-        "table.TimeMaskedTable.time_hstack": 1515530549000,
-        "table.TimeMaskedTable.time_init_from_np_array_copy": 1515530549000,
-        "table.TimeMaskedTable.time_init_from_np_array_no_copy": 1515530549000,
-        "table.TimeMaskedTable.time_item_get_colfirst": 1515530549000,
-        "table.TimeMaskedTable.time_item_get_rowfirst": 1515530549000,
-        "table.TimeMaskedTable.time_iter_row": 1515530549000,
-        "table.TimeMaskedTable.time_join_inner": 1515530549000,
-        "table.TimeMaskedTable.time_join_outer": 1515530549000,
-        "table.TimeMaskedTable.time_mask_column": 1515530549000,
-        "table.TimeMaskedTable.time_multi_column_get": 1515530549000,
-        "table.TimeMaskedTable.time_read_rows": 1515530549000,
-        "table.TimeMaskedTable.time_remove_column": 1515530549000,
-        "table.TimeMaskedTable.time_remove_row": 1515530549000,
-        "table.TimeMaskedTable.time_remove_rows": 1515530549000,
-        "table.TimeMaskedTable.time_row_get": 1515530549000,
-        "table.TimeMaskedTable.time_sort": 1515530549000,
-        "table.TimeMaskedTable.time_table_slice_bool": 1515530549000,
-        "table.TimeMaskedTable.time_table_slice_int": 1515530549000,
-        "table.TimeMaskedTable.time_vstack": 1515530549000,
-        "table.TimeTable.time_add_column": 1515530549000,
-        "table.TimeTable.time_add_row": 1515530549000,
-        "table.TimeTable.time_aggregate": 1515530549000,
-        "table.TimeTable.time_aggregate_noreduceat": 1515530549000,
-        "table.TimeTable.time_column_get": 1515530549000,
-        "table.TimeTable.time_column_make_bool_mask": 1515530549000,
-        "table.TimeTable.time_column_set": 1515530549000,
-        "table.TimeTable.time_column_set_all": 1515530549000,
-        "table.TimeTable.time_column_set_row_subset": 1515530549000,
-        "table.TimeTable.time_column_set_row_subset_int": 1515530549000,
-        "table.TimeTable.time_column_slice_bool": 1515530549000,
-        "table.TimeTable.time_column_slice_int": 1515530549000,
-        "table.TimeTable.time_copy_column": 1515530549000,
-        "table.TimeTable.time_copy_table": 1515530549000,
-        "table.TimeTable.time_group": 1515530549000,
-        "table.TimeTable.time_hstack": 1515530549000,
-        "table.TimeTable.time_init_from_np_array_copy": 1515530549000,
-        "table.TimeTable.time_init_from_np_array_no_copy": 1515530549000,
-        "table.TimeTable.time_item_get_colfirst": 1515530549000,
-        "table.TimeTable.time_item_get_rowfirst": 1515530549000,
-        "table.TimeTable.time_iter_row": 1515530549000,
-        "table.TimeTable.time_join_inner": 1515530549000,
-        "table.TimeTable.time_join_outer": 1515530549000,
-        "table.TimeTable.time_multi_column_get": 1515530549000,
-        "table.TimeTable.time_read_rows": 1515530549000,
-        "table.TimeTable.time_remove_column": 1515530549000,
-        "table.TimeTable.time_remove_row": 1515530549000,
-        "table.TimeTable.time_remove_rows": 1515530549000,
-        "table.TimeTable.time_row_get": 1515530549000,
-        "table.TimeTable.time_sort": 1515530549000,
-        "table.TimeTable.time_table_slice_bool": 1515530549000,
-        "table.TimeTable.time_table_slice_int": 1515530549000,
-        "table.TimeTable.time_vstack": 1515530549000,
-        "units.mem_unit": 1515530549000,
-        "units.time_compose_to_bases": 1515530549000,
-        "units.time_simple_unit_parse": 1515530549000,
-        "units.time_unit_compose": 1515530549000,
-        "units.time_unit_parse": 1515530549000,
-        "units.time_unit_to": 1515530549000,
-        "units.time_very_simple_unit_parse": 1515530549000
+        "coordinates.FrameBenchmarks.time_init_array": 1517684792000,
+        "coordinates.FrameBenchmarks.time_init_nodata": 1517684795000,
+        "coordinates.FrameBenchmarks.time_init_scalar": 1517684798000,
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": 1517684800000,
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": 1517684804000,
+        "coordinates.SkyCoordBenchmarks.time_init_array": 1517684807000,
+        "coordinates.SkyCoordBenchmarks.time_init_scalar": 1517684810000,
+        "coordinates.SkyCoordBenchmarks.time_iter_array": 1517684813000,
+        "coordinates.SkyCoordBenchmarks.time_repr_array": 1517684818000,
+        "coordinates.SkyCoordBenchmarks.time_repr_scalar": 1517684821000,
+        "coordinates.time_angle_array_repr": 1517684824000,
+        "coordinates.time_angle_array_repr_latex": 1517684827000,
+        "coordinates.time_angle_array_str": 1517684830000,
+        "coordinates.time_latitude": 1517684832000,
+        "cosmology.LambdaCDMBenchmarks.time_age": 1517684835000,
+        "cosmology.LambdaCDMBenchmarks.time_lumdist": 1517684858000,
+        "io_ascii.core.CoreSuite.time_base_splitter": 1517684873000,
+        "io_ascii.core.CoreSuite.time_continuation_inputter": 1517684876000,
+        "io_ascii.core.CoreSuite.time_convert_vals": 1517684879000,
+        "io_ascii.core.CoreSuite.time_default_splitter_call": 1517684882000,
+        "io_ascii.core.CoreSuite.time_default_splitter_join": 1517684886000,
+        "io_ascii.core.CoreSuite.time_whitespace_splitter": 1517684889000,
+        "io_ascii.fixedwidth.FixedWidthSuite.time_header": 1517684892000,
+        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": 1517684895000,
+        "io_ascii.ipac.IPACSuite.time_data_str_vals": 1517684898000,
+        "io_ascii.ipac.IPACSuite.time_get_cols": 1517684902000,
+        "io_ascii.ipac.IPACSuite.time_header_str_vals": 1517684906000,
+        "io_ascii.ipac.IPACSuite.time_splitter": 1517684910000,
+        "io_ascii.main.AastexFloat.time_read": 1517684914000,
+        "io_ascii.main.AastexFloat.time_write": 1517684919000,
+        "io_ascii.main.AastexInt.time_read": 1517684925000,
+        "io_ascii.main.AastexInt.time_write": 1517684929000,
+        "io_ascii.main.AastexString.time_read": 1517684933000,
+        "io_ascii.main.AastexString.time_write": 1517684937000,
+        "io_ascii.main.BasicFloat.time_read": 1517684943000,
+        "io_ascii.main.BasicFloat.time_write": 1517684947000,
+        "io_ascii.main.BasicInt.time_read": 1517684951000,
+        "io_ascii.main.BasicInt.time_write": 1517684955000,
+        "io_ascii.main.BasicString.time_read": 1517684959000,
+        "io_ascii.main.BasicString.time_write": 1517684963000,
+        "io_ascii.main.CommentedHeaderFloat.time_read": 1517684968000,
+        "io_ascii.main.CommentedHeaderFloat.time_write": 1517684972000,
+        "io_ascii.main.CommentedHeaderInt.time_read": 1517684976000,
+        "io_ascii.main.CommentedHeaderInt.time_write": 1517684980000,
+        "io_ascii.main.CommentedHeaderString.time_read": 1517684984000,
+        "io_ascii.main.CommentedHeaderString.time_write": 1517684988000,
+        "io_ascii.main.CsvFloat.time_read": 1517684993000,
+        "io_ascii.main.CsvFloat.time_write": 1517684998000,
+        "io_ascii.main.CsvInt.time_read": 1517685001000,
+        "io_ascii.main.CsvInt.time_write": 1517685005000,
+        "io_ascii.main.CsvString.time_read": 1517685009000,
+        "io_ascii.main.CsvString.time_write": 1517685014000,
+        "io_ascii.main.FixedWidthFloat.time_read": 1517685019000,
+        "io_ascii.main.FixedWidthFloat.time_write": 1517685023000,
+        "io_ascii.main.FixedWidthInt.time_read": 1517685027000,
+        "io_ascii.main.FixedWidthInt.time_write": 1517685031000,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": 1517685035000,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": 1517685040000,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_read": 1517685044000,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_write": 1517685048000,
+        "io_ascii.main.FixedWidthNoHeaderString.time_read": 1517685052000,
+        "io_ascii.main.FixedWidthNoHeaderString.time_write": 1517685056000,
+        "io_ascii.main.FixedWidthString.time_read": 1517685062000,
+        "io_ascii.main.FixedWidthString.time_write": 1517685066000,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_read": 1517685072000,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_write": 1517685076000,
+        "io_ascii.main.FixedWidthTwoLineInt.time_read": 1517685080000,
+        "io_ascii.main.FixedWidthTwoLineInt.time_write": 1517685084000,
+        "io_ascii.main.FixedWidthTwoLineString.time_read": 1517685088000,
+        "io_ascii.main.FixedWidthTwoLineString.time_write": 1517685092000,
+        "io_ascii.main.IpacFloat.time_read": 1517685098000,
+        "io_ascii.main.IpacFloat.time_write": 1517685102000,
+        "io_ascii.main.IpacInt.time_read": 1517685106000,
+        "io_ascii.main.IpacInt.time_write": 1517685110000,
+        "io_ascii.main.IpacString.time_read": 1517685114000,
+        "io_ascii.main.IpacString.time_write": 1517685118000,
+        "io_ascii.main.LatexFloat.time_read": 1517685123000,
+        "io_ascii.main.LatexFloat.time_write": 1517685127000,
+        "io_ascii.main.LatexInt.time_read": 1517685133000,
+        "io_ascii.main.LatexInt.time_write": 1517685138000,
+        "io_ascii.main.LatexString.time_read": 1517685141000,
+        "io_ascii.main.LatexString.time_write": 1517685146000,
+        "io_ascii.main.NoHeaderFloat.time_read": 1517685151000,
+        "io_ascii.main.NoHeaderFloat.time_write": 1517685155000,
+        "io_ascii.main.NoHeaderInt.time_read": 1517685159000,
+        "io_ascii.main.NoHeaderInt.time_write": 1517685163000,
+        "io_ascii.main.NoHeaderString.time_read": 1517685167000,
+        "io_ascii.main.NoHeaderString.time_write": 1517685171000,
+        "io_ascii.main.RdbFloat.time_read": 1517685177000,
+        "io_ascii.main.RdbFloat.time_write": 1517685180000,
+        "io_ascii.main.RdbInt.time_read": 1517685184000,
+        "io_ascii.main.RdbInt.time_write": 1517685188000,
+        "io_ascii.main.RdbString.time_read": 1517685192000,
+        "io_ascii.main.RdbString.time_write": 1517685196000,
+        "io_ascii.main.SextractorFloat.time_read": 1517685201000,
+        "io_ascii.main.SextractorInt.time_read": 1517685205000,
+        "io_ascii.main.SextractorString.time_read": 1517685208000,
+        "io_ascii.main.TabFloat.time_read": 1517685211000,
+        "io_ascii.main.TabFloat.time_write": 1517685215000,
+        "io_ascii.main.TabInt.time_read": 1517685219000,
+        "io_ascii.main.TabInt.time_write": 1517685223000,
+        "io_ascii.main.TabString.time_read": 1517685227000,
+        "io_ascii.main.TabString.time_write": 1517685231000,
+        "io_ascii.rdb.RDBSuite.time_get_cols": 1517685236000,
+        "io_ascii.sextractor.SExtractorSuite.time_header": 1517685239000,
+        "io_ascii.table.TableSuite.mem_table_init": 1517685247000,
+        "io_ascii.table.TableSuite.mem_table_outputter": 1517685249000,
+        "io_ascii.table.TableSuite.time_str_vals_float": 1517685251000,
+        "io_ascii.table.TableSuite.time_str_vals_int": 1517685254000,
+        "io_ascii.table.TableSuite.time_str_vals_str": 1517685257000,
+        "io_ascii.table.TableSuite.time_table_init_from_list": 1517685260000,
+        "io_ascii.table.TableSuite.time_table_outputter": 1517685263000,
+        "io_fits.FITSBinTableHDU.time_from_columns_bytes": 1517685266000,
+        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": 1517685268000,
+        "io_fits.FITSHighLevelTableBenchmarks.time_write": 1517685277000,
+        "table.TimeMaskedTable.time_add_column": 1517685285000,
+        "table.TimeMaskedTable.time_add_row": 1517685287000,
+        "table.TimeMaskedTable.time_aggregate": 1517685289000,
+        "table.TimeMaskedTable.time_aggregate_noreduceat": 1517685292000,
+        "table.TimeMaskedTable.time_column_get": 1517685295000,
+        "table.TimeMaskedTable.time_column_make_bool_mask": 1517685299000,
+        "table.TimeMaskedTable.time_column_set": 1517685302000,
+        "table.TimeMaskedTable.time_column_set_all": 1517685305000,
+        "table.TimeMaskedTable.time_column_set_row_subset": 1517685308000,
+        "table.TimeMaskedTable.time_column_set_row_subset_int": 1517685312000,
+        "table.TimeMaskedTable.time_column_slice_bool": 1517685315000,
+        "table.TimeMaskedTable.time_column_slice_int": 1517685318000,
+        "table.TimeMaskedTable.time_copy_column": 1517685321000,
+        "table.TimeMaskedTable.time_copy_table": 1517685325000,
+        "table.TimeMaskedTable.time_group": 1517685328000,
+        "table.TimeMaskedTable.time_hstack": 1517685331000,
+        "table.TimeMaskedTable.time_init_from_np_array_copy": 1517685334000,
+        "table.TimeMaskedTable.time_init_from_np_array_no_copy": 1517685337000,
+        "table.TimeMaskedTable.time_item_get_colfirst": 1517685339000,
+        "table.TimeMaskedTable.time_item_get_rowfirst": 1517685342000,
+        "table.TimeMaskedTable.time_iter_row": 1517685346000,
+        "table.TimeMaskedTable.time_join_inner": 1517685349000,
+        "table.TimeMaskedTable.time_join_outer": 1517685351000,
+        "table.TimeMaskedTable.time_mask_column": 1517685352000,
+        "table.TimeMaskedTable.time_multi_column_get": 1517685355000,
+        "table.TimeMaskedTable.time_read_rows": 1517685359000,
+        "table.TimeMaskedTable.time_remove_column": 1517685362000,
+        "table.TimeMaskedTable.time_remove_row": 1517685364000,
+        "table.TimeMaskedTable.time_remove_rows": 1517685366000,
+        "table.TimeMaskedTable.time_row_get": 1517685368000,
+        "table.TimeMaskedTable.time_sort": 1517685371000,
+        "table.TimeMaskedTable.time_table_slice_bool": 1517685374000,
+        "table.TimeMaskedTable.time_table_slice_int": 1517685377000,
+        "table.TimeMaskedTable.time_vstack": 1517685381000,
+        "table.TimeTable.time_add_column": 1517685384000,
+        "table.TimeTable.time_add_row": 1517685385000,
+        "table.TimeTable.time_aggregate": 1517685387000,
+        "table.TimeTable.time_aggregate_noreduceat": 1517685390000,
+        "table.TimeTable.time_column_get": 1517685394000,
+        "table.TimeTable.time_column_make_bool_mask": 1517685397000,
+        "table.TimeTable.time_column_set": 1517685400000,
+        "table.TimeTable.time_column_set_all": 1517685403000,
+        "table.TimeTable.time_column_set_row_subset": 1517685406000,
+        "table.TimeTable.time_column_set_row_subset_int": 1517685409000,
+        "table.TimeTable.time_column_slice_bool": 1517685412000,
+        "table.TimeTable.time_column_slice_int": 1517685415000,
+        "table.TimeTable.time_copy_column": 1517685418000,
+        "table.TimeTable.time_copy_table": 1517685421000,
+        "table.TimeTable.time_group": 1517685424000,
+        "table.TimeTable.time_hstack": 1517685428000,
+        "table.TimeTable.time_init_from_np_array_copy": 1517685431000,
+        "table.TimeTable.time_init_from_np_array_no_copy": 1517685434000,
+        "table.TimeTable.time_item_get_colfirst": 1517685436000,
+        "table.TimeTable.time_item_get_rowfirst": 1517685439000,
+        "table.TimeTable.time_iter_row": 1517685442000,
+        "table.TimeTable.time_join_inner": 1517685445000,
+        "table.TimeTable.time_join_outer": 1517685446000,
+        "table.TimeTable.time_multi_column_get": 1517685448000,
+        "table.TimeTable.time_read_rows": 1517685451000,
+        "table.TimeTable.time_remove_column": 1517685454000,
+        "table.TimeTable.time_remove_row": 1517685456000,
+        "table.TimeTable.time_remove_rows": 1517685458000,
+        "table.TimeTable.time_row_get": 1517685460000,
+        "table.TimeTable.time_sort": 1517685463000,
+        "table.TimeTable.time_table_slice_bool": 1517685466000,
+        "table.TimeTable.time_table_slice_int": 1517685469000,
+        "table.TimeTable.time_vstack": 1517685472000,
+        "units.mem_unit": 1517685475000,
+        "units.time_compose_complex": 1517685476000,
+        "units.time_compose_to_bases": 1517685482000,
+        "units.time_quantity_array_conversion": 1517685485000,
+        "units.time_quantity_creation": 1517685487000,
+        "units.time_quantity_creation_nocopy": 1517685490000,
+        "units.time_quantity_init_array": 1517685492000,
+        "units.time_quantity_init_scalar": 1517685495000,
+        "units.time_quantity_scalar_conversion": 1517685498000,
+        "units.time_quantity_times_quantity": 1517685500000,
+        "units.time_quantity_times_unit": 1517685503000,
+        "units.time_quantity_ufunc_sin": 1517685505000,
+        "units.time_quantity_view": 1517685508000,
+        "units.time_simple_unit_parse": 1517685511000,
+        "units.time_unit_compose": 1517685513000,
+        "units.time_unit_parse": 1517685516000,
+        "units.time_unit_to": 1517685518000,
+        "units.time_very_simple_unit_parse": 1517685521000,
+        "visualization.wcsaxes.time_basic_plot": 1517685523000,
+        "visualization.wcsaxes.time_basic_plot_with_grid": 1517685525000,
+        "visualization.wcsaxes.time_basic_plot_with_grid_and_overlay": 1517685526000
     },
     "version": 1
 }
