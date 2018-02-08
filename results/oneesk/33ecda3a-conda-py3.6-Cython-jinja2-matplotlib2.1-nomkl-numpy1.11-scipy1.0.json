@@ -1,203 +1,415 @@
 {
+    "benchmark_version": {
+        "coordinates.FrameBenchmarks.time_init_array": "c674b97d5a26e5c61c240678ebdcc4a8fbb346db4aacedbb7868aefb3230f080",
+        "coordinates.FrameBenchmarks.time_init_nodata": "c3d603a1d100c4d8f50750ddfac91c7db732186bbe5091b354ab1ee7bd4703d5",
+        "coordinates.FrameBenchmarks.time_init_scalar": "defe667485d7109897f4a6a2770d80eb89ff9295c31bc941252bf4b8f6e15288",
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": "03a8d659ce76024b25427f931b691a4cdd160fa0aeb99e0b9f6c8831df6a832b",
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": "50cb34073decb62c5e47dc358fa84c4496c41a70eedc12d430de14dd6b2eaca7",
+        "coordinates.SkyCoordBenchmarks.time_init_array": "efd1c95143b17aa70b359c057d501cf1f21c675354fc145e7362fad20e746143",
+        "coordinates.SkyCoordBenchmarks.time_init_scalar": "72be933df1c75170846adad4c31fa6b2034a6061a7af30a127e14b9599b468a5",
+        "coordinates.SkyCoordBenchmarks.time_iter_array": "6bf1ec9b68eb8af4cf3dff787c3e22c9c549ce973d4d29c025175379b6275fec",
+        "coordinates.SkyCoordBenchmarks.time_repr_array": "441c7f643c000bea0aae55a16a88d01a8a89b91cbf3f3c080945963a3d85a914",
+        "coordinates.SkyCoordBenchmarks.time_repr_scalar": "9144e2f52d729a4ec838dcce3d3f15bbec89a3b187a26affc5feb41e59fb91d1",
+        "coordinates.time_angle_array_repr": "f7358d7eaaa2c43a08c409093a9da4c8824ee2c56f680a47906562bb1ce67d7c",
+        "coordinates.time_angle_array_repr_latex": "d791293d91b6bf48d25ec937a4650655e13e232dd2136182811357cc4641fdef",
+        "coordinates.time_angle_array_str": "bb01074796e6a03b8b0c30b44045048769af753ecbe7b2ec8bf460be6bb73160",
+        "coordinates.time_latitude": "d37e722e0c0f585281e1f368dc32f3943dd8cf1ec4009924181467dd2c3a6cd0",
+        "cosmology.LambdaCDMBenchmarks.time_age": "9d18698d04bfa5d55ddcae0f12ee69266bfed44f4b0fd81018487132da078301",
+        "cosmology.LambdaCDMBenchmarks.time_lumdist": "5bac457205366118e159292716591c45c0cfc49c2e2729149b83abfbb3e6ed3e",
+        "io_ascii.core.CoreSuite.time_base_splitter": "ef95250cdacbcad30d437c583c0005f2e0f100ed28e242aea22dfd55507626f2",
+        "io_ascii.core.CoreSuite.time_continuation_inputter": "406566039a7c4a88ddbba6da758e5757bc52acdbf7fe159d5324696a33b7f960",
+        "io_ascii.core.CoreSuite.time_convert_vals": "0c660365b4b3180a53e83e7b346bbb72270cbb17c23a7b9c343b9e62bd6be16d",
+        "io_ascii.core.CoreSuite.time_default_splitter_call": "9b11dacb692c8e31688afc0031aa584030b2b4311f16ab0de8e61d1111f68568",
+        "io_ascii.core.CoreSuite.time_default_splitter_join": "306bb839233283dd45a91d2646131b786fecc79198f55c91a843d8d05bbf062a",
+        "io_ascii.core.CoreSuite.time_whitespace_splitter": "ab9241b763369886db83aff56a4a41a13296bdc6de02fd6cca426503e4195b81",
+        "io_ascii.fixedwidth.FixedWidthSuite.time_header": "ab31959770db8530c2a7211c49c8d5a7db6c42b75ff8fb0bac4be7689f1837ea",
+        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": "a8f2eed392691b8fede23e560b4b933aef960db35ac1dafac4857c53e839ecf0",
+        "io_ascii.ipac.IPACSuite.time_data_str_vals": "47e34452c6c6cea6ff597dbd27faa2d6b83a1b1e77978c28cd3482d1ee83666e",
+        "io_ascii.ipac.IPACSuite.time_get_cols": "b9db559aa8e7052afe0b952515629cdc112d29661dc35db39d3ff11729eebc29",
+        "io_ascii.ipac.IPACSuite.time_header_str_vals": "aa060983b5957fd31ff49679e66aefc332677decfd9212e9adbd53c00e2bfddd",
+        "io_ascii.ipac.IPACSuite.time_splitter": "66d8365cd4fe318c5c52d8736597f2fc458b67b38ab4e7a58e9d121340f0d372",
+        "io_ascii.main.AastexFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.AastexFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.AastexInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.AastexInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.AastexString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.AastexString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.BasicFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.BasicFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.BasicInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.BasicInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.BasicString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.BasicString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CommentedHeaderFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CommentedHeaderFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CommentedHeaderInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CommentedHeaderInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CommentedHeaderString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CommentedHeaderString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CsvFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CsvFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CsvInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CsvInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.CsvString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.CsvString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthNoHeaderInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthNoHeaderInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthNoHeaderString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthNoHeaderString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthTwoLineFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthTwoLineFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthTwoLineInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthTwoLineInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.FixedWidthTwoLineString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.FixedWidthTwoLineString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.IpacFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.IpacFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.IpacInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.IpacInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.IpacString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.IpacString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.LatexFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.LatexFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.LatexInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.LatexInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.LatexString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.LatexString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.NoHeaderFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.NoHeaderFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.NoHeaderInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.NoHeaderInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.NoHeaderString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.NoHeaderString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.RdbFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.RdbFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.RdbInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.RdbInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.RdbString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.RdbString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.SextractorFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.SextractorInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.SextractorString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.TabFloat.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.TabFloat.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.TabInt.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.TabInt.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.main.TabString.time_read": "f3f98728a95e3fb54e58199096d5d7673373a44c7a7043ed8f2a66f58abfdb20",
+        "io_ascii.main.TabString.time_write": "897cf90f396ada2768dcfb8082f28f799727fefdc591208d0cebb9ef67420754",
+        "io_ascii.rdb.RDBSuite.time_get_cols": "37775e9215e57ff1ba0ec99edd94cbc2a293a129a551ed55f92e669007bad661",
+        "io_ascii.sextractor.SExtractorSuite.time_header": "a9db4d189763ff1473f14cb8d568fbe618facb3d376edc5a200bf69eefc7a110",
+        "io_ascii.table.TableSuite.mem_table_init": "f93dd63923309c0a3643cbc5565c4081d6525256c63f4845d5f94ba6e4ea0bd6",
+        "io_ascii.table.TableSuite.mem_table_outputter": "0ee6f7a393d03abd1ac6cdfa55936a4462adde546042fddc5ba7189476e0507b",
+        "io_ascii.table.TableSuite.time_str_vals_float": "2d818883f1301a824cb3809cdc36587446e6edba5a2fcb67f00410e94f731669",
+        "io_ascii.table.TableSuite.time_str_vals_int": "9109ab1ddedde92cafdb2a0644f73936b59cd52b967369db71cbf0532cd65d46",
+        "io_ascii.table.TableSuite.time_str_vals_str": "854ab35dbba7720bbe4729cc5ca9aaf04d856af1f4e0d32f1c7c7504f29a46f8",
+        "io_ascii.table.TableSuite.time_table_init_from_list": "ebc1f5751e08f92ba669a08cb5144ce1c72d750daf659f9e933b18c5fcf92d69",
+        "io_ascii.table.TableSuite.time_table_outputter": "c9cda8c5462696d451d132a464ef7a0319161924c36a82031904e8c6a0b7fd9b",
+        "io_fits.FITSBinTableHDU.time_from_columns_bytes": "0ced98097e668afc55cb7c214f0ec629dac253341826ca667d7fb28428f6db1a",
+        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": "aad5f871ef8603c05f0a64ae405c585e95d081798cb3576da10a6bd73d17d3bf",
+        "io_fits.FITSHighLevelTableBenchmarks.time_write": "dbe7f96c19284a4c494c1f35313cd7f12a367d222c3dffb9c45dab2372722556",
+        "table.TimeMaskedTable.time_add_column": "b2c0ad0af05e6ff645357e4e21fbb3c31b647579f850c111c9494b69fecab587",
+        "table.TimeMaskedTable.time_add_row": "c3da92e8384276af12dd0b284b378baea2170c58c83b6d61874804cd715d6a5f",
+        "table.TimeMaskedTable.time_aggregate": "d87a6eadd3a4c94d95d33449d19c6c00474eeb1ada4b13633a28ec4e47eb57f6",
+        "table.TimeMaskedTable.time_aggregate_noreduceat": "6607870ad7344f17d4ccea4ca0a86ce464eeccd21fe98d970ff2c699f03c7e17",
+        "table.TimeMaskedTable.time_column_get": "f863a90229743a65604d98100febf2400d345032ae27cbd7f0450db596a88956",
+        "table.TimeMaskedTable.time_column_make_bool_mask": "6dfae7f99d875b90ce8bb45b2232e8c9448734810edacf42fcafd45e522d1ff0",
+        "table.TimeMaskedTable.time_column_set": "3b94497b8947080e3a7ad68c0d27b547fda203e3a82a6f9aef412c5b38553ce2",
+        "table.TimeMaskedTable.time_column_set_all": "42a14616589c8ebefc8d09c74be3c4b4081dc5025fc1dc68c45b04046129c898",
+        "table.TimeMaskedTable.time_column_set_row_subset": "f5286a927031d2e4c72969b4294ad326f835625ffff8cab42d5a0fb0fc66d5fc",
+        "table.TimeMaskedTable.time_column_set_row_subset_int": "7a46311bfa2b1cc228c79ef31d83d80d7211b6f720c0efc76645408ecb0cc88b",
+        "table.TimeMaskedTable.time_column_slice_bool": "606fa21ee4fae7dd015b43a97a9d3ba938acd3ba1c2b34262dd6bf6d51f33f54",
+        "table.TimeMaskedTable.time_column_slice_int": "1d1818da027642ddf329e814913cf0be71476438e4a90444aa085d5f92f6fbe2",
+        "table.TimeMaskedTable.time_copy_column": "f1684c651fd087a764de4d038893b4c9610489a81f8162fa217742e1a0921bff",
+        "table.TimeMaskedTable.time_copy_table": "9dfee0ffd435859c66c9d478df0b81fb8b7497a2a81897f10c557f39f695c328",
+        "table.TimeMaskedTable.time_group": "00833c0817e383400bfaa81fbed6cd67f6bf8e38ab39dad34bf18acb12eb6240",
+        "table.TimeMaskedTable.time_hstack": "0bb53b6f70a1c0e044582584e8e4e16e12b0a6d2de3a8031520e683f725548a0",
+        "table.TimeMaskedTable.time_init_from_np_array_copy": "4336289776445bd679565fab2aff50641d5bb4d8e1f21f2c8d37a26af69f59f8",
+        "table.TimeMaskedTable.time_init_from_np_array_no_copy": "b13e3a0b7c95d73514fa4353bd5e2fc362b0a2133200cfbca7578616000b7c88",
+        "table.TimeMaskedTable.time_item_get_colfirst": "0dd32efbfedd563aa310767ea5c4ed044e744ee7a4fbbd06b2d67f39b0646c2a",
+        "table.TimeMaskedTable.time_item_get_rowfirst": "09093997db41771a090f840eefd60e7d2577c519a976b9b88d799aa21d242a1b",
+        "table.TimeMaskedTable.time_iter_row": "5c031f2eb8938c243423fa5dabd4c66ced4063a63b583bd3f54270bc1f211fae",
+        "table.TimeMaskedTable.time_join_inner": "0c28429345963649f5df731dce5bbd22588b0f465f5112c20ac6e8fc367697c7",
+        "table.TimeMaskedTable.time_join_outer": "4c3bf2e6aaf0b0fa9873b63128ace026c611e846f2b72ceb1c4a7170dd790984",
+        "table.TimeMaskedTable.time_mask_column": "8199306b947c7320fcf35aa5e9c87146b8bb91f9cba9d25fb9290a8ff006cee7",
+        "table.TimeMaskedTable.time_multi_column_get": "f078ef4c7d77390944802d30e7ef0381d6372c9dd211c3bb6163265eb8a8a0d9",
+        "table.TimeMaskedTable.time_read_rows": "b8c9879da2aac0e2ec1225c2f64e3b30c8ca22ad100b1eea118285204166f604",
+        "table.TimeMaskedTable.time_remove_column": "ac775b1968a61183af601e5a5ebd1443c52d1e28bdb86520ac2fef19d4c38088",
+        "table.TimeMaskedTable.time_remove_row": "a649c857c45262e8ad834755d02de13041d4fc893ecc1a30d7297f4c36541290",
+        "table.TimeMaskedTable.time_remove_rows": "1b7c4ed8b6c2a92d93e9b2ce007c596b7c79317f1427056e26f65f9873a510ef",
+        "table.TimeMaskedTable.time_row_get": "045657db9d7ef5938a36c9885c2627d0a0a8806f51a24693858d11245a8641b0",
+        "table.TimeMaskedTable.time_sort": "c5563d6c2ba316f51667e1e02e88372d03a0d46ce635fcf28c99a19b8a47f364",
+        "table.TimeMaskedTable.time_table_slice_bool": "aa3e39b38985bb5ece815375cfeeac330868d465afe58025e987d4e6ee7b6f16",
+        "table.TimeMaskedTable.time_table_slice_int": "d371f5b0e33a94248be0e224cef150f53d07c64f2e16111a308b57b90ad93080",
+        "table.TimeMaskedTable.time_vstack": "398d840ff2c40a226540b887b02f1c56020693a589a7526505fd59479cc7256b",
+        "table.TimeTable.time_add_column": "b2c0ad0af05e6ff645357e4e21fbb3c31b647579f850c111c9494b69fecab587",
+        "table.TimeTable.time_add_row": "c3da92e8384276af12dd0b284b378baea2170c58c83b6d61874804cd715d6a5f",
+        "table.TimeTable.time_aggregate": "d87a6eadd3a4c94d95d33449d19c6c00474eeb1ada4b13633a28ec4e47eb57f6",
+        "table.TimeTable.time_aggregate_noreduceat": "6607870ad7344f17d4ccea4ca0a86ce464eeccd21fe98d970ff2c699f03c7e17",
+        "table.TimeTable.time_column_get": "f863a90229743a65604d98100febf2400d345032ae27cbd7f0450db596a88956",
+        "table.TimeTable.time_column_make_bool_mask": "6dfae7f99d875b90ce8bb45b2232e8c9448734810edacf42fcafd45e522d1ff0",
+        "table.TimeTable.time_column_set": "3b94497b8947080e3a7ad68c0d27b547fda203e3a82a6f9aef412c5b38553ce2",
+        "table.TimeTable.time_column_set_all": "42a14616589c8ebefc8d09c74be3c4b4081dc5025fc1dc68c45b04046129c898",
+        "table.TimeTable.time_column_set_row_subset": "f5286a927031d2e4c72969b4294ad326f835625ffff8cab42d5a0fb0fc66d5fc",
+        "table.TimeTable.time_column_set_row_subset_int": "7a46311bfa2b1cc228c79ef31d83d80d7211b6f720c0efc76645408ecb0cc88b",
+        "table.TimeTable.time_column_slice_bool": "606fa21ee4fae7dd015b43a97a9d3ba938acd3ba1c2b34262dd6bf6d51f33f54",
+        "table.TimeTable.time_column_slice_int": "1d1818da027642ddf329e814913cf0be71476438e4a90444aa085d5f92f6fbe2",
+        "table.TimeTable.time_copy_column": "f1684c651fd087a764de4d038893b4c9610489a81f8162fa217742e1a0921bff",
+        "table.TimeTable.time_copy_table": "9dfee0ffd435859c66c9d478df0b81fb8b7497a2a81897f10c557f39f695c328",
+        "table.TimeTable.time_group": "00833c0817e383400bfaa81fbed6cd67f6bf8e38ab39dad34bf18acb12eb6240",
+        "table.TimeTable.time_hstack": "0bb53b6f70a1c0e044582584e8e4e16e12b0a6d2de3a8031520e683f725548a0",
+        "table.TimeTable.time_init_from_np_array_copy": "4336289776445bd679565fab2aff50641d5bb4d8e1f21f2c8d37a26af69f59f8",
+        "table.TimeTable.time_init_from_np_array_no_copy": "b13e3a0b7c95d73514fa4353bd5e2fc362b0a2133200cfbca7578616000b7c88",
+        "table.TimeTable.time_item_get_colfirst": "0dd32efbfedd563aa310767ea5c4ed044e744ee7a4fbbd06b2d67f39b0646c2a",
+        "table.TimeTable.time_item_get_rowfirst": "09093997db41771a090f840eefd60e7d2577c519a976b9b88d799aa21d242a1b",
+        "table.TimeTable.time_iter_row": "5c031f2eb8938c243423fa5dabd4c66ced4063a63b583bd3f54270bc1f211fae",
+        "table.TimeTable.time_join_inner": "0c28429345963649f5df731dce5bbd22588b0f465f5112c20ac6e8fc367697c7",
+        "table.TimeTable.time_join_outer": "4c3bf2e6aaf0b0fa9873b63128ace026c611e846f2b72ceb1c4a7170dd790984",
+        "table.TimeTable.time_multi_column_get": "f078ef4c7d77390944802d30e7ef0381d6372c9dd211c3bb6163265eb8a8a0d9",
+        "table.TimeTable.time_read_rows": "b8c9879da2aac0e2ec1225c2f64e3b30c8ca22ad100b1eea118285204166f604",
+        "table.TimeTable.time_remove_column": "ac775b1968a61183af601e5a5ebd1443c52d1e28bdb86520ac2fef19d4c38088",
+        "table.TimeTable.time_remove_row": "a649c857c45262e8ad834755d02de13041d4fc893ecc1a30d7297f4c36541290",
+        "table.TimeTable.time_remove_rows": "1b7c4ed8b6c2a92d93e9b2ce007c596b7c79317f1427056e26f65f9873a510ef",
+        "table.TimeTable.time_row_get": "045657db9d7ef5938a36c9885c2627d0a0a8806f51a24693858d11245a8641b0",
+        "table.TimeTable.time_sort": "c5563d6c2ba316f51667e1e02e88372d03a0d46ce635fcf28c99a19b8a47f364",
+        "table.TimeTable.time_table_slice_bool": "aa3e39b38985bb5ece815375cfeeac330868d465afe58025e987d4e6ee7b6f16",
+        "table.TimeTable.time_table_slice_int": "d371f5b0e33a94248be0e224cef150f53d07c64f2e16111a308b57b90ad93080",
+        "table.TimeTable.time_vstack": "398d840ff2c40a226540b887b02f1c56020693a589a7526505fd59479cc7256b",
+        "units.mem_unit": "3a897822d63f1fc4ebc8b6f605d236642698676d05ca2a2f415a55cee964d2b8",
+        "units.time_compose_complex": "52ea1360a73607e97f50ceef1e3f3e3e848ad83b0b5362a19e4aa3fb3dceca04",
+        "units.time_compose_to_bases": "efa81d39b97d426d435dbe325a091874c13cd833db4885fd5e9e1ec35b231e35",
+        "units.time_quantity_array_conversion": "453720a338fd6209fec908aeca1d32fd167c1889d2cf194fb9cc93798ba4f918",
+        "units.time_quantity_creation": "57da636a893f32b10c058bef66b505734774f0254e5ec31d8102670ea3749ba1",
+        "units.time_quantity_creation_nocopy": "1b32a659e9bbcfc671c6339f519316d7f3586bf52e9adfff2524d9ed7c3efe92",
+        "units.time_quantity_init_array": "957f8f9cf4974efcf01e8818e1f02c7f19f8d19c00d1a379e4038026c1a12d44",
+        "units.time_quantity_init_scalar": "1f7132881f0240f773268d410a62cf9914eff40bd73ad1fd726217c1fb31dc3e",
+        "units.time_quantity_scalar_conversion": "0bc23b508de4b7bbd0fe029aa99741c170acb5975e60e82d95df92c5c4ae0a94",
+        "units.time_quantity_times_quantity": "33b450d74c52eb7359c2d056eff45d449f4158a1a0c433bd7a4ab035544b3344",
+        "units.time_quantity_times_unit": "18101a547d2f59990d20d563f3734a998e00684852452c7778f2425883693063",
+        "units.time_quantity_ufunc_sin": "6782df2b41ecd8117cefb86c1097ead62fbc89a35d3b19a64b90f3036ea24e15",
+        "units.time_quantity_view": "26ddf3059fc7b8c7c4410ec065066c9f1d29eee90d7da6033ef7fd194dc03c0e",
+        "units.time_simple_unit_parse": "18937913b36f94725f1c97a07a4783897c64f748e4ca3438d8a366ec405ff794",
+        "units.time_unit_compose": "c411870dd43a755992fbca4dc50586233a3eb250670f7ecd6e3861bdc3713d04",
+        "units.time_unit_parse": "197b3554fa4d3e39fa3aae6a308abe51ad542092cad5f0868867bc8fa021781f",
+        "units.time_unit_to": "6da60807eb0884de058d60357ad655c1d2db3bae2d58d75ddbc21222a2210610",
+        "units.time_very_simple_unit_parse": "21b39993087943b0334e5ed6ac90834c28d709457c414dde5c53f37387b41fdf",
+        "visualization.wcsaxes.time_basic_plot": "7ec5695860cae34277828c35c0b049fd50bffd8ae413a6e3db7d7f934f1843db",
+        "visualization.wcsaxes.time_basic_plot_with_grid": "27a3a0412eced0052cba10bab2b0ac3f13129808dfac0dc0ebaa1d469475412d",
+        "visualization.wcsaxes.time_basic_plot_with_grid_and_overlay": "af06e413366d2baecf8ed41973c1c393c8ac99f49857791375ebbbcd51e9785e"
+    },
     "commit_hash": "33ecda3abf82a073d832c5e81fa7c14e5030cba3",
     "date": 1406907747000,
     "ended_at": {
-        "io_ascii.main.AastexFloat.time_read": 1515554797000,
-        "io_ascii.main.AastexFloat.time_write": 1515554797000,
-        "io_ascii.main.AastexInt.time_read": 1515554797000,
-        "io_ascii.main.AastexInt.time_write": 1515554797000,
-        "io_ascii.main.AastexString.time_read": 1515554797000,
-        "io_ascii.main.AastexString.time_write": 1515554797000,
-        "io_ascii.main.BasicFloat.time_read": 1515554797000,
-        "io_ascii.main.BasicFloat.time_write": 1515554797000,
-        "io_ascii.main.BasicInt.time_read": 1515554797000,
-        "io_ascii.main.BasicInt.time_write": 1515554797000,
-        "io_ascii.main.BasicString.time_read": 1515554797000,
-        "io_ascii.main.BasicString.time_write": 1515554797000,
-        "io_ascii.main.CommentedHeaderFloat.time_read": 1515554797000,
-        "io_ascii.main.CommentedHeaderFloat.time_write": 1515554797000,
-        "io_ascii.main.CommentedHeaderInt.time_read": 1515554797000,
-        "io_ascii.main.CommentedHeaderInt.time_write": 1515554797000,
-        "io_ascii.main.CommentedHeaderString.time_read": 1515554797000,
-        "io_ascii.main.CommentedHeaderString.time_write": 1515554797000,
-        "io_ascii.main.CsvFloat.time_read": 1515554797000,
-        "io_ascii.main.CsvFloat.time_write": 1515554797000,
-        "io_ascii.main.CsvInt.time_read": 1515554797000,
-        "io_ascii.main.CsvInt.time_write": 1515554797000,
-        "io_ascii.main.CsvString.time_read": 1515554797000,
-        "io_ascii.main.CsvString.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthFloat.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthFloat.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthInt.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthInt.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderString.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderString.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthString.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthString.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineInt.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineInt.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineString.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineString.time_write": 1515554797000,
-        "io_ascii.main.IpacFloat.time_read": 1515554797000,
-        "io_ascii.main.IpacFloat.time_write": 1515554797000,
-        "io_ascii.main.IpacInt.time_read": 1515554797000,
-        "io_ascii.main.IpacInt.time_write": 1515554797000,
-        "io_ascii.main.IpacString.time_read": 1515554797000,
-        "io_ascii.main.IpacString.time_write": 1515554797000,
-        "io_ascii.main.LatexFloat.time_read": 1515554797000,
-        "io_ascii.main.LatexFloat.time_write": 1515554797000,
-        "io_ascii.main.LatexInt.time_read": 1515554797000,
-        "io_ascii.main.LatexInt.time_write": 1515554797000,
-        "io_ascii.main.LatexString.time_read": 1515554797000,
-        "io_ascii.main.LatexString.time_write": 1515554797000,
-        "io_ascii.main.NoHeaderFloat.time_read": 1515554797000,
-        "io_ascii.main.NoHeaderFloat.time_write": 1515554797000,
-        "io_ascii.main.NoHeaderInt.time_read": 1515554797000,
-        "io_ascii.main.NoHeaderInt.time_write": 1515554797000,
-        "io_ascii.main.NoHeaderString.time_read": 1515554797000,
-        "io_ascii.main.NoHeaderString.time_write": 1515554797000,
-        "io_ascii.main.RdbFloat.time_read": 1515554797000,
-        "io_ascii.main.RdbFloat.time_write": 1515554797000,
-        "io_ascii.main.RdbInt.time_read": 1515554797000,
-        "io_ascii.main.RdbInt.time_write": 1515554797000,
-        "io_ascii.main.RdbString.time_read": 1515554797000,
-        "io_ascii.main.RdbString.time_write": 1515554797000,
-        "io_ascii.main.SextractorFloat.time_read": 1515554797000,
-        "io_ascii.main.SextractorInt.time_read": 1515554797000,
-        "io_ascii.main.SextractorString.time_read": 1515554797000,
-        "io_ascii.main.TabFloat.time_read": 1515554797000,
-        "io_ascii.main.TabFloat.time_write": 1515554797000,
-        "io_ascii.main.TabInt.time_read": 1515554797000,
-        "io_ascii.main.TabInt.time_write": 1515554797000,
-        "io_ascii.main.TabString.time_read": 1515554797000,
-        "io_ascii.main.TabString.time_write": 1515554797000,
-        "io_ascii.core.CoreSuite.time_base_splitter": 1515554797000,
-        "io_ascii.core.CoreSuite.time_continuation_inputter": 1515554797000,
-        "io_ascii.core.CoreSuite.time_convert_vals": 1515554797000,
-        "io_ascii.core.CoreSuite.time_default_splitter_call": 1515554797000,
-        "io_ascii.core.CoreSuite.time_default_splitter_join": 1515554797000,
-        "io_ascii.core.CoreSuite.time_whitespace_splitter": 1515554797000,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_header": 1515554797000,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": 1515554797000,
-        "io_ascii.ipac.IPACSuite.time_data_str_vals": 1515554797000,
-        "io_ascii.ipac.IPACSuite.time_get_cols": 1515554797000,
-        "io_ascii.ipac.IPACSuite.time_header_str_vals": 1515554797000,
-        "io_ascii.ipac.IPACSuite.time_splitter": 1515554797000,
-        "io_ascii.rdb.RDBSuite.time_get_cols": 1515554797000,
-        "io_ascii.sextractor.SExtractorSuite.time_header": 1515554797000,
-        "io_ascii.table.TableSuite.mem_table_init": 1515554797000,
-        "io_ascii.table.TableSuite.mem_table_outputter": 1515554797000,
-        "io_ascii.table.TableSuite.time_str_vals_float": 1515554797000,
-        "io_ascii.table.TableSuite.time_str_vals_int": 1515554797000,
-        "io_ascii.table.TableSuite.time_str_vals_str": 1515554797000,
-        "io_ascii.table.TableSuite.time_table_init_from_list": 1515554797000,
-        "io_ascii.table.TableSuite.time_table_outputter": 1515554797000,
-        "coordinates.FrameBenchmarks.time_init_array": 1515554797000,
-        "coordinates.FrameBenchmarks.time_init_nodata": 1515554797000,
-        "coordinates.FrameBenchmarks.time_init_scalar": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_init_array": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_init_scalar": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_iter_array": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_repr_array": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_repr_scalar": 1515554797000,
-        "coordinates.time_latitude": 1515554797000,
-        "cosmology.LambdaCDMBenchmarks.time_age": 1515554797000,
-        "cosmology.LambdaCDMBenchmarks.time_lumdist": 1515554797000,
-        "io_fits.FITSBinTableHDU.time_from_columns_bytes": 1515554797000,
-        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": 1515554797000,
-        "io_fits.FITSHighLevelTableBenchmarks.time_write": 1515554797000,
-        "units.time_quantity_array_conversion": 1515554797000,
-        "units.time_quantity_creation": 1515554797000,
-        "units.time_quantity_creation_nocopy": 1515554797000,
-        "units.time_quantity_init_array": 1515554797000,
-        "units.time_quantity_init_scalar": 1515554797000,
-        "units.time_quantity_scalar_conversion": 1515554797000,
-        "units.time_quantity_times_quantity": 1515554797000,
-        "units.time_quantity_times_unit": 1515554797000,
-        "units.time_quantity_ufunc_sin": 1515554797000,
-        "units.time_quantity_view": 1515554797000,
-        "table.TimeMaskedTable.time_add_column": 1515554797000,
-        "table.TimeMaskedTable.time_add_row": 1515554797000,
-        "table.TimeMaskedTable.time_aggregate": 1515554797000,
-        "table.TimeMaskedTable.time_aggregate_noreduceat": 1515554797000,
-        "table.TimeMaskedTable.time_column_get": 1515554797000,
-        "table.TimeMaskedTable.time_column_make_bool_mask": 1515554797000,
-        "table.TimeMaskedTable.time_column_set": 1515554797000,
-        "table.TimeMaskedTable.time_column_set_all": 1515554797000,
-        "table.TimeMaskedTable.time_column_set_row_subset": 1515554797000,
-        "table.TimeMaskedTable.time_column_set_row_subset_int": 1515554797000,
-        "table.TimeMaskedTable.time_column_slice_bool": 1515554797000,
-        "table.TimeMaskedTable.time_column_slice_int": 1515554797000,
-        "table.TimeMaskedTable.time_copy_column": 1515554797000,
-        "table.TimeMaskedTable.time_copy_table": 1515554797000,
-        "table.TimeMaskedTable.time_group": 1515554797000,
-        "table.TimeMaskedTable.time_hstack": 1515554797000,
-        "table.TimeMaskedTable.time_init_from_np_array_copy": 1515554797000,
-        "table.TimeMaskedTable.time_init_from_np_array_no_copy": 1515554797000,
-        "table.TimeMaskedTable.time_item_get_colfirst": 1515554797000,
-        "table.TimeMaskedTable.time_item_get_rowfirst": 1515554797000,
-        "table.TimeMaskedTable.time_iter_row": 1515554797000,
-        "table.TimeMaskedTable.time_join_inner": 1515554797000,
-        "table.TimeMaskedTable.time_join_outer": 1515554797000,
-        "table.TimeMaskedTable.time_mask_column": 1515554797000,
-        "table.TimeMaskedTable.time_multi_column_get": 1515554797000,
-        "table.TimeMaskedTable.time_read_rows": 1515554797000,
-        "table.TimeMaskedTable.time_remove_column": 1515554797000,
-        "table.TimeMaskedTable.time_remove_row": 1515554797000,
-        "table.TimeMaskedTable.time_remove_rows": 1515554797000,
-        "table.TimeMaskedTable.time_row_get": 1515554797000,
-        "table.TimeMaskedTable.time_sort": 1515554797000,
-        "table.TimeMaskedTable.time_table_slice_bool": 1515554797000,
-        "table.TimeMaskedTable.time_table_slice_int": 1515554797000,
-        "table.TimeMaskedTable.time_vstack": 1515554797000,
-        "table.TimeTable.time_add_column": 1515554797000,
-        "table.TimeTable.time_add_row": 1515554797000,
-        "table.TimeTable.time_aggregate": 1515554797000,
-        "table.TimeTable.time_aggregate_noreduceat": 1515554797000,
-        "table.TimeTable.time_column_get": 1515554797000,
-        "table.TimeTable.time_column_make_bool_mask": 1515554797000,
-        "table.TimeTable.time_column_set": 1515554797000,
-        "table.TimeTable.time_column_set_all": 1515554797000,
-        "table.TimeTable.time_column_set_row_subset": 1515554797000,
-        "table.TimeTable.time_column_set_row_subset_int": 1515554797000,
-        "table.TimeTable.time_column_slice_bool": 1515554797000,
-        "table.TimeTable.time_column_slice_int": 1515554797000,
-        "table.TimeTable.time_copy_column": 1515554797000,
-        "table.TimeTable.time_copy_table": 1515554797000,
-        "table.TimeTable.time_group": 1515554797000,
-        "table.TimeTable.time_hstack": 1515554797000,
-        "table.TimeTable.time_init_from_np_array_copy": 1515554797000,
-        "table.TimeTable.time_init_from_np_array_no_copy": 1515554797000,
-        "table.TimeTable.time_item_get_colfirst": 1515554797000,
-        "table.TimeTable.time_item_get_rowfirst": 1515554797000,
-        "table.TimeTable.time_iter_row": 1515554797000,
-        "table.TimeTable.time_join_inner": 1515554797000,
-        "table.TimeTable.time_join_outer": 1515554797000,
-        "table.TimeTable.time_multi_column_get": 1515554797000,
-        "table.TimeTable.time_read_rows": 1515554797000,
-        "table.TimeTable.time_remove_column": 1515554797000,
-        "table.TimeTable.time_remove_row": 1515554797000,
-        "table.TimeTable.time_remove_rows": 1515554797000,
-        "table.TimeTable.time_row_get": 1515554797000,
-        "table.TimeTable.time_sort": 1515554797000,
-        "table.TimeTable.time_table_slice_bool": 1515554797000,
-        "table.TimeTable.time_table_slice_int": 1515554797000,
-        "table.TimeTable.time_vstack": 1515554797000,
-        "units.mem_unit": 1515554797000,
-        "units.time_compose_to_bases": 1515554797000,
-        "units.time_simple_unit_parse": 1515554797000,
-        "units.time_unit_compose": 1515554797000,
-        "units.time_unit_parse": 1515554797000,
-        "units.time_unit_to": 1515554797000,
-        "units.time_very_simple_unit_parse": 1515554797000
+        "coordinates.FrameBenchmarks.time_init_array": 1518030249000,
+        "coordinates.FrameBenchmarks.time_init_nodata": 1518030252000,
+        "coordinates.FrameBenchmarks.time_init_scalar": 1518030254000,
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": 1518030258000,
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": 1518030261000,
+        "coordinates.SkyCoordBenchmarks.time_init_array": 1518030264000,
+        "coordinates.SkyCoordBenchmarks.time_init_scalar": 1518030267000,
+        "coordinates.SkyCoordBenchmarks.time_iter_array": 1518030275000,
+        "coordinates.SkyCoordBenchmarks.time_repr_array": 1518030278000,
+        "coordinates.SkyCoordBenchmarks.time_repr_scalar": 1518030281000,
+        "coordinates.time_angle_array_repr": 1518030284000,
+        "coordinates.time_angle_array_repr_latex": 1518030287000,
+        "coordinates.time_angle_array_str": 1518030289000,
+        "coordinates.time_latitude": 1518030292000,
+        "cosmology.LambdaCDMBenchmarks.time_age": 1518030315000,
+        "cosmology.LambdaCDMBenchmarks.time_lumdist": 1518030330000,
+        "io_ascii.core.CoreSuite.time_base_splitter": 1518030333000,
+        "io_ascii.core.CoreSuite.time_continuation_inputter": 1518030336000,
+        "io_ascii.core.CoreSuite.time_convert_vals": 1518030339000,
+        "io_ascii.core.CoreSuite.time_default_splitter_call": 1518030342000,
+        "io_ascii.core.CoreSuite.time_default_splitter_join": 1518030346000,
+        "io_ascii.core.CoreSuite.time_whitespace_splitter": 1518030349000,
+        "io_ascii.fixedwidth.FixedWidthSuite.time_header": 1518030352000,
+        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": 1518030355000,
+        "io_ascii.ipac.IPACSuite.time_data_str_vals": 1518030359000,
+        "io_ascii.ipac.IPACSuite.time_get_cols": 1518030363000,
+        "io_ascii.ipac.IPACSuite.time_header_str_vals": 1518030367000,
+        "io_ascii.ipac.IPACSuite.time_splitter": 1518030371000,
+        "io_ascii.main.AastexFloat.time_read": 1518030375000,
+        "io_ascii.main.AastexFloat.time_write": 1518030381000,
+        "io_ascii.main.AastexInt.time_read": 1518030385000,
+        "io_ascii.main.AastexInt.time_write": 1518030389000,
+        "io_ascii.main.AastexString.time_read": 1518030394000,
+        "io_ascii.main.AastexString.time_write": 1518030399000,
+        "io_ascii.main.BasicFloat.time_read": 1518030403000,
+        "io_ascii.main.BasicFloat.time_write": 1518030407000,
+        "io_ascii.main.BasicInt.time_read": 1518030411000,
+        "io_ascii.main.BasicInt.time_write": 1518030415000,
+        "io_ascii.main.BasicString.time_read": 1518030419000,
+        "io_ascii.main.BasicString.time_write": 1518030424000,
+        "io_ascii.main.CommentedHeaderFloat.time_read": 1518030429000,
+        "io_ascii.main.CommentedHeaderFloat.time_write": 1518030432000,
+        "io_ascii.main.CommentedHeaderInt.time_read": 1518030436000,
+        "io_ascii.main.CommentedHeaderInt.time_write": 1518030440000,
+        "io_ascii.main.CommentedHeaderString.time_read": 1518030444000,
+        "io_ascii.main.CommentedHeaderString.time_write": 1518030449000,
+        "io_ascii.main.CsvFloat.time_read": 1518030454000,
+        "io_ascii.main.CsvFloat.time_write": 1518030458000,
+        "io_ascii.main.CsvInt.time_read": 1518030461000,
+        "io_ascii.main.CsvInt.time_write": 1518030465000,
+        "io_ascii.main.CsvString.time_read": 1518030470000,
+        "io_ascii.main.CsvString.time_write": 1518030475000,
+        "io_ascii.main.FixedWidthFloat.time_read": 1518030479000,
+        "io_ascii.main.FixedWidthFloat.time_write": 1518030483000,
+        "io_ascii.main.FixedWidthInt.time_read": 1518030487000,
+        "io_ascii.main.FixedWidthInt.time_write": 1518030491000,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": 1518030496000,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": 1518030499000,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_read": 1518030504000,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_write": 1518030508000,
+        "io_ascii.main.FixedWidthNoHeaderString.time_read": 1518030512000,
+        "io_ascii.main.FixedWidthNoHeaderString.time_write": 1518030518000,
+        "io_ascii.main.FixedWidthString.time_read": 1518030522000,
+        "io_ascii.main.FixedWidthString.time_write": 1518030527000,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_read": 1518030532000,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_write": 1518030536000,
+        "io_ascii.main.FixedWidthTwoLineInt.time_read": 1518030540000,
+        "io_ascii.main.FixedWidthTwoLineInt.time_write": 1518030544000,
+        "io_ascii.main.FixedWidthTwoLineString.time_read": 1518030548000,
+        "io_ascii.main.FixedWidthTwoLineString.time_write": 1518030553000,
+        "io_ascii.main.IpacFloat.time_read": 1518030558000,
+        "io_ascii.main.IpacFloat.time_write": 1518030561000,
+        "io_ascii.main.IpacInt.time_read": 1518030565000,
+        "io_ascii.main.IpacInt.time_write": 1518030569000,
+        "io_ascii.main.IpacString.time_read": 1518030573000,
+        "io_ascii.main.IpacString.time_write": 1518030578000,
+        "io_ascii.main.LatexFloat.time_read": 1518030583000,
+        "io_ascii.main.LatexFloat.time_write": 1518030587000,
+        "io_ascii.main.LatexInt.time_read": 1518030591000,
+        "io_ascii.main.LatexInt.time_write": 1518030595000,
+        "io_ascii.main.LatexString.time_read": 1518030599000,
+        "io_ascii.main.LatexString.time_write": 1518030604000,
+        "io_ascii.main.NoHeaderFloat.time_read": 1518030609000,
+        "io_ascii.main.NoHeaderFloat.time_write": 1518030613000,
+        "io_ascii.main.NoHeaderInt.time_read": 1518030617000,
+        "io_ascii.main.NoHeaderInt.time_write": 1518030620000,
+        "io_ascii.main.NoHeaderString.time_read": 1518030625000,
+        "io_ascii.main.NoHeaderString.time_write": 1518030630000,
+        "io_ascii.main.RdbFloat.time_read": 1518030634000,
+        "io_ascii.main.RdbFloat.time_write": 1518030637000,
+        "io_ascii.main.RdbInt.time_read": 1518030642000,
+        "io_ascii.main.RdbInt.time_write": 1518030645000,
+        "io_ascii.main.RdbString.time_read": 1518030649000,
+        "io_ascii.main.RdbString.time_write": 1518030654000,
+        "io_ascii.main.SextractorFloat.time_read": 1518030658000,
+        "io_ascii.main.SextractorInt.time_read": 1518030661000,
+        "io_ascii.main.SextractorString.time_read": 1518030665000,
+        "io_ascii.main.TabFloat.time_read": 1518030668000,
+        "io_ascii.main.TabFloat.time_write": 1518030672000,
+        "io_ascii.main.TabInt.time_read": 1518030676000,
+        "io_ascii.main.TabInt.time_write": 1518030680000,
+        "io_ascii.main.TabString.time_read": 1518030684000,
+        "io_ascii.main.TabString.time_write": 1518030689000,
+        "io_ascii.rdb.RDBSuite.time_get_cols": 1518030692000,
+        "io_ascii.sextractor.SExtractorSuite.time_header": 1518030700000,
+        "io_ascii.table.TableSuite.mem_table_init": 1518030702000,
+        "io_ascii.table.TableSuite.mem_table_outputter": 1518030703000,
+        "io_ascii.table.TableSuite.time_str_vals_float": 1518030706000,
+        "io_ascii.table.TableSuite.time_str_vals_int": 1518030710000,
+        "io_ascii.table.TableSuite.time_str_vals_str": 1518030713000,
+        "io_ascii.table.TableSuite.time_table_init_from_list": 1518030716000,
+        "io_ascii.table.TableSuite.time_table_outputter": 1518030719000,
+        "io_fits.FITSBinTableHDU.time_from_columns_bytes": 1518030723000,
+        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": 1518030732000,
+        "io_fits.FITSHighLevelTableBenchmarks.time_write": 1518030740000,
+        "table.TimeMaskedTable.time_add_column": 1518030742000,
+        "table.TimeMaskedTable.time_add_row": 1518030743000,
+        "table.TimeMaskedTable.time_aggregate": 1518030747000,
+        "table.TimeMaskedTable.time_aggregate_noreduceat": 1518030750000,
+        "table.TimeMaskedTable.time_column_get": 1518030753000,
+        "table.TimeMaskedTable.time_column_make_bool_mask": 1518030756000,
+        "table.TimeMaskedTable.time_column_set": 1518030760000,
+        "table.TimeMaskedTable.time_column_set_all": 1518030763000,
+        "table.TimeMaskedTable.time_column_set_row_subset": 1518030766000,
+        "table.TimeMaskedTable.time_column_set_row_subset_int": 1518030769000,
+        "table.TimeMaskedTable.time_column_slice_bool": 1518030772000,
+        "table.TimeMaskedTable.time_column_slice_int": 1518030776000,
+        "table.TimeMaskedTable.time_copy_column": 1518030779000,
+        "table.TimeMaskedTable.time_copy_table": 1518030782000,
+        "table.TimeMaskedTable.time_group": 1518030785000,
+        "table.TimeMaskedTable.time_hstack": 1518030788000,
+        "table.TimeMaskedTable.time_init_from_np_array_copy": 1518030792000,
+        "table.TimeMaskedTable.time_init_from_np_array_no_copy": 1518030793000,
+        "table.TimeMaskedTable.time_item_get_colfirst": 1518030796000,
+        "table.TimeMaskedTable.time_item_get_rowfirst": 1518030800000,
+        "table.TimeMaskedTable.time_iter_row": 1518030803000,
+        "table.TimeMaskedTable.time_join_inner": 1518030805000,
+        "table.TimeMaskedTable.time_join_outer": 1518030806000,
+        "table.TimeMaskedTable.time_mask_column": 1518030809000,
+        "table.TimeMaskedTable.time_multi_column_get": 1518030813000,
+        "table.TimeMaskedTable.time_read_rows": 1518030816000,
+        "table.TimeMaskedTable.time_remove_column": 1518030818000,
+        "table.TimeMaskedTable.time_remove_row": 1518030819000,
+        "table.TimeMaskedTable.time_remove_rows": 1518030821000,
+        "table.TimeMaskedTable.time_row_get": 1518030825000,
+        "table.TimeMaskedTable.time_sort": 1518030828000,
+        "table.TimeMaskedTable.time_table_slice_bool": 1518030831000,
+        "table.TimeMaskedTable.time_table_slice_int": 1518030834000,
+        "table.TimeMaskedTable.time_vstack": 1518030837000,
+        "table.TimeTable.time_add_column": 1518030839000,
+        "table.TimeTable.time_add_row": 1518030841000,
+        "table.TimeTable.time_aggregate": 1518030844000,
+        "table.TimeTable.time_aggregate_noreduceat": 1518030847000,
+        "table.TimeTable.time_column_get": 1518030850000,
+        "table.TimeTable.time_column_make_bool_mask": 1518030853000,
+        "table.TimeTable.time_column_set": 1518030856000,
+        "table.TimeTable.time_column_set_all": 1518030859000,
+        "table.TimeTable.time_column_set_row_subset": 1518030862000,
+        "table.TimeTable.time_column_set_row_subset_int": 1518030865000,
+        "table.TimeTable.time_column_slice_bool": 1518030868000,
+        "table.TimeTable.time_column_slice_int": 1518030872000,
+        "table.TimeTable.time_copy_column": 1518030874000,
+        "table.TimeTable.time_copy_table": 1518030877000,
+        "table.TimeTable.time_group": 1518030881000,
+        "table.TimeTable.time_hstack": 1518030884000,
+        "table.TimeTable.time_init_from_np_array_copy": 1518030887000,
+        "table.TimeTable.time_init_from_np_array_no_copy": 1518030888000,
+        "table.TimeTable.time_item_get_colfirst": 1518030891000,
+        "table.TimeTable.time_item_get_rowfirst": 1518030894000,
+        "table.TimeTable.time_iter_row": 1518030898000,
+        "table.TimeTable.time_join_inner": 1518030899000,
+        "table.TimeTable.time_join_outer": 1518030901000,
+        "table.TimeTable.time_multi_column_get": 1518030904000,
+        "table.TimeTable.time_read_rows": 1518030907000,
+        "table.TimeTable.time_remove_column": 1518030908000,
+        "table.TimeTable.time_remove_row": 1518030910000,
+        "table.TimeTable.time_remove_rows": 1518030912000,
+        "table.TimeTable.time_row_get": 1518030915000,
+        "table.TimeTable.time_sort": 1518030918000,
+        "table.TimeTable.time_table_slice_bool": 1518030921000,
+        "table.TimeTable.time_table_slice_int": 1518030924000,
+        "table.TimeTable.time_vstack": 1518030927000,
+        "units.mem_unit": 1518030929000,
+        "units.time_compose_complex": 1518030934000,
+        "units.time_compose_to_bases": 1518030937000,
+        "units.time_quantity_array_conversion": 1518030939000,
+        "units.time_quantity_creation": 1518030942000,
+        "units.time_quantity_creation_nocopy": 1518030944000,
+        "units.time_quantity_init_array": 1518030947000,
+        "units.time_quantity_init_scalar": 1518030949000,
+        "units.time_quantity_scalar_conversion": 1518030952000,
+        "units.time_quantity_times_quantity": 1518030955000,
+        "units.time_quantity_times_unit": 1518030957000,
+        "units.time_quantity_ufunc_sin": 1518030960000,
+        "units.time_quantity_view": 1518030962000,
+        "units.time_simple_unit_parse": 1518030965000,
+        "units.time_unit_compose": 1518030967000,
+        "units.time_unit_parse": 1518030970000,
+        "units.time_unit_to": 1518030972000,
+        "units.time_very_simple_unit_parse": 1518030974000,
+        "visualization.wcsaxes.time_basic_plot": 1518030976000,
+        "visualization.wcsaxes.time_basic_plot_with_grid": 1518030977000,
+        "visualization.wcsaxes.time_basic_plot_with_grid_and_overlay": 1518030978000
     },
     "env_name": "conda-py3.6-Cython-jinja2-matplotlib2.1-nomkl-numpy1.11-scipy1.0",
     "params": {
@@ -206,12 +418,12 @@
         "cpu": "Intel(R) Celeron(R) CPU N3450 @ 1.10GHz",
         "jinja2": "",
         "machine": "oneesk",
+        "matplotlib": "2.1",
         "nomkl": "",
         "numpy": "1.11",
         "os": "Linux 4.10.0-40-generic",
         "python": "3.6",
         "ram": "3885480",
-        "matplotlib": "2.1",
         "scipy": "1.0"
     },
     "profiles": {},
@@ -219,406 +431,2597 @@
     "requirements": {
         "Cython": "",
         "jinja2": "",
+        "matplotlib": "2.1",
         "nomkl": "",
         "numpy": "1.11",
-        "matplotlib": "2.1",
         "scipy": "1.0"
     },
     "results": {
-        "io_ascii.main.AastexFloat.time_read": null,
-        "io_ascii.main.AastexFloat.time_write": null,
-        "io_ascii.main.AastexInt.time_read": null,
-        "io_ascii.main.AastexInt.time_write": null,
-        "io_ascii.main.AastexString.time_read": null,
-        "io_ascii.main.AastexString.time_write": null,
-        "io_ascii.main.BasicFloat.time_read": null,
-        "io_ascii.main.BasicFloat.time_write": null,
-        "io_ascii.main.BasicInt.time_read": null,
-        "io_ascii.main.BasicInt.time_write": null,
-        "io_ascii.main.BasicString.time_read": null,
-        "io_ascii.main.BasicString.time_write": null,
-        "io_ascii.main.CommentedHeaderFloat.time_read": null,
-        "io_ascii.main.CommentedHeaderFloat.time_write": null,
-        "io_ascii.main.CommentedHeaderInt.time_read": null,
-        "io_ascii.main.CommentedHeaderInt.time_write": null,
-        "io_ascii.main.CommentedHeaderString.time_read": null,
-        "io_ascii.main.CommentedHeaderString.time_write": null,
-        "io_ascii.main.CsvFloat.time_read": null,
-        "io_ascii.main.CsvFloat.time_write": null,
-        "io_ascii.main.CsvInt.time_read": null,
-        "io_ascii.main.CsvInt.time_write": null,
-        "io_ascii.main.CsvString.time_read": null,
-        "io_ascii.main.CsvString.time_write": null,
-        "io_ascii.main.FixedWidthFloat.time_read": null,
-        "io_ascii.main.FixedWidthFloat.time_write": null,
-        "io_ascii.main.FixedWidthInt.time_read": null,
-        "io_ascii.main.FixedWidthInt.time_write": null,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": null,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": null,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_read": null,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_write": null,
-        "io_ascii.main.FixedWidthNoHeaderString.time_read": null,
-        "io_ascii.main.FixedWidthNoHeaderString.time_write": null,
-        "io_ascii.main.FixedWidthString.time_read": null,
-        "io_ascii.main.FixedWidthString.time_write": null,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_read": null,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_write": null,
-        "io_ascii.main.FixedWidthTwoLineInt.time_read": null,
-        "io_ascii.main.FixedWidthTwoLineInt.time_write": null,
-        "io_ascii.main.FixedWidthTwoLineString.time_read": null,
-        "io_ascii.main.FixedWidthTwoLineString.time_write": null,
-        "io_ascii.main.IpacFloat.time_read": null,
-        "io_ascii.main.IpacFloat.time_write": null,
-        "io_ascii.main.IpacInt.time_read": null,
-        "io_ascii.main.IpacInt.time_write": null,
-        "io_ascii.main.IpacString.time_read": null,
-        "io_ascii.main.IpacString.time_write": null,
-        "io_ascii.main.LatexFloat.time_read": null,
-        "io_ascii.main.LatexFloat.time_write": null,
-        "io_ascii.main.LatexInt.time_read": null,
-        "io_ascii.main.LatexInt.time_write": null,
-        "io_ascii.main.LatexString.time_read": null,
-        "io_ascii.main.LatexString.time_write": null,
-        "io_ascii.main.NoHeaderFloat.time_read": null,
-        "io_ascii.main.NoHeaderFloat.time_write": null,
-        "io_ascii.main.NoHeaderInt.time_read": null,
-        "io_ascii.main.NoHeaderInt.time_write": null,
-        "io_ascii.main.NoHeaderString.time_read": null,
-        "io_ascii.main.NoHeaderString.time_write": null,
-        "io_ascii.main.RdbFloat.time_read": null,
-        "io_ascii.main.RdbFloat.time_write": null,
-        "io_ascii.main.RdbInt.time_read": null,
-        "io_ascii.main.RdbInt.time_write": null,
-        "io_ascii.main.RdbString.time_read": null,
-        "io_ascii.main.RdbString.time_write": null,
-        "io_ascii.main.SextractorFloat.time_read": null,
-        "io_ascii.main.SextractorInt.time_read": null,
-        "io_ascii.main.SextractorString.time_read": null,
-        "io_ascii.main.TabFloat.time_read": null,
-        "io_ascii.main.TabFloat.time_write": null,
-        "io_ascii.main.TabInt.time_read": null,
-        "io_ascii.main.TabInt.time_write": null,
-        "io_ascii.main.TabString.time_read": null,
-        "io_ascii.main.TabString.time_write": null,
-        "io_ascii.core.CoreSuite.time_base_splitter": null,
-        "io_ascii.core.CoreSuite.time_continuation_inputter": null,
-        "io_ascii.core.CoreSuite.time_convert_vals": null,
-        "io_ascii.core.CoreSuite.time_default_splitter_call": null,
-        "io_ascii.core.CoreSuite.time_default_splitter_join": null,
-        "io_ascii.core.CoreSuite.time_whitespace_splitter": null,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_header": null,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": null,
-        "io_ascii.ipac.IPACSuite.time_data_str_vals": null,
-        "io_ascii.ipac.IPACSuite.time_get_cols": null,
-        "io_ascii.ipac.IPACSuite.time_header_str_vals": null,
-        "io_ascii.ipac.IPACSuite.time_splitter": null,
-        "io_ascii.rdb.RDBSuite.time_get_cols": null,
-        "io_ascii.sextractor.SExtractorSuite.time_header": null,
-        "io_ascii.table.TableSuite.mem_table_init": null,
-        "io_ascii.table.TableSuite.mem_table_outputter": null,
-        "io_ascii.table.TableSuite.time_str_vals_float": null,
-        "io_ascii.table.TableSuite.time_str_vals_int": null,
-        "io_ascii.table.TableSuite.time_str_vals_str": null,
-        "io_ascii.table.TableSuite.time_table_init_from_list": null,
-        "io_ascii.table.TableSuite.time_table_outputter": null,
-        "coordinates.FrameBenchmarks.time_init_array": null,
-        "coordinates.FrameBenchmarks.time_init_nodata": null,
-        "coordinates.FrameBenchmarks.time_init_scalar": null,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": null,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": null,
-        "coordinates.SkyCoordBenchmarks.time_init_array": null,
-        "coordinates.SkyCoordBenchmarks.time_init_scalar": null,
-        "coordinates.SkyCoordBenchmarks.time_iter_array": null,
-        "coordinates.SkyCoordBenchmarks.time_repr_array": null,
-        "coordinates.SkyCoordBenchmarks.time_repr_scalar": null,
-        "coordinates.time_latitude": null,
-        "cosmology.LambdaCDMBenchmarks.time_age": null,
-        "cosmology.LambdaCDMBenchmarks.time_lumdist": null,
-        "io_fits.FITSBinTableHDU.time_from_columns_bytes": null,
-        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": null,
-        "io_fits.FITSHighLevelTableBenchmarks.time_write": null,
-        "units.time_quantity_array_conversion": null,
-        "units.time_quantity_creation": null,
-        "units.time_quantity_creation_nocopy": null,
-        "units.time_quantity_init_array": null,
-        "units.time_quantity_init_scalar": null,
-        "units.time_quantity_scalar_conversion": null,
-        "units.time_quantity_times_quantity": null,
-        "units.time_quantity_times_unit": null,
-        "units.time_quantity_ufunc_sin": null,
-        "units.time_quantity_view": null,
-        "table.TimeMaskedTable.time_add_column": null,
-        "table.TimeMaskedTable.time_add_row": null,
-        "table.TimeMaskedTable.time_aggregate": null,
-        "table.TimeMaskedTable.time_aggregate_noreduceat": null,
-        "table.TimeMaskedTable.time_column_get": null,
-        "table.TimeMaskedTable.time_column_make_bool_mask": null,
-        "table.TimeMaskedTable.time_column_set": null,
-        "table.TimeMaskedTable.time_column_set_all": null,
-        "table.TimeMaskedTable.time_column_set_row_subset": null,
-        "table.TimeMaskedTable.time_column_set_row_subset_int": null,
-        "table.TimeMaskedTable.time_column_slice_bool": null,
-        "table.TimeMaskedTable.time_column_slice_int": null,
-        "table.TimeMaskedTable.time_copy_column": null,
-        "table.TimeMaskedTable.time_copy_table": null,
-        "table.TimeMaskedTable.time_group": null,
-        "table.TimeMaskedTable.time_hstack": null,
-        "table.TimeMaskedTable.time_init_from_np_array_copy": null,
+        "coordinates.FrameBenchmarks.time_init_array": {
+            "result": [
+                0.001705364108333335
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0017027858833333317,
+                        0.0017264913416666678
+                    ],
+                    "max": 0.0017421181166666652,
+                    "mean": 0.0017092915566666671,
+                    "min": 0.0017023465666666645,
+                    "n": 10,
+                    "q_25": 0.0017047743250000007,
+                    "q_75": 0.0017070186833333333,
+                    "std": 1.116268629603173e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.FrameBenchmarks.time_init_nodata": {
+            "result": [
+                0.0006057967817679552
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.000595674309392265,
+                        0.0006197102320441993
+                    ],
+                    "max": 0.000621708248618785,
+                    "mean": 0.0006055828966850829,
+                    "min": 0.0005952581988950287,
+                    "n": 10,
+                    "q_25": 0.0005968998107734812,
+                    "q_75": 0.0006108167058011056,
+                    "std": 8.939212772276591e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.FrameBenchmarks.time_init_scalar": {
+            "result": [
+                0.0014365023200000001
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0014339389799999996,
+                        0.00146993968
+                    ],
+                    "max": 0.0014999465733333335,
+                    "mean": 0.001442776576,
+                    "min": 0.0014332936799999986,
+                    "n": 10,
+                    "q_25": 0.0014352213166666662,
+                    "q_75": 0.0014380190666666692,
+                    "std": 1.9141841175966642e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": 1.1538237159999998,
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": {
+            "result": [
+                0.02645514412499997
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.026411653249999945,
+                        0.026488895250000005
+                    ],
+                    "max": 0.026519400500000012,
+                    "mean": 0.02645272331249998,
+                    "min": 0.026405446999999915,
+                    "n": 8,
+                    "q_25": 0.026443517,
+                    "q_75": 0.026458346312500006,
+                    "std": 3.158624358968423e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.SkyCoordBenchmarks.time_init_array": {
+            "result": [
+                0.03881913725000008
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.035371520249999955,
+                        0.04253318924999999
+                    ],
+                    "max": 0.042579925500000004,
+                    "mean": 0.03888017705000002,
+                    "min": 0.035360953500000014,
+                    "n": 10,
+                    "q_25": 0.03540618425000008,
+                    "q_75": 0.04226307600000001,
+                    "std": 0.003456895989259705,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.SkyCoordBenchmarks.time_init_scalar": {
+            "result": [
+                0.003513114366666666
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0035040067000000064,
+                        0.003577927699999998
+                    ],
+                    "max": 0.0036372172666666665,
+                    "mean": 0.003526929487500001,
+                    "min": 0.00349904100000001,
+                    "n": 8,
+                    "q_25": 0.0035110275750000015,
+                    "q_75": 0.003514878833333335,
+                    "std": 4.201582793211393e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.SkyCoordBenchmarks.time_iter_array": 7.266330529000001,
+        "coordinates.SkyCoordBenchmarks.time_repr_array": {
+            "result": [
+                0.023214345599999974
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.02286705050000002,
+                        0.023648055700000017
+                    ],
+                    "max": 0.02376917780000003,
+                    "mean": 0.02323561125,
+                    "min": 0.022842376000000008,
+                    "n": 8,
+                    "q_25": 0.02292089024999997,
+                    "q_75": 0.02350326420000002,
+                    "std": 0.0003438865753574246,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.SkyCoordBenchmarks.time_repr_scalar": {
+            "result": [
+                0.00020775881716417904
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00020696617350746208,
+                        0.00021045060167910464
+                    ],
+                    "max": 0.00021080378171641783,
+                    "mean": 0.00020826011660447753,
+                    "min": 0.00020674859141791004,
+                    "n": 8,
+                    "q_25": 0.00020733502751865674,
+                    "q_75": 0.00020878257789179125,
+                    "std": 1.349680692494858e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.time_angle_array_repr": {
+            "result": [
+                0.0008119669814814827
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0008067387703703707,
+                        0.0008316206037037026
+                    ],
+                    "max": 0.0008457448592592573,
+                    "mean": 0.0008149176014814813,
+                    "min": 0.0008061309925925925,
+                    "n": 10,
+                    "q_25": 0.0008083839259259258,
+                    "q_75": 0.0008152706222222211,
+                    "std": 1.0866458268215278e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "coordinates.time_angle_array_repr_latex": 0.7707877320000001,
+        "coordinates.time_angle_array_str": 0.765299513,
+        "coordinates.time_latitude": {
+            "result": [
+                0.00014883841119402998
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00014833749626865688,
+                        0.00015176665298507458
+                    ],
+                    "max": 0.00015426761194029873,
+                    "mean": 0.00014935214179104484,
+                    "min": 0.00014833175373134324,
+                    "n": 10,
+                    "q_25": 0.00014874078955223847,
+                    "q_75": 0.0001491237906716421,
+                    "std": 1.6633598224895831e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "cosmology.LambdaCDMBenchmarks.time_age": {
+            "params": [
+                [
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Ode0=0.65, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=2.7 K, Neff=4, m_nu=[ 0.  0.  0.  0.] eV, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.4, Ode0=0.2, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.05  0.1   0.15] eV, Ob0=None)"
+                ]
+            ],
+            "result": [
+                0.5033695719999999,
+                0.8119478700000005,
+                0.8283621480000001,
+                0.8334548559999999,
+                0.5330880645,
+                0.8212544189999997,
+                3.407774018
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.501377518,
+                        0.5053616259999998
+                    ],
+                    "max": 0.5053616259999998,
+                    "mean": 0.5033695719999999,
+                    "min": 0.501377518,
+                    "n": 2,
+                    "q_25": 0.502373545,
+                    "q_75": 0.5043655989999998,
+                    "std": 0.00199205399999991,
+                    "systematic": 0.0
+                },
+                null,
+                null,
+                null,
+                {
+                    "ci_99": [
+                        0.5308140620000001,
+                        0.5353620669999999
+                    ],
+                    "max": 0.5353620669999999,
+                    "mean": 0.5330880645,
+                    "min": 0.5308140620000001,
+                    "n": 2,
+                    "q_25": 0.5319510632500001,
+                    "q_75": 0.53422506575,
+                    "std": 0.002274002499999872,
+                    "systematic": 0.0
+                },
+                null,
+                null
+            ]
+        },
+        "cosmology.LambdaCDMBenchmarks.time_lumdist": {
+            "params": [
+                [
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Ode0=0.65, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.6, Ode0=0.7, Tcmb0=2.7 K, Neff=4, m_nu=[ 0.  0.  0.  0.] eV, Ob0=None)",
+                    "LambdaCDM(H0=65 km / (Mpc s), Om0=0.4, Ode0=0.2, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=0 K, Neff=3.04, m_nu=None, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.  0.  0.] eV, Ob0=None)",
+                    "FlatLambdaCDM(H0=65 km / (Mpc s), Om0=0.25, Tcmb0=2.7 K, Neff=3.04, m_nu=[ 0.05  0.1   0.15] eV, Ob0=None)"
+                ]
+            ],
+            "result": [
+                0.07122363650000008,
+                0.05134351100000012,
+                0.07430713650000009,
+                0.0530710164999999,
+                0.05060404400000007,
+                0.048427756000000155,
+                0.22937811200000002
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.07091403049999967,
+                        0.07163507449999995
+                    ],
+                    "max": 0.07149077100000012,
+                    "mean": 0.0712418274,
+                    "min": 0.0710371540000001,
+                    "n": 10,
+                    "q_25": 0.07110193674999976,
+                    "q_75": 0.07137485750000006,
+                    "std": 0.000155315113732845,
+                    "systematic": 0.0003067890000003626
+                },
+                {
+                    "ci_99": [
+                        0.05113065849999998,
+                        0.0528975639999999
+                    ],
+                    "max": 0.053707644999999804,
+                    "mean": 0.05165519389999997,
+                    "min": 0.05112644699999991,
+                    "n": 10,
+                    "q_25": 0.05119538074999985,
+                    "q_75": 0.05186422825000003,
+                    "std": 0.0007593766832740055,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.07372860200000009,
+                        0.07540206149999995
+                    ],
+                    "max": 0.07576124000000006,
+                    "mean": 0.07440430690000008,
+                    "min": 0.073696062,
+                    "n": 10,
+                    "q_25": 0.07384920150000018,
+                    "q_75": 0.07473622825000004,
+                    "std": 0.0006486302378170874,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.05292234549999986,
+                        0.05332626150000008
+                    ],
+                    "max": 0.05334586200000002,
+                    "mean": 0.05308544879999999,
+                    "min": 0.05287704800000004,
+                    "n": 10,
+                    "q_25": 0.05299650000000017,
+                    "q_75": 0.05308993424999997,
+                    "std": 0.00013688021744565431,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.05054579650000002,
+                        0.0507875510000001
+                    ],
+                    "max": 0.05081127600000013,
+                    "mean": 0.050641075100000064,
+                    "min": 0.05054350600000013,
+                    "n": 10,
+                    "q_25": 0.05055226200000007,
+                    "q_75": 0.0507219485,
+                    "std": 9.502372866232701e-05,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.048286658500000135,
+                        0.048685226499999956
+                    ],
+                    "max": 0.04873383600000003,
+                    "mean": 0.0484562964,
+                    "min": 0.04828607400000018,
+                    "n": 10,
+                    "q_25": 0.04833435099999994,
+                    "q_75": 0.048565105999999914,
+                    "std": 0.00014847075908753585,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.22895463500000002,
+                        0.2297726389999999
+                    ],
+                    "max": 0.2297726389999999,
+                    "mean": 0.22934450320000005,
+                    "min": 0.22895463500000002,
+                    "n": 5,
+                    "q_25": 0.2290497290000002,
+                    "q_75": 0.22956740100000017,
+                    "std": 0.0003075718733176526,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_base_splitter": {
+            "result": [
+                9.343550227272714e-07
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        9.160398909090917e-07,
+                        9.730629909090924e-07
+                    ],
+                    "max": 9.745731363636354e-07,
+                    "mean": 9.421238011363638e-07,
+                    "min": 9.160388363636357e-07,
+                    "n": 8,
+                    "q_25": 9.187645295454572e-07,
+                    "q_75": 9.706898681818166e-07,
+                    "std": 2.4249417292870057e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_continuation_inputter": {
+            "result": [
+                0.0024420111333333327
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0024173155555555523,
+                        0.0024626422000000045
+                    ],
+                    "max": 0.0024656002888888916,
+                    "mean": 0.0024409575694444444,
+                    "min": 0.0024124739555555544,
+                    "n": 8,
+                    "q_25": 0.0024263202222222203,
+                    "q_75": 0.0024569321777777797,
+                    "std": 1.837414275914078e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_convert_vals": {
+            "result": [
+                1.1764353891258006e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.1693033848614073e-05,
+                        1.1846162686567137e-05
+                    ],
+                    "max": 1.1852355223880583e-05,
+                    "mean": 1.1764709968017052e-05,
+                    "min": 1.1667980063965871e-05,
+                    "n": 8,
+                    "q_25": 1.1725475692963749e-05,
+                    "q_75": 1.1796972921108732e-05,
+                    "std": 5.762095726994308e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_default_splitter_call": {
+            "result": [
+                3.971216636262828e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        3.907512787495075e-06,
+                        4.038966591551316e-06
+                    ],
+                    "max": 4.057680867045825e-06,
+                    "mean": 3.966342843473904e-06,
+                    "min": 3.905345959866938e-06,
+                    "n": 8,
+                    "q_25": 3.913832152949166e-06,
+                    "q_75": 3.990163867725437e-06,
+                    "std": 5.130670418163413e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_default_splitter_join": {
+            "result": [
+                0.0007953474678571437
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0007897562535714291,
+                        0.0008056771892857139
+                    ],
+                    "max": 0.0008090395000000004,
+                    "mean": 0.0007971615383928571,
+                    "min": 0.0007883203071428583,
+                    "n": 8,
+                    "q_25": 0.0007936746785714274,
+                    "q_75": 0.0008014999553571418,
+                    "std": 6.254111236424559e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.core.CoreSuite.time_whitespace_splitter": {
+            "result": [
+                0.0031993355735294065
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0031914050147058837,
+                        0.003203374588235298
+                    ],
+                    "max": 0.0032051024705882373,
+                    "mean": 0.0031982345735294105,
+                    "min": 0.0031869069705882363,
+                    "n": 8,
+                    "q_25": 0.003196783999999998,
+                    "q_75": 0.003200838117647059,
+                    "std": 5.022144953744324e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.fixedwidth.FixedWidthSuite.time_header": {
+            "result": [
+                0.00017971674482758628
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00017887945086206912,
+                        0.0001819167818965517
+                    ],
+                    "max": 0.00018310254827586162,
+                    "mean": 0.00018002450293103456,
+                    "min": 0.00017873619482758628,
+                    "n": 10,
+                    "q_25": 0.0001795970556034484,
+                    "q_75": 0.0001800548637931037,
+                    "std": 1.1487098387837187e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": {
+            "result": [
+                0.00041744126792452843
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0004156234603773576,
+                        0.0004204896981132083
+                    ],
+                    "max": 0.00042091483773584997,
+                    "mean": 0.0004177852,
+                    "min": 0.0004156208641509418,
+                    "n": 10,
+                    "q_25": 0.00041692749056603754,
+                    "q_75": 0.00041863776792452895,
+                    "std": 1.6528034384323136e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.ipac.IPACSuite.time_data_str_vals": 0.7861268529999998,
+        "io_ascii.ipac.IPACSuite.time_get_cols": {
+            "result": [
+                0.0031993922424242436
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0031341956969697035,
+                        0.003264588787878783
+                    ],
+                    "max": 0.003264588787878783,
+                    "mean": 0.0031993922424242436,
+                    "min": 0.0031341956969697035,
+                    "n": 2,
+                    "q_25": 0.0031667939696969735,
+                    "q_75": 0.003231990515151513,
+                    "std": 6.519654545453983e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.ipac.IPACSuite.time_header_str_vals": {
+            "result": [
+                0.00047818743201754287
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0004772962499999996,
+                        0.00047907861403508615
+                    ],
+                    "max": 0.00047907861403508615,
+                    "mean": 0.00047818743201754287,
+                    "min": 0.0004772962499999996,
+                    "n": 2,
+                    "q_25": 0.00047774184100877126,
+                    "q_75": 0.0004786330230263145,
+                    "std": 8.911820175432788e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.ipac.IPACSuite.time_splitter": {
+            "result": [
+                0.0010623055238095259
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.001057888600000002,
+                        0.0010667224476190497
+                    ],
+                    "max": 0.0010667224476190497,
+                    "mean": 0.0010623055238095259,
+                    "min": 0.001057888600000002,
+                    "n": 2,
+                    "q_25": 0.001060097061904764,
+                    "q_75": 0.0010645139857142878,
+                    "std": 4.416923809523812e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.AastexFloat.time_read": 0.6748150389999994,
+        "io_ascii.main.AastexFloat.time_write": 1.3088810569999998,
+        "io_ascii.main.AastexInt.time_read": 0.5950414830000001,
+        "io_ascii.main.AastexInt.time_write": 1.557484809,
+        "io_ascii.main.AastexString.time_read": 0.66963185,
+        "io_ascii.main.AastexString.time_write": 0.9330369750000003,
+        "io_ascii.main.BasicFloat.time_read": 0.615057991,
+        "io_ascii.main.BasicFloat.time_write": 1.5134648400000001,
+        "io_ascii.main.BasicInt.time_read": 0.511132259,
+        "io_ascii.main.BasicInt.time_write": 1.7434898160000003,
+        "io_ascii.main.BasicString.time_read": 0.5965175650000001,
+        "io_ascii.main.BasicString.time_write": 1.037896268,
+        "io_ascii.main.CommentedHeaderFloat.time_read": 0.6184107750000001,
+        "io_ascii.main.CommentedHeaderFloat.time_write": 1.5024453740000001,
+        "io_ascii.main.CommentedHeaderInt.time_read": 0.5028920320000001,
+        "io_ascii.main.CommentedHeaderInt.time_write": 1.6738218429999998,
+        "io_ascii.main.CommentedHeaderString.time_read": 0.5951497680000002,
+        "io_ascii.main.CommentedHeaderString.time_write": 1.041638624,
+        "io_ascii.main.CsvFloat.time_read": 0.6076830689999997,
+        "io_ascii.main.CsvFloat.time_write": 1.5299246800000001,
+        "io_ascii.main.CsvInt.time_read": 0.5016557399999999,
+        "io_ascii.main.CsvInt.time_write": 1.788098832,
+        "io_ascii.main.CsvString.time_read": 0.5887103709999999,
+        "io_ascii.main.CsvString.time_write": 1.0426800230000004,
+        "io_ascii.main.FixedWidthFloat.time_read": 0.6604114399999998,
+        "io_ascii.main.FixedWidthFloat.time_write": 1.449732532,
+        "io_ascii.main.FixedWidthInt.time_read": 0.5758145290000001,
+        "io_ascii.main.FixedWidthInt.time_write": 1.6387472060000001,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": 0.6727795829999996,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": 1.462067142,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_read": 0.589293445,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_write": 1.6800612569999998,
+        "io_ascii.main.FixedWidthNoHeaderString.time_read": 0.6889719969999999,
+        "io_ascii.main.FixedWidthNoHeaderString.time_write": 1.0232340460000002,
+        "io_ascii.main.FixedWidthString.time_read": 0.6833934730000002,
+        "io_ascii.main.FixedWidthString.time_write": 1.0388032650000003,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_read": 0.6684883560000006,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_write": 1.4393728330000002,
+        "io_ascii.main.FixedWidthTwoLineInt.time_read": 0.56930478,
+        "io_ascii.main.FixedWidthTwoLineInt.time_write": 1.6580143300000003,
+        "io_ascii.main.FixedWidthTwoLineString.time_read": 0.6446439370000001,
+        "io_ascii.main.FixedWidthTwoLineString.time_write": 1.0195967880000003,
+        "io_ascii.main.IpacFloat.time_read": 0.618747962,
+        "io_ascii.main.IpacFloat.time_write": 1.461736202,
+        "io_ascii.main.IpacInt.time_read": 0.5604758250000001,
+        "io_ascii.main.IpacInt.time_write": 1.6711755320000004,
+        "io_ascii.main.IpacString.time_read": 0.5514612629999998,
+        "io_ascii.main.IpacString.time_write": 1.0269395019999998,
+        "io_ascii.main.LatexFloat.time_read": 0.6781209100000001,
+        "io_ascii.main.LatexFloat.time_write": 1.484536861,
+        "io_ascii.main.LatexInt.time_read": 0.5915897010000002,
+        "io_ascii.main.LatexInt.time_write": 1.559964543,
+        "io_ascii.main.LatexString.time_read": 0.6972068279999997,
+        "io_ascii.main.LatexString.time_write": 0.9310450879999999,
+        "io_ascii.main.NoHeaderFloat.time_read": 0.6172597340000001,
+        "io_ascii.main.NoHeaderFloat.time_write": 1.492476506,
+        "io_ascii.main.NoHeaderInt.time_read": 0.511370501,
+        "io_ascii.main.NoHeaderInt.time_write": 1.67639497,
+        "io_ascii.main.NoHeaderString.time_read": 0.605718709,
+        "io_ascii.main.NoHeaderString.time_write": 1.0541332960000003,
+        "io_ascii.main.RdbFloat.time_read": 0.49913815800000005,
+        "io_ascii.main.RdbFloat.time_write": 1.494224528,
+        "io_ascii.main.RdbInt.time_read": {
+            "result": [
+                0.38344206599999975
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.38135988099999985,
+                        0.38552425099999965
+                    ],
+                    "max": 0.38552425099999965,
+                    "mean": 0.38344206599999975,
+                    "min": 0.38135988099999985,
+                    "n": 2,
+                    "q_25": 0.3824009734999998,
+                    "q_75": 0.3844831584999997,
+                    "std": 0.002082184999999903,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.RdbInt.time_write": 1.6520741279999998,
+        "io_ascii.main.RdbString.time_read": {
+            "result": [
+                0.36186722849999997
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.3614339850000001,
+                        0.3623004719999998
+                    ],
+                    "max": 0.3623004719999998,
+                    "mean": 0.36186722849999997,
+                    "min": 0.3614339850000001,
+                    "n": 2,
+                    "q_25": 0.36165060675000005,
+                    "q_75": 0.3620838502499999,
+                    "std": 0.0004332434999998469,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.RdbString.time_write": 1.0393832559999998,
+        "io_ascii.main.SextractorFloat.time_read": {
+            "result": [
+                0.621901689
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.6206588710000003,
+                        0.6231445069999997
+                    ],
+                    "max": 0.6231445069999997,
+                    "mean": 0.621901689,
+                    "min": 0.6206588710000003,
+                    "n": 2,
+                    "q_25": 0.6212802800000001,
+                    "q_75": 0.6225230979999998,
+                    "std": 0.0012428179999997013,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.SextractorInt.time_read": {
+            "result": [
+                0.5135367820000001
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.5134800149999998,
+                        0.5135935490000003
+                    ],
+                    "max": 0.5135935490000003,
+                    "mean": 0.5135367820000001,
+                    "min": 0.5134800149999998,
+                    "n": 2,
+                    "q_25": 0.5135083985,
+                    "q_75": 0.5135651655000002,
+                    "std": 5.676700000023516e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.SextractorString.time_read": {
+            "result": [
+                0.6089741899999999
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.6087872679999995,
+                        0.6091611120000002
+                    ],
+                    "max": 0.6091611120000002,
+                    "mean": 0.6089741899999999,
+                    "min": 0.6087872679999995,
+                    "n": 2,
+                    "q_25": 0.6088807289999997,
+                    "q_75": 0.609067651,
+                    "std": 0.00018692200000036685,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.TabFloat.time_read": 0.49990171399999994,
+        "io_ascii.main.TabFloat.time_write": 1.4828656060000003,
+        "io_ascii.main.TabInt.time_read": {
+            "result": [
+                0.39141559950000016
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.38918985799999994,
+                        0.39364134100000037
+                    ],
+                    "max": 0.39364134100000037,
+                    "mean": 0.39141559950000016,
+                    "min": 0.38918985799999994,
+                    "n": 2,
+                    "q_25": 0.39030272875000005,
+                    "q_75": 0.39252847025000026,
+                    "std": 0.002225741500000211,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.main.TabInt.time_write": 1.719717278,
+        "io_ascii.main.TabString.time_read": 0.47714677900000035,
+        "io_ascii.main.TabString.time_write": 1.057872756,
+        "io_ascii.rdb.RDBSuite.time_get_cols": {
+            "result": [
+                0.008844372833333336
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.008644333166666667,
+                        0.009181105500000009
+                    ],
+                    "max": 0.009190271416666654,
+                    "mean": 0.008893452458333334,
+                    "min": 0.008641916249999992,
+                    "n": 10,
+                    "q_25": 0.008714560333333335,
+                    "q_75": 0.009108095020833323,
+                    "std": 0.00021025673444394249,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.sextractor.SExtractorSuite.time_header": 1.0339995529999992,
+        "io_ascii.table.TableSuite.mem_table_init": 3000,
+        "io_ascii.table.TableSuite.mem_table_outputter": 3000,
+        "io_ascii.table.TableSuite.time_str_vals_float": {
+            "result": [
+                9.589386318181816e-07
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        9.448880318181807e-07,
+                        9.960132863636363e-07
+                    ],
+                    "max": 9.968390363636362e-07,
+                    "mean": 9.629400299999988e-07,
+                    "min": 9.412214272727275e-07,
+                    "n": 10,
+                    "q_25": 9.50086549999997e-07,
+                    "q_75": 9.643643999999977e-07,
+                    "std": 1.788685522317797e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.table.TableSuite.time_str_vals_int": {
+            "result": [
+                1.0115669e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        9.947561545454549e-07,
+                        1.025173586363636e-06
+                    ],
+                    "max": 1.032815845454546e-06,
+                    "mean": 1.0101224990909091e-06,
+                    "min": 9.884638000000027e-07,
+                    "n": 10,
+                    "q_25": 1.002618770454545e-06,
+                    "q_75": 1.0161014340909102e-06,
+                    "std": 1.1411412053835992e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.table.TableSuite.time_str_vals_str": {
+            "result": [
+                1.0388033006801003e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.0015915486366758e-06,
+                        1.0464821187163322e-06
+                    ],
+                    "max": 1.0474432416131123e-06,
+                    "mean": 1.0318350731057996e-06,
+                    "min": 9.949635198935113e-07,
+                    "n": 10,
+                    "q_25": 1.0264979435743835e-06,
+                    "q_75": 1.0450552869116679e-06,
+                    "std": 1.6830561468466192e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.table.TableSuite.time_table_init_from_list": {
+            "result": [
+                0.0011480818699999996
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0010842800549999997,
+                        0.0011626494749999972
+                    ],
+                    "max": 0.0011645830899999954,
+                    "mean": 0.0011252203255555546,
+                    "min": 0.0010816586900000002,
+                    "n": 9,
+                    "q_25": 0.001088037679999998,
+                    "q_75": 0.0011523277399999986,
+                    "std": 3.380423874490754e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_ascii.table.TableSuite.time_table_outputter": {
+            "result": [
+                0.001558819285714289
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0015456197714285714,
+                        0.00157530412142857
+                    ],
+                    "max": 0.0015768011857142828,
+                    "mean": 0.0015586927985714292,
+                    "min": 0.0015442108857142843,
+                    "n": 10,
+                    "q_25": 0.001549278935714287,
+                    "q_75": 0.001564753957142855,
+                    "std": 1.0525700296942773e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "io_fits.FITSBinTableHDU.time_from_columns_bytes": 2.355417172,
+        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": 3.263030627000001,
+        "io_fits.FITSHighLevelTableBenchmarks.time_write": 2.070780611,
+        "table.TimeMaskedTable.time_add_column": 0.0070716110000002,
+        "table.TimeMaskedTable.time_add_row": 0.005989548999999927,
+        "table.TimeMaskedTable.time_aggregate": {
+            "result": [
+                0.13074531600000006
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.13038132599999974,
+                        0.13282424199999987
+                    ],
+                    "max": 0.13282424199999987,
+                    "mean": 0.1312613714285715,
+                    "min": 0.13038132599999974,
+                    "n": 7,
+                    "q_25": 0.13053665150000038,
+                    "q_75": 0.13190270650000002,
+                    "std": 0.000968172063678621,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_aggregate_noreduceat": {
+            "result": [
+                0.13206506499999993
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.13165344700000015,
+                        0.13296619200000004
+                    ],
+                    "max": 0.13296619200000004,
+                    "mean": 0.13223561742857143,
+                    "min": 0.13165344700000015,
+                    "n": 7,
+                    "q_25": 0.1319501380000001,
+                    "q_75": 0.1325321709999998,
+                    "std": 0.00043342498018576845,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_get": {
+            "result": [
+                2.463384857045991e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.44094589219121e-06,
+                        2.5030392586733026e-06
+                    ],
+                    "max": 2.5030392586733026e-06,
+                    "mean": 2.4646788821981516e-06,
+                    "min": 2.44094589219121e-06,
+                    "n": 7,
+                    "q_25": 2.4523914905639074e-06,
+                    "q_75": 2.470299593174373e-06,
+                    "std": 1.9476126933669527e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_make_bool_mask": {
+            "result": [
+                0.0002997078497023808
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00029803375595238116,
+                        0.00030193520238095247
+                    ],
+                    "max": 0.0003026633065476186,
+                    "mean": 0.00029978712648809526,
+                    "min": 0.0002978333511904762,
+                    "n": 8,
+                    "q_25": 0.00029831004687499963,
+                    "q_75": 0.0003007578147321432,
+                    "std": 1.5908037840948288e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_set": {
+            "result": [
+                2.4281649535737486e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.4104139494709547e-05,
+                        2.45743267112935e-05
+                    ],
+                    "max": 2.45743267112935e-05,
+                    "mean": 2.4302617947373283e-05,
+                    "min": 2.4104139494709547e-05,
+                    "n": 7,
+                    "q_25": 2.413907104297124e-05,
+                    "q_75": 2.444003390196499e-05,
+                    "std": 1.7781903547109684e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_set_all": {
+            "result": [
+                0.0001229991917960087
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00012239306430155227,
+                        0.00012357285476718408
+                    ],
+                    "max": 0.00012357285476718408,
+                    "mean": 0.00012298894155844152,
+                    "min": 0.00012239306430155227,
+                    "n": 7,
+                    "q_25": 0.00012263676108647452,
+                    "q_75": 0.00012334197893569825,
+                    "std": 4.178323384517624e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_set_row_subset": {
+            "result": [
+                9.378773636363625e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        9.329698181818159e-05,
+                        9.457961727272756e-05
+                    ],
+                    "max": 9.457961727272756e-05,
+                    "mean": 9.376611870129862e-05,
+                    "min": 9.329698181818159e-05,
+                    "n": 7,
+                    "q_25": 9.346767909090897e-05,
+                    "q_75": 9.388156863636356e-05,
+                    "std": 3.9506183023538533e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_set_row_subset_int": {
+            "result": [
+                6.759166318977124e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        6.723887449528937e-05,
+                        6.771725908479134e-05
+                    ],
+                    "max": 6.776901144010759e-05,
+                    "mean": 6.753137516823693e-05,
+                    "min": 6.717610161507387e-05,
+                    "n": 8,
+                    "q_25": 6.745131224764484e-05,
+                    "q_75": 6.765703213324374e-05,
+                    "std": 1.872491202695099e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_slice_bool": {
+            "result": [
+                0.00038070217869415763
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00037972060481099675,
+                        0.00039246486941580755
+                    ],
+                    "max": 0.00039246486941580755,
+                    "mean": 0.0003832419008345606,
+                    "min": 0.00037972060481099675,
+                    "n": 7,
+                    "q_25": 0.0003799109931271478,
+                    "q_75": 0.0003849918333333333,
+                    "std": 4.352868132301771e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_column_slice_int": {
+            "result": [
+                0.00032895097329376817
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00032765377744807094,
+                        0.00033022817507418427
+                    ],
+                    "max": 0.00033022817507418427,
+                    "mean": 0.0003288791233573548,
+                    "min": 0.00032765377744807094,
+                    "n": 7,
+                    "q_25": 0.0003279979762611274,
+                    "q_75": 0.00032966249258160256,
+                    "std": 9.957739444017475e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_copy_column": {
+            "result": [
+                0.0006723139999999988
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0006493839245283018,
+                        0.0006868982201257867
+                    ],
+                    "max": 0.0006868982201257867,
+                    "mean": 0.0006696054797843664,
+                    "min": 0.0006493839245283018,
+                    "n": 7,
+                    "q_25": 0.0006648060880503154,
+                    "q_75": 0.0006745150188679236,
+                    "std": 1.0814501176585874e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_copy_table": {
+            "result": [
+                0.007707271285714278
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.007691116071428583,
+                        0.007836335714285722
+                    ],
+                    "max": 0.007836335714285722,
+                    "mean": 0.007727216724489796,
+                    "min": 0.007691116071428583,
+                    "n": 7,
+                    "q_25": 0.007705560321428566,
+                    "q_75": 0.007722336678571425,
+                    "std": 4.5863932159334386e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_group": {
+            "result": [
+                0.032723608125000025
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.032556480249999964,
+                        0.032849114999999984
+                    ],
+                    "max": 0.032849114999999984,
+                    "mean": 0.032720249625,
+                    "min": 0.032556480249999964,
+                    "n": 6,
+                    "q_25": 0.03265797918749999,
+                    "q_75": 0.032805339562500035,
+                    "std": 0.00010122189677252253,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_hstack": {
+            "result": [
+                0.014395872312499947
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.014349680249999996,
+                        0.01457211650000001
+                    ],
+                    "max": 0.01457211650000001,
+                    "mean": 0.01441747291666664,
+                    "min": 0.014349680249999996,
+                    "n": 6,
+                    "q_25": 0.014381480312499972,
+                    "q_75": 0.014409927937499963,
+                    "std": 7.200022306533656e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_init_from_np_array_copy": {
+            "result": [
+                0.0018750479272727266
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0018639172363636323,
+                        0.0018824595272727246
+                    ],
+                    "max": 0.0018840643636363569,
+                    "mean": 0.001873911549999998,
+                    "min": 0.0018600923999999917,
+                    "n": 8,
+                    "q_25": 0.0018703881545454558,
+                    "q_75": 0.0018780932999999975,
+                    "std": 7.0946105628149226e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeMaskedTable.time_init_from_np_array_no_copy": null,
-        "table.TimeMaskedTable.time_item_get_colfirst": null,
-        "table.TimeMaskedTable.time_item_get_rowfirst": null,
-        "table.TimeMaskedTable.time_iter_row": null,
+        "table.TimeMaskedTable.time_item_get_colfirst": {
+            "result": [
+                0.00010874957635467986
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00010749493497536948,
+                        0.00011059753694581279
+                    ],
+                    "max": 0.00011059753694581279,
+                    "mean": 0.00010871288909218861,
+                    "min": 0.00010749493497536948,
+                    "n": 7,
+                    "q_25": 0.00010816602364532031,
+                    "q_75": 0.00010890806403940871,
+                    "std": 9.063496234046952e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_item_get_rowfirst": {
+            "result": [
+                0.00020982132504780086
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00020935213766730385,
+                        0.00021064150860420608
+                    ],
+                    "max": 0.00021064150860420608,
+                    "mean": 0.00020998671701720823,
+                    "min": 0.00020935213766730385,
+                    "n": 7,
+                    "q_25": 0.00020967522466539175,
+                    "q_75": 0.00021037079923518154,
+                    "std": 4.5499187083541434e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_iter_row": {
+            "result": [
+                0.19340197000000003
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.187028062,
+                        0.19760679600000008
+                    ],
+                    "max": 0.19760679600000008,
+                    "mean": 0.19268975700000004,
+                    "min": 0.187028062,
+                    "n": 5,
+                    "q_25": 0.18850869599999998,
+                    "q_75": 0.1969032610000001,
+                    "std": 0.00428892054488432,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeMaskedTable.time_join_inner": null,
         "table.TimeMaskedTable.time_join_outer": null,
-        "table.TimeMaskedTable.time_mask_column": null,
-        "table.TimeMaskedTable.time_multi_column_get": null,
-        "table.TimeMaskedTable.time_read_rows": null,
+        "table.TimeMaskedTable.time_mask_column": {
+            "result": [
+                2.306870974820977e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.2987301224301187e-05,
+                        2.320051824901822e-05
+                    ],
+                    "max": 2.3223642873642827e-05,
+                    "mean": 2.3080016516516503e-05,
+                    "min": 2.294820443520442e-05,
+                    "n": 8,
+                    "q_25": 2.30381511319011e-05,
+                    "q_75": 2.3108102044352053e-05,
+                    "std": 8.07073934171498e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_multi_column_get": {
+            "result": [
+                0.0035290433571428647
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0035111563214285657,
+                        0.0035538122142857137
+                    ],
+                    "max": 0.0035643929642857103,
+                    "mean": 0.0035308800044642845,
+                    "min": 0.003507336821428564,
+                    "n": 8,
+                    "q_25": 0.0035210317499999905,
+                    "q_75": 0.00353778225892857,
+                    "std": 1.6752733196699858e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_read_rows": {
+            "result": [
+                0.27747715900000025
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.274201728,
+                        0.29092854999999984
+                    ],
+                    "max": 0.29092854999999984,
+                    "mean": 0.2800211490000001,
+                    "min": 0.274201728,
+                    "n": 4,
+                    "q_25": 0.27501386775000014,
+                    "q_75": 0.2824844402500002,
+                    "std": 0.006621850650732104,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeMaskedTable.time_remove_column": null,
-        "table.TimeMaskedTable.time_remove_row": null,
-        "table.TimeMaskedTable.time_remove_rows": null,
-        "table.TimeMaskedTable.time_row_get": null,
-        "table.TimeMaskedTable.time_sort": null,
-        "table.TimeMaskedTable.time_table_slice_bool": null,
-        "table.TimeMaskedTable.time_table_slice_int": null,
-        "table.TimeMaskedTable.time_vstack": null,
-        "table.TimeTable.time_add_column": null,
-        "table.TimeTable.time_add_row": null,
-        "table.TimeTable.time_aggregate": null,
-        "table.TimeTable.time_aggregate_noreduceat": null,
-        "table.TimeTable.time_column_get": null,
-        "table.TimeTable.time_column_make_bool_mask": null,
-        "table.TimeTable.time_column_set": null,
-        "table.TimeTable.time_column_set_all": null,
-        "table.TimeTable.time_column_set_row_subset": null,
-        "table.TimeTable.time_column_set_row_subset_int": null,
-        "table.TimeTable.time_column_slice_bool": null,
-        "table.TimeTable.time_column_slice_int": null,
-        "table.TimeTable.time_copy_column": null,
-        "table.TimeTable.time_copy_table": null,
-        "table.TimeTable.time_group": null,
-        "table.TimeTable.time_hstack": null,
-        "table.TimeTable.time_init_from_np_array_copy": null,
+        "table.TimeMaskedTable.time_remove_row": 0.00444560500000013,
+        "table.TimeMaskedTable.time_remove_rows": 0.004540240000000084,
+        "table.TimeMaskedTable.time_row_get": {
+            "result": [
+                0.00018651812203389855
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0001850172694915251,
+                        0.0001959084661016949
+                    ],
+                    "max": 0.0001959084661016949,
+                    "mean": 0.00018871999588377712,
+                    "min": 0.0001850172694915251,
+                    "n": 7,
+                    "q_25": 0.00018619749237288127,
+                    "q_75": 0.00019060056440677942,
+                    "std": 4.191539376374969e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_sort": {
+            "result": [
+                0.006325903882352957
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.006293231235294115,
+                        0.006369797294117659
+                    ],
+                    "max": 0.006369797294117659,
+                    "mean": 0.006329071352941179,
+                    "min": 0.006293231235294115,
+                    "n": 6,
+                    "q_25": 0.006310034411764698,
+                    "q_75": 0.006347611397058822,
+                    "std": 2.6126065139551874e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_table_slice_bool": {
+            "result": [
+                0.0027165006410256364
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0027025773076923168,
+                        0.0027216110256410263
+                    ],
+                    "max": 0.0027216110256410263,
+                    "mean": 0.0027145768278388294,
+                    "min": 0.0027025773076923168,
+                    "n": 7,
+                    "q_25": 0.002710193743589746,
+                    "q_75": 0.002720480666666667,
+                    "std": 6.681695302020837e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_table_slice_int": {
+            "result": [
+                0.0025148540476190493
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0025091342380952316,
+                        0.002557223285714283
+                    ],
+                    "max": 0.002557223285714283,
+                    "mean": 0.002523619523809524,
+                    "min": 0.0025091342380952316,
+                    "n": 7,
+                    "q_25": 0.002513328630952383,
+                    "q_75": 0.0025287339166666684,
+                    "std": 1.6067210223480554e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeMaskedTable.time_vstack": {
+            "result": [
+                0.01250641137499997
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.012332381125000014,
+                        0.012926069124999995
+                    ],
+                    "max": 0.012926069124999995,
+                    "mean": 0.012564307053571434,
+                    "min": 0.012332381125000014,
+                    "n": 7,
+                    "q_25": 0.012407933562500015,
+                    "q_75": 0.012684710312500014,
+                    "std": 0.00019852417504033466,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_add_column": 0.0016665160000002288,
+        "table.TimeTable.time_add_row": 0.0011466430000002248,
+        "table.TimeTable.time_aggregate": {
+            "result": [
+                0.002695023128205123
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0026791798974359063,
+                        0.00272150185897436
+                    ],
+                    "max": 0.0027224333076923076,
+                    "mean": 0.0026966090333333343,
+                    "min": 0.0026765903846153924,
+                    "n": 10,
+                    "q_25": 0.002686085858974358,
+                    "q_75": 0.0027023272307692314,
+                    "std": 1.4551864401430473e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_aggregate_noreduceat": {
+            "result": [
+                0.01873986441666664
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.018660740666666696,
+                        0.019054010250000013
+                    ],
+                    "max": 0.019267179166666686,
+                    "mean": 0.018783624050000003,
+                    "min": 0.018647534333333327,
+                    "n": 10,
+                    "q_25": 0.01869362145833332,
+                    "q_75": 0.018764757333333337,
+                    "std": 0.0001692648605450998,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_get": {
+            "result": [
+                2.5070259812944558e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.4581485000746227e-06,
+                        2.548132269538831e-06
+                    ],
+                    "max": 2.558433809263227e-06,
+                    "mean": 2.503740244266454e-06,
+                    "min": 2.445982786926024e-06,
+                    "n": 10,
+                    "q_25": 2.480187316551423e-06,
+                    "q_75": 2.5242990211929747e-06,
+                    "std": 3.24385553104585e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_make_bool_mask": {
+            "result": [
+                2.3009090783311996e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.294366166453809e-05,
+                        2.3399974882928945e-05
+                    ],
+                    "max": 2.3502433163048138e-05,
+                    "mean": 2.3076136675180926e-05,
+                    "min": 2.2925726053639823e-05,
+                    "n": 10,
+                    "q_25": 2.29883908578118e-05,
+                    "q_75": 2.3040588229033645e-05,
+                    "std": 1.7121102012577934e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_set": {
+            "result": [
+                1.4378483075120426e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.4281018031506363e-05,
+                        1.4579306470511682e-05
+                    ],
+                    "max": 1.470653365447209e-05,
+                    "mean": 1.4398033706548649e-05,
+                    "min": 1.42345736232262e-05,
+                    "n": 10,
+                    "q_25": 1.433521221195159e-05,
+                    "q_75": 1.4427514093217055e-05,
+                    "std": 1.1837265321042061e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_set_all": {
+            "result": [
+                6.14096033519554e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        6.103077765363134e-05,
+                        6.210477234636875e-05
+                    ],
+                    "max": 6.211742513966477e-05,
+                    "mean": 6.154811888268159e-05,
+                    "min": 6.082740558659216e-05,
+                    "n": 10,
+                    "q_25": 6.132315600558644e-05,
+                    "q_75": 6.190342988826827e-05,
+                    "std": 3.96467581600727e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_set_row_subset": {
+            "result": [
+                1.5981494091903718e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.5928572355944534e-05,
+                        1.635886827133477e-05
+                    ],
+                    "max": 1.656869540481399e-05,
+                    "mean": 1.6050751524434708e-05,
+                    "min": 1.5927054996352997e-05,
+                    "n": 10,
+                    "q_25": 1.5950205981035737e-05,
+                    "q_75": 1.6048181473377096e-05,
+                    "std": 1.8433609900672616e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_set_row_subset_int": {
+            "result": [
+                5.0905191872546885e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        5.0222878319094955e-06,
+                        5.162794158392982e-06
+                    ],
+                    "max": 5.172899468944815e-06,
+                    "mean": 5.088778665435237e-06,
+                    "min": 5.015207988917122e-06,
+                    "n": 10,
+                    "q_25": 5.051974924959592e-06,
+                    "q_75": 5.1161606903717345e-06,
+                    "std": 4.9800078543252887e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_slice_bool": {
+            "result": [
+                7.253762582345208e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        7.217330072463768e-05,
+                        7.27373685770751e-05
+                    ],
+                    "max": 7.283610803689066e-05,
+                    "mean": 7.248938281364376e-05,
+                    "min": 7.206119235836624e-05,
+                    "n": 9,
+                    "q_25": 7.245654150197653e-05,
+                    "q_75": 7.255533069828721e-05,
+                    "std": 2.05251667112798e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_column_slice_int": {
+            "result": [
+                5.563206221547812e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        5.520864289327252e-05,
+                        5.646099974709131e-05
+                    ],
+                    "max": 5.6435438037430436e-05,
+                    "mean": 5.5721734597875575e-05,
+                    "min": 5.5347920586747624e-05,
+                    "n": 10,
+                    "q_25": 5.551371560445119e-05,
+                    "q_75": 5.580871130500758e-05,
+                    "std": 3.255800317431363e-07,
+                    "systematic": 3.198285280728381e-07
+                }
+            ]
+        },
+        "table.TimeTable.time_copy_column": {
+            "result": [
+                0.0001224891407588739
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00012209139534883733,
+                        0.00012336412423500634
+                    ],
+                    "max": 0.00012344899265605877,
+                    "mean": 0.00012257597686658508,
+                    "min": 0.00012209012974296208,
+                    "n": 10,
+                    "q_25": 0.00012217248408812729,
+                    "q_75": 0.0001227443904528763,
+                    "std": 4.5764577218713185e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_copy_table": {
+            "result": [
+                0.0020369508854166636
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0020262638333333333,
+                        0.0021022983333333356
+                    ],
+                    "max": 0.002137350229166668,
+                    "mean": 0.0020477486562500004,
+                    "min": 0.0020225680208333374,
+                    "n": 10,
+                    "q_25": 0.002030794390625,
+                    "q_75": 0.002042045963541667,
+                    "std": 3.195288160154043e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_group": {
+            "result": [
+                0.005253678800000006
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.005236327799999996,
+                        0.005275883324999997
+                    ],
+                    "max": 0.005282310649999999,
+                    "mean": 0.0052544722666666675,
+                    "min": 0.005233683449999993,
+                    "n": 9,
+                    "q_25": 0.005240127449999998,
+                    "q_75": 0.005262429600000007,
+                    "std": 1.4715131843938252e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_hstack": {
+            "result": [
+                0.00392274383333332
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.003912366759259261,
+                        0.003949801259259259
+                    ],
+                    "max": 0.003967186037037031,
+                    "mean": 0.003926109570370369,
+                    "min": 0.003907520222222228,
+                    "n": 10,
+                    "q_25": 0.003918122657407409,
+                    "q_75": 0.003928054101851852,
+                    "std": 1.5159195552833956e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_init_from_np_array_copy": {
+            "result": [
+                0.001797543649999996
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0017930100333333346,
+                        0.0018410439666666704
+                    ],
+                    "max": 0.0018499892833333384,
+                    "mean": 0.0018077751616666661,
+                    "min": 0.0017928428666666625,
+                    "n": 10,
+                    "q_25": 0.001796878829166666,
+                    "q_75": 0.0018149251999999968,
+                    "std": 1.8532230375962205e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeTable.time_init_from_np_array_no_copy": null,
-        "table.TimeTable.time_item_get_colfirst": null,
-        "table.TimeTable.time_item_get_rowfirst": null,
-        "table.TimeTable.time_iter_row": null,
+        "table.TimeTable.time_item_get_colfirst": {
+            "result": [
+                2.9498182198472466e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.873345761476802e-06,
+                        3.013544314900284e-06
+                    ],
+                    "max": 3.017797803146844e-06,
+                    "mean": 2.9477015707230177e-06,
+                    "min": 2.8587402639462394e-06,
+                    "n": 10,
+                    "q_25": 2.9119798396890914e-06,
+                    "q_75": 2.9946392599789404e-06,
+                    "std": 5.125970144682174e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_item_get_rowfirst": {
+            "result": [
+                1.0209885451505016e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.0131479886659224e-05,
+                        1.0267166573764393e-05
+                    ],
+                    "max": 1.0278410442214782e-05,
+                    "mean": 1.0203779264214038e-05,
+                    "min": 1.0131345410628022e-05,
+                    "n": 10,
+                    "q_25": 1.0176535070605716e-05,
+                    "q_75": 1.0230475032515772e-05,
+                    "std": 4.61133967176634e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_iter_row": {
+            "result": [
+                0.00693833753333332
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0068681719666666766,
+                        0.007007433900000004
+                    ],
+                    "max": 0.007030520800000003,
+                    "mean": 0.00694073517777778,
+                    "min": 0.006823366333333336,
+                    "n": 9,
+                    "q_25": 0.006923107733333319,
+                    "q_75": 0.006972246266666667,
+                    "std": 5.416441781453136e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeTable.time_join_inner": null,
         "table.TimeTable.time_join_outer": null,
-        "table.TimeTable.time_multi_column_get": null,
-        "table.TimeTable.time_read_rows": null,
+        "table.TimeTable.time_multi_column_get": {
+            "result": [
+                0.0010628810148514858
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.001006040881188119,
+                        0.0011004071188118803
+                    ],
+                    "max": 0.0010848781881188136,
+                    "mean": 0.0010590527257425745,
+                    "min": 0.001026969673267325,
+                    "n": 10,
+                    "q_25": 0.0010386023044554468,
+                    "q_75": 0.0010800577004950493,
+                    "std": 2.1352599539480807e-05,
+                    "systematic": 4.2531376237621736e-05
+                }
+            ]
+        },
+        "table.TimeTable.time_read_rows": {
+            "result": [
+                0.03481190683333339
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.03472249833333333,
+                        0.03531720933333331
+                    ],
+                    "max": 0.03541974899999989,
+                    "mean": 0.03490702030000001,
+                    "min": 0.034699017333333394,
+                    "n": 10,
+                    "q_25": 0.034757482083333346,
+                    "q_75": 0.034951066416666676,
+                    "std": 0.0002224122307551132,
+                    "systematic": 0.0
+                }
+            ]
+        },
         "table.TimeTable.time_remove_column": null,
-        "table.TimeTable.time_remove_row": null,
-        "table.TimeTable.time_remove_rows": null,
-        "table.TimeTable.time_row_get": null,
-        "table.TimeTable.time_sort": null,
-        "table.TimeTable.time_table_slice_bool": null,
-        "table.TimeTable.time_table_slice_int": null,
-        "table.TimeTable.time_vstack": null,
-        "units.mem_unit": null,
-        "units.time_compose_to_bases": null,
-        "units.time_simple_unit_parse": null,
-        "units.time_unit_compose": null,
-        "units.time_unit_parse": null,
-        "units.time_unit_to": null,
-        "units.time_very_simple_unit_parse": null
+        "table.TimeTable.time_remove_row": 0.0011350760000001792,
+        "table.TimeTable.time_remove_rows": 0.0012417799999999701,
+        "table.TimeTable.time_row_get": {
+            "result": [
+                5.833886143210885e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        5.797045578827898e-06,
+                        5.883252992158485e-06
+                    ],
+                    "max": 5.886950371440371e-06,
+                    "mean": 5.836841570367316e-06,
+                    "min": 5.785533842344202e-06,
+                    "n": 9,
+                    "q_25": 5.810286318613293e-06,
+                    "q_75": 5.871406881964522e-06,
+                    "std": 3.345784573585402e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_sort": {
+            "result": [
+                0.001615744477611941
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0016112284850746273,
+                        0.0016230452985074638
+                    ],
+                    "max": 0.0016284013582089558,
+                    "mean": 0.00161611764477612,
+                    "min": 0.0016104461044776123,
+                    "n": 10,
+                    "q_25": 0.001612920242537313,
+                    "q_75": 0.001617413007462685,
+                    "std": 4.724876719230922e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_table_slice_bool": {
+            "result": [
+                0.0006524003878787872
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0006490308787878787,
+                        0.0006624058181818181
+                    ],
+                    "max": 0.000663490787878788,
+                    "mean": 0.0006541348282828283,
+                    "min": 0.0006485428060606066,
+                    "n": 9,
+                    "q_25": 0.0006507079393939409,
+                    "q_75": 0.0006552057878787882,
+                    "std": 4.907127937255506e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_table_slice_int": {
+            "result": [
+                0.0006273566686046498
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0006233322936046507,
+                        0.0006382426133720929
+                    ],
+                    "max": 0.0006386432674418602,
+                    "mean": 0.0006295980447674418,
+                    "min": 0.0006229919244186041,
+                    "n": 10,
+                    "q_25": 0.000625437797965116,
+                    "q_75": 0.0006342014738372107,
+                    "std": 5.523621343838285e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "table.TimeTable.time_vstack": {
+            "result": [
+                0.003499785583333333
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0034852317166666627,
+                        0.0035580966833333337
+                    ],
+                    "max": 0.0035986253666666634,
+                    "mean": 0.0035074519800000004,
+                    "min": 0.0034840764666666563,
+                    "n": 10,
+                    "q_25": 0.003489914133333327,
+                    "q_75": 0.0035047779916666743,
+                    "std": 3.18397439421104e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.mem_unit": 208,
+        "units.time_compose_complex": 4.578218411,
+        "units.time_compose_to_bases": {
+            "result": [
+                0.009584145863636357
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.009565455363636368,
+                        0.009750918363636354
+                    ],
+                    "max": 0.009903666999999994,
+                    "mean": 0.009614090099999997,
+                    "min": 0.009565374818181831,
+                    "n": 10,
+                    "q_25": 0.009575652954545454,
+                    "q_75": 0.00959390068181817,
+                    "std": 9.712096297640911e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_array_conversion": {
+            "result": [
+                0.002608197670731705
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.002601238597560974,
+                        0.0026366284634146333
+                    ],
+                    "max": 0.0026493748048780487,
+                    "mean": 0.0026134752243902426,
+                    "min": 0.0025996892195121954,
+                    "n": 10,
+                    "q_25": 0.002604680445121946,
+                    "q_75": 0.0026199651280487835,
+                    "std": 1.4241013153543069e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_creation": {
+            "result": [
+                0.0001980285109890112
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00019646996593406606,
+                        0.0002710957527472523
+                    ],
+                    "max": 0.00024122016703296694,
+                    "mean": 0.00020800403120879127,
+                    "min": 0.00019697158241758315,
+                    "n": 10,
+                    "q_25": 0.0001972986170329667,
+                    "q_75": 0.00021845183241758247,
+                    "std": 1.5654408918860046e-05,
+                    "systematic": 3.7110849450549616e-05
+                }
+            ]
+        },
+        "units.time_quantity_creation_nocopy": {
+            "result": [
+                1.5274526523545686e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.521723871191136e-05,
+                        1.5321822506925217e-05
+                    ],
+                    "max": 1.5342589612188374e-05,
+                    "mean": 1.5268882922437666e-05,
+                    "min": 1.5205503878116338e-05,
+                    "n": 10,
+                    "q_25": 1.523897749307477e-05,
+                    "q_75": 1.5290403324099732e-05,
+                    "std": 3.829835259016823e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_init_array": {
+            "result": [
+                0.0019030590877192979
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0019009305701754367,
+                        0.0019285053771929829
+                    ],
+                    "max": 0.0019478492982456168,
+                    "mean": 0.0019077379280701755,
+                    "min": 0.0019006802456140335,
+                    "n": 10,
+                    "q_25": 0.0019019515131578975,
+                    "q_75": 0.0019044699912280708,
+                    "std": 1.3563668171165265e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_init_scalar": {
+            "result": [
+                0.00018661620819112614
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00018646629351535806,
+                        0.0001872309991467575
+                    ],
+                    "max": 0.00018728859215017048,
+                    "mean": 0.00018673325955631382,
+                    "min": 0.00018640068941979497,
+                    "n": 10,
+                    "q_25": 0.00018656059172354937,
+                    "q_75": 0.00018685462926621154,
+                    "std": 2.791239546364623e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_scalar_conversion": {
+            "result": [
+                0.00039969572509225115
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00039845149815498154,
+                        0.00040626259040590354
+                    ],
+                    "max": 0.0004093839852398519,
+                    "mean": 0.0004007935988929889,
+                    "min": 0.00039838046494464896,
+                    "n": 10,
+                    "q_25": 0.0003987579114391149,
+                    "q_75": 0.0004007719354243544,
+                    "std": 3.1664725644205685e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_times_quantity": {
+            "result": [
+                0.000646651887573964
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0006457396923076933,
+                        0.0006476922662721899
+                    ],
+                    "max": 0.0006477244260355031,
+                    "mean": 0.0006467101248520713,
+                    "min": 0.0006455688106508896,
+                    "n": 10,
+                    "q_25": 0.0006462750251479303,
+                    "q_75": 0.0006472392899408277,
+                    "std": 6.888576691348397e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_times_unit": {
+            "result": [
+                0.00034073416978193155
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00034009716043613696,
+                        0.00035461291744548295
+                    ],
+                    "max": 0.0003558304018691588,
+                    "mean": 0.0003434643940809969,
+                    "min": 0.0003400542367601243,
+                    "n": 10,
+                    "q_25": 0.00034020786059190024,
+                    "q_75": 0.00034193436682243013,
+                    "std": 5.634212498855647e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_ufunc_sin": {
+            "result": [
+                0.0013574656812500002
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0013561447937499999,
+                        0.001360023468749999
+                    ],
+                    "max": 0.0013602444125000001,
+                    "mean": 0.0013579548599999998,
+                    "min": 0.0013554366250000005,
+                    "n": 10,
+                    "q_25": 0.0013570017562499993,
+                    "q_75": 0.0013592641531250012,
+                    "std": 1.4581081186848787e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_quantity_view": {
+            "result": [
+                2.343114186260063e-06
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        2.3309251606978855e-06,
+                        2.396353812971149e-06
+                    ],
+                    "max": 2.4188091272129375e-06,
+                    "mean": 2.3508803788412646e-06,
+                    "min": 2.3302917761120673e-06,
+                    "n": 10,
+                    "q_25": 2.3335595596557525e-06,
+                    "q_75": 2.35182988446836e-06,
+                    "std": 2.584684622365063e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_simple_unit_parse": {
+            "result": [
+                0.00029690350546448066
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.00029634265573770535,
+                        0.00030036552049180333
+                    ],
+                    "max": 0.00030085313661202206,
+                    "mean": 0.0002976827008196722,
+                    "min": 0.0002960124890710384,
+                    "n": 10,
+                    "q_25": 0.0002967339706284157,
+                    "q_75": 0.000298356944672131,
+                    "std": 1.5052314025110793e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_unit_compose": {
+            "result": [
+                0.001433982326086958
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0014314096304347851,
+                        0.0014599695434782613
+                    ],
+                    "max": 0.0014622417101449302,
+                    "mean": 0.0014387197695652182,
+                    "min": 0.0014309359710144938,
+                    "n": 10,
+                    "q_25": 0.0014330925797101453,
+                    "q_75": 0.0014352021159420307,
+                    "std": 1.0742556355987066e-05,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_unit_parse": {
+            "result": [
+                0.001063569173267327
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.0010570314455445554,
+                        0.0010678659009900988
+                    ],
+                    "max": 0.0010700251980198016,
+                    "mean": 0.001063077808910891,
+                    "min": 0.0010570232673267341,
+                    "n": 10,
+                    "q_25": 0.0010613144158415808,
+                    "q_75": 0.001065193227722772,
+                    "std": 3.78326600234579e-06,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_unit_to": {
+            "result": [
+                1.267949124456456e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        1.2627569808438117e-05,
+                        1.2911482547890472e-05
+                    ],
+                    "max": 1.3024109413562128e-05,
+                    "mean": 1.272290443060289e-05,
+                    "min": 1.2623185803267113e-05,
+                    "n": 10,
+                    "q_25": 1.2659410124573995e-05,
+                    "q_75": 1.27481017158303e-05,
+                    "std": 1.130709934923616e-07,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "units.time_very_simple_unit_parse": {
+            "result": [
+                3.189377191011237e-05
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        3.184499646869984e-05,
+                        3.1998744462279266e-05
+                    ],
+                    "max": 3.201398747993578e-05,
+                    "mean": 3.1914678555377204e-05,
+                    "min": 3.1835349598715925e-05,
+                    "n": 10,
+                    "q_25": 3.187405722311393e-05,
+                    "q_75": 3.1969521268057823e-05,
+                    "std": 5.808287671804117e-08,
+                    "systematic": 0.0
+                }
+            ]
+        },
+        "visualization.wcsaxes.time_basic_plot": null,
+        "visualization.wcsaxes.time_basic_plot_with_grid": null,
+        "visualization.wcsaxes.time_basic_plot_with_grid_and_overlay": null
     },
     "started_at": {
-        "io_ascii.main.AastexFloat.time_read": 1515554797000,
-        "io_ascii.main.AastexFloat.time_write": 1515554797000,
-        "io_ascii.main.AastexInt.time_read": 1515554797000,
-        "io_ascii.main.AastexInt.time_write": 1515554797000,
-        "io_ascii.main.AastexString.time_read": 1515554797000,
-        "io_ascii.main.AastexString.time_write": 1515554797000,
-        "io_ascii.main.BasicFloat.time_read": 1515554797000,
-        "io_ascii.main.BasicFloat.time_write": 1515554797000,
-        "io_ascii.main.BasicInt.time_read": 1515554797000,
-        "io_ascii.main.BasicInt.time_write": 1515554797000,
-        "io_ascii.main.BasicString.time_read": 1515554797000,
-        "io_ascii.main.BasicString.time_write": 1515554797000,
-        "io_ascii.main.CommentedHeaderFloat.time_read": 1515554797000,
-        "io_ascii.main.CommentedHeaderFloat.time_write": 1515554797000,
-        "io_ascii.main.CommentedHeaderInt.time_read": 1515554797000,
-        "io_ascii.main.CommentedHeaderInt.time_write": 1515554797000,
-        "io_ascii.main.CommentedHeaderString.time_read": 1515554797000,
-        "io_ascii.main.CommentedHeaderString.time_write": 1515554797000,
-        "io_ascii.main.CsvFloat.time_read": 1515554797000,
-        "io_ascii.main.CsvFloat.time_write": 1515554797000,
-        "io_ascii.main.CsvInt.time_read": 1515554797000,
-        "io_ascii.main.CsvInt.time_write": 1515554797000,
-        "io_ascii.main.CsvString.time_read": 1515554797000,
-        "io_ascii.main.CsvString.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthFloat.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthFloat.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthInt.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthInt.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderInt.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderString.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthNoHeaderString.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthString.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthString.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineFloat.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineInt.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineInt.time_write": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineString.time_read": 1515554797000,
-        "io_ascii.main.FixedWidthTwoLineString.time_write": 1515554797000,
-        "io_ascii.main.IpacFloat.time_read": 1515554797000,
-        "io_ascii.main.IpacFloat.time_write": 1515554797000,
-        "io_ascii.main.IpacInt.time_read": 1515554797000,
-        "io_ascii.main.IpacInt.time_write": 1515554797000,
-        "io_ascii.main.IpacString.time_read": 1515554797000,
-        "io_ascii.main.IpacString.time_write": 1515554797000,
-        "io_ascii.main.LatexFloat.time_read": 1515554797000,
-        "io_ascii.main.LatexFloat.time_write": 1515554797000,
-        "io_ascii.main.LatexInt.time_read": 1515554797000,
-        "io_ascii.main.LatexInt.time_write": 1515554797000,
-        "io_ascii.main.LatexString.time_read": 1515554797000,
-        "io_ascii.main.LatexString.time_write": 1515554797000,
-        "io_ascii.main.NoHeaderFloat.time_read": 1515554797000,
-        "io_ascii.main.NoHeaderFloat.time_write": 1515554797000,
-        "io_ascii.main.NoHeaderInt.time_read": 1515554797000,
-        "io_ascii.main.NoHeaderInt.time_write": 1515554797000,
-        "io_ascii.main.NoHeaderString.time_read": 1515554797000,
-        "io_ascii.main.NoHeaderString.time_write": 1515554797000,
-        "io_ascii.main.RdbFloat.time_read": 1515554797000,
-        "io_ascii.main.RdbFloat.time_write": 1515554797000,
-        "io_ascii.main.RdbInt.time_read": 1515554797000,
-        "io_ascii.main.RdbInt.time_write": 1515554797000,
-        "io_ascii.main.RdbString.time_read": 1515554797000,
-        "io_ascii.main.RdbString.time_write": 1515554797000,
-        "io_ascii.main.SextractorFloat.time_read": 1515554797000,
-        "io_ascii.main.SextractorInt.time_read": 1515554797000,
-        "io_ascii.main.SextractorString.time_read": 1515554797000,
-        "io_ascii.main.TabFloat.time_read": 1515554797000,
-        "io_ascii.main.TabFloat.time_write": 1515554797000,
-        "io_ascii.main.TabInt.time_read": 1515554797000,
-        "io_ascii.main.TabInt.time_write": 1515554797000,
-        "io_ascii.main.TabString.time_read": 1515554797000,
-        "io_ascii.main.TabString.time_write": 1515554797000,
-        "io_ascii.core.CoreSuite.time_base_splitter": 1515554797000,
-        "io_ascii.core.CoreSuite.time_continuation_inputter": 1515554797000,
-        "io_ascii.core.CoreSuite.time_convert_vals": 1515554797000,
-        "io_ascii.core.CoreSuite.time_default_splitter_call": 1515554797000,
-        "io_ascii.core.CoreSuite.time_default_splitter_join": 1515554797000,
-        "io_ascii.core.CoreSuite.time_whitespace_splitter": 1515554797000,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_header": 1515554797000,
-        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": 1515554797000,
-        "io_ascii.ipac.IPACSuite.time_data_str_vals": 1515554797000,
-        "io_ascii.ipac.IPACSuite.time_get_cols": 1515554797000,
-        "io_ascii.ipac.IPACSuite.time_header_str_vals": 1515554797000,
-        "io_ascii.ipac.IPACSuite.time_splitter": 1515554797000,
-        "io_ascii.rdb.RDBSuite.time_get_cols": 1515554797000,
-        "io_ascii.sextractor.SExtractorSuite.time_header": 1515554797000,
-        "io_ascii.table.TableSuite.mem_table_init": 1515554797000,
-        "io_ascii.table.TableSuite.mem_table_outputter": 1515554797000,
-        "io_ascii.table.TableSuite.time_str_vals_float": 1515554797000,
-        "io_ascii.table.TableSuite.time_str_vals_int": 1515554797000,
-        "io_ascii.table.TableSuite.time_str_vals_str": 1515554797000,
-        "io_ascii.table.TableSuite.time_table_init_from_list": 1515554797000,
-        "io_ascii.table.TableSuite.time_table_outputter": 1515554797000,
-        "coordinates.FrameBenchmarks.time_init_array": 1515554797000,
-        "coordinates.FrameBenchmarks.time_init_nodata": 1515554797000,
-        "coordinates.FrameBenchmarks.time_init_scalar": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_init_array": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_init_scalar": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_iter_array": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_repr_array": 1515554797000,
-        "coordinates.SkyCoordBenchmarks.time_repr_scalar": 1515554797000,
-        "coordinates.time_latitude": 1515554797000,
-        "cosmology.LambdaCDMBenchmarks.time_age": 1515554797000,
-        "cosmology.LambdaCDMBenchmarks.time_lumdist": 1515554797000,
-        "io_fits.FITSBinTableHDU.time_from_columns_bytes": 1515554797000,
-        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": 1515554797000,
-        "io_fits.FITSHighLevelTableBenchmarks.time_write": 1515554797000,
-        "units.time_quantity_array_conversion": 1515554797000,
-        "units.time_quantity_creation": 1515554797000,
-        "units.time_quantity_creation_nocopy": 1515554797000,
-        "units.time_quantity_init_array": 1515554797000,
-        "units.time_quantity_init_scalar": 1515554797000,
-        "units.time_quantity_scalar_conversion": 1515554797000,
-        "units.time_quantity_times_quantity": 1515554797000,
-        "units.time_quantity_times_unit": 1515554797000,
-        "units.time_quantity_ufunc_sin": 1515554797000,
-        "units.time_quantity_view": 1515554797000,
-        "table.TimeMaskedTable.time_add_column": 1515554797000,
-        "table.TimeMaskedTable.time_add_row": 1515554797000,
-        "table.TimeMaskedTable.time_aggregate": 1515554797000,
-        "table.TimeMaskedTable.time_aggregate_noreduceat": 1515554797000,
-        "table.TimeMaskedTable.time_column_get": 1515554797000,
-        "table.TimeMaskedTable.time_column_make_bool_mask": 1515554797000,
-        "table.TimeMaskedTable.time_column_set": 1515554797000,
-        "table.TimeMaskedTable.time_column_set_all": 1515554797000,
-        "table.TimeMaskedTable.time_column_set_row_subset": 1515554797000,
-        "table.TimeMaskedTable.time_column_set_row_subset_int": 1515554797000,
-        "table.TimeMaskedTable.time_column_slice_bool": 1515554797000,
-        "table.TimeMaskedTable.time_column_slice_int": 1515554797000,
-        "table.TimeMaskedTable.time_copy_column": 1515554797000,
-        "table.TimeMaskedTable.time_copy_table": 1515554797000,
-        "table.TimeMaskedTable.time_group": 1515554797000,
-        "table.TimeMaskedTable.time_hstack": 1515554797000,
-        "table.TimeMaskedTable.time_init_from_np_array_copy": 1515554797000,
-        "table.TimeMaskedTable.time_init_from_np_array_no_copy": 1515554797000,
-        "table.TimeMaskedTable.time_item_get_colfirst": 1515554797000,
-        "table.TimeMaskedTable.time_item_get_rowfirst": 1515554797000,
-        "table.TimeMaskedTable.time_iter_row": 1515554797000,
-        "table.TimeMaskedTable.time_join_inner": 1515554797000,
-        "table.TimeMaskedTable.time_join_outer": 1515554797000,
-        "table.TimeMaskedTable.time_mask_column": 1515554797000,
-        "table.TimeMaskedTable.time_multi_column_get": 1515554797000,
-        "table.TimeMaskedTable.time_read_rows": 1515554797000,
-        "table.TimeMaskedTable.time_remove_column": 1515554797000,
-        "table.TimeMaskedTable.time_remove_row": 1515554797000,
-        "table.TimeMaskedTable.time_remove_rows": 1515554797000,
-        "table.TimeMaskedTable.time_row_get": 1515554797000,
-        "table.TimeMaskedTable.time_sort": 1515554797000,
-        "table.TimeMaskedTable.time_table_slice_bool": 1515554797000,
-        "table.TimeMaskedTable.time_table_slice_int": 1515554797000,
-        "table.TimeMaskedTable.time_vstack": 1515554797000,
-        "table.TimeTable.time_add_column": 1515554797000,
-        "table.TimeTable.time_add_row": 1515554797000,
-        "table.TimeTable.time_aggregate": 1515554797000,
-        "table.TimeTable.time_aggregate_noreduceat": 1515554797000,
-        "table.TimeTable.time_column_get": 1515554797000,
-        "table.TimeTable.time_column_make_bool_mask": 1515554797000,
-        "table.TimeTable.time_column_set": 1515554797000,
-        "table.TimeTable.time_column_set_all": 1515554797000,
-        "table.TimeTable.time_column_set_row_subset": 1515554797000,
-        "table.TimeTable.time_column_set_row_subset_int": 1515554797000,
-        "table.TimeTable.time_column_slice_bool": 1515554797000,
-        "table.TimeTable.time_column_slice_int": 1515554797000,
-        "table.TimeTable.time_copy_column": 1515554797000,
-        "table.TimeTable.time_copy_table": 1515554797000,
-        "table.TimeTable.time_group": 1515554797000,
-        "table.TimeTable.time_hstack": 1515554797000,
-        "table.TimeTable.time_init_from_np_array_copy": 1515554797000,
-        "table.TimeTable.time_init_from_np_array_no_copy": 1515554797000,
-        "table.TimeTable.time_item_get_colfirst": 1515554797000,
-        "table.TimeTable.time_item_get_rowfirst": 1515554797000,
-        "table.TimeTable.time_iter_row": 1515554797000,
-        "table.TimeTable.time_join_inner": 1515554797000,
-        "table.TimeTable.time_join_outer": 1515554797000,
-        "table.TimeTable.time_multi_column_get": 1515554797000,
-        "table.TimeTable.time_read_rows": 1515554797000,
-        "table.TimeTable.time_remove_column": 1515554797000,
-        "table.TimeTable.time_remove_row": 1515554797000,
-        "table.TimeTable.time_remove_rows": 1515554797000,
-        "table.TimeTable.time_row_get": 1515554797000,
-        "table.TimeTable.time_sort": 1515554797000,
-        "table.TimeTable.time_table_slice_bool": 1515554797000,
-        "table.TimeTable.time_table_slice_int": 1515554797000,
-        "table.TimeTable.time_vstack": 1515554797000,
-        "units.mem_unit": 1515554797000,
-        "units.time_compose_to_bases": 1515554797000,
-        "units.time_simple_unit_parse": 1515554797000,
-        "units.time_unit_compose": 1515554797000,
-        "units.time_unit_parse": 1515554797000,
-        "units.time_unit_to": 1515554797000,
-        "units.time_very_simple_unit_parse": 1515554797000
+        "coordinates.FrameBenchmarks.time_init_array": 1518030246000,
+        "coordinates.FrameBenchmarks.time_init_nodata": 1518030249000,
+        "coordinates.FrameBenchmarks.time_init_scalar": 1518030252000,
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": 1518030254000,
+        "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": 1518030258000,
+        "coordinates.SkyCoordBenchmarks.time_init_array": 1518030261000,
+        "coordinates.SkyCoordBenchmarks.time_init_scalar": 1518030264000,
+        "coordinates.SkyCoordBenchmarks.time_iter_array": 1518030267000,
+        "coordinates.SkyCoordBenchmarks.time_repr_array": 1518030275000,
+        "coordinates.SkyCoordBenchmarks.time_repr_scalar": 1518030278000,
+        "coordinates.time_angle_array_repr": 1518030281000,
+        "coordinates.time_angle_array_repr_latex": 1518030284000,
+        "coordinates.time_angle_array_str": 1518030287000,
+        "coordinates.time_latitude": 1518030289000,
+        "cosmology.LambdaCDMBenchmarks.time_age": 1518030292000,
+        "cosmology.LambdaCDMBenchmarks.time_lumdist": 1518030315000,
+        "io_ascii.core.CoreSuite.time_base_splitter": 1518030330000,
+        "io_ascii.core.CoreSuite.time_continuation_inputter": 1518030333000,
+        "io_ascii.core.CoreSuite.time_convert_vals": 1518030336000,
+        "io_ascii.core.CoreSuite.time_default_splitter_call": 1518030339000,
+        "io_ascii.core.CoreSuite.time_default_splitter_join": 1518030342000,
+        "io_ascii.core.CoreSuite.time_whitespace_splitter": 1518030346000,
+        "io_ascii.fixedwidth.FixedWidthSuite.time_header": 1518030349000,
+        "io_ascii.fixedwidth.FixedWidthSuite.time_splitter": 1518030352000,
+        "io_ascii.ipac.IPACSuite.time_data_str_vals": 1518030355000,
+        "io_ascii.ipac.IPACSuite.time_get_cols": 1518030359000,
+        "io_ascii.ipac.IPACSuite.time_header_str_vals": 1518030363000,
+        "io_ascii.ipac.IPACSuite.time_splitter": 1518030367000,
+        "io_ascii.main.AastexFloat.time_read": 1518030371000,
+        "io_ascii.main.AastexFloat.time_write": 1518030375000,
+        "io_ascii.main.AastexInt.time_read": 1518030381000,
+        "io_ascii.main.AastexInt.time_write": 1518030385000,
+        "io_ascii.main.AastexString.time_read": 1518030389000,
+        "io_ascii.main.AastexString.time_write": 1518030394000,
+        "io_ascii.main.BasicFloat.time_read": 1518030399000,
+        "io_ascii.main.BasicFloat.time_write": 1518030403000,
+        "io_ascii.main.BasicInt.time_read": 1518030407000,
+        "io_ascii.main.BasicInt.time_write": 1518030411000,
+        "io_ascii.main.BasicString.time_read": 1518030415000,
+        "io_ascii.main.BasicString.time_write": 1518030419000,
+        "io_ascii.main.CommentedHeaderFloat.time_read": 1518030424000,
+        "io_ascii.main.CommentedHeaderFloat.time_write": 1518030429000,
+        "io_ascii.main.CommentedHeaderInt.time_read": 1518030432000,
+        "io_ascii.main.CommentedHeaderInt.time_write": 1518030436000,
+        "io_ascii.main.CommentedHeaderString.time_read": 1518030440000,
+        "io_ascii.main.CommentedHeaderString.time_write": 1518030444000,
+        "io_ascii.main.CsvFloat.time_read": 1518030449000,
+        "io_ascii.main.CsvFloat.time_write": 1518030454000,
+        "io_ascii.main.CsvInt.time_read": 1518030458000,
+        "io_ascii.main.CsvInt.time_write": 1518030461000,
+        "io_ascii.main.CsvString.time_read": 1518030465000,
+        "io_ascii.main.CsvString.time_write": 1518030470000,
+        "io_ascii.main.FixedWidthFloat.time_read": 1518030475000,
+        "io_ascii.main.FixedWidthFloat.time_write": 1518030479000,
+        "io_ascii.main.FixedWidthInt.time_read": 1518030483000,
+        "io_ascii.main.FixedWidthInt.time_write": 1518030487000,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_read": 1518030491000,
+        "io_ascii.main.FixedWidthNoHeaderFloat.time_write": 1518030496000,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_read": 1518030499000,
+        "io_ascii.main.FixedWidthNoHeaderInt.time_write": 1518030504000,
+        "io_ascii.main.FixedWidthNoHeaderString.time_read": 1518030508000,
+        "io_ascii.main.FixedWidthNoHeaderString.time_write": 1518030512000,
+        "io_ascii.main.FixedWidthString.time_read": 1518030518000,
+        "io_ascii.main.FixedWidthString.time_write": 1518030522000,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_read": 1518030527000,
+        "io_ascii.main.FixedWidthTwoLineFloat.time_write": 1518030532000,
+        "io_ascii.main.FixedWidthTwoLineInt.time_read": 1518030536000,
+        "io_ascii.main.FixedWidthTwoLineInt.time_write": 1518030540000,
+        "io_ascii.main.FixedWidthTwoLineString.time_read": 1518030544000,
+        "io_ascii.main.FixedWidthTwoLineString.time_write": 1518030548000,
+        "io_ascii.main.IpacFloat.time_read": 1518030553000,
+        "io_ascii.main.IpacFloat.time_write": 1518030558000,
+        "io_ascii.main.IpacInt.time_read": 1518030561000,
+        "io_ascii.main.IpacInt.time_write": 1518030565000,
+        "io_ascii.main.IpacString.time_read": 1518030569000,
+        "io_ascii.main.IpacString.time_write": 1518030573000,
+        "io_ascii.main.LatexFloat.time_read": 1518030578000,
+        "io_ascii.main.LatexFloat.time_write": 1518030583000,
+        "io_ascii.main.LatexInt.time_read": 1518030587000,
+        "io_ascii.main.LatexInt.time_write": 1518030591000,
+        "io_ascii.main.LatexString.time_read": 1518030595000,
+        "io_ascii.main.LatexString.time_write": 1518030599000,
+        "io_ascii.main.NoHeaderFloat.time_read": 1518030604000,
+        "io_ascii.main.NoHeaderFloat.time_write": 1518030609000,
+        "io_ascii.main.NoHeaderInt.time_read": 1518030613000,
+        "io_ascii.main.NoHeaderInt.time_write": 1518030617000,
+        "io_ascii.main.NoHeaderString.time_read": 1518030620000,
+        "io_ascii.main.NoHeaderString.time_write": 1518030625000,
+        "io_ascii.main.RdbFloat.time_read": 1518030630000,
+        "io_ascii.main.RdbFloat.time_write": 1518030634000,
+        "io_ascii.main.RdbInt.time_read": 1518030637000,
+        "io_ascii.main.RdbInt.time_write": 1518030642000,
+        "io_ascii.main.RdbString.time_read": 1518030645000,
+        "io_ascii.main.RdbString.time_write": 1518030649000,
+        "io_ascii.main.SextractorFloat.time_read": 1518030654000,
+        "io_ascii.main.SextractorInt.time_read": 1518030658000,
+        "io_ascii.main.SextractorString.time_read": 1518030661000,
+        "io_ascii.main.TabFloat.time_read": 1518030665000,
+        "io_ascii.main.TabFloat.time_write": 1518030668000,
+        "io_ascii.main.TabInt.time_read": 1518030672000,
+        "io_ascii.main.TabInt.time_write": 1518030676000,
+        "io_ascii.main.TabString.time_read": 1518030680000,
+        "io_ascii.main.TabString.time_write": 1518030684000,
+        "io_ascii.rdb.RDBSuite.time_get_cols": 1518030689000,
+        "io_ascii.sextractor.SExtractorSuite.time_header": 1518030692000,
+        "io_ascii.table.TableSuite.mem_table_init": 1518030700000,
+        "io_ascii.table.TableSuite.mem_table_outputter": 1518030702000,
+        "io_ascii.table.TableSuite.time_str_vals_float": 1518030703000,
+        "io_ascii.table.TableSuite.time_str_vals_int": 1518030706000,
+        "io_ascii.table.TableSuite.time_str_vals_str": 1518030710000,
+        "io_ascii.table.TableSuite.time_table_init_from_list": 1518030713000,
+        "io_ascii.table.TableSuite.time_table_outputter": 1518030716000,
+        "io_fits.FITSBinTableHDU.time_from_columns_bytes": 1518030719000,
+        "io_fits.FITSHighLevelTableBenchmarks.time_read_nommap": 1518030723000,
+        "io_fits.FITSHighLevelTableBenchmarks.time_write": 1518030732000,
+        "table.TimeMaskedTable.time_add_column": 1518030740000,
+        "table.TimeMaskedTable.time_add_row": 1518030742000,
+        "table.TimeMaskedTable.time_aggregate": 1518030743000,
+        "table.TimeMaskedTable.time_aggregate_noreduceat": 1518030747000,
+        "table.TimeMaskedTable.time_column_get": 1518030750000,
+        "table.TimeMaskedTable.time_column_make_bool_mask": 1518030753000,
+        "table.TimeMaskedTable.time_column_set": 1518030756000,
+        "table.TimeMaskedTable.time_column_set_all": 1518030760000,
+        "table.TimeMaskedTable.time_column_set_row_subset": 1518030763000,
+        "table.TimeMaskedTable.time_column_set_row_subset_int": 1518030766000,
+        "table.TimeMaskedTable.time_column_slice_bool": 1518030769000,
+        "table.TimeMaskedTable.time_column_slice_int": 1518030772000,
+        "table.TimeMaskedTable.time_copy_column": 1518030776000,
+        "table.TimeMaskedTable.time_copy_table": 1518030779000,
+        "table.TimeMaskedTable.time_group": 1518030782000,
+        "table.TimeMaskedTable.time_hstack": 1518030785000,
+        "table.TimeMaskedTable.time_init_from_np_array_copy": 1518030788000,
+        "table.TimeMaskedTable.time_init_from_np_array_no_copy": 1518030792000,
+        "table.TimeMaskedTable.time_item_get_colfirst": 1518030793000,
+        "table.TimeMaskedTable.time_item_get_rowfirst": 1518030796000,
+        "table.TimeMaskedTable.time_iter_row": 1518030800000,
+        "table.TimeMaskedTable.time_join_inner": 1518030803000,
+        "table.TimeMaskedTable.time_join_outer": 1518030805000,
+        "table.TimeMaskedTable.time_mask_column": 1518030806000,
+        "table.TimeMaskedTable.time_multi_column_get": 1518030809000,
+        "table.TimeMaskedTable.time_read_rows": 1518030813000,
+        "table.TimeMaskedTable.time_remove_column": 1518030816000,
+        "table.TimeMaskedTable.time_remove_row": 1518030818000,
+        "table.TimeMaskedTable.time_remove_rows": 1518030819000,
+        "table.TimeMaskedTable.time_row_get": 1518030821000,
+        "table.TimeMaskedTable.time_sort": 1518030825000,
+        "table.TimeMaskedTable.time_table_slice_bool": 1518030828000,
+        "table.TimeMaskedTable.time_table_slice_int": 1518030831000,
+        "table.TimeMaskedTable.time_vstack": 1518030834000,
+        "table.TimeTable.time_add_column": 1518030837000,
+        "table.TimeTable.time_add_row": 1518030839000,
+        "table.TimeTable.time_aggregate": 1518030841000,
+        "table.TimeTable.time_aggregate_noreduceat": 1518030844000,
+        "table.TimeTable.time_column_get": 1518030847000,
+        "table.TimeTable.time_column_make_bool_mask": 1518030850000,
+        "table.TimeTable.time_column_set": 1518030853000,
+        "table.TimeTable.time_column_set_all": 1518030856000,
+        "table.TimeTable.time_column_set_row_subset": 1518030859000,
+        "table.TimeTable.time_column_set_row_subset_int": 1518030862000,
+        "table.TimeTable.time_column_slice_bool": 1518030865000,
+        "table.TimeTable.time_column_slice_int": 1518030868000,
+        "table.TimeTable.time_copy_column": 1518030872000,
+        "table.TimeTable.time_copy_table": 1518030874000,
+        "table.TimeTable.time_group": 1518030877000,
+        "table.TimeTable.time_hstack": 1518030881000,
+        "table.TimeTable.time_init_from_np_array_copy": 1518030884000,
+        "table.TimeTable.time_init_from_np_array_no_copy": 1518030887000,
+        "table.TimeTable.time_item_get_colfirst": 1518030888000,
+        "table.TimeTable.time_item_get_rowfirst": 1518030891000,
+        "table.TimeTable.time_iter_row": 1518030894000,
+        "table.TimeTable.time_join_inner": 1518030898000,
+        "table.TimeTable.time_join_outer": 1518030899000,
+        "table.TimeTable.time_multi_column_get": 1518030901000,
+        "table.TimeTable.time_read_rows": 1518030904000,
+        "table.TimeTable.time_remove_column": 1518030907000,
+        "table.TimeTable.time_remove_row": 1518030908000,
+        "table.TimeTable.time_remove_rows": 1518030910000,
+        "table.TimeTable.time_row_get": 1518030912000,
+        "table.TimeTable.time_sort": 1518030915000,
+        "table.TimeTable.time_table_slice_bool": 1518030918000,
+        "table.TimeTable.time_table_slice_int": 1518030921000,
+        "table.TimeTable.time_vstack": 1518030924000,
+        "units.mem_unit": 1518030927000,
+        "units.time_compose_complex": 1518030929000,
+        "units.time_compose_to_bases": 1518030934000,
+        "units.time_quantity_array_conversion": 1518030937000,
+        "units.time_quantity_creation": 1518030939000,
+        "units.time_quantity_creation_nocopy": 1518030942000,
+        "units.time_quantity_init_array": 1518030944000,
+        "units.time_quantity_init_scalar": 1518030947000,
+        "units.time_quantity_scalar_conversion": 1518030949000,
+        "units.time_quantity_times_quantity": 1518030952000,
+        "units.time_quantity_times_unit": 1518030955000,
+        "units.time_quantity_ufunc_sin": 1518030957000,
+        "units.time_quantity_view": 1518030960000,
+        "units.time_simple_unit_parse": 1518030962000,
+        "units.time_unit_compose": 1518030965000,
+        "units.time_unit_parse": 1518030967000,
+        "units.time_unit_to": 1518030970000,
+        "units.time_very_simple_unit_parse": 1518030972000,
+        "visualization.wcsaxes.time_basic_plot": 1518030974000,
+        "visualization.wcsaxes.time_basic_plot_with_grid": 1518030976000,
+        "visualization.wcsaxes.time_basic_plot_with_grid_and_overlay": 1518030977000
     },
     "version": 1
 }
