@@ -11,7 +11,7 @@ To view them, visit `this site
 <http://astropy.org/astropy-benchmarks>`__.
 
 The benchmarks are run using `airspeed velocity
-<http://spacetelescope.github.io/asv>`__.
+<https://asv.readthedocs.io>`__.
 
 For contributors
 ----------------
