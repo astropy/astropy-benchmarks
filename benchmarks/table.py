@@ -1,7 +1,7 @@
 import string
 import numpy as np
 
-from astropy.table import Table, join, hstack, vstack
+from astropy.table import Table, MaskedColumn, join, hstack, vstack
 
 
 class TimeTable:
@@ -164,3 +164,12 @@ class TimeMaskedTable(TimeTable):
 
     def time_mask_column(self):
         self.table['a'].mask = self.bool_mask
+
+
+class TimeMaskedColumn:
+
+    def setup(self):
+        self.dat = np.arange(1e7)
+
+    def time_masked_column_init(self):
+        MaskedColumn(self.dat)
