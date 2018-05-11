@@ -5,7 +5,11 @@ import os
 
 from astropy.io import fits
 from astropy.wcs import WCS
-from astropy.visualization.wcsaxes import WCSAxes
+
+try:
+    from astropy.visualization.wcsaxes import WCSAxes
+except ImportError:
+    pass
 
 # Use the OO interface to really benchmark WCSAxes and not pyplot
 
