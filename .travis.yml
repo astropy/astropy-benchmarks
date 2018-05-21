@@ -20,7 +20,7 @@ install:
 # second to a personal access token with scope 'public_repo'
 
 script:
-  - asv gh-pages --no-push
+  - asv gh-pages --no-push --verbose
   - git config --global user.name "astrobot"
   - git config --global user.email "astrobot"
   - if [[ $TRAVIS_EVENT_TYPE != pull_request && $TRAVIS_BRANCH == results ]]; then git push -q -f https://$GITHUB_USER:$GITHUB_API_KEY@github.com/$TRAVIS_REPO_SLUG gh-pages; fi
