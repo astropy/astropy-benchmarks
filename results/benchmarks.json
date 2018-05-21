@@ -360,7 +360,7 @@
         "warmup_time": -1
     },
     "io_ascii.ipac.IPACSuite.time_data_str_vals": {
-        "code": "class IPACSuite:\n    def time_data_str_vals(self):\n        data = IpacData()\n        data.cols = list(self.table.columns.values())\n        data.str_vals()\n\n    def setup(self):\n        self.header = IpacHeader()\n        self.data = IpacData()\n        self.header.data = self.data\n        self.splitter = IpacHeaderSplitter()\n        self.vals = [str(i + 1) for i in range(1000)]\n        self.widths = [i + 1 for i in range(1000)]\n        f = open(os.path.join(HERE, 'files', 'ipac', 'string.txt'))\n        self.lines = f.read().split('\\n')\n        f.close()\n        self.table = ascii.read(os.path.join(HERE, 'files', 'ipac', 'string.txt'),\n                                format='ipac', guess=False)",
+        "code": "class IPACSuite:\n    def time_data_str_vals(self):\n        self.data.str_vals()\n\n    def setup(self):\n    \n        self.vals = [str(i + 1) for i in range(1000)]\n        self.widths = [i + 1 for i in range(1000)]\n        f = open(os.path.join(HERE, 'files', 'ipac', 'string.txt'))\n        self.lines = f.read().split('\\n')\n        f.close()\n        self.table = ascii.read(os.path.join(HERE, 'files', 'ipac', 'string.txt'),\n                                format='ipac', guess=False)\n        self.reader = Ipac()\n        self.header = self.reader.header\n        self.data = self.reader.data\n        self.splitter = self.reader.data.splitter\n        self.header.cols = list(self.table.columns.values())\n        self.data.cols = list(self.table.columns.values())\n        self.data._set_fill_values(self.data.cols)",
         "name": "io_ascii.ipac.IPACSuite.time_data_str_vals",
         "number": 0,
         "param_names": [],
@@ -370,11 +370,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "47e34452c6c6cea6ff597dbd27faa2d6b83a1b1e77978c28cd3482d1ee83666e",
+        "version": "8a3bdce4fcf48e81e8ce41f7a95624fa436aa50ff43ef6742ca6841c5a612078",
         "warmup_time": -1
     },
     "io_ascii.ipac.IPACSuite.time_get_cols": {
-        "code": "class IPACSuite:\n    def time_get_cols(self):\n        self.header.get_cols(self.lines)\n\n    def setup(self):\n        self.header = IpacHeader()\n        self.data = IpacData()\n        self.header.data = self.data\n        self.splitter = IpacHeaderSplitter()\n        self.vals = [str(i + 1) for i in range(1000)]\n        self.widths = [i + 1 for i in range(1000)]\n        f = open(os.path.join(HERE, 'files', 'ipac', 'string.txt'))\n        self.lines = f.read().split('\\n')\n        f.close()\n        self.table = ascii.read(os.path.join(HERE, 'files', 'ipac', 'string.txt'),\n                                format='ipac', guess=False)",
+        "code": "class IPACSuite:\n    def time_get_cols(self):\n        self.header.get_cols(self.lines)\n\n    def setup(self):\n    \n        self.vals = [str(i + 1) for i in range(1000)]\n        self.widths = [i + 1 for i in range(1000)]\n        f = open(os.path.join(HERE, 'files', 'ipac', 'string.txt'))\n        self.lines = f.read().split('\\n')\n        f.close()\n        self.table = ascii.read(os.path.join(HERE, 'files', 'ipac', 'string.txt'),\n                                format='ipac', guess=False)\n        self.reader = Ipac()\n        self.header = self.reader.header\n        self.data = self.reader.data\n        self.splitter = self.reader.data.splitter\n        self.header.cols = list(self.table.columns.values())\n        self.data.cols = list(self.table.columns.values())\n        self.data._set_fill_values(self.data.cols)",
         "name": "io_ascii.ipac.IPACSuite.time_get_cols",
         "number": 0,
         "param_names": [],
@@ -384,11 +384,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "b9db559aa8e7052afe0b952515629cdc112d29661dc35db39d3ff11729eebc29",
+        "version": "c905b1e6332762afc6abd89121edc86fc36facdd98ed210664104695bb4b097b",
         "warmup_time": -1
     },
     "io_ascii.ipac.IPACSuite.time_header_str_vals": {
-        "code": "class IPACSuite:\n    def time_header_str_vals(self):\n        header = IpacHeader()\n        header.cols = list(self.table.columns.values())\n        header.DBMS = False\n        header.str_vals()\n\n    def setup(self):\n        self.header = IpacHeader()\n        self.data = IpacData()\n        self.header.data = self.data\n        self.splitter = IpacHeaderSplitter()\n        self.vals = [str(i + 1) for i in range(1000)]\n        self.widths = [i + 1 for i in range(1000)]\n        f = open(os.path.join(HERE, 'files', 'ipac', 'string.txt'))\n        self.lines = f.read().split('\\n')\n        f.close()\n        self.table = ascii.read(os.path.join(HERE, 'files', 'ipac', 'string.txt'),\n                                format='ipac', guess=False)",
+        "code": "class IPACSuite:\n    def time_header_str_vals(self):\n        self.header.str_vals()\n\n    def setup(self):\n    \n        self.vals = [str(i + 1) for i in range(1000)]\n        self.widths = [i + 1 for i in range(1000)]\n        f = open(os.path.join(HERE, 'files', 'ipac', 'string.txt'))\n        self.lines = f.read().split('\\n')\n        f.close()\n        self.table = ascii.read(os.path.join(HERE, 'files', 'ipac', 'string.txt'),\n                                format='ipac', guess=False)\n        self.reader = Ipac()\n        self.header = self.reader.header\n        self.data = self.reader.data\n        self.splitter = self.reader.data.splitter\n        self.header.cols = list(self.table.columns.values())\n        self.data.cols = list(self.table.columns.values())\n        self.data._set_fill_values(self.data.cols)",
         "name": "io_ascii.ipac.IPACSuite.time_header_str_vals",
         "number": 0,
         "param_names": [],
@@ -398,11 +398,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "aa060983b5957fd31ff49679e66aefc332677decfd9212e9adbd53c00e2bfddd",
+        "version": "439647016a26240060528ce9b7374314566ef65e627fcd04e61558d11ac3fdb7",
         "warmup_time": -1
     },
     "io_ascii.ipac.IPACSuite.time_splitter": {
-        "code": "class IPACSuite:\n    def time_splitter(self):\n        self.splitter.join(self.vals, self.widths)\n\n    def setup(self):\n        self.header = IpacHeader()\n        self.data = IpacData()\n        self.header.data = self.data\n        self.splitter = IpacHeaderSplitter()\n        self.vals = [str(i + 1) for i in range(1000)]\n        self.widths = [i + 1 for i in range(1000)]\n        f = open(os.path.join(HERE, 'files', 'ipac', 'string.txt'))\n        self.lines = f.read().split('\\n')\n        f.close()\n        self.table = ascii.read(os.path.join(HERE, 'files', 'ipac', 'string.txt'),\n                                format='ipac', guess=False)",
+        "code": "class IPACSuite:\n    def time_splitter(self):\n        self.splitter.join(self.vals, self.widths)\n\n    def setup(self):\n    \n        self.vals = [str(i + 1) for i in range(1000)]\n        self.widths = [i + 1 for i in range(1000)]\n        f = open(os.path.join(HERE, 'files', 'ipac', 'string.txt'))\n        self.lines = f.read().split('\\n')\n        f.close()\n        self.table = ascii.read(os.path.join(HERE, 'files', 'ipac', 'string.txt'),\n                                format='ipac', guess=False)\n        self.reader = Ipac()\n        self.header = self.reader.header\n        self.data = self.reader.data\n        self.splitter = self.reader.data.splitter\n        self.header.cols = list(self.table.columns.values())\n        self.data.cols = list(self.table.columns.values())\n        self.data._set_fill_values(self.data.cols)",
         "name": "io_ascii.ipac.IPACSuite.time_splitter",
         "number": 0,
         "param_names": [],
@@ -412,7 +412,7 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "66d8365cd4fe318c5c52d8736597f2fc458b67b38ab4e7a58e9d121340f0d372",
+        "version": "a1bb23dfe8d83fee56ad9823654a874885f8c656ecbb4ce7c717c33d83183b62",
         "warmup_time": -1
     },
     "io_ascii.main.AastexFloat.time_read": {
@@ -1623,6 +1623,20 @@
         "type": "time",
         "unit": "seconds",
         "version": "dbe7f96c19284a4c494c1f35313cd7f12a367d222c3dffb9c45dab2372722556",
+        "warmup_time": -1
+    },
+    "table.TimeMaskedColumn.time_masked_column_init": {
+        "code": "class TimeMaskedColumn:\n    def time_masked_column_init(self):\n        MaskedColumn(self.dat)\n\n    def setup(self):\n        self.dat = np.arange(1e7)",
+        "name": "table.TimeMaskedColumn.time_masked_column_init",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "19a45612e8367fc103c72996f1b4a413c4557962a409519e191bcfe6d125ce47",
         "warmup_time": -1
     },
     "table.TimeMaskedTable.time_add_column": {
