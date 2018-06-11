@@ -43,6 +43,8 @@ def time_compose_complex():
 # Quantity tests
 
 a = np.arange(100000.)
+b1 = [1., 2., 3.]
+b2 = np.asarray(b1)
 q0 = u.Quantity(1., u.s)
 q1 = u.Quantity(a, u.m)
 q2 = u.Quantity(a[:10000], u.deg)
@@ -68,6 +70,22 @@ def time_quantity_init_array():
     a * u.m / u.s
 
 
+def time_quantity_init_small_list():
+    """
+    https://github.com/astropy/astropy/issues/7546 reported high overhead
+    for small list.
+    """
+    b1 * u.m / u.s
+
+
+def time_quantity_init_small_array():
+    """
+    https://github.com/astropy/astropy/issues/7546 reported high overhead
+    for small array.
+    """
+    b2 * u.m / u.s
+
+
 def time_quantity_scalar_conversion():
     (3. * u.m / u.s).to(u.km / u.hour)
 
@@ -86,3 +104,64 @@ def time_quantity_times_quantity():
 
 def time_quantity_ufunc_sin():
     np.sin(q2)
+
+
+class TimeQuantityOpSmallArray:
+    """
+    Operator benchmarks from https://github.com/astropy/astropy/issues/7546
+    for a small Numpy array.
+    """
+    def setup(self):
+        data = np.array([1., 2., 3.])
+        self.data = data * u.g
+        self.out = data.copy()
+
+        # A different but dimensionally compatible unit
+        self.data2 = 0.001 * data * u.kg
+
+    def time_quantity_square(self):
+        self.data ** 2
+
+    def time_quantity_np_square(self):
+        np.power(self.data, 2)
+
+    def time_quantity_np_square_out(self):
+        np.power(self.data, 2, out=self.out)
+
+    def time_quantity_sqrt(self):
+        self.data ** 0.5
+
+    def time_quantity_np_sqrt(self):
+        np.sqrt(self.data)
+
+    def time_quantity_np_sqrt_out(self):
+        np.sqrt(self.data, out=self.out)
+
+    def time_quantity_equal(self):
+        self.data == self.data2
+
+    def time_quantity_div(self):
+        # Since benchmark is PY3 only, this is always true divide.
+        self.data / self.data2
+
+    def time_quantity_mul(self):
+        self.data * self.data2
+
+    def time_quantity_sub(self):
+        self.data - self.data2
+
+    def time_quantity_add(self):
+        self.data + self.data2
+
+
+class TimeQuantityOpLargeArray(TimeQuantityOpSmallArray):
+    """
+    Like :class:`TimeQuantityOpSmallArray` but for a large Numpy array.
+    """
+    def setup(self):
+        data = np.arange(1e6) + 1
+        self.data = data * u.g
+        self.out = data.copy()
+
+        # A different but dimensionally compatible unit
+        self.data2 = 0.001 * data * u.kg
