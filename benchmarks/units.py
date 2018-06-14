@@ -116,9 +116,6 @@ class TimeQuantityOpSmallArray:
         self.data = data * u.g
         self.out = data.copy()
 
-        # A different but dimensionally compatible unit
-        self.data2 = 0.001 * data * u.kg
-
     def time_quantity_square(self):
         self.data ** 2
 
@@ -137,22 +134,6 @@ class TimeQuantityOpSmallArray:
     def time_quantity_np_sqrt_out(self):
         np.sqrt(self.data, out=self.out)
 
-    def time_quantity_equal(self):
-        self.data == self.data2
-
-    def time_quantity_div(self):
-        # Since benchmark is PY3 only, this is always true divide.
-        self.data / self.data2
-
-    def time_quantity_mul(self):
-        self.data * self.data2
-
-    def time_quantity_sub(self):
-        self.data - self.data2
-
-    def time_quantity_add(self):
-        self.data + self.data2
-
 
 class TimeQuantityOpLargeArray(TimeQuantityOpSmallArray):
     """
@@ -163,5 +144,84 @@ class TimeQuantityOpLargeArray(TimeQuantityOpSmallArray):
         self.data = data * u.g
         self.out = data.copy()
 
+
+class TimeQuantityOpSmallArrayDiffUnit:
+    """
+    Operator benchmarks from https://github.com/astropy/astropy/issues/7546
+    for small Numpy arrays with different units.
+    """
+    def setup(self):
+        data = np.array([1., 2., 3.])
+        self.data = data * u.g
+
         # A different but dimensionally compatible unit
         self.data2 = 0.001 * data * u.kg
+
+    def time_quantity_equal(self):
+        # Same as operator.eq
+        self.data == self.data2
+
+    def time_quantity_np_equal(self):
+        np.equal(self.data, self.data2)
+
+    def time_quantity_truediv(self):
+        # Since benchmark is PY3 only, this is always true divide.
+        # Same as operator.truediv
+        self.data / self.data2
+
+    def time_quantity_np_truediv(self):
+        np.true_divide(self.data, self.data2)
+
+    def time_quantity_mul(self):
+        # Same as operator.mul
+        self.data * self.data2
+
+    def time_quantity_np_multiply(self):
+        np.multiply(self.data, self.data2)
+
+    def time_quantity_sub(self):
+        # Same as operator.sub
+        self.data - self.data2
+
+    def time_quantity_np_subtract(self):
+        np.subtract(self.data, self.data2)
+
+    def time_quantity_add(self):
+        # Same as operator.add
+        self.data + self.data2
+
+    def time_quantity_np_add(self):
+        np.add(self.data, self.data2)
+
+
+class TimeQuantityOpSmallArraySameUnit(TimeQuantityOpSmallArrayDiffUnit):
+    """
+    Operator benchmarks from https://github.com/astropy/astropy/issues/7546
+    for small Numpy arrays with same units.
+    """
+    def setup(self):
+        data = np.array([1., 2., 3.])
+        self.data = data * u.g
+        self.data2 = self.data.copy()
+
+
+class TimeQuantityOpLargeArrayDiffUnit(TimeQuantityOpSmallArrayDiffUnit):
+    """
+    Like :class:`TimeQuantityOpSmallArrayDiffUnit` but for large Numpy arrays.
+    """
+    def setup(self):
+        data = np.arange(1e6) + 1
+        self.data = data * u.g
+
+        # A different but dimensionally compatible unit
+        self.data2 = 0.001 * data * u.kg
+
+
+class TimeQuantityOpLargeArraySameUnit(TimeQuantityOpSmallArrayDiffUnit):
+    """
+    Like :class:`TimeQuantityOpSmallArraySameUnit` but for large Numpy arrays.
+    """
+    def setup(self):
+        data = np.arange(1e6) + 1
+        self.data = data * u.g
+        self.data2 = self.data.copy()
