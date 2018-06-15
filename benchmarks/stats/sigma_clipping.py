@@ -24,7 +24,7 @@ class SigmaClipBenchmarks:
             self.sigclip = SigmaClip(sigma=3)
 
     def time_3d_array(self):
-        self.sigclip(self.data)
+        self.sigclip(self.data[:, :2048, :2048])
 
     def time_3d_array_axis(self):
         self.sigclip(self.data, axis=0)
