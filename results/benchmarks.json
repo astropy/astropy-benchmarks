@@ -1639,9 +1639,9 @@
         "version": "b0b54635b710091fe552e9c8d487ac25f4a06ea807f2e29900f3617936734098",
         "warmup_time": -1
     },
-    "modeling.compound.EvaluateCompoundModelNoUnits.time_meduim": {
-        "code": "class EvaluateCompoundModelNoUnits:\n    def time_meduim(self):\n        r, d = self.model(x_no_units_medium, x_no_units_medium)\n\n    def setup(self):\n        aff = models.AffineTransformation2D(matrix=[[1, 0], [0, 1]],\n                                            translation=[0, 0])\n        self.model = (models.Shift(-10.5) & models.Shift(-13.2) | aff |\n                      models.Scale(.01) & models.Scale(.04) |\n                      models.Pix2Sky_TAN() |\n                      models.RotateNative2Celestial(5.6, -72.05, 180))",
-        "name": "modeling.compound.EvaluateCompoundModelNoUnits.time_meduim",
+    "modeling.compound.EvaluateCompoundModelNoUnits.time_medium": {
+        "code": "class EvaluateCompoundModelNoUnits:\n    def time_medium(self):\n        r, d = self.model(x_no_units_medium, x_no_units_medium)\n\n    def setup(self):\n        aff = models.AffineTransformation2D(matrix=[[1, 0], [0, 1]],\n                                            translation=[0, 0])\n        self.model = (models.Shift(-10.5) & models.Shift(-13.2) | aff |\n                      models.Scale(.01) & models.Scale(.04) |\n                      models.Pix2Sky_TAN() |\n                      models.RotateNative2Celestial(5.6, -72.05, 180))",
+        "name": "modeling.compound.EvaluateCompoundModelNoUnits.time_medium",
         "number": 0,
         "param_names": [],
         "params": [],
