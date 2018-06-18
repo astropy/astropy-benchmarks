@@ -29,7 +29,7 @@ def time_init_7_with_units():
          models.Pix2Sky_TAN() |
          models.RotateNative2Celestial(5.6*u.deg, -72.05*u.deg, 180*u.deg))
 
-    
+
 class EvaluateCompoundModelNoUnits:
     def setup(self):
         aff = models.AffineTransformation2D(matrix=[[1, 0], [0, 1]],
@@ -45,7 +45,7 @@ class EvaluateCompoundModelNoUnits:
     def time_small(self):
         r, d = self.model(x_no_units_small, x_no_units_small)
 
-    def time_meduim(self):
+    def time_medium(self):
         r, d = self.model(x_no_units_medium, x_no_units_medium)
 
     def time_large(self):
