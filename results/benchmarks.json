@@ -1934,7 +1934,7 @@
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_1d_array": {
-        "code": "class SigmaClipBenchmarks:\n    def time_1d_array(self):\n        self.sigclip(self.data[0][0])\n\n    def setup(self):\n        size = (4, 4096, 4096)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_1d_array(self):\n        self.sigclip(self.data[0][0])\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_1d_array",
         "number": 0,
         "param_names": [],
@@ -1944,11 +1944,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "4c418764b92e7ec85cb1dc434d1818eb8a22fb99c980814440252e52fbd73f19",
+        "version": "fc94d4f5188ec121c10d242564ee4f0242f20c242dde0e92303d507f60be321e",
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_2d_array": {
-        "code": "class SigmaClipBenchmarks:\n    def time_2d_array(self):\n        self.sigclip(self.data[0])\n\n    def setup(self):\n        size = (4, 4096, 4096)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_2d_array(self):\n        self.sigclip(self.data[0])\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_2d_array",
         "number": 0,
         "param_names": [],
@@ -1958,11 +1958,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "2e3b8103962ea5aeaf432fa8444a08247e690ad45fb4019fd2f44359b8dddf76",
+        "version": "5318ddebaae23cd1cd7211e45907891802a018815f7fc58f4b91ad126b43e5ab",
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_2d_array_axis": {
-        "code": "class SigmaClipBenchmarks:\n    def time_2d_array_axis(self):\n        self.sigclip(self.data[0], axis=0)\n\n    def setup(self):\n        size = (4, 4096, 4096)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_2d_array_axis(self):\n        self.sigclip(self.data[0], axis=0)\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_2d_array_axis",
         "number": 0,
         "param_names": [],
@@ -1972,11 +1972,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "522643b306c7bd60190f2a927fd3421ff4cac2ac3eb5794f7cb427ba78dfd8bf",
+        "version": "45f15951775cb0d20e47f38e99f8b55c01257ac9452c9d53c72ae7bdd9987136",
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array": {
-        "code": "class SigmaClipBenchmarks:\n    def time_3d_array(self):\n        self.sigclip(self.data[:, :2048, :2048])\n\n    def setup(self):\n        size = (4, 4096, 4096)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_3d_array(self):\n        self.sigclip(self.data)\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array",
         "number": 0,
         "param_names": [],
@@ -1986,11 +1986,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "4352ff6d3acecaf47e4c6684a79e6afeb08428213be4a152155dbcc1ac55034b",
+        "version": "1bfa60b341b8e44dcd231070e2476abff82d80c2ba550b8b3a494f9209002c4a",
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array_axis": {
-        "code": "class SigmaClipBenchmarks:\n    def time_3d_array_axis(self):\n        self.sigclip(self.data, axis=0)\n\n    def setup(self):\n        size = (4, 4096, 4096)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_3d_array_axis(self):\n        self.sigclip(self.data, axis=0)\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array_axis",
         "number": 0,
         "param_names": [],
@@ -2000,11 +2000,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "2df8e20b62574b962267b6d92bb33e34907bcaf4bee1e30e65c09c5da67b791d",
+        "version": "e30c1162f1ecc90cc32ba7fda98930073f7d4a53677599c28c62b7fc81e4f3a6",
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array_axis2": {
-        "code": "class SigmaClipBenchmarks:\n    def time_3d_array_axis2(self):\n        self.sigclip(self.data, axis=(0, 1))\n\n    def setup(self):\n        size = (4, 4096, 4096)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_3d_array_axis2(self):\n        self.sigclip(self.data, axis=(0, 1))\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array_axis2",
         "number": 0,
         "param_names": [],
@@ -2014,7 +2014,7 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "ced4f79bb233f31e992e90a8452e06fa13355923c6b9fb4cb24df95577a14ee6",
+        "version": "40f592124346d2c2cda423262ddac4b39e7ae7b2db8760e5da980899366abdd8",
         "warmup_time": -1
     },
     "table.TimeMaskedColumn.time_masked_column_init": {
