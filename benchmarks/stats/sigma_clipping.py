@@ -5,7 +5,7 @@ from astropy.utils.misc import NumpyRNGContext
 
 class SigmaClipBenchmarks:
     def setup(self):
-        size = (4, 4096, 4096)
+        size = (4, 2048, 2048)
 
         with NumpyRNGContext(12345):
             self.data = np.random.normal(size=size)
@@ -24,7 +24,7 @@ class SigmaClipBenchmarks:
             self.sigclip = SigmaClip(sigma=3)
 
     def time_3d_array(self):
-        self.sigclip(self.data[:, :2048, :2048])
+        self.sigclip(self.data)
 
     def time_3d_array_axis(self):
         self.sigclip(self.data, axis=0)
