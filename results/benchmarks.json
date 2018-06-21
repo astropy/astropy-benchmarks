@@ -1976,7 +1976,7 @@
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array": {
-        "code": "class SigmaClipBenchmarks:\n    def time_3d_array(self):\n        self.sigclip(self.data)\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_3d_array(self):\n        self.sigclip(self.data[:, :1024, :1024])\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array",
         "number": 0,
         "param_names": [],
@@ -1986,7 +1986,7 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "1bfa60b341b8e44dcd231070e2476abff82d80c2ba550b8b3a494f9209002c4a",
+        "version": "8bb54c6a9b2261bec7821b7f37c1d213df3ce724d5873689f27ea1e52ecffb63",
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array_axis": {
