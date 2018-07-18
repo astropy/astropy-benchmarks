@@ -20,7 +20,6 @@ install:
 # second to a personal access token with scope 'public_repo'
 
 script:
-  - asv update
   - travis_wait 30 asv gh-pages --no-push
   - git config --global user.name "astrobot"
   - git config --global user.email "astrobot"
