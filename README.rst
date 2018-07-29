@@ -34,11 +34,11 @@ test unit conversion:
 Once you have added a benchmark, you can make sure it runs by installing asv with::
 
     pip install asv
-    
+
 and running the following in the astropy-benchmarks folder::
 
     asv dev
-    
+
 This will run all the benchmarks in fast mode (running each function once) using the installed version of Astropy. This is just to make sure that the benchmarks run properly, and the timings should not be considered accurate.
 
 To run a single benchmark, you can do e.g.::
@@ -48,6 +48,9 @@ To run a single benchmark, you can do e.g.::
 Once you are happy with your benchmarks, open a pull request to the astropy-benchmarks repository.
 
 You do not need to add any result files for the benchmarks - we have machines that automatically do this every night.
+
+A bit more detailed howto to run the benchmarks locally to check performance
+improvements is written up in the `following document <https://docs.google.com/document/d/1AoPBAbD8DiDVEM6HuOtPKekN3phtcCF4Qk6pxZ0ID-w/edit?usp=sharing>`__.
 
 Notes to maintainers
 --------------------
