@@ -20,8 +20,11 @@ If you want to try and run the benchmarks locally you will first need to install
 
 then clone the benchmarks repository::
 
-    git clone git@github.com:astropy/astropy-benchmarks.git
+    git clone git@github.com:astropy/astropy-benchmarks.git --single-branch
     cd astropy-benchmarks
+
+Note that the ``--single-branch`` option is to avoid downloading the ``results``
+branch, which is large.
 
 The easiest/fastest way to try out the benchmarks is to make sure you have
 either a stable or a developer version of astropy installed, then run::
@@ -57,6 +60,16 @@ this commit, not all commits up to that point). If
 you want to run a range of commits, use::
 
     asv run 827f322b..729abcf3
+
+You can generate a user-friendly web interface for your results locally by
+running::
+
+    asv publish
+    asv preview
+
+The ``asv preview`` command will give the URL of the local web server (e.g.
+http://127.0.0.1:21331) - go to this address in your favorite browser to see
+the results.
 
 Writing a benchmark
 -------------------
