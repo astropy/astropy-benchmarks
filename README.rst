@@ -1,6 +1,9 @@
 Astropy performance benchmarks
 ==============================
 
+.. image:: https://travis-ci.org/astropy/astropy-benchmarks.svg
+    :target: https://travis-ci.org/astropy/astropy-benchmarks
+
 About
 -----
 
@@ -16,12 +19,12 @@ Running the benchmarks locally
 
 If you want to try and run the benchmarks locally you will first need to install asv::
 
-    pip install asv
+    $ pip install asv
 
 then clone the benchmarks repository::
 
-    git clone git@github.com:astropy/astropy-benchmarks.git --single-branch
-    cd astropy-benchmarks
+    $ git clone git@github.com:astropy/astropy-benchmarks.git --single-branch
+    $ cd astropy-benchmarks
 
 Note that the ``--single-branch`` option is to avoid downloading the ``results``
 branch, which is large.
@@ -29,7 +32,7 @@ branch, which is large.
 The easiest/fastest way to try out the benchmarks is to make sure you have
 either a stable or a developer version of astropy installed, then run::
 
-    asv dev
+    $ asv dev
 
 This will run the benchmarks against the local astropy version and will do some
 basic timing, but the timing will not be very accurate, because this only runs
@@ -40,7 +43,7 @@ give order of magnitude timings.
 To run asv properly on the latest commit in the upstream astropy master, you can
 do::
 
-    asv run
+    $ asv run
 
 This will set up a temporary environment in which astropy will be installed, and
 the benchmark functions will be run multiple times and averaged to get accurate
@@ -53,19 +56,26 @@ You can specify the commit(s) to run the benchmarks for by using the same syntax
 as you would for the ``git log`` command. For example, to run the benchmarks for
 a single specific commit, you can do::
 
-    asv run 88fbbc33^!
+    $ asv run 88fbbc33^!
 
 replacing 88fbbc33 by the commit you want to test (the ``^!`` Indicates to just run
 this commit, not all commits up to that point). If
 you want to run a range of commits, use::
 
-    asv run 827f322b..729abcf3
+    $ asv run 827f322b..729abcf3
+
+For the best accuracy, if you are using Linux, you can prevent core-swapping
+(which can introduce some noise in the timings) by running ``asv`` with::
+
+    $ taskset -c 0 asv ...
+
+This will ensure that the whole process runs on the same core.
 
 You can generate a user-friendly web interface for your results locally by
 running::
 
-    asv publish
-    asv preview
+    $ asv publish
+    $ asv preview
 
 The ``asv preview`` command will give the URL of the local web server (e.g.
 http://127.0.0.1:21331) - go to this address in your favorite browser to see
@@ -92,19 +102,16 @@ a benchmark to test unit conversion:
     def time_my_benchmark():
         (u.m / u.s).to(u.km / u.h)
 
-Once you have added a benchmark, you can make sure it runs by installing asv with::
+Once you have added a benchmark, you can make sure it runs by running::
 
-    pip install asv
+    $ asv dev
 
-and running the following in the astropy-benchmarks folder::
-
-    asv dev
-
-This will run all the benchmarks in fast mode (running each function once) using the installed version of Astropy. This is just to make sure that the benchmarks run properly, and the timings should not be considered accurate.
+As mentioned in `Running the benchmarks locally`_, this will run all the
+benchmarks in fast mode (running each function once).
 
 You can select just the benchmark you have written using the ``--bench`` option::
 
-    asv dev --bench time_my_benchmark
+    $ asv dev --bench time_my_benchmark
 
 Running benchmarks against a local commit
 -----------------------------------------
@@ -125,7 +132,7 @@ Comment out the first “repo” line and uncomment the second, replacing the pa
 with the absolute path to your local clone of Astropy. You will then be able to
 run the benchmarks for a commit in your local repository using e.g.::
 
-    asv run 827f322b^!
+    $ asv run 827f322b^!
 
 Comparing commits
 -----------------
@@ -133,7 +140,22 @@ Comparing commits
 If you want to compare two commits (e.g. the latest upstream commit and a local
 commit), you can use e.g.::
 
-    asv compare 88fbbc33 827f322b
+    $ asv compare 88fbbc33 827f322b
+    All benchmarks:
+
+           before           after         ratio
+         [e8f1432a]       [c378f912]
+    +        1.17±0ms           1.69ms     1.44  coordinates.FrameBenchmarks.time_init_array
+    +       388±0.3μs            543μs     1.40  coordinates.FrameBenchmarks.time_init_nodata
+    +         932±2μs           1.34ms     1.44  coordinates.FrameBenchmarks.time_init_scalar
+                1.08s            1.17s     1.08  coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array
+    +     28.6±0.03ms           43.0ms     1.50  coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar
+    -        48.2±7ms           37.4ms     0.78  coordinates.SkyCoordBenchmarks.time_init_array
+    +     2.84±0.01ms           5.22ms     1.84  coordinates.SkyCoordBenchmarks.time_init_scalar
+    +         168±2ms            29.5s   175.69  coordinates.SkyCoordBenchmarks.time_iter_array
+    -       118±0.2ms           46.4ms     0.39  coordinates.SkyCoordBenchmarks.time_repr_array
+    -         876±1μs            760μs     0.87  coordinates.SkyCoordBenchmarks.time_repr_scalar
+    ...
 
 This will show a table with a comparison of the benchmark times for the two
 commits.
@@ -151,6 +173,3 @@ Notes to maintainers
 The ``master`` branch in this repository should not contain any results or built
 website. Results should be added to the ``results`` branch, and commits to the
 ``results`` branch trigger a build to the ``gh-pages`` branch.
-
-.. image:: https://travis-ci.org/astropy/astropy-benchmarks.svg
-    :target: https://travis-ci.org/astropy/astropy-benchmarks
