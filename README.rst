@@ -145,9 +145,6 @@ Once you are happy with your benchmark(s), open a pull request to the
 astropy-benchmarks repository. You do not need to add any result files for the
 benchmarks - we have machines that automatically do this every night.
 
-A bit more detailed howto to run the benchmarks locally to check performance
-improvements is written up in the `following document <https://docs.google.com/document/d/1AoPBAbD8DiDVEM6HuOtPKekN3phtcCF4Qk6pxZ0ID-w/edit?usp=sharing>`__.
-
 Notes to maintainers
 --------------------
 
