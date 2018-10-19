@@ -82,7 +82,7 @@ class FrameBenchmarks:
     def time_init_scalar_diff(self):
         FK5(self.scalar_ra, self.scalar_dec,
             pm_ra_cosdec=self.scalar_pmra,
-            pm_dec=selc.scalar_pmdec)
+            pm_dec=self.scalar_pmdec)
 
 
 class SkyCoordBenchmarks:
