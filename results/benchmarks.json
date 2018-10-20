@@ -1,6 +1,34 @@
 {
+    "coordinates.FrameBenchmarks.time_concatenate_array": {
+        "code": "class FrameBenchmarks:\n    def time_concatenate_array(self):\n        concatenate((self.icrs_array, self.icrs_array))\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)",
+        "name": "coordinates.FrameBenchmarks.time_concatenate_array",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "55769e3592de79530ccbcb967c7919bd3cc746bb0fe76d65365a273c2da63b44",
+        "warmup_time": -1
+    },
+    "coordinates.FrameBenchmarks.time_concatenate_scalar": {
+        "code": "class FrameBenchmarks:\n    def time_concatenate_scalar(self):\n        concatenate((self.icrs_scalar, self.icrs_scalar))\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)",
+        "name": "coordinates.FrameBenchmarks.time_concatenate_scalar",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "7894fa61230c435331910dc207d7ad65e4cd55e637347062bbbef39bac6d356b",
+        "warmup_time": -1
+    },
     "coordinates.FrameBenchmarks.time_init_array": {
-        "code": "class FrameBenchmarks:\n    def time_init_array(self):\n        FK5(self.array_ra, self.array_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg",
+        "code": "class FrameBenchmarks:\n    def time_init_array(self):\n        FK5(self.array_ra, self.array_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)",
         "name": "coordinates.FrameBenchmarks.time_init_array",
         "number": 0,
         "param_names": [],
@@ -10,11 +38,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "c674b97d5a26e5c61c240678ebdcc4a8fbb346db4aacedbb7868aefb3230f080",
+        "version": "e0e976956e2ec4430a347f8a5c92a5bcb4c0e0bdbae3608a7090530ed6de0c40",
         "warmup_time": -1
     },
     "coordinates.FrameBenchmarks.time_init_nodata": {
-        "code": "class FrameBenchmarks:\n    def time_init_nodata(self):\n        FK5()\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg",
+        "code": "class FrameBenchmarks:\n    def time_init_nodata(self):\n        FK5()\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)",
         "name": "coordinates.FrameBenchmarks.time_init_nodata",
         "number": 0,
         "param_names": [],
@@ -24,11 +52,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "c3d603a1d100c4d8f50750ddfac91c7db732186bbe5091b354ab1ee7bd4703d5",
+        "version": "1571a83281c477a7d210b64453003b8f8f5aaa3b7e662e261b664e1d1d1184a9",
         "warmup_time": -1
     },
     "coordinates.FrameBenchmarks.time_init_scalar": {
-        "code": "class FrameBenchmarks:\n    def time_init_scalar(self):\n        FK5(self.scalar_ra, self.scalar_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg",
+        "code": "class FrameBenchmarks:\n    def time_init_scalar(self):\n        FK5(self.scalar_ra, self.scalar_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)",
         "name": "coordinates.FrameBenchmarks.time_init_scalar",
         "number": 0,
         "param_names": [],
@@ -38,7 +66,7 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "defe667485d7109897f4a6a2770d80eb89ff9295c31bc941252bf4b8f6e15288",
+        "version": "1343ce45b0d24272c9a0dabb2af1d33dad1157af98fb6ca62c5477e57445634c",
         "warmup_time": -1
     },
     "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": {
