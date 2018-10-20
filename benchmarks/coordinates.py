@@ -1,5 +1,6 @@
 import numpy as np
-from astropy.coordinates import SkyCoord, FK5, Latitude, Angle
+from astropy.coordinates import (SkyCoord, FK5, Latitude, Angle, ICRS,
+                                 concatenate)
 from astropy import units as u
 
 
@@ -35,6 +36,10 @@ class FrameBenchmarks:
         self.array_ra = np.linspace(0., 360., 1000) * u.deg
         self.array_dec = np.linspace(-90., 90., 1000) * u.deg
 
+        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)
+        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,
+                               dec=np.random.random(10000)*u.deg)
+
     def time_init_nodata(self):
         FK5()
 
@@ -43,6 +48,12 @@ class FrameBenchmarks:
 
     def time_init_array(self):
         FK5(self.array_ra, self.array_dec)
+
+    def time_concatenate_scalar(self):
+        concatenate((self.icrs_scalar, self.icrs_scalar))
+
+    def time_concatenate_array(self):
+        concatenate((self.icrs_array, self.icrs_array))
 
 
 class SkyCoordBenchmarks:
