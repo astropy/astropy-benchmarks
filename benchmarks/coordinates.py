@@ -1,6 +1,7 @@
 import numpy as np
 from astropy.coordinates import (SkyCoord, FK5, Latitude, Angle, ICRS,
-                                 concatenate)
+                                 concatenate, CartesianRepresentation,
+                                 CartesianDifferential)
 from astropy import units as u
 
 
@@ -26,6 +27,23 @@ def time_angle_array_repr_latex():
     ANGLES._repr_latex_()
 
 
+class RepresentationBenchmarks:
+
+    def setup(self):
+
+        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)
+        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)
+
+        self.array_rep = CartesianRepresentation(np.ones((3, 1000)) * u.kpc)
+        self.array_dif = CartesianDifferential(np.ones((3, 1000)) * u.km/u.s)
+
+    def time_with_differentials_scalar(self):
+        self.scalar_rep.with_differentials(self.scalar_dif)
+
+    def time_with_differentials_array(self):
+        self.array_rep.with_differentials(self.array_dif)
+
+
 class FrameBenchmarks:
 
     def setup(self):
@@ -33,12 +51,18 @@ class FrameBenchmarks:
         self.scalar_ra = 3.2 * u.deg
         self.scalar_dec = 2.2 * u.deg
 
+        self.scalar_pmra = 3.2 * u.mas/u.yr
+        self.scalar_pmdec = 2.2 * u.mas/u.yr
+
         self.array_ra = np.linspace(0., 360., 1000) * u.deg
         self.array_dec = np.linspace(-90., 90., 1000) * u.deg
 
         self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)
         self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,
                                dec=np.random.random(10000)*u.deg)
+
+        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)
+        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)
 
     def time_init_nodata(self):
         FK5()
@@ -54,6 +78,11 @@ class FrameBenchmarks:
 
     def time_concatenate_array(self):
         concatenate((self.icrs_array, self.icrs_array))
+
+    def time_init_scalar_diff(self):
+        FK5(self.scalar_ra, self.scalar_dec,
+            pm_ra_cosdec=self.scalar_pmra,
+            pm_dec=self.scalar_pmdec)
 
 
 class SkyCoordBenchmarks:
