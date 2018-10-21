@@ -95,7 +95,7 @@ class SkyCoordBenchmarks:
         lon, lat = np.ones((2, 1000))
         self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')
 
-        self.lon_1e6, self.lat_1e6 = np.ones((2, 1e6))
+        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))
         self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,
                                         unit='deg', frame='icrs')
 
@@ -103,8 +103,8 @@ class SkyCoordBenchmarks:
         self.scalar_q_dec = 2 * u.deg
 
         np.random.seed(12345)
-        self.array_q_ra = np.random.rand(1e6) * 360 * u.deg
-        self.array_q_dec = (np.random.rand(1e6) * 180 - 90) * u.deg
+        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg
+        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg
 
         self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,
                                                         lon=self.scalar_q_ra)
