@@ -1,7 +1,7 @@
 import numpy as np
 from astropy.coordinates import (SkyCoord, FK5, Latitude, Angle, ICRS,
-                                 concatenate, CartesianRepresentation,
-                                 CartesianDifferential)
+                                 concatenate, UnitSphericalRepresentation,
+                                 CartesianRepresentation, CartesianDifferential)
 from astropy import units as u
 
 
@@ -57,6 +57,7 @@ class FrameBenchmarks:
         self.array_ra = np.linspace(0., 360., 1000) * u.deg
         self.array_dec = np.linspace(-90., 90., 1000) * u.deg
 
+        np.random.seed(12345)
         self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)
         self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,
                                dec=np.random.random(10000)*u.deg)
@@ -98,11 +99,35 @@ class SkyCoordBenchmarks:
         self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,
                                         unit='deg', frame='icrs')
 
+        self.scalar_q_ra = 1 * u.deg
+        self.scalar_q_dec = 2 * u.deg
+
+        np.random.seed(12345)
+        self.array_q_ra = np.random.rand(1e6) * 360 * u.deg
+        self.array_q_dec = (np.random.rand(1e6) * 180 - 90) * u.deg
+
+        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,
+                                                        lon=self.scalar_q_ra)
+        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,
+                                                        lon=self.array_q_ra)
+
     def time_init_scalar(self):
         SkyCoord(1, 2, unit='deg', frame='icrs')
 
     def time_init_array(self):
         SkyCoord(self.lon_1e6, self.lat_1e6, unit='deg', frame='icrs')
+
+    def time_init_quantity_scalar(self):
+        SkyCoord(self.scalar_q_ra, self.scalar_q_dec, frame='icrs')
+
+    def time_init_quantity_array(self):
+        SkyCoord(self.array_q_ra, self.array_q_dec, frame='icrs')
+
+    def time_init_repr_scalar(self):
+        SkyCoord(self.scalar_repr, frame='icrs')
+
+    def time_init_repr_array(self):
+        SkyCoord(self.array_repr, frame='icrs')
 
     def time_repr_scalar(self):
         repr(self.coord_scalar)
