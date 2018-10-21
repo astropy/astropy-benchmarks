@@ -1,6 +1,6 @@
 {
     "coordinates.FrameBenchmarks.time_concatenate_array": {
-        "code": "class FrameBenchmarks:\n    def time_concatenate_array(self):\n        concatenate((self.icrs_array, self.icrs_array))\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)",
+        "code": "class FrameBenchmarks:\n    def time_concatenate_array(self):\n        concatenate((self.icrs_array, self.icrs_array))\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
         "name": "coordinates.FrameBenchmarks.time_concatenate_array",
         "number": 0,
         "param_names": [],
@@ -10,11 +10,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "55769e3592de79530ccbcb967c7919bd3cc746bb0fe76d65365a273c2da63b44",
+        "version": "06e16a3d5cae52b697afbf1fae000877bf2e6a11efb53fe7222da4f44499cfaa",
         "warmup_time": -1
     },
     "coordinates.FrameBenchmarks.time_concatenate_scalar": {
-        "code": "class FrameBenchmarks:\n    def time_concatenate_scalar(self):\n        concatenate((self.icrs_scalar, self.icrs_scalar))\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)",
+        "code": "class FrameBenchmarks:\n    def time_concatenate_scalar(self):\n        concatenate((self.icrs_scalar, self.icrs_scalar))\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
         "name": "coordinates.FrameBenchmarks.time_concatenate_scalar",
         "number": 0,
         "param_names": [],
@@ -24,11 +24,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "7894fa61230c435331910dc207d7ad65e4cd55e637347062bbbef39bac6d356b",
+        "version": "d6e7424cb4116b1930e55ae33dce86cc07edbfc1a6436a8279b674f78b8030d9",
         "warmup_time": -1
     },
     "coordinates.FrameBenchmarks.time_init_array": {
-        "code": "class FrameBenchmarks:\n    def time_init_array(self):\n        FK5(self.array_ra, self.array_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)",
+        "code": "class FrameBenchmarks:\n    def time_init_array(self):\n        FK5(self.array_ra, self.array_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
         "name": "coordinates.FrameBenchmarks.time_init_array",
         "number": 0,
         "param_names": [],
@@ -38,11 +38,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "e0e976956e2ec4430a347f8a5c92a5bcb4c0e0bdbae3608a7090530ed6de0c40",
+        "version": "cccc4a289766f3ae39b045b8347809ddd236e1c3dc4293b10e0ee34d821d489c",
         "warmup_time": -1
     },
     "coordinates.FrameBenchmarks.time_init_nodata": {
-        "code": "class FrameBenchmarks:\n    def time_init_nodata(self):\n        FK5()\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)",
+        "code": "class FrameBenchmarks:\n    def time_init_nodata(self):\n        FK5()\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
         "name": "coordinates.FrameBenchmarks.time_init_nodata",
         "number": 0,
         "param_names": [],
@@ -52,11 +52,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "1571a83281c477a7d210b64453003b8f8f5aaa3b7e662e261b664e1d1d1184a9",
+        "version": "48bfd8f71c117f39bb00df5975bedea432ae380fea31c01a4efdea41aa53da0e",
         "warmup_time": -1
     },
     "coordinates.FrameBenchmarks.time_init_scalar": {
-        "code": "class FrameBenchmarks:\n    def time_init_scalar(self):\n        FK5(self.scalar_ra, self.scalar_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)",
+        "code": "class FrameBenchmarks:\n    def time_init_scalar(self):\n        FK5(self.scalar_ra, self.scalar_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
         "name": "coordinates.FrameBenchmarks.time_init_scalar",
         "number": 0,
         "param_names": [],
@@ -66,7 +66,49 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "1343ce45b0d24272c9a0dabb2af1d33dad1157af98fb6ca62c5477e57445634c",
+        "version": "24ff7502e3468995ecbb1ae52aa73863b633c5e970086a014333db09322b4bf2",
+        "warmup_time": -1
+    },
+    "coordinates.FrameBenchmarks.time_init_scalar_diff": {
+        "code": "class FrameBenchmarks:\n    def time_init_scalar_diff(self):\n        FK5(self.scalar_ra, self.scalar_dec,\n            pm_ra_cosdec=self.scalar_pmra,\n            pm_dec=self.scalar_pmdec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
+        "name": "coordinates.FrameBenchmarks.time_init_scalar_diff",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "b5abf7563f32dc1d1b700fae808747f40a72c9bb54841788a99db7fd8660728c",
+        "warmup_time": -1
+    },
+    "coordinates.RepresentationBenchmarks.time_with_differentials_array": {
+        "code": "class RepresentationBenchmarks:\n    def time_with_differentials_array(self):\n        self.array_rep.with_differentials(self.array_dif)\n\n    def setup(self):\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)\n    \n        self.array_rep = CartesianRepresentation(np.ones((3, 1000)) * u.kpc)\n        self.array_dif = CartesianDifferential(np.ones((3, 1000)) * u.km/u.s)",
+        "name": "coordinates.RepresentationBenchmarks.time_with_differentials_array",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "409875e1b3a147d75f82f90ce3aed5f3c22a48dacb438019d70de65cf081fa75",
+        "warmup_time": -1
+    },
+    "coordinates.RepresentationBenchmarks.time_with_differentials_scalar": {
+        "code": "class RepresentationBenchmarks:\n    def time_with_differentials_scalar(self):\n        self.scalar_rep.with_differentials(self.scalar_dif)\n\n    def setup(self):\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)\n    \n        self.array_rep = CartesianRepresentation(np.ones((3, 1000)) * u.kpc)\n        self.array_dif = CartesianDifferential(np.ones((3, 1000)) * u.km/u.s)",
+        "name": "coordinates.RepresentationBenchmarks.time_with_differentials_scalar",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "d3ce4946ff67a9c8841d4b3f83d7ee18df508e6c4d2531dc4aaa8be099e310c0",
         "warmup_time": -1
     },
     "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": {
