@@ -102,9 +102,7 @@ class SkyCoordBenchmarks:
         SkyCoord(1, 2, unit='deg', frame='icrs')
 
     def time_init_array(self):
-        N = int(1e6)
-        lon, lat = np.ones(N), np.ones(N)
-        SkyCoord(lon, lat, unit='deg', frame='icrs')
+        SkyCoord(self.lon_1e6, self.lat_1e6, unit='deg', frame='icrs')
 
     def time_repr_scalar(self):
         repr(self.coord_scalar)
