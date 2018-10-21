@@ -91,11 +91,12 @@ class SkyCoordBenchmarks:
 
         self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')
 
-        lon, lat = np.ones(1000), np.ones(1000)
-        self.coord_array_1 = SkyCoord(lon, lat, unit='deg', frame='icrs')
+        lon, lat = np.ones((2, 1000))
+        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')
 
-        lon, lat = np.ones(1000000), np.ones(1000000)
-        self.coord_array_2 = SkyCoord(lon, lat, unit='deg', frame='icrs')
+        self.lon_1e6, self.lat_1e6 = np.ones((2, 1e6))
+        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,
+                                        unit='deg', frame='icrs')
 
     def time_init_scalar(self):
         SkyCoord(1, 2, unit='deg', frame='icrs')
@@ -109,14 +110,14 @@ class SkyCoordBenchmarks:
         repr(self.coord_scalar)
 
     def time_repr_array(self):
-        repr(self.coord_array_1)
+        repr(self.coord_array_1e3)
 
     def time_icrs_to_galactic_scalar(self):
         self.coord_scalar.transform_to('galactic')
 
     def time_icrs_to_galactic_array(self):
-        self.coord_array_2.transform_to('galactic')
+        self.coord_array_1e6.transform_to('galactic')
 
     def time_iter_array(self):
-        for c in self.coord_array_1:
+        for c in self.coord_array_1e3:
             pass
