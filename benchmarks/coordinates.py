@@ -138,11 +138,17 @@ class SkyCoordBenchmarks:
         SkyCoord(self.scalar_q_ra, self.scalar_q_dec,
                  frame=fk5_J2010, obstime=J2010)
 
+    def time_init_quantity_scalar_keyword(self):
+        SkyCoord(ra=self.scalar_q_ra, dec=self.scalar_q_dec)
+
+    def time_init_quantity_array_keyword(self):
+        SkyCoord(ra=self.array_q_ra, dec=self.array_q_dec)
+
     def time_init_repr_scalar(self):
-        SkyCoord(self.scalar_repr, frame='icrs')
+        SkyCoord(self.scalar_repr)
 
     def time_init_repr_array(self):
-        SkyCoord(self.array_repr, frame='icrs')
+        SkyCoord(self.array_repr)
 
     def time_repr_scalar(self):
         repr(self.coord_scalar)
