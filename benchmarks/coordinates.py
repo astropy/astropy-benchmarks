@@ -3,6 +3,7 @@ from astropy.coordinates import (SkyCoord, FK5, Latitude, Angle, ICRS,
                                  concatenate, UnitSphericalRepresentation,
                                  CartesianRepresentation, CartesianDifferential)
 from astropy import units as u
+from astropy.time import Time
 
 
 def time_latitude():
@@ -10,6 +11,8 @@ def time_latitude():
 
 
 ANGLES = Angle(np.ones(10000), u.deg)
+J2010 = Time('J2010')
+fk5_J2010 = FK5(equinox=J2010)
 
 
 def time_angle_array_repr():
@@ -117,11 +120,23 @@ class SkyCoordBenchmarks:
     def time_init_array(self):
         SkyCoord(self.lon_1e6, self.lat_1e6, unit='deg', frame='icrs')
 
-    def time_init_quantity_scalar(self):
-        SkyCoord(self.scalar_q_ra, self.scalar_q_dec, frame='icrs')
+    def time_init_quantity_scalar_positional(self):
+        SkyCoord(self.scalar_q_ra, self.scalar_q_dec)
 
-    def time_init_quantity_array(self):
-        SkyCoord(self.array_q_ra, self.array_q_dec, frame='icrs')
+    def time_init_quantity_array_positional(self):
+        SkyCoord(self.array_q_ra, self.array_q_dec)
+
+    def time_init_quantity_scalar_positional_fk5_kwarg(self):
+        SkyCoord(self.scalar_q_ra, self.scalar_q_dec,
+                 frame='fk5', equinox=J2010)
+
+    def time_init_quantity_scalar_positional_fk5_frame(self):
+        SkyCoord(self.scalar_q_ra, self.scalar_q_dec,
+                 frame=fk5_J2010)
+
+    def time_init_quantity_scalar_positional_fk5_frame_extra_kwargs(self):
+        SkyCoord(self.scalar_q_ra, self.scalar_q_dec,
+                 frame=fk5_J2010, obstime=J2010)
 
     def time_init_repr_scalar(self):
         SkyCoord(self.scalar_repr, frame='icrs')
