@@ -62,8 +62,8 @@ class FrameBenchmarks:
         self.array_dec = np.linspace(-90., 90., 1000) * u.deg
 
         self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)
-        self.icrs_array = ICRS(ra=rnd.random(10000)*u.deg,
-                               dec=rnd.random(10000)*u.deg)
+        self.icrs_array = ICRS(ra=np.ones(10000)*u.deg,
+                               dec=np.ones(10000)*u.deg)
 
         self.scalar_rep = CartesianRepresentation([1, 2, 3.] * u.kpc)
         self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)
