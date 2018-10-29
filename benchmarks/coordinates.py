@@ -1,7 +1,8 @@
 import numpy as np
 from astropy.coordinates import (SkyCoord, FK5, Latitude, Angle, ICRS,
                                  concatenate, UnitSphericalRepresentation,
-                                 CartesianRepresentation, CartesianDifferential)
+                                 CartesianRepresentation, CartesianDifferential,
+                                 match_coordinates_sky)
 from astropy import units as u
 from astropy.time import Time
 
@@ -71,8 +72,8 @@ class FrameBenchmarks:
         # Some points to use for benchmarking coordinate matching.
         # These were motivated by some tests done in astropy/astropy#7324:
         # https://github.com/astropy/astropy/pull/7324#issuecomment-392382719
-        xyz_uniform1 = rnd.uniform((10000, 3))
-        xyz_uniform2 = rnd.uniform((10000, 3))
+        xyz_uniform1 = rnd.uniform(size=(3, 10000)) * u.kpc
+        xyz_uniform2 = rnd.uniform(size=(3, 10000)) * u.kpc
         self.icrs_uniform1 = ICRS(xyz_uniform1,
                                   representation_type=CartesianRepresentation)
         self.icrs_uniform2 = ICRS(xyz_uniform2,
@@ -82,21 +83,21 @@ class FrameBenchmarks:
         theta = np.arccos(2*rnd.uniform(size=10000) - 1)
         xyz_uniform_sph1 = np.vstack((np.cos(phi)*np.sin(theta),
                                       np.sin(phi)*np.sin(theta),
-                                      np.cos(theta))).T
+                                      np.cos(theta))) * u.kpc
 
         phi = rnd.uniform(0, 2*np.pi, size=10000)
         theta = np.arccos(2*rnd.uniform(size=10000) - 1)
         xyz_uniform_sph2 = np.vstack((np.cos(phi)*np.sin(theta),
                                       np.sin(phi)*np.sin(theta),
-                                      np.cos(theta))).T
+                                      np.cos(theta))) * u.kpc
         self.icrs_uniform_sph1 = ICRS(
             xyz_uniform_sph1, representation_type=CartesianRepresentation)
         self.icrs_uniform_sph2 = ICRS(
             xyz_uniform_sph2, representation_type=CartesianRepresentation)
 
         xyz0 = rnd.uniform(-100, 100, size=(8, 3))
-        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3)))
-        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3)))
+        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc
+        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc
         self.icrs_clustered1 = ICRS(
             xyz_clustered1, representation_type=CartesianRepresentation)
         self.icrs_clustered2 = ICRS(
@@ -123,13 +124,13 @@ class FrameBenchmarks:
             pm_dec=self.scalar_pmdec)
 
     def time_coord_match_uniform(self):
-        self.icrs_uniform1.match_to_catalog_sky(self.icrs_uniform2)
+        match_coordinates_sky(self.icrs_uniform1, self.icrs_uniform2)
 
     def time_coord_match_sphere(self):
-        self.icrs_uniform_sph1.match_to_catalog_sky(self.icrs_uniform_sph2)
+        match_coordinates_sky(self.icrs_uniform_sph1, self.icrs_uniform_sph2)
 
     def time_coord_match_clusters(self):
-        self.icrs_clustered1.match_to_catalog_sky(self.icrs_clustered2)
+        match_coordinates_sky(self.icrs_clustered1, self.icrs_clustered2)
 
 
 class SkyCoordBenchmarks:
