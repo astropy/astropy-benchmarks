@@ -61,9 +61,10 @@ class FrameBenchmarks:
         self.array_ra = np.linspace(0., 360., 1000) * u.deg
         self.array_dec = np.linspace(-90., 90., 1000) * u.deg
 
+        np.random.seed(12345)
         self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)
-        self.icrs_array = ICRS(ra=np.ones(10000)*u.deg,
-                               dec=np.ones(10000)*u.deg)
+        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,
+                               dec=np.random.random(10000)*u.deg)
 
         self.scalar_rep = CartesianRepresentation([1, 2, 3.] * u.kpc)
         self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)
@@ -148,8 +149,9 @@ class SkyCoordBenchmarks:
         self.scalar_q_ra = 1 * u.deg
         self.scalar_q_dec = 2 * u.deg
 
-        self.array_q_ra = rnd.rand(int(1e6)) * 360 * u.deg
-        self.array_q_dec = (rnd.rand(int(1e6)) * 180 - 90) * u.deg
+        np.random.seed(12345)
+        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg
+        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg
 
         self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,
                                                        lon=self.scalar_q_ra)
@@ -186,10 +188,10 @@ class SkyCoordBenchmarks:
     def time_init_quantity_array_keyword(self):
         SkyCoord(ra=self.array_q_ra, dec=self.array_q_dec)
 
-    def time_init_repr_scalar(self):
+    def time_init_repr_scalar_noframe(self):
         SkyCoord(self.scalar_repr)
 
-    def time_init_repr_array(self):
+    def time_init_repr_array_noframe(self):
         SkyCoord(self.array_repr)
 
     def time_repr_scalar(self):
