@@ -1,7 +1,7 @@
 import numpy as np
 from astropy.coordinates import (SkyCoord, FK5, Latitude, Angle, ICRS,
                                  concatenate, UnitSphericalRepresentation,
-                                 CartesianRepresentation, CartesianDifferential,
+                                 CartesianRepresentation,
                                  match_coordinates_sky)
 from astropy import units as u
 from astropy.time import Time
@@ -36,6 +36,10 @@ class RepresentationBenchmarks:
 
     def setup(self):
 
+        # Avoid top-level module import to make sure that the benchmarks are
+        # compatible with versions of astropy that did not have this functionality.
+        from astropy.coordinates import CartesianDifferential
+
         self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)
         self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)
 
@@ -66,9 +70,6 @@ class FrameBenchmarks:
         self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)
         self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,
                                dec=np.random.random(10000)*u.deg)
-
-        self.scalar_rep = CartesianRepresentation([1, 2, 3.] * u.kpc)
-        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)
 
         # Some points to use for benchmarking coordinate matching.
         # These were motivated by some tests done in astropy/astropy#7324:

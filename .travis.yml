@@ -1,5 +1,7 @@
 language: python
 
+cache: ccache
+
 sudo: false
 
 python:
@@ -10,6 +12,20 @@ addons:
     packages:
       mlocate
 
+env:
+  global:
+    - CONDA_DEPENDENCIES="nomkl scipy matplotlib"
+    - MPLBACKEND=Agg
+    - ASTROPY_CONDA=true
+  matrix:
+    # Make sure that the benchmarks don't completely crash for old versions of
+    # Astropy - essentially make sure the imports don't cause the whole test
+    # suite to not work.
+    - ASTROPY_VERSION=1.3
+    - ASTROPY_VERSION=2.0
+    - ASTROPY_VERSION=3.0
+    - ASTROPY_CONDA=false CONDA_DEPENDENCIES=""
+
 install:
   - git clone git://github.com/astropy/ci-helpers.git
   - source ci-helpers/travis/setup_conda.sh
@@ -17,4 +33,11 @@ install:
   - asv machine --machine Travis --os unknown --arch unknown --cpu unknown --ram unknown
 
 script:
-  - asv run -q
+  # NOTE: we deliberately don't use ASTROPY_VERSION=dev here because we want to
+  # make sure that asv can install it by itself.
+  - ccache -s
+  - if [[ $ASTROPY_CONDA == false ]]; then
+      asv run -q || true;
+    else
+      asv dev || true;
+    fi
