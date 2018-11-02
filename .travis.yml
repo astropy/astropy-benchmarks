@@ -35,9 +35,8 @@ install:
 script:
   # NOTE: we deliberately don't use ASTROPY_VERSION=dev here because we want to
   # make sure that asv can install it by itself.
-  - ccache -s
   - if [[ $ASTROPY_CONDA == false ]]; then
-      asv run -q || true;
+      asv run -q;
     else
-      asv dev || true;
+      asv dev;
     fi
