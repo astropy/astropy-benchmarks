@@ -1,6 +1,45 @@
 {
+    "convolve.Convolve.time_convolve": {
+        "code": "class Convolve:\n    def time_convolve(self, ndim, size, boundary, nan_treatment):\n        convolve(self.array, self.kernel,\n                 boundary=boundary, nan_treatment=nan_treatment)\n\n    def setup(self, ndim, size, boundary, nan_treatment):\n    \n        print(ndim, size, boundary, nan_treatment)\n    \n        np.random.seed(12345)\n    \n        self.kernel = np.random.random(kernel_shapes[ndim][size])\n        self.array = np.random.random(array_shapes[ndim][size])",
+        "name": "convolve.Convolve.time_convolve",
+        "number": 0,
+        "param_names": [
+            "ndim",
+            "size",
+            "boundary",
+            "nan_treatment"
+        ],
+        "params": [
+            [
+                "1",
+                "2",
+                "3"
+            ],
+            [
+                "'small'",
+                "'large'"
+            ],
+            [
+                "None",
+                "'fill'",
+                "'wrap'",
+                "'extend'"
+            ],
+            [
+                "'fill'",
+                "'interpolate'"
+            ]
+        ],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "bf12ed205920e07473cfcf596eaeff59930bddb209c94f98948c2a4bb78c9e4f",
+        "warmup_time": -1
+    },
     "coordinates.FrameBenchmarks.time_concatenate_array": {
-        "code": "class FrameBenchmarks:\n    def time_concatenate_array(self):\n        concatenate((self.icrs_array, self.icrs_array))\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
+        "code": "class FrameBenchmarks:\n    def time_concatenate_array(self):\n        concatenate((self.icrs_array, self.icrs_array))\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        # Some points to use for benchmarking coordinate matching.\n        # These were motivated by some tests done in astropy/astropy#7324:\n        # https://github.com/astropy/astropy/pull/7324#issuecomment-392382719\n        xyz_uniform1 = rnd.uniform(size=(3, 10000)) * u.kpc\n        xyz_uniform2 = rnd.uniform(size=(3, 10000)) * u.kpc\n        self.icrs_uniform1 = ICRS(xyz_uniform1,\n                                  representation_type=CartesianRepresentation)\n        self.icrs_uniform2 = ICRS(xyz_uniform2,\n                                  representation_type=CartesianRepresentation)\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph1 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph2 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n        self.icrs_uniform_sph1 = ICRS(\n            xyz_uniform_sph1, representation_type=CartesianRepresentation)\n        self.icrs_uniform_sph2 = ICRS(\n            xyz_uniform_sph2, representation_type=CartesianRepresentation)\n    \n        xyz0 = rnd.uniform(-100, 100, size=(8, 3))\n        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        self.icrs_clustered1 = ICRS(\n            xyz_clustered1, representation_type=CartesianRepresentation)\n        self.icrs_clustered2 = ICRS(\n            xyz_clustered2, representation_type=CartesianRepresentation)",
         "name": "coordinates.FrameBenchmarks.time_concatenate_array",
         "number": 0,
         "param_names": [],
@@ -10,11 +49,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "227f1674235ad07a259db4c66dd1a79abd957d6177366225c91e6b3bd06f736d",
+        "version": "d9a8a1af0db07cab1ff7ab7f030eb466efc714e0b77a879085390d16d024300d",
         "warmup_time": -1
     },
     "coordinates.FrameBenchmarks.time_concatenate_scalar": {
-        "code": "class FrameBenchmarks:\n    def time_concatenate_scalar(self):\n        concatenate((self.icrs_scalar, self.icrs_scalar))\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
+        "code": "class FrameBenchmarks:\n    def time_concatenate_scalar(self):\n        concatenate((self.icrs_scalar, self.icrs_scalar))\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        # Some points to use for benchmarking coordinate matching.\n        # These were motivated by some tests done in astropy/astropy#7324:\n        # https://github.com/astropy/astropy/pull/7324#issuecomment-392382719\n        xyz_uniform1 = rnd.uniform(size=(3, 10000)) * u.kpc\n        xyz_uniform2 = rnd.uniform(size=(3, 10000)) * u.kpc\n        self.icrs_uniform1 = ICRS(xyz_uniform1,\n                                  representation_type=CartesianRepresentation)\n        self.icrs_uniform2 = ICRS(xyz_uniform2,\n                                  representation_type=CartesianRepresentation)\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph1 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph2 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n        self.icrs_uniform_sph1 = ICRS(\n            xyz_uniform_sph1, representation_type=CartesianRepresentation)\n        self.icrs_uniform_sph2 = ICRS(\n            xyz_uniform_sph2, representation_type=CartesianRepresentation)\n    \n        xyz0 = rnd.uniform(-100, 100, size=(8, 3))\n        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        self.icrs_clustered1 = ICRS(\n            xyz_clustered1, representation_type=CartesianRepresentation)\n        self.icrs_clustered2 = ICRS(\n            xyz_clustered2, representation_type=CartesianRepresentation)",
         "name": "coordinates.FrameBenchmarks.time_concatenate_scalar",
         "number": 0,
         "param_names": [],
@@ -24,11 +63,53 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "a2d9608d3d96553b6033a316020159a2f29d620ba6b201e838e3e333632024e8",
+        "version": "377a566e5922e38093d3816db9b6d23411e8bc0968bf8bb3615a19cecd7acca1",
+        "warmup_time": -1
+    },
+    "coordinates.FrameBenchmarks.time_coord_match_clusters": {
+        "code": "class FrameBenchmarks:\n    def time_coord_match_clusters(self):\n        match_coordinates_sky(self.icrs_clustered1, self.icrs_clustered2)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        # Some points to use for benchmarking coordinate matching.\n        # These were motivated by some tests done in astropy/astropy#7324:\n        # https://github.com/astropy/astropy/pull/7324#issuecomment-392382719\n        xyz_uniform1 = rnd.uniform(size=(3, 10000)) * u.kpc\n        xyz_uniform2 = rnd.uniform(size=(3, 10000)) * u.kpc\n        self.icrs_uniform1 = ICRS(xyz_uniform1,\n                                  representation_type=CartesianRepresentation)\n        self.icrs_uniform2 = ICRS(xyz_uniform2,\n                                  representation_type=CartesianRepresentation)\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph1 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph2 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n        self.icrs_uniform_sph1 = ICRS(\n            xyz_uniform_sph1, representation_type=CartesianRepresentation)\n        self.icrs_uniform_sph2 = ICRS(\n            xyz_uniform_sph2, representation_type=CartesianRepresentation)\n    \n        xyz0 = rnd.uniform(-100, 100, size=(8, 3))\n        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        self.icrs_clustered1 = ICRS(\n            xyz_clustered1, representation_type=CartesianRepresentation)\n        self.icrs_clustered2 = ICRS(\n            xyz_clustered2, representation_type=CartesianRepresentation)",
+        "name": "coordinates.FrameBenchmarks.time_coord_match_clusters",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "8c8d4504cba309fa1df25d7ebcc9011afbe10b7a8ae72bf2895372144fd5c296",
+        "warmup_time": -1
+    },
+    "coordinates.FrameBenchmarks.time_coord_match_sphere": {
+        "code": "class FrameBenchmarks:\n    def time_coord_match_sphere(self):\n        match_coordinates_sky(self.icrs_uniform_sph1, self.icrs_uniform_sph2)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        # Some points to use for benchmarking coordinate matching.\n        # These were motivated by some tests done in astropy/astropy#7324:\n        # https://github.com/astropy/astropy/pull/7324#issuecomment-392382719\n        xyz_uniform1 = rnd.uniform(size=(3, 10000)) * u.kpc\n        xyz_uniform2 = rnd.uniform(size=(3, 10000)) * u.kpc\n        self.icrs_uniform1 = ICRS(xyz_uniform1,\n                                  representation_type=CartesianRepresentation)\n        self.icrs_uniform2 = ICRS(xyz_uniform2,\n                                  representation_type=CartesianRepresentation)\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph1 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph2 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n        self.icrs_uniform_sph1 = ICRS(\n            xyz_uniform_sph1, representation_type=CartesianRepresentation)\n        self.icrs_uniform_sph2 = ICRS(\n            xyz_uniform_sph2, representation_type=CartesianRepresentation)\n    \n        xyz0 = rnd.uniform(-100, 100, size=(8, 3))\n        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        self.icrs_clustered1 = ICRS(\n            xyz_clustered1, representation_type=CartesianRepresentation)\n        self.icrs_clustered2 = ICRS(\n            xyz_clustered2, representation_type=CartesianRepresentation)",
+        "name": "coordinates.FrameBenchmarks.time_coord_match_sphere",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "3564f883f404bd6d53a21b9e3334ff6ce6af97655e2550fd6c6ef7825f59eb88",
+        "warmup_time": -1
+    },
+    "coordinates.FrameBenchmarks.time_coord_match_uniform": {
+        "code": "class FrameBenchmarks:\n    def time_coord_match_uniform(self):\n        match_coordinates_sky(self.icrs_uniform1, self.icrs_uniform2)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        # Some points to use for benchmarking coordinate matching.\n        # These were motivated by some tests done in astropy/astropy#7324:\n        # https://github.com/astropy/astropy/pull/7324#issuecomment-392382719\n        xyz_uniform1 = rnd.uniform(size=(3, 10000)) * u.kpc\n        xyz_uniform2 = rnd.uniform(size=(3, 10000)) * u.kpc\n        self.icrs_uniform1 = ICRS(xyz_uniform1,\n                                  representation_type=CartesianRepresentation)\n        self.icrs_uniform2 = ICRS(xyz_uniform2,\n                                  representation_type=CartesianRepresentation)\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph1 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph2 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n        self.icrs_uniform_sph1 = ICRS(\n            xyz_uniform_sph1, representation_type=CartesianRepresentation)\n        self.icrs_uniform_sph2 = ICRS(\n            xyz_uniform_sph2, representation_type=CartesianRepresentation)\n    \n        xyz0 = rnd.uniform(-100, 100, size=(8, 3))\n        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        self.icrs_clustered1 = ICRS(\n            xyz_clustered1, representation_type=CartesianRepresentation)\n        self.icrs_clustered2 = ICRS(\n            xyz_clustered2, representation_type=CartesianRepresentation)",
+        "name": "coordinates.FrameBenchmarks.time_coord_match_uniform",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "a094f6cec6d6468375e50b362b7bab22b093aba20c9a464a3d72adaae21d1c0a",
         "warmup_time": -1
     },
     "coordinates.FrameBenchmarks.time_init_array": {
-        "code": "class FrameBenchmarks:\n    def time_init_array(self):\n        FK5(self.array_ra, self.array_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
+        "code": "class FrameBenchmarks:\n    def time_init_array(self):\n        FK5(self.array_ra, self.array_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        # Some points to use for benchmarking coordinate matching.\n        # These were motivated by some tests done in astropy/astropy#7324:\n        # https://github.com/astropy/astropy/pull/7324#issuecomment-392382719\n        xyz_uniform1 = rnd.uniform(size=(3, 10000)) * u.kpc\n        xyz_uniform2 = rnd.uniform(size=(3, 10000)) * u.kpc\n        self.icrs_uniform1 = ICRS(xyz_uniform1,\n                                  representation_type=CartesianRepresentation)\n        self.icrs_uniform2 = ICRS(xyz_uniform2,\n                                  representation_type=CartesianRepresentation)\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph1 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph2 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n        self.icrs_uniform_sph1 = ICRS(\n            xyz_uniform_sph1, representation_type=CartesianRepresentation)\n        self.icrs_uniform_sph2 = ICRS(\n            xyz_uniform_sph2, representation_type=CartesianRepresentation)\n    \n        xyz0 = rnd.uniform(-100, 100, size=(8, 3))\n        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        self.icrs_clustered1 = ICRS(\n            xyz_clustered1, representation_type=CartesianRepresentation)\n        self.icrs_clustered2 = ICRS(\n            xyz_clustered2, representation_type=CartesianRepresentation)",
         "name": "coordinates.FrameBenchmarks.time_init_array",
         "number": 0,
         "param_names": [],
@@ -38,11 +119,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "be8dadee1372a6e99be86eb95ee4ef3a3f2bcd77b9da336d0abddde4c75c211a",
+        "version": "9dd0a9af08100d43cbb44afb12957e4a62200628da9d4f8e69396e3aedfe22ca",
         "warmup_time": -1
     },
     "coordinates.FrameBenchmarks.time_init_nodata": {
-        "code": "class FrameBenchmarks:\n    def time_init_nodata(self):\n        FK5()\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
+        "code": "class FrameBenchmarks:\n    def time_init_nodata(self):\n        FK5()\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        # Some points to use for benchmarking coordinate matching.\n        # These were motivated by some tests done in astropy/astropy#7324:\n        # https://github.com/astropy/astropy/pull/7324#issuecomment-392382719\n        xyz_uniform1 = rnd.uniform(size=(3, 10000)) * u.kpc\n        xyz_uniform2 = rnd.uniform(size=(3, 10000)) * u.kpc\n        self.icrs_uniform1 = ICRS(xyz_uniform1,\n                                  representation_type=CartesianRepresentation)\n        self.icrs_uniform2 = ICRS(xyz_uniform2,\n                                  representation_type=CartesianRepresentation)\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph1 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph2 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n        self.icrs_uniform_sph1 = ICRS(\n            xyz_uniform_sph1, representation_type=CartesianRepresentation)\n        self.icrs_uniform_sph2 = ICRS(\n            xyz_uniform_sph2, representation_type=CartesianRepresentation)\n    \n        xyz0 = rnd.uniform(-100, 100, size=(8, 3))\n        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        self.icrs_clustered1 = ICRS(\n            xyz_clustered1, representation_type=CartesianRepresentation)\n        self.icrs_clustered2 = ICRS(\n            xyz_clustered2, representation_type=CartesianRepresentation)",
         "name": "coordinates.FrameBenchmarks.time_init_nodata",
         "number": 0,
         "param_names": [],
@@ -52,11 +133,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "7a3ceb5eb191faad7f9665180b3be5d312d72c7262960bb89810965139dc2219",
+        "version": "3de6a4d1c00c390fc1c099914a2ba625d79fc4c85f45592bf67bb8e535b38e42",
         "warmup_time": -1
     },
     "coordinates.FrameBenchmarks.time_init_scalar": {
-        "code": "class FrameBenchmarks:\n    def time_init_scalar(self):\n        FK5(self.scalar_ra, self.scalar_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
+        "code": "class FrameBenchmarks:\n    def time_init_scalar(self):\n        FK5(self.scalar_ra, self.scalar_dec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        # Some points to use for benchmarking coordinate matching.\n        # These were motivated by some tests done in astropy/astropy#7324:\n        # https://github.com/astropy/astropy/pull/7324#issuecomment-392382719\n        xyz_uniform1 = rnd.uniform(size=(3, 10000)) * u.kpc\n        xyz_uniform2 = rnd.uniform(size=(3, 10000)) * u.kpc\n        self.icrs_uniform1 = ICRS(xyz_uniform1,\n                                  representation_type=CartesianRepresentation)\n        self.icrs_uniform2 = ICRS(xyz_uniform2,\n                                  representation_type=CartesianRepresentation)\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph1 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph2 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n        self.icrs_uniform_sph1 = ICRS(\n            xyz_uniform_sph1, representation_type=CartesianRepresentation)\n        self.icrs_uniform_sph2 = ICRS(\n            xyz_uniform_sph2, representation_type=CartesianRepresentation)\n    \n        xyz0 = rnd.uniform(-100, 100, size=(8, 3))\n        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        self.icrs_clustered1 = ICRS(\n            xyz_clustered1, representation_type=CartesianRepresentation)\n        self.icrs_clustered2 = ICRS(\n            xyz_clustered2, representation_type=CartesianRepresentation)",
         "name": "coordinates.FrameBenchmarks.time_init_scalar",
         "number": 0,
         "param_names": [],
@@ -66,11 +147,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "176f6ba6f7a0356297faa90b1844cafb4ca5bdff3ea05254232d648ec804c199",
+        "version": "64b79a07d8ce0eea2f8be87c1422b9915b414f7e640810bd427f81733a684c99",
         "warmup_time": -1
     },
     "coordinates.FrameBenchmarks.time_init_scalar_diff": {
-        "code": "class FrameBenchmarks:\n    def time_init_scalar_diff(self):\n        FK5(self.scalar_ra, self.scalar_dec,\n            pm_ra_cosdec=self.scalar_pmra,\n            pm_dec=self.scalar_pmdec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)",
+        "code": "class FrameBenchmarks:\n    def time_init_scalar_diff(self):\n        FK5(self.scalar_ra, self.scalar_dec,\n            pm_ra_cosdec=self.scalar_pmra,\n            pm_dec=self.scalar_pmdec)\n\n    def setup(self):\n    \n        self.scalar_ra = 3.2 * u.deg\n        self.scalar_dec = 2.2 * u.deg\n    \n        self.scalar_pmra = 3.2 * u.mas/u.yr\n        self.scalar_pmdec = 2.2 * u.mas/u.yr\n    \n        self.array_ra = np.linspace(0., 360., 1000) * u.deg\n        self.array_dec = np.linspace(-90., 90., 1000) * u.deg\n    \n        np.random.seed(12345)\n        self.icrs_scalar = ICRS(ra=1*u.deg, dec=2*u.deg)\n        self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,\n                               dec=np.random.random(10000)*u.deg)\n    \n        # Some points to use for benchmarking coordinate matching.\n        # These were motivated by some tests done in astropy/astropy#7324:\n        # https://github.com/astropy/astropy/pull/7324#issuecomment-392382719\n        xyz_uniform1 = rnd.uniform(size=(3, 10000)) * u.kpc\n        xyz_uniform2 = rnd.uniform(size=(3, 10000)) * u.kpc\n        self.icrs_uniform1 = ICRS(xyz_uniform1,\n                                  representation_type=CartesianRepresentation)\n        self.icrs_uniform2 = ICRS(xyz_uniform2,\n                                  representation_type=CartesianRepresentation)\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph1 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n    \n        phi = rnd.uniform(0, 2*np.pi, size=10000)\n        theta = np.arccos(2*rnd.uniform(size=10000) - 1)\n        xyz_uniform_sph2 = np.vstack((np.cos(phi)*np.sin(theta),\n                                      np.sin(phi)*np.sin(theta),\n                                      np.cos(theta))) * u.kpc\n        self.icrs_uniform_sph1 = ICRS(\n            xyz_uniform_sph1, representation_type=CartesianRepresentation)\n        self.icrs_uniform_sph2 = ICRS(\n            xyz_uniform_sph2, representation_type=CartesianRepresentation)\n    \n        xyz0 = rnd.uniform(-100, 100, size=(8, 3))\n        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc\n        self.icrs_clustered1 = ICRS(\n            xyz_clustered1, representation_type=CartesianRepresentation)\n        self.icrs_clustered2 = ICRS(\n            xyz_clustered2, representation_type=CartesianRepresentation)",
         "name": "coordinates.FrameBenchmarks.time_init_scalar_diff",
         "number": 0,
         "param_names": [],
@@ -80,11 +161,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "9caad2f36c476011fe604eed7aa1ccc9076ef298f2015f82eea0a68cf571d381",
+        "version": "7661b4eb62bd7efea9dc2bb5bc4af216cd23919eca3a415675d2cebe4f0b4e4d",
         "warmup_time": -1
     },
     "coordinates.RepresentationBenchmarks.time_with_differentials_array": {
-        "code": "class RepresentationBenchmarks:\n    def time_with_differentials_array(self):\n        self.array_rep.with_differentials(self.array_dif)\n\n    def setup(self):\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)\n    \n        self.array_rep = CartesianRepresentation(np.ones((3, 1000)) * u.kpc)\n        self.array_dif = CartesianDifferential(np.ones((3, 1000)) * u.km/u.s)",
+        "code": "class RepresentationBenchmarks:\n    def time_with_differentials_array(self):\n        self.array_rep.with_differentials(self.array_dif)\n\n    def setup(self):\n    \n        # Avoid top-level module import to make sure that the benchmarks are\n        # compatible with versions of astropy that did not have this functionality.\n        from astropy.coordinates import CartesianDifferential\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)\n    \n        self.array_rep = CartesianRepresentation(np.ones((3, 1000)) * u.kpc)\n        self.array_dif = CartesianDifferential(np.ones((3, 1000)) * u.km/u.s)",
         "name": "coordinates.RepresentationBenchmarks.time_with_differentials_array",
         "number": 0,
         "param_names": [],
@@ -94,11 +175,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "409875e1b3a147d75f82f90ce3aed5f3c22a48dacb438019d70de65cf081fa75",
+        "version": "ea5b8a8d6522a15a7037a7e20517f65435da8b1962d1fc28da1fcca6400226d8",
         "warmup_time": -1
     },
     "coordinates.RepresentationBenchmarks.time_with_differentials_scalar": {
-        "code": "class RepresentationBenchmarks:\n    def time_with_differentials_scalar(self):\n        self.scalar_rep.with_differentials(self.scalar_dif)\n\n    def setup(self):\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)\n    \n        self.array_rep = CartesianRepresentation(np.ones((3, 1000)) * u.kpc)\n        self.array_dif = CartesianDifferential(np.ones((3, 1000)) * u.km/u.s)",
+        "code": "class RepresentationBenchmarks:\n    def time_with_differentials_scalar(self):\n        self.scalar_rep.with_differentials(self.scalar_dif)\n\n    def setup(self):\n    \n        # Avoid top-level module import to make sure that the benchmarks are\n        # compatible with versions of astropy that did not have this functionality.\n        from astropy.coordinates import CartesianDifferential\n    \n        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)\n        self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)\n    \n        self.array_rep = CartesianRepresentation(np.ones((3, 1000)) * u.kpc)\n        self.array_dif = CartesianDifferential(np.ones((3, 1000)) * u.km/u.s)",
         "name": "coordinates.RepresentationBenchmarks.time_with_differentials_scalar",
         "number": 0,
         "param_names": [],
@@ -108,11 +189,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "d3ce4946ff67a9c8841d4b3f83d7ee18df508e6c4d2531dc4aaa8be099e310c0",
+        "version": "e5b3b94e549e3d9ebf56b77e0023426d9f175091679bddb5f381414aeed2fd4b",
         "warmup_time": -1
     },
     "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array": {
-        "code": "class SkyCoordBenchmarks:\n    def time_icrs_to_galactic_array(self):\n        self.coord_array_1e6.transform_to('galactic')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,\n                                                        lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,\n                                                        lon=self.array_q_ra)",
+        "code": "class SkyCoordBenchmarks:\n    def time_icrs_to_galactic_array(self):\n        self.coord_array_1e6.transform_to('galactic')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
         "name": "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_array",
         "number": 0,
         "param_names": [],
@@ -122,11 +203,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "78778847863979f1c9c87c410b83268c9f98209b1dd19988927f9dacdfe266b5",
+        "version": "6918c6ca278f7e282233d1a613a666e12d3db465f97f3f943077ff24883c0102",
         "warmup_time": -1
     },
     "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar": {
-        "code": "class SkyCoordBenchmarks:\n    def time_icrs_to_galactic_scalar(self):\n        self.coord_scalar.transform_to('galactic')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,\n                                                        lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,\n                                                        lon=self.array_q_ra)",
+        "code": "class SkyCoordBenchmarks:\n    def time_icrs_to_galactic_scalar(self):\n        self.coord_scalar.transform_to('galactic')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
         "name": "coordinates.SkyCoordBenchmarks.time_icrs_to_galactic_scalar",
         "number": 0,
         "param_names": [],
@@ -136,11 +217,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "3e8862c95b98829200914dac5bb1349376569269e55f19cb881380478a20d243",
+        "version": "4371461be3fbec6d1e2eb85c480e89ebb05c1a4d3b23f3e9442445264c770f95",
         "warmup_time": -1
     },
     "coordinates.SkyCoordBenchmarks.time_init_array": {
-        "code": "class SkyCoordBenchmarks:\n    def time_init_array(self):\n        SkyCoord(self.lon_1e6, self.lat_1e6, unit='deg', frame='icrs')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,\n                                                        lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,\n                                                        lon=self.array_q_ra)",
+        "code": "class SkyCoordBenchmarks:\n    def time_init_array(self):\n        SkyCoord(self.lon_1e6, self.lat_1e6, unit='deg', frame='icrs')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
         "name": "coordinates.SkyCoordBenchmarks.time_init_array",
         "number": 0,
         "param_names": [],
@@ -150,12 +231,12 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "49d0324860a2a1a263f486f14a2a763eb8a8ae91f4828b1e0cbc9e763e607962",
+        "version": "273c7b66248421d01e454afe76c992ac13ee8da5d53b31230bf44817582b4957",
         "warmup_time": -1
     },
-    "coordinates.SkyCoordBenchmarks.time_init_quantity_array": {
-        "code": "class SkyCoordBenchmarks:\n    def time_init_quantity_array(self):\n        SkyCoord(self.array_q_ra, self.array_q_dec, frame='icrs')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,\n                                                        lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,\n                                                        lon=self.array_q_ra)",
-        "name": "coordinates.SkyCoordBenchmarks.time_init_quantity_array",
+    "coordinates.SkyCoordBenchmarks.time_init_quantity_array_keyword": {
+        "code": "class SkyCoordBenchmarks:\n    def time_init_quantity_array_keyword(self):\n        SkyCoord(ra=self.array_q_ra, dec=self.array_q_dec)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
+        "name": "coordinates.SkyCoordBenchmarks.time_init_quantity_array_keyword",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -164,12 +245,12 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "dae5d135772d42d5c3b8f53b29254f7f218278f641f657f0277245eba2a227af",
+        "version": "228c3b5290e1a7523e150ace3755c584231f7fc3f5de85a3e148e3ad6d079d56",
         "warmup_time": -1
     },
-    "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar": {
-        "code": "class SkyCoordBenchmarks:\n    def time_init_quantity_scalar(self):\n        SkyCoord(self.scalar_q_ra, self.scalar_q_dec, frame='icrs')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,\n                                                        lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,\n                                                        lon=self.array_q_ra)",
-        "name": "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar",
+    "coordinates.SkyCoordBenchmarks.time_init_quantity_array_positional": {
+        "code": "class SkyCoordBenchmarks:\n    def time_init_quantity_array_positional(self):\n        SkyCoord(self.array_q_ra, self.array_q_dec)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
+        "name": "coordinates.SkyCoordBenchmarks.time_init_quantity_array_positional",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -178,12 +259,12 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "75f16b8bf5a83cc690907df1abc67c6f24d9f5dddbaaa9c8788d8997a19ebfd9",
+        "version": "84d91d570508630e25dcc267565c57ce6f9190479df1c663121c736a0d6c15f1",
         "warmup_time": -1
     },
-    "coordinates.SkyCoordBenchmarks.time_init_repr_array": {
-        "code": "class SkyCoordBenchmarks:\n    def time_init_repr_array(self):\n        SkyCoord(self.array_repr, frame='icrs')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,\n                                                        lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,\n                                                        lon=self.array_q_ra)",
-        "name": "coordinates.SkyCoordBenchmarks.time_init_repr_array",
+    "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar_keyword": {
+        "code": "class SkyCoordBenchmarks:\n    def time_init_quantity_scalar_keyword(self):\n        SkyCoord(ra=self.scalar_q_ra, dec=self.scalar_q_dec)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
+        "name": "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar_keyword",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -192,12 +273,12 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "b5c93db0c32f5f32673131db8e72bdb16538b7f769697d8317bacb83e2414808",
+        "version": "6348fe2890a5b4473195b1f7563c87ad57f2bdefb89ea98f5100a6ada7d06e9e",
         "warmup_time": -1
     },
-    "coordinates.SkyCoordBenchmarks.time_init_repr_scalar": {
-        "code": "class SkyCoordBenchmarks:\n    def time_init_repr_scalar(self):\n        SkyCoord(self.scalar_repr, frame='icrs')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,\n                                                        lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,\n                                                        lon=self.array_q_ra)",
-        "name": "coordinates.SkyCoordBenchmarks.time_init_repr_scalar",
+    "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar_positional": {
+        "code": "class SkyCoordBenchmarks:\n    def time_init_quantity_scalar_positional(self):\n        SkyCoord(self.scalar_q_ra, self.scalar_q_dec)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
+        "name": "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar_positional",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -206,11 +287,81 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "7508164c773eab57f076c83d7de3166cd3bee13e309a21c5d64bd36e0aa38011",
+        "version": "3ca05a73377c056edac1cd48846b6936f47895cef3b380972da0c85ae3d5f587",
+        "warmup_time": -1
+    },
+    "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar_positional_fk5_frame": {
+        "code": "class SkyCoordBenchmarks:\n    def time_init_quantity_scalar_positional_fk5_frame(self):\n        SkyCoord(self.scalar_q_ra, self.scalar_q_dec,\n                 frame=fk5_J2010)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
+        "name": "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar_positional_fk5_frame",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "a4efb71d10727b763b5a7c811925b0d9465dfcf14ff3982051fc00083d67d6d2",
+        "warmup_time": -1
+    },
+    "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar_positional_fk5_frame_extra_kwargs": {
+        "code": "class SkyCoordBenchmarks:\n    def time_init_quantity_scalar_positional_fk5_frame_extra_kwargs(self):\n        SkyCoord(self.scalar_q_ra, self.scalar_q_dec,\n                 frame=fk5_J2010, obstime=J2010)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
+        "name": "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar_positional_fk5_frame_extra_kwargs",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "154c9dc8471faafe661a677aac2b53617f884f3bd5c477a703c4946bb6c71eea",
+        "warmup_time": -1
+    },
+    "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar_positional_fk5_kwarg": {
+        "code": "class SkyCoordBenchmarks:\n    def time_init_quantity_scalar_positional_fk5_kwarg(self):\n        SkyCoord(self.scalar_q_ra, self.scalar_q_dec,\n                 frame='fk5', equinox=J2010)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
+        "name": "coordinates.SkyCoordBenchmarks.time_init_quantity_scalar_positional_fk5_kwarg",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "ae5bff79320c7ca0bc37bc9acb491b50e2e15e79608cc4115d485458bcdfdce5",
+        "warmup_time": -1
+    },
+    "coordinates.SkyCoordBenchmarks.time_init_repr_array_noframe": {
+        "code": "class SkyCoordBenchmarks:\n    def time_init_repr_array_noframe(self):\n        SkyCoord(self.array_repr)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
+        "name": "coordinates.SkyCoordBenchmarks.time_init_repr_array_noframe",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "eefda7caa996d6ea6f20de39e85eca14ee2923e68b15e61739d8aed4ac276d67",
+        "warmup_time": -1
+    },
+    "coordinates.SkyCoordBenchmarks.time_init_repr_scalar_noframe": {
+        "code": "class SkyCoordBenchmarks:\n    def time_init_repr_scalar_noframe(self):\n        SkyCoord(self.scalar_repr)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
+        "name": "coordinates.SkyCoordBenchmarks.time_init_repr_scalar_noframe",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "7ebda1373d9d66ea63bbd9978e45706c205eb72d3caa32b8cec944aa56833127",
         "warmup_time": -1
     },
     "coordinates.SkyCoordBenchmarks.time_init_scalar": {
-        "code": "class SkyCoordBenchmarks:\n    def time_init_scalar(self):\n        SkyCoord(1, 2, unit='deg', frame='icrs')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,\n                                                        lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,\n                                                        lon=self.array_q_ra)",
+        "code": "class SkyCoordBenchmarks:\n    def time_init_scalar(self):\n        SkyCoord(1, 2, unit='deg', frame='icrs')\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
         "name": "coordinates.SkyCoordBenchmarks.time_init_scalar",
         "number": 0,
         "param_names": [],
@@ -220,11 +371,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "2321c387afea6e4323482401f1c6403c5a1b28e7cb87bbe890cb0a6587947fd6",
+        "version": "0685d7303c02a13f2e42eb6f13a8752c049f4638b7c54b60aefda722119a1664",
         "warmup_time": -1
     },
     "coordinates.SkyCoordBenchmarks.time_iter_array": {
-        "code": "class SkyCoordBenchmarks:\n    def time_iter_array(self):\n        for c in self.coord_array_1e3:\n            pass\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,\n                                                        lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,\n                                                        lon=self.array_q_ra)",
+        "code": "class SkyCoordBenchmarks:\n    def time_iter_array(self):\n        for c in self.coord_array_1e3:\n            pass\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
         "name": "coordinates.SkyCoordBenchmarks.time_iter_array",
         "number": 0,
         "param_names": [],
@@ -234,11 +385,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "4d663e9f70f66f8f020669f12d864d52bba2a023e11a0336f67fb0f68a03beab",
+        "version": "1adc399feb7e9134018548bf35fb5f2d6715353410a37ab1aeb0f1db8709a905",
         "warmup_time": -1
     },
     "coordinates.SkyCoordBenchmarks.time_repr_array": {
-        "code": "class SkyCoordBenchmarks:\n    def time_repr_array(self):\n        repr(self.coord_array_1e3)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,\n                                                        lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,\n                                                        lon=self.array_q_ra)",
+        "code": "class SkyCoordBenchmarks:\n    def time_repr_array(self):\n        repr(self.coord_array_1e3)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
         "name": "coordinates.SkyCoordBenchmarks.time_repr_array",
         "number": 0,
         "param_names": [],
@@ -248,11 +399,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "7e8e152db2b83ec7e80fb191b21b1a7d18eae6174052a0367174d8429a460186",
+        "version": "6a31bf4c63967f9cc612e423d27ee13dcade1c4cdcd51c8c8c74715bebd5eab8",
         "warmup_time": -1
     },
     "coordinates.SkyCoordBenchmarks.time_repr_scalar": {
-        "code": "class SkyCoordBenchmarks:\n    def time_repr_scalar(self):\n        repr(self.coord_scalar)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,\n                                                        lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,\n                                                        lon=self.array_q_ra)",
+        "code": "class SkyCoordBenchmarks:\n    def time_repr_scalar(self):\n        repr(self.coord_scalar)\n\n    def setup(self):\n    \n        self.coord_scalar = SkyCoord(1, 2, unit='deg', frame='icrs')\n    \n        lon, lat = np.ones((2, 1000))\n        self.coord_array_1e3 = SkyCoord(lon, lat, unit='deg', frame='icrs')\n    \n        self.lon_1e6, self.lat_1e6 = np.ones((2, int(1e6)))\n        self.coord_array_1e6 = SkyCoord(self.lon_1e6, self.lat_1e6,\n                                        unit='deg', frame='icrs')\n    \n        self.scalar_q_ra = 1 * u.deg\n        self.scalar_q_dec = 2 * u.deg\n    \n        np.random.seed(12345)\n        self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg\n        self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg\n    \n        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,\n                                                       lon=self.scalar_q_ra)\n        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,\n                                                      lon=self.array_q_ra)",
         "name": "coordinates.SkyCoordBenchmarks.time_repr_scalar",
         "number": 0,
         "param_names": [],
@@ -262,7 +413,7 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "04dac6e69ddaef30ebc3bc31e5b98fd268a542d30a7b4890932c8b1241c9a03a",
+        "version": "9049bec253bea2f918e9cca490d39804c1d067babefbfc0c16b508455abff8e4",
         "warmup_time": -1
     },
     "coordinates.time_angle_array_repr": {
@@ -2060,7 +2211,7 @@
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_1d_array": {
-        "code": "class SigmaClipBenchmarks:\n    def time_1d_array(self):\n        self.sigclip(self.data[0][0])\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_1d_array(self):\n        self.sigclip(self.data[0][0])\n\n    def setup(self):\n    \n        # Avoid top-level module import to make sure that the benchmarks are\n        # compatible with versions of astropy that did not have this functionality.\n        from astropy.stats import SigmaClip\n    \n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_1d_array",
         "number": 0,
         "param_names": [],
@@ -2070,11 +2221,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "fc94d4f5188ec121c10d242564ee4f0242f20c242dde0e92303d507f60be321e",
+        "version": "fc10dcb1e6aaa111da09c12756b194db50d44ba21749f639852c5003c7250f8d",
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_2d_array": {
-        "code": "class SigmaClipBenchmarks:\n    def time_2d_array(self):\n        self.sigclip(self.data[0])\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_2d_array(self):\n        self.sigclip(self.data[0])\n\n    def setup(self):\n    \n        # Avoid top-level module import to make sure that the benchmarks are\n        # compatible with versions of astropy that did not have this functionality.\n        from astropy.stats import SigmaClip\n    \n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_2d_array",
         "number": 0,
         "param_names": [],
@@ -2084,11 +2235,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "5318ddebaae23cd1cd7211e45907891802a018815f7fc58f4b91ad126b43e5ab",
+        "version": "df7e384e9a766e38bbb10a01cf468e213e36f8f4a5ba6a93b1cdadb1fe5f371f",
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_2d_array_axis": {
-        "code": "class SigmaClipBenchmarks:\n    def time_2d_array_axis(self):\n        self.sigclip(self.data[0], axis=0)\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_2d_array_axis(self):\n        self.sigclip(self.data[0], axis=0)\n\n    def setup(self):\n    \n        # Avoid top-level module import to make sure that the benchmarks are\n        # compatible with versions of astropy that did not have this functionality.\n        from astropy.stats import SigmaClip\n    \n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_2d_array_axis",
         "number": 0,
         "param_names": [],
@@ -2098,11 +2249,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "45f15951775cb0d20e47f38e99f8b55c01257ac9452c9d53c72ae7bdd9987136",
+        "version": "934258e9d1d54ed0653d2bebdc509652435fe618539825b741f2d7f7792e7155",
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array": {
-        "code": "class SigmaClipBenchmarks:\n    def time_3d_array(self):\n        self.sigclip(self.data[:, :1024, :1024])\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_3d_array(self):\n        self.sigclip(self.data[:, :1024, :1024])\n\n    def setup(self):\n    \n        # Avoid top-level module import to make sure that the benchmarks are\n        # compatible with versions of astropy that did not have this functionality.\n        from astropy.stats import SigmaClip\n    \n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array",
         "number": 0,
         "param_names": [],
@@ -2112,11 +2263,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "8bb54c6a9b2261bec7821b7f37c1d213df3ce724d5873689f27ea1e52ecffb63",
+        "version": "d23bebeb3489537d166c6da312564f1ed6e3651112789e056404f0db68f98896",
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array_axis": {
-        "code": "class SigmaClipBenchmarks:\n    def time_3d_array_axis(self):\n        self.sigclip(self.data, axis=0)\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_3d_array_axis(self):\n        self.sigclip(self.data, axis=0)\n\n    def setup(self):\n    \n        # Avoid top-level module import to make sure that the benchmarks are\n        # compatible with versions of astropy that did not have this functionality.\n        from astropy.stats import SigmaClip\n    \n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array_axis",
         "number": 0,
         "param_names": [],
@@ -2126,11 +2277,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "e30c1162f1ecc90cc32ba7fda98930073f7d4a53677599c28c62b7fc81e4f3a6",
+        "version": "4ac8702969468e0e54d31ae0b462d645e1b8af9b5a394d408a5de745bf2721fd",
         "warmup_time": -1
     },
     "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array_axis2": {
-        "code": "class SigmaClipBenchmarks:\n    def time_3d_array_axis2(self):\n        self.sigclip(self.data, axis=(0, 1))\n\n    def setup(self):\n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
+        "code": "class SigmaClipBenchmarks:\n    def time_3d_array_axis2(self):\n        self.sigclip(self.data, axis=(0, 1))\n\n    def setup(self):\n    \n        # Avoid top-level module import to make sure that the benchmarks are\n        # compatible with versions of astropy that did not have this functionality.\n        from astropy.stats import SigmaClip\n    \n        size = (4, 2048, 2048)\n    \n        with NumpyRNGContext(12345):\n            self.data = np.random.normal(size=size)\n    \n            # add outliers\n            nbad = 100000\n            zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)\n            ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)\n            xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)\n            self.data[zbad, ybad, xbad] = (\n                np.random.choice([-1, 1], size=nbad) *\n                (10 + np.random.rand(nbad)))\n    \n            # The defaults use median as the cenfunc and standard\n            # deviation as the stdfunc.  The default iters is 5.\n            self.sigclip = SigmaClip(sigma=3)",
         "name": "stats.sigma_clipping.SigmaClipBenchmarks.time_3d_array_axis2",
         "number": 0,
         "param_names": [],
@@ -2140,7 +2291,7 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "40f592124346d2c2cda423262ddac4b39e7ae7b2db8760e5da980899366abdd8",
+        "version": "ae3c0a9acb5075c9b0b2ea1285b46bb6d3e24ffbbe6b052c20ac63db5cdd6b65",
         "warmup_time": -1
     },
     "table.TimeMaskedColumn.time_masked_column_init": {
