@@ -1,8 +1,10 @@
 import numpy as np
 from astropy.coordinates import (SkyCoord, FK5, Latitude, Angle, ICRS,
                                  concatenate, UnitSphericalRepresentation,
-                                 CartesianRepresentation, CartesianDifferential)
+                                 CartesianRepresentation, CartesianDifferential,
+                                 match_coordinates_sky)
 from astropy import units as u
+from astropy.time import Time
 
 
 def time_latitude():
@@ -10,6 +12,9 @@ def time_latitude():
 
 
 ANGLES = Angle(np.ones(10000), u.deg)
+J2010 = Time('J2010')
+fk5_J2010 = FK5(equinox=J2010)
+rnd = np.random.RandomState(seed=42)
 
 
 def time_angle_array_repr():
@@ -62,8 +67,42 @@ class FrameBenchmarks:
         self.icrs_array = ICRS(ra=np.random.random(10000)*u.deg,
                                dec=np.random.random(10000)*u.deg)
 
-        self.scalar_rep = CartesianRepresentation([1., 2, 3] * u.kpc)
+        self.scalar_rep = CartesianRepresentation([1, 2, 3.] * u.kpc)
         self.scalar_dif = CartesianDifferential([1, 2, 3.] * u.km/u.s)
+
+        # Some points to use for benchmarking coordinate matching.
+        # These were motivated by some tests done in astropy/astropy#7324:
+        # https://github.com/astropy/astropy/pull/7324#issuecomment-392382719
+        xyz_uniform1 = rnd.uniform(size=(3, 10000)) * u.kpc
+        xyz_uniform2 = rnd.uniform(size=(3, 10000)) * u.kpc
+        self.icrs_uniform1 = ICRS(xyz_uniform1,
+                                  representation_type=CartesianRepresentation)
+        self.icrs_uniform2 = ICRS(xyz_uniform2,
+                                  representation_type=CartesianRepresentation)
+
+        phi = rnd.uniform(0, 2*np.pi, size=10000)
+        theta = np.arccos(2*rnd.uniform(size=10000) - 1)
+        xyz_uniform_sph1 = np.vstack((np.cos(phi)*np.sin(theta),
+                                      np.sin(phi)*np.sin(theta),
+                                      np.cos(theta))) * u.kpc
+
+        phi = rnd.uniform(0, 2*np.pi, size=10000)
+        theta = np.arccos(2*rnd.uniform(size=10000) - 1)
+        xyz_uniform_sph2 = np.vstack((np.cos(phi)*np.sin(theta),
+                                      np.sin(phi)*np.sin(theta),
+                                      np.cos(theta))) * u.kpc
+        self.icrs_uniform_sph1 = ICRS(
+            xyz_uniform_sph1, representation_type=CartesianRepresentation)
+        self.icrs_uniform_sph2 = ICRS(
+            xyz_uniform_sph2, representation_type=CartesianRepresentation)
+
+        xyz0 = rnd.uniform(-100, 100, size=(8, 3))
+        xyz_clustered1 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc
+        xyz_clustered2 = np.vstack(rnd.normal(xyz0, size=(10000, 8, 3))).T * u.kpc
+        self.icrs_clustered1 = ICRS(
+            xyz_clustered1, representation_type=CartesianRepresentation)
+        self.icrs_clustered2 = ICRS(
+            xyz_clustered2, representation_type=CartesianRepresentation)
 
     def time_init_nodata(self):
         FK5()
@@ -84,6 +123,15 @@ class FrameBenchmarks:
         FK5(self.scalar_ra, self.scalar_dec,
             pm_ra_cosdec=self.scalar_pmra,
             pm_dec=self.scalar_pmdec)
+
+    def time_coord_match_uniform(self):
+        match_coordinates_sky(self.icrs_uniform1, self.icrs_uniform2)
+
+    def time_coord_match_sphere(self):
+        match_coordinates_sky(self.icrs_uniform_sph1, self.icrs_uniform_sph2)
+
+    def time_coord_match_clusters(self):
+        match_coordinates_sky(self.icrs_clustered1, self.icrs_clustered2)
 
 
 class SkyCoordBenchmarks:
@@ -106,10 +154,10 @@ class SkyCoordBenchmarks:
         self.array_q_ra = np.random.rand(int(1e6)) * 360 * u.deg
         self.array_q_dec = (np.random.rand(int(1e6)) * 180 - 90) * u.deg
 
-        self.scalar_repr = UnitSphericalRepresentation (lat=self.scalar_q_dec,
-                                                        lon=self.scalar_q_ra)
-        self.array_repr = UnitSphericalRepresentation (lat=self.array_q_dec,
-                                                        lon=self.array_q_ra)
+        self.scalar_repr = UnitSphericalRepresentation(lat=self.scalar_q_dec,
+                                                       lon=self.scalar_q_ra)
+        self.array_repr = UnitSphericalRepresentation(lat=self.array_q_dec,
+                                                      lon=self.array_q_ra)
 
     def time_init_scalar(self):
         SkyCoord(1, 2, unit='deg', frame='icrs')
@@ -117,17 +165,35 @@ class SkyCoordBenchmarks:
     def time_init_array(self):
         SkyCoord(self.lon_1e6, self.lat_1e6, unit='deg', frame='icrs')
 
-    def time_init_quantity_scalar(self):
-        SkyCoord(self.scalar_q_ra, self.scalar_q_dec, frame='icrs')
+    def time_init_quantity_scalar_positional(self):
+        SkyCoord(self.scalar_q_ra, self.scalar_q_dec)
 
-    def time_init_quantity_array(self):
-        SkyCoord(self.array_q_ra, self.array_q_dec, frame='icrs')
+    def time_init_quantity_array_positional(self):
+        SkyCoord(self.array_q_ra, self.array_q_dec)
 
-    def time_init_repr_scalar(self):
-        SkyCoord(self.scalar_repr, frame='icrs')
+    def time_init_quantity_scalar_positional_fk5_kwarg(self):
+        SkyCoord(self.scalar_q_ra, self.scalar_q_dec,
+                 frame='fk5', equinox=J2010)
 
-    def time_init_repr_array(self):
-        SkyCoord(self.array_repr, frame='icrs')
+    def time_init_quantity_scalar_positional_fk5_frame(self):
+        SkyCoord(self.scalar_q_ra, self.scalar_q_dec,
+                 frame=fk5_J2010)
+
+    def time_init_quantity_scalar_positional_fk5_frame_extra_kwargs(self):
+        SkyCoord(self.scalar_q_ra, self.scalar_q_dec,
+                 frame=fk5_J2010, obstime=J2010)
+
+    def time_init_quantity_scalar_keyword(self):
+        SkyCoord(ra=self.scalar_q_ra, dec=self.scalar_q_dec)
+
+    def time_init_quantity_array_keyword(self):
+        SkyCoord(ra=self.array_q_ra, dec=self.array_q_dec)
+
+    def time_init_repr_scalar_noframe(self):
+        SkyCoord(self.scalar_repr)
+
+    def time_init_repr_array_noframe(self):
+        SkyCoord(self.array_repr)
 
     def time_repr_scalar(self):
         repr(self.coord_scalar)
