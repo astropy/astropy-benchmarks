@@ -1,10 +1,15 @@
 import numpy as np
-from astropy.stats import SigmaClip
 from astropy.utils.misc import NumpyRNGContext
 
 
 class SigmaClipBenchmarks:
+
     def setup(self):
+
+        # Avoid top-level module import to make sure that the benchmarks are
+        # compatible with versions of astropy that did not have this functionality.
+        from astropy.stats import SigmaClip
+
         size = (4, 2048, 2048)
 
         with NumpyRNGContext(12345):
