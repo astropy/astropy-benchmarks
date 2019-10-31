@@ -592,6 +592,22 @@
         "version": "5bac457205366118e159292716591c45c0cfc49c2e2729149b83abfbb3e6ed3e",
         "warmup_time": -1
     },
+    "imports.timeraw_import_astropy": {
+        "code": "def timeraw_import_astropy():\n    return \"\"\"\n    import astropy\n    \"\"\"",
+        "min_run_count": 2,
+        "name": "imports.timeraw_import_astropy",
+        "number": 1,
+        "param_names": [],
+        "params": [],
+        "processes": 2,
+        "repeat": 0,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "ea26c812c50a70ee882d223711f12e8936cf4c87bd06969bc532787387d61336",
+        "warmup_time": -1
+    },
     "io_ascii.core.CoreSuite.time_base_splitter": {
         "code": "class CoreSuite:\n    def time_base_splitter(self):\n        core.BaseSplitter().process_val(self.line)\n\n    def setup(self):\n        self.lines = []\n        options = [['a b c d'], ['a b c \\\\', 'd'], ['a b \\\\', 'c \\\\', 'd'],\n                   ['a b \\\\', 'c d'], ['a \\\\', 'b c \\\\', 'd']]\n        for i in range(1000):\n            self.lines.extend(options[i % 5])\n        options = ['\"a\\tbc\\t\\td\"', 'ab cd', '\\tab\\t\\tc\\td', 'a \\tb \\tcd']\n        self.line = ''.join([options[i % 4] for i in range(1000)])\n        self.vals = [randword() for i in range(1000)]\n        self.csv_line = ','.join([str(x) for x in self.vals])\n        lst = []\n        lst.append([random.randint(-500, 500) for i in range(1000)])\n        lst.append([random.random() * 500 - 500 for i in range(1000)])\n        lst.append([''.join([random.choice(uppercase) for j in\n                            range(6)]) for i in range(1000)])\n        self.cols = [core.Column(str(i + 1)) for i in range(3)]\n        for col, x in izip(self.cols, lst):\n            col.str_vals = [str(s) for s in x]",
         "min_run_count": 2,
