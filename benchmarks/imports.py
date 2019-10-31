@@ -170,18 +170,6 @@ def timeraw_import_astropy_timeseries_periodograms():
     """
 
 
-def timeraw_import_astropy_timeseries_periodograms_bls():
-    return """
-    from astropy.timeseries.periodograms import bls
-    """
-
-
-def timeraw_import_astropy_timeseries_periodograms_lombscargle():
-    return """
-    from astropy.timeseries.periodograms import lombscargle
-    """
-
-
 def timeraw_import_astropy_uncertainty():
     return """
     from astropy import uncertainty
