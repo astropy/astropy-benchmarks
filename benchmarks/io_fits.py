@@ -93,18 +93,19 @@ class FITSHDUList:
     Tests of the HDUList interface
     """
 
-    def setup(self):
-        self.filename = mktemp(suffix='.fits')
+    filename = 'many_hdu.fits'
+
+    def setup_cache(self):
         hdr = make_header()
         hdul = fits.HDUList([fits.PrimaryHDU(header=hdr)] +
-                            [fits.ImageHDU(header=hdr) for _ in range(100)])
+                            [fits.ImageHDU(header=hdr) for _ in range(30)])
         hdul.writeto(self.filename)
 
     def time_getheader(self):
         fits.getheader(self.filename)
 
     def time_getheader_ext50(self):
-        fits.getheader(self.filename, ext=50)
+        fits.getheader(self.filename, ext=20)
 
     def time_len(self):
         with fits.open(self.filename) as hdul:
