@@ -114,7 +114,8 @@ class TimeQuantityOpSmallArray:
     def setup(self):
         data = np.array([1., 2., 3.])
         self.data = data * u.g
-        self.out = data.copy()
+        self.out_sq = data * u.g ** 2
+        self.out_sqrt = data * u.g ** 0.5
 
     def time_quantity_square(self):
         self.data ** 2
@@ -123,7 +124,7 @@ class TimeQuantityOpSmallArray:
         np.power(self.data, 2)
 
     def time_quantity_np_square_out(self):
-        np.power(self.data, 2, out=self.out)
+        np.power(self.data, 2, out=self.out_sq)
 
     def time_quantity_sqrt(self):
         self.data ** 0.5
@@ -132,7 +133,7 @@ class TimeQuantityOpSmallArray:
         np.sqrt(self.data)
 
     def time_quantity_np_sqrt_out(self):
-        np.sqrt(self.data, out=self.out)
+        np.sqrt(self.data, out=self.out_sqrt)
 
 
 class TimeQuantityOpLargeArray(TimeQuantityOpSmallArray):
@@ -142,7 +143,8 @@ class TimeQuantityOpLargeArray(TimeQuantityOpSmallArray):
     def setup(self):
         data = np.arange(1e6) + 1
         self.data = data * u.g
-        self.out = data.copy()
+        self.out_sq = data * u.g ** 2
+        self.out_sqrt = data * u.g ** 0.5
 
 
 class TimeQuantityOpSmallArrayDiffUnit:
