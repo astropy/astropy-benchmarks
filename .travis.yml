@@ -31,7 +31,8 @@ env:
 install:
   - git clone git://github.com/astropy/ci-helpers.git
   - source ci-helpers/travis/setup_conda.sh
-  - pip install asv
+  # https://github.com/airspeed-velocity/asv/issues/928
+  - pip install git+https://github.com/airspeed-velocity/asv.git@master
   - asv machine --machine Travis --os unknown --arch unknown --cpu unknown --ram unknown
 
 script:
