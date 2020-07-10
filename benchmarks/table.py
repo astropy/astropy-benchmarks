@@ -173,3 +173,12 @@ class TimeMaskedColumn:
 
     def time_masked_column_init(self):
         MaskedColumn(self.dat)
+
+
+class TimeTableInitWithLists:
+
+    def setup(self):
+        self.dat = list(range(100_000))
+
+    def time_init_lists(self):
+        Table([self.dat, self.dat, self.dat], names=['time', 'rate', 'error'])
