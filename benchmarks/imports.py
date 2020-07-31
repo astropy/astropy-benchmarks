@@ -134,12 +134,6 @@ def timeraw_import_astropy_tests():
     """
 
 
-def timeraw_import_astropy_tests_helper():
-    return """
-    from astropy.tests import helper
-    """
-
-
 def timeraw_import_astropy_tests_runner():
     return """
     from astropy.tests import runner
