@@ -10,12 +10,12 @@ gauss1d_with_units = models.Gaussian1D(amplitude=10*u.Hz, mean=5*u.m, stddev=1.2
 x_no_units_scalar = 5
 x_no_units_small = np.linspace(-4, 3, 50)
 x_no_units_medium = np.linspace(-40, 300, 2000)
-x_no_units_large = np.linspace(-4, 300, 5e-6)
+x_no_units_big = np.linspace(-4, 300, 5000000)
 
 x_with_units_scalar = 5*u.m
 x_with_units_small = np.linspace(-4, 3, 50) * u.m
 x_with_units_medium = np.linspace(-40, 300, 2000)* u.m
-x_with_units_large = np.linspace(-4, 300, 5e-6)* u.m
+x_with_units_big = np.linspace(-4, 300, 5000000)* u.m
 
 
 def time_model_init():
@@ -43,8 +43,8 @@ def time_eval_gaussian_no_units_small():
 def time_eval_gaussian_no_units_medium():
     gauss1d_no_units(x_no_units_medium)
 
-def time_eval_gaussian_no_units_large():
-    gauss1d_no_units(x_no_units_large)
+def time_eval_gaussian_no_units_big():
+    gauss1d_no_units(x_no_units_big)
 
 
 def time_eval_gaussian_with_units_scalar():
@@ -57,5 +57,5 @@ def time_eval_gaussian_with_units_small():
 def time_eval_gaussian_with_units_medium():
     gauss1d_with_units(x_with_units_medium)
 
-def time_eval_gaussian_with_units_large():
-    gauss1d_with_units(x_with_units_large)
+def time_eval_gaussian_with_units_big():
+    gauss1d_with_units(x_with_units_big)

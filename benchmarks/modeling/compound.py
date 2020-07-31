@@ -6,7 +6,7 @@ from astropy import units as u
 x_no_units_scalar = 5
 x_no_units_small = np.linspace(-4, 3, 50)
 x_no_units_medium = np.linspace(-40, 300, 2000)
-x_no_units_large = np.linspace(-4, 300, 5e-6)
+x_no_units_big = np.linspace(-4, 300, 5000000)
 
 
 def time_init_7_no_units():
@@ -48,8 +48,8 @@ class EvaluateCompoundModelNoUnits:
     def time_medium(self):
         r, d = self.model(x_no_units_medium, x_no_units_medium)
 
-    def time_large(self):
-        r, d = self.model(x_no_units_large, x_no_units_large)
+    def time_big(self):
+        r, d = self.model(x_no_units_big, x_no_units_big)
 
 
 class EvaluateCompoundModelWithUnits:
@@ -73,5 +73,5 @@ class EvaluateCompoundModelWithUnits:
     def time_medium(self):
         r, d = self.model(x_no_units_medium * u.pix, x_no_units_medium * u.pix)
 
-    def time_large(self):
-        r, d, = self.model(x_no_units_large * u.pix, x_no_units_large * u.pix)
+    def time_big(self):
+        r, d, = self.model(x_no_units_big * u.pix, x_no_units_big * u.pix)
