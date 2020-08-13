@@ -182,3 +182,49 @@ class TimeTableInitWithLists:
 
     def time_init_lists(self):
         Table([self.dat, self.dat, self.dat], names=['time', 'rate', 'error'])
+
+
+class TimeTableInitWithMultiDimLists:
+
+    def setup(self):
+        np_data_int = np.arange(1_000_000, dtype=np.int64)
+        np_data_float = np_data_int.astype(np.float64)
+        np_data_str = np_data_int.astype('U')
+
+        self.data_int_1d = np_data_int.tolist()
+
+        self.data_int_3d = np_data_int.reshape(1000, 100, 10).tolist()
+
+        self.data_int_masked_1d = self.data_int_1d.copy()
+        self.data_int_masked_1d[-1] = np.ma.masked
+
+        self.data_int_masked_3d = self.data_int_3d.copy()
+        self.data_int_masked_3d[-1][-1][-1] = np.ma.masked
+
+        self.data_float_1d = np_data_float.tolist()
+
+        self.data_str_1d = np_data_str.tolist()
+
+        self.data_str_masked_1d = self.data_str_1d.copy()
+        self.data_str_masked_1d[-1] = np.ma.masked
+
+    def time_init_int_1d(self):
+        Table([self.data_int_1d])
+
+    def time_init_int_3d(self):
+        Table([self.data_int_3d])
+
+    def time_init_int_masked_1d(self):
+        Table([self.data_int_masked_1d])
+
+    def time_init_int_masked_3d(self):
+        Table([self.data_int_masked_3d])
+
+    def time_init_float_1d(self):
+        Table([self.data_float_1d])
+
+    def time_init_str_1d(self):
+        Table([self.data_str_1d])
+
+    def time_init_str_masked_1d(self):
+        Table([self.data_str_masked_1d])
