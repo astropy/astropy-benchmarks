@@ -1,8 +1,9 @@
 Astropy performance benchmarks
 ==============================
 
-.. image:: https://travis-ci.org/astropy/astropy-benchmarks.svg
-    :target: https://travis-ci.org/astropy/astropy-benchmarks
+.. image:: https://github.com/astropy/astropy-benchmarks/workflows/CI/badge.svg
+    :target: https://github.com/astropy/astropy-benchmarks/actions
+    :alt: CI Status
 
 About
 -----
