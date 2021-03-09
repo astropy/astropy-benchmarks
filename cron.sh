@@ -6,8 +6,8 @@ echo "asv: "`asv --version`
 echo "Machine: "$MACHINE
 
 git clean -fxd
-git checkout master
-git pull origin master
+git checkout main
+git pull origin main
 
 # We now run all benchmarks since the last one run in this benchmarks repository. This assumes
 # you have previously run at least ``asv run HEAD^!`` and added the results to the repository
@@ -28,7 +28,7 @@ timeout 7200 taskset -c 0 asv run ALL --skip-existing-commits || true
 git add results/$MACHINE
 git commit -m "New results from $MACHINE"
 
-git push origin master
+git push origin main
 asv gh-pages --no-push
 git push -f origin gh-pages
 

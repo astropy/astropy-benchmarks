@@ -40,7 +40,7 @@ each benchmark once instead of taking an average of many runs. Nevertheless,
 this is the first step to make sure things are running correctly and can still
 give order of magnitude timings.
 
-To run asv properly on the latest commit in the upstream astropy master, you can
+To run asv properly on the latest commit in the upstream astropy main, you can
 do::
 
     $ asv run
@@ -170,6 +170,6 @@ benchmarks - we have machines that automatically do this every night.
 Notes to maintainers
 --------------------
 
-The ``master`` branch in this repository should not contain any results or built
+The ``main`` branch in this repository should not contain any results or built
 website. Results should be added to the ``results`` branch, and commits to the
 ``results`` branch trigger a build to the ``gh-pages`` branch.
