@@ -13,12 +13,15 @@ Polynomial2D = models.Polynomial2D(degree=2)
 Chebyshev1D = models.Chebyshev1D(degree=2)
 Chebyshev2D = models.Chebyshev2D(x_degree=2, y_degree=2)
 
+combined_gauss_1d = models.Gaussian1D(1, 0, 0.1) + models.Gaussian1D(2, 0.5, 0.1)
+combined_gauss_2d = models.Gaussian2D(amplitude=1, x_mean=0,  y_mean=0, x_stddev=0.1, y_stddev=0.1) + \
+        models.Gaussian2D(amplitude=2, x_mean=0.5,  y_mean=0.5, x_stddev=0.1, y_stddev=0.1)
+
 x = np.linspace(-5., 5., 200)
 y_base = 3 * np.exp(-0.5 * (x - 1.3)**2 / 0.8**2)
 
 x_grid, y_grid = np.meshgrid(x, x)
 z_base = 3 * np.exp(-0.5* ((x_grid - 1.3)**2/0.8**2 + (y_grid - 2.1)**2/0.1**2))
-
 
 fit_LevMarLSQFitter = fitting.LevMarLSQFitter()
 fit_SLSQPLSQFitter = fitting.SLSQPLSQFitter()
@@ -110,4 +113,20 @@ def time_Chebyshev1D_LinearLSQFitter():
 def time_Chebyshev2D_LinearLSQFitter():
     z = z_base + np.random.normal(0., 0.2, z_base.shape)
     t = fit_LinearLSQFitter(Chebyshev2D, x_grid, y_grid, z)
+
+def time_combined_gauss_1d_LevMarLSQFitter():
+    y = y_base + np.random.normal(0., 0.2, y_base.shape)
+    t = fit_LevMarLSQFitter(combined_gauss_1d, x, y)
+
+# def time_combined_gauss_1d_SLSQPLSQFitter():
+#     y = y_base + np.random.normal(0., 0.2, y_base.shape)
+#     t = fit_SLSQPLSQFitter(combined_gauss_1d, x, y)
+
+def time_combined_gauss_2d_LevMarLSQFitter():
+    z = z_base + np.random.normal(0., 0.2, z_base.shape)
+    t = fit_LevMarLSQFitter(combined_gauss_2d, x_grid, y_grid, z)
+
+# def time_combined_gauss_2d_SLSQPLSQFitter():
+#     z = z_base + np.random.normal(0., 0.2, z_base.shape)
+#     t = fit_SLSQPLSQFitter(combined_gauss_2d, x_grid, y_grid, z)
 
