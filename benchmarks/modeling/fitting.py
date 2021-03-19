@@ -1,4 +1,5 @@
 import numpy as np
+import warnings
 
 from astropy.modeling import models, fitting
 
@@ -50,83 +51,150 @@ def time_Gaussian1D_LevMarLSQFitter():
     t = fit_LevMarLSQFitter(Gaussian1D, x, y)
 
 
-# def time_Gaussian1D_SLSQPLSQFitter():
-#     y = y_base + np.random.normal(0., 0.2, y_base.shape)
-#     t = fit_SLSQPLSQFitter(Gaussian1D, x, y)
+def time_Gaussian1D_SLSQPLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        y = y_base + np.random.normal(0., 0.2, y_base.shape)
+        t = fit_SLSQPLSQFitter(Gaussian1D, x, y)
+    except Warning:
+        pass
 
 
-# def time_Gaussian1D_SimplexLSQFitter():
-#     y = y_base + np.random.normal(0., 0.2, y_base.shape)
-#     t = fit_SimplexLSQFitter(Gaussian1D, x, y)
-
+def time_Gaussian1D_SimplexLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        y = y_base + np.random.normal(0., 0.2, y_base.shape)
+        t = fit_SimplexLSQFitter(Gaussian1D, x, y)
+    except Warning:
+        pass
 
 def time_Gaussian2D_LevMarLSQFitter():
-    z = z_base + np.random.normal(0., 0.2, z_base.shape)
-    t = fit_LevMarLSQFitter(Gaussian2D, x_grid, y_grid, z)
+    warnings.filterwarnings('error')
+    try:
+        z = z_base + np.random.normal(0., 0.2, z_base.shape)
+        t = fit_LevMarLSQFitter(Gaussian2D, x_grid, y_grid, z)
+    except Warning:
+        pass
 
 
-# def time_Gaussian2D_SLSQPLSQFitter():
-#     z = z_base + np.random.normal(0., 0.2, z_base.shape)
-#     t = fit_SLSQPLSQFitter(Gaussian2D, x_grid, y_grid, z)
+def time_Gaussian2D_SLSQPLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        z = z_base + np.random.normal(0., 0.2, z_base.shape)
+        t = fit_SLSQPLSQFitter(Gaussian2D, x_grid, y_grid, z)
+    except Warning:
+        pass
 
 
-# def time_Gaussian2D_SimplexLSQFitter():
-#     z = z_base + np.random.normal(0., 0.2, z_base.shape)
-#     t = fit_SimplexLSQFitter(Gaussian2D, x_grid, y_grid, z)
+def time_Gaussian2D_SimplexLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        z = z_base + np.random.normal(0., 0.2, z_base.shape)
+        t = fit_SimplexLSQFitter(Gaussian2D, x_grid, y_grid, z)
+    except Warning:
+        pass
 
 
-# def time_Polynomial1D_LevMarLSQFitter():
-#     y = y_base + np.random.normal(0., 0.2, y_base.shape)
-#     t = fit_LevMarLSQFitter(Polynomial1D, x, y)
+def time_Polynomial1D_LevMarLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        y = y_base + np.random.normal(0., 0.2, y_base.shape)
+        t = fit_LevMarLSQFitter(Polynomial1D, x, y)
+    except Warning:
+        pass
 
 
 def time_Polynomial1D_LinearLSQFitter():
-    y = y_base + np.random.normal(0., 0.2, y_base.shape)
-    t = fit_LinearLSQFitter(Polynomial1D, x, y)
+    warnings.filterwarnings('error')
+    try:
+        y = y_base + np.random.normal(0., 0.2, y_base.shape)
+        t = fit_LinearLSQFitter(Polynomial1D, x, y)
+    except Warning:
+        pass
 
 
-# def time_Polynomial2D_LevMarLSQFitter():
-#     z = z_base + np.random.normal(0., 0.2, z_base.shape)
-#     t = fit_LevMarLSQFitter(Polynomial2D, x_grid, y_grid, z)
+def time_Polynomial2D_LevMarLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        z = z_base + np.random.normal(0., 0.2, z_base.shape)
+        t = fit_LevMarLSQFitter(Polynomial2D, x_grid, y_grid, z)
+    except Warning:
+        pass
 
 
 def time_Polynomial2D_LinearLSQFitter():
-    z = z_base + np.random.normal(0., 0.2, z_base.shape)
-    t = fit_LinearLSQFitter(Polynomial2D, x_grid, y_grid, z)
+    warnings.filterwarnings('error')
+    try:
+        z = z_base + np.random.normal(0., 0.2, z_base.shape)
+        t = fit_LinearLSQFitter(Polynomial2D, x_grid, y_grid, z)
+    except Warning:
+        pass
 
 
-# def time_Chebyshev1D_LevMarLSQFitter():
-#     y = y_base + np.random.normal(0., 0.2, y_base.shape)
-#     t = fit_LevMarLSQFitter(Chebyshev1D, x, y)
+def time_Chebyshev1D_LevMarLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        y = y_base + np.random.normal(0., 0.2, y_base.shape)
+        t = fit_LevMarLSQFitter(Chebyshev1D, x, y)
+    except Warning:
+        pass
 
 
 def time_Chebyshev1D_LinearLSQFitter():
-    y = y_base + np.random.normal(0., 0.2, y_base.shape)
-    t = fit_LinearLSQFitter(Chebyshev1D, x, y)
+    warnings.filterwarnings('error')
+    try:
+        y = y_base + np.random.normal(0., 0.2, y_base.shape)
+        t = fit_LinearLSQFitter(Chebyshev1D, x, y)
+    except Warning:
+        pass
 
 
-# def time_Chebyshev2D_LevMarLSQFitter():
-#     z = z_base + np.random.normal(0., 0.2, z_base.shape)
-#     t = fit_LevMarLSQFitter(Chebyshev2D, x_grid, y_grid, z)
+def time_Chebyshev2D_LevMarLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        z = z_base + np.random.normal(0., 0.2, z_base.shape)
+        t = fit_LevMarLSQFitter(Chebyshev2D, x_grid, y_grid, z)
+    except Warning:
+        pass
 
 
 def time_Chebyshev2D_LinearLSQFitter():
-    z = z_base + np.random.normal(0., 0.2, z_base.shape)
-    t = fit_LinearLSQFitter(Chebyshev2D, x_grid, y_grid, z)
+    warnings.filterwarnings('error')
+    try:
+        z = z_base + np.random.normal(0., 0.2, z_base.shape)
+        t = fit_LinearLSQFitter(Chebyshev2D, x_grid, y_grid, z)
+    except Warning:
+        pass
 
 def time_combined_gauss_1d_LevMarLSQFitter():
-    y = y_base + np.random.normal(0., 0.2, y_base.shape)
-    t = fit_LevMarLSQFitter(combined_gauss_1d, x, y)
+    warnings.filterwarnings('error')
+    try:
+        y = y_base + np.random.normal(0., 0.2, y_base.shape)
+        t = fit_LevMarLSQFitter(combined_gauss_1d, x, y)
+    except Warning:
+        pass
 
-# def time_combined_gauss_1d_SLSQPLSQFitter():
-#     y = y_base + np.random.normal(0., 0.2, y_base.shape)
-#     t = fit_SLSQPLSQFitter(combined_gauss_1d, x, y)
+def time_combined_gauss_1d_SLSQPLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        y = y_base + np.random.normal(0., 0.2, y_base.shape)
+        t = fit_SLSQPLSQFitter(combined_gauss_1d, x, y)
+    except Warning:
+        pass
 
 def time_combined_gauss_2d_LevMarLSQFitter():
-    z = z_base + np.random.normal(0., 0.2, z_base.shape)
-    t = fit_LevMarLSQFitter(combined_gauss_2d, x_grid, y_grid, z)
+    warnings.filterwarnings('error')
+    try:
+        z = z_base + np.random.normal(0., 0.2, z_base.shape)
+        t = fit_LevMarLSQFitter(combined_gauss_2d, x_grid, y_grid, z)
+    except Warning:
+        pass
 
-# def time_combined_gauss_2d_SLSQPLSQFitter():
-#     z = z_base + np.random.normal(0., 0.2, z_base.shape)
-#     t = fit_SLSQPLSQFitter(combined_gauss_2d, x_grid, y_grid, z)
+def time_combined_gauss_2d_SLSQPLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        z = z_base + np.random.normal(0., 0.2, z_base.shape)
+        t = fit_SLSQPLSQFitter(combined_gauss_2d, x_grid, y_grid, z)
+    except Warning:
+        pass
 
