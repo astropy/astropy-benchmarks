@@ -10,6 +10,9 @@ Gaussian2D = models.Gaussian2D(amplitude=1, x_mean=0,  y_mean=0, \
 Polynomial1D = models.Polynomial1D(degree=2)
 Polynomial2D = models.Polynomial2D(degree=2)
 
+Chebyshev1D = models.Chebyshev1D(degree=2)
+Chebyshev2D = models.Chebyshev2D(x_degree=2, y_degree=2)
+
 x = np.linspace(-5., 5., 200)
 y_base = 3 * np.exp(-0.5 * (x - 1.3)**2 / 0.8**2)
 
@@ -87,4 +90,24 @@ def time_Polynomial1D_LinearLSQFitter():
 def time_Polynomial2D_LinearLSQFitter():
     z = z_base + np.random.normal(0., 0.2, z_base.shape)
     t = fit_LinearLSQFitter(Polynomial2D, x_grid, y_grid, z)
+
+
+# def time_Chebyshev1D_LevMarLSQFitter():
+#     y = y_base + np.random.normal(0., 0.2, y_base.shape)
+#     t = fit_LevMarLSQFitter(Chebyshev1D, x, y)
+
+
+def time_Chebyshev1D_LinearLSQFitter():
+    y = y_base + np.random.normal(0., 0.2, y_base.shape)
+    t = fit_LinearLSQFitter(Chebyshev1D, x, y)
+
+
+# def time_Chebyshev2D_LevMarLSQFitter():
+#     z = z_base + np.random.normal(0., 0.2, z_base.shape)
+#     t = fit_LevMarLSQFitter(Chebyshev2D, x_grid, y_grid, z)
+
+
+def time_Chebyshev2D_LinearLSQFitter():
+    z = z_base + np.random.normal(0., 0.2, z_base.shape)
+    t = fit_LinearLSQFitter(Chebyshev2D, x_grid, y_grid, z)
 
