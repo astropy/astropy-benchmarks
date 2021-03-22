@@ -175,6 +175,7 @@ def time_Chebyshev2D_LinearLSQFitter():
     except Warning:
         pass
 
+
 def time_combined_gauss_1d_LevMarLSQFitter():
     warnings.filterwarnings('error')
     try:
@@ -182,6 +183,7 @@ def time_combined_gauss_1d_LevMarLSQFitter():
         t = fit_LevMarLSQFitter(combined_gauss_1d, x, y)
     except Warning:
         pass
+
 
 def time_combined_gauss_1d_SLSQPLSQFitter():
     warnings.filterwarnings('error')
@@ -191,6 +193,7 @@ def time_combined_gauss_1d_SLSQPLSQFitter():
     except Warning:
         pass
 
+
 def time_combined_gauss_2d_LevMarLSQFitter():
     warnings.filterwarnings('error')
     try:
@@ -198,6 +201,7 @@ def time_combined_gauss_2d_LevMarLSQFitter():
         t = fit_LevMarLSQFitter(combined_gauss_2d, x_grid, y_grid, z)
     except Warning:
         pass
+
 
 def time_combined_gauss_2d_SLSQPLSQFitter():
     warnings.filterwarnings('error')
@@ -207,6 +211,7 @@ def time_combined_gauss_2d_SLSQPLSQFitter():
     except Warning:
         pass
 
+
 def time_large_gauss_combined_1d_LevMarLSQFitter():
     warnings.filterwarnings('error')
     try:
@@ -214,6 +219,7 @@ def time_large_gauss_combined_1d_LevMarLSQFitter():
         t = fit_LevMarLSQFitter(large_gauss_combined_1d, x, y)
     except Warning:
         pass
+
 
 def time_large_gauss_combined_1d_SLSQPLSQFitter():
     warnings.filterwarnings('error')
@@ -223,6 +229,7 @@ def time_large_gauss_combined_1d_SLSQPLSQFitter():
     except Warning:
         pass
 
+
 def time_large_gauss_combined_2d_LevMarLSQFitter():
     warnings.filterwarnings('error')
     try:
@@ -231,6 +238,7 @@ def time_large_gauss_combined_2d_LevMarLSQFitter():
     except Warning:
         pass
 
+
 def time_large_gauss_combined_2d_SLSQPLSQFitter():
     warnings.filterwarnings('error')
     try:
@@ -238,5 +246,4 @@ def time_large_gauss_combined_2d_SLSQPLSQFitter():
         t = fit_SLSQPLSQFitter(large_gauss_combined_2d, x_grid, y_grid, z)
     except Warning:
         pass
-
 
