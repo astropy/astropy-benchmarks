@@ -1,8 +1,15 @@
-import numpy as np
+import os
 import warnings
 
+import numpy as np
+
+from astropy.io import ascii
 from astropy.modeling import models, fitting
 
+fit_LevMarLSQFitter = fitting.LevMarLSQFitter()
+fit_SLSQPLSQFitter = fitting.SLSQPLSQFitter()
+fit_SimplexLSQFitter = fitting.SimplexLSQFitter()
+fit_LinearLSQFitter = fitting.LinearLSQFitter()
 
 Gaussian1D = models.Gaussian1D(amplitude=1, mean=0, stddev=1)
 Gaussian2D = models.Gaussian2D(amplitude=1, x_mean=0,  y_mean=0, \
@@ -27,6 +34,28 @@ for i in range(20):
     large_gauss_combined_2d += models.Gaussian2D(x_mean=mean, y_mean=mean, \
             x_stddev=stddev, y_stddev=stddev)
 
+# Based on Exercise 2 in this notebook:
+#   https://github.com/spacetelescope/JWSTUserTraining2016/blob/master/Day_Zero_Notebooks/06.Modeling/astropy_modeling_solutions.ipynb
+here = os.path.abspath(os.path.dirname(__file__))
+sdss = ascii.read(os.path.join(here, 'sample_sdss.txt'))
+wave = sdss['lambda']
+flux = sdss['flux']
+mean_flux = flux.mean()
+cont = np.where(flux > mean_flux, mean_flux, flux)
+hbeta_combo = models.Gaussian1D(34, 4862.721, 5) + \
+        models.Gaussian1D(170, 5008.239, 5) + \
+        models.Gaussian1D(57, 4958.911, 5) + \
+        fit_LinearLSQFitter(models.Polynomial1D(1), wave, cont)
+
+def tie_ampl(model):
+    return model.amplitude_2 / 3.1
+hbeta_combo.amplitude_1.tied = tie_ampl
+
+def tie_wave(model):
+    return model.mean_0 * 4858.911/4862.721
+hbeta_combo.mean_1.tied = tie_wave
+
+
 # Based on Fitting Model Sets example:
 #   https://docs.astropy.org/en/latest/modeling/example-fitting-model-sets.html
 depth, width, height = 10, 500, 500
@@ -42,11 +71,6 @@ y_base = 3 * np.exp(-0.5 * (x - 1.3)**2 / 0.8**2)
 
 x_grid, y_grid = np.meshgrid(x, x)
 z_base = 3 * np.exp(-0.5* ((x_grid - 1.3)**2/0.8**2 + (y_grid - 2.1)**2/0.1**2))
-
-fit_LevMarLSQFitter = fitting.LevMarLSQFitter()
-fit_SLSQPLSQFitter = fitting.SLSQPLSQFitter()
-fit_SimplexLSQFitter = fitting.SimplexLSQFitter()
-fit_LinearLSQFitter = fitting.LinearLSQFitter()
 
 
 def time_init_LevMarLSQFitter():
@@ -218,6 +242,22 @@ def time_combined_gauss_2d_SLSQPLSQFitter():
     try:
         z = z_base + np.random.normal(0., 0.2, z_base.shape)
         t = fit_SLSQPLSQFitter(combined_gauss_2d, x_grid, y_grid, z)
+    except Warning:
+        pass
+
+
+def time_datafit_Polynomial1D_LinearLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        poly_cont = fit_LinearLSQFitter(models.Polynomial1D(1), wave, cont)
+    except Warning:
+        pass
+
+
+def time_datafit_compound_LevMarLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        fitted_model = fit_LevMarLSQFitter(hbeta_combo, wave, flux)
     except Warning:
         pass
 
