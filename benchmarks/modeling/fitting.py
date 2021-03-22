@@ -27,6 +27,16 @@ for i in range(20):
     large_gauss_combined_2d += models.Gaussian2D(x_mean=mean, y_mean=mean, \
             x_stddev=stddev, y_stddev=stddev)
 
+# Based on Fitting Model Sets example:
+#   https://docs.astropy.org/en/latest/modeling/example-fitting-model-sets.html
+depth, width, height = 10, 500, 500
+t = np.arange(depth, dtype=np.float64)*10
+fluxes = np.arange(1. * width * height).reshape(width, height)
+image = fluxes[np.newaxis, :, :] * t[:, np.newaxis, np.newaxis]
+image += np.random.normal(0.0, image*0.05, size=image.shape)
+line = models.Polynomial1D(degree=1, n_models=width*height)
+pixels = image.reshape((depth, width*height))
+
 x = np.linspace(-5., 5., 200)
 y_base = 3 * np.exp(-0.5 * (x - 1.3)**2 / 0.8**2)
 
@@ -244,6 +254,15 @@ def time_large_gauss_combined_2d_SLSQPLSQFitter():
     try:
         z = z_base + np.random.normal(0., 0.2, z_base.shape)
         t = fit_SLSQPLSQFitter(large_gauss_combined_2d, x_grid, y_grid, z)
+    except Warning:
+        pass
+
+
+def time_multi_model_LinearLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        y = pixels.T
+        new_model = fit_LinearLSQFitter(line, x=t, y=y)
     except Warning:
         pass
 
