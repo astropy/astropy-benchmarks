@@ -63,7 +63,6 @@ def tie_wave(model):
     return model.mean_0 * 4858.911/4862.721
 hbeta_combo.mean_1.tied = tie_wave
 
-
 # Model Set fitting:
 #   Based on Fitting Model Sets example:
 #       https://docs.astropy.org/en/latest/modeling/example-fitting-model-sets.html
@@ -81,6 +80,15 @@ pixels = image.reshape((depth, width*height))
 black_body = models.BlackBody(3000 * u.K, scale=5e-17 * u.Jy / u.sr)
 wav = np.array([0.5, 5, 10]) * u.micron
 fnu = np.array([1, 10, 5]) * u.Jy / u.sr
+
+# Fitting models with uncertainties
+#   Based on this example:
+#       https://docs.astropy.org/en/latest/modeling/example-fitting-line.html#fit-using-uncertainties
+line_orig = models.Linear1D(slope=1.0, intercept=0.5)
+x_points = np.random.uniform(0.0, 10.0, 200)
+y_unc = np.absolute(np.random.normal(0.5, 2.5, x_points.shape))
+y_points = line_orig(x_points) + np.random.normal(0.0, y_unc, y_unc.shape)
+line_init = models.Linear1D()
 
 
 def time_init_LevMarLSQFitter():
@@ -316,10 +324,19 @@ def time_multi_model_LinearLSQFitter():
     except Warning:
         pass
 
+
 def time_physical_model_with_units_LevMarLSQFitter():
     warnings.filterwarnings('error')
     try:
         black_body_fit = fit_LevMarLSQFitter(black_body, wav, fnu)
+    except Warning:
+        pass
+
+
+def time_uncertanty_Linear1D_LinearLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        line_fit = fit_LinearLSQFitter(line_init, x_points, y_points, weights=1.0/y_unc)
     except Warning:
         pass
 
