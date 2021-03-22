@@ -4,6 +4,7 @@ import warnings
 import numpy as np
 
 from astropy.io import ascii
+from astropy import units as u
 from astropy.modeling import models, fitting
 
 fit_LevMarLSQFitter = fitting.LevMarLSQFitter()
@@ -34,8 +35,15 @@ for i in range(20):
     large_gauss_combined_2d += models.Gaussian2D(x_mean=mean, y_mean=mean, \
             x_stddev=stddev, y_stddev=stddev)
 
-# Based on Exercise 2 in this notebook:
-#   https://github.com/spacetelescope/JWSTUserTraining2016/blob/master/Day_Zero_Notebooks/06.Modeling/astropy_modeling_solutions.ipynb
+x = np.linspace(-5., 5., 200)
+y_base = 3 * np.exp(-0.5 * (x - 1.3)**2 / 0.8**2)
+
+x_grid, y_grid = np.meshgrid(x, x)
+z_base = 3 * np.exp(-0.5* ((x_grid - 1.3)**2/0.8**2 + (y_grid - 2.1)**2/0.1**2))
+
+# Constraint Data Fitting:
+#   Based on Exercise 2 in this notebook:
+#       https://github.com/spacetelescope/JWSTUserTraining2016/blob/master/Day_Zero_Notebooks/06.Modeling/astropy_modeling_solutions.ipynb
 here = os.path.abspath(os.path.dirname(__file__))
 sdss = ascii.read(os.path.join(here, 'sample_sdss.txt'))
 wave = sdss['lambda']
@@ -56,8 +64,9 @@ def tie_wave(model):
 hbeta_combo.mean_1.tied = tie_wave
 
 
-# Based on Fitting Model Sets example:
-#   https://docs.astropy.org/en/latest/modeling/example-fitting-model-sets.html
+# Model Set fitting:
+#   Based on Fitting Model Sets example:
+#       https://docs.astropy.org/en/latest/modeling/example-fitting-model-sets.html
 depth, width, height = 10, 500, 500
 t = np.arange(depth, dtype=np.float64)*10
 fluxes = np.arange(1. * width * height).reshape(width, height)
@@ -66,11 +75,12 @@ image += np.random.normal(0.0, image*0.05, size=image.shape)
 line = models.Polynomial1D(degree=1, n_models=width*height)
 pixels = image.reshape((depth, width*height))
 
-x = np.linspace(-5., 5., 200)
-y_base = 3 * np.exp(-0.5 * (x - 1.3)**2 / 0.8**2)
-
-x_grid, y_grid = np.meshgrid(x, x)
-z_base = 3 * np.exp(-0.5* ((x_grid - 1.3)**2/0.8**2 + (y_grid - 2.1)**2/0.1**2))
+# Physical model fitting with units
+#   Based on this test:
+#       https://github.com/astropy/astropy/blob/master/astropy/modeling/tests/test_physical_models.py#L65
+black_body = models.BlackBody(3000 * u.K, scale=5e-17 * u.Jy / u.sr)
+wav = np.array([0.5, 5, 10]) * u.micron
+fnu = np.array([1, 10, 5]) * u.Jy / u.sr
 
 
 def time_init_LevMarLSQFitter():
@@ -303,6 +313,13 @@ def time_multi_model_LinearLSQFitter():
     try:
         y = pixels.T
         new_model = fit_LinearLSQFitter(line, x=t, y=y)
+    except Warning:
+        pass
+
+def time_physical_model_with_units_LevMarLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        black_body_fit = fit_LevMarLSQFitter(black_body, wav, fnu)
     except Warning:
         pass
 
