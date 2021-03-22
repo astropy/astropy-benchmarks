@@ -18,6 +18,15 @@ combined_gauss_1d = models.Gaussian1D(1, 0, 0.1) + models.Gaussian1D(2, 0.5, 0.1
 combined_gauss_2d = models.Gaussian2D(amplitude=1, x_mean=0,  y_mean=0, x_stddev=0.1, y_stddev=0.1) + \
         models.Gaussian2D(amplitude=2, x_mean=0.5,  y_mean=0.5, x_stddev=0.1, y_stddev=0.1)
 
+large_gauss_combined_1d = models.Gaussian1D()
+large_gauss_combined_2d = models.Gaussian2D()
+for i in range(20):
+    mean = i*0.5
+    stddev = i*0.1
+    large_gauss_combined_1d += models.Gaussian1D(mean=mean, stddev=stddev)
+    large_gauss_combined_2d += models.Gaussian2D(x_mean=mean, y_mean=mean, \
+            x_stddev=stddev, y_stddev=stddev)
+
 x = np.linspace(-5., 5., 200)
 y_base = 3 * np.exp(-0.5 * (x - 1.3)**2 / 0.8**2)
 
@@ -197,4 +206,37 @@ def time_combined_gauss_2d_SLSQPLSQFitter():
         t = fit_SLSQPLSQFitter(combined_gauss_2d, x_grid, y_grid, z)
     except Warning:
         pass
+
+def time_large_gauss_combined_1d_LevMarLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        y = y_base + np.random.normal(0., 0.2, y_base.shape)
+        t = fit_LevMarLSQFitter(large_gauss_combined_1d, x, y)
+    except Warning:
+        pass
+
+def time_large_gauss_combined_1d_SLSQPLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        y = y_base + np.random.normal(0., 0.2, y_base.shape)
+        t = fit_SLSQPLSQFitter(large_gauss_combined_1d, x, y)
+    except Warning:
+        pass
+
+def time_large_gauss_combined_2d_LevMarLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        z = z_base + np.random.normal(0., 0.2, z_base.shape)
+        t = fit_LevMarLSQFitter(large_gauss_combined_2d, x_grid, y_grid, z)
+    except Warning:
+        pass
+
+def time_large_gauss_combined_2d_SLSQPLSQFitter():
+    warnings.filterwarnings('error')
+    try:
+        z = z_base + np.random.normal(0., 0.2, z_base.shape)
+        t = fit_SLSQPLSQFitter(large_gauss_combined_2d, x_grid, y_grid, z)
+    except Warning:
+        pass
+
 
