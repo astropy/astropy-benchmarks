@@ -1,10 +1,10 @@
-import os
 import warnings
 
 import numpy as np
 
 from astropy.io import ascii
 from astropy import units as u
+from astropy.utils.data import get_pkg_data_filename
 from astropy.modeling import models, fitting
 
 fit_LevMarLSQFitter = fitting.LevMarLSQFitter()
@@ -44,8 +44,8 @@ z_base = 3 * np.exp(-0.5* ((x_grid - 1.3)**2/0.8**2 + (y_grid - 2.1)**2/0.1**2))
 # Constraint Data Fitting:
 #   Based on Exercise 2 in this notebook:
 #       https://github.com/spacetelescope/JWSTUserTraining2016/blob/master/Day_Zero_Notebooks/06.Modeling/astropy_modeling_solutions.ipynb
-here = os.path.abspath(os.path.dirname(__file__))
-sdss = ascii.read(os.path.join(here, 'sample_sdss.txt'))
+fname = get_pkg_data_filename('data/spec.txt', package='astropy.modeling.tests')
+sdss = ascii.read(fname)
 wave = sdss['lambda']
 flux = sdss['flux']
 mean_flux = flux.mean()
