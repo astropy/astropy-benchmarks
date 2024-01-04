@@ -1,16 +1,13 @@
 Astropy performance benchmarks
 ==============================
 
-.. image:: https://travis-ci.org/astropy/astropy-benchmarks.svg
-    :target: https://travis-ci.org/astropy/astropy-benchmarks
-
 About
 -----
 
 This repository includes a set of benchmarks to regularly test the performance of
 various parts of the astropy core package. These benchmarks are run for every
 new commit in the core package repository and the results are published using a
-user-friendly `web interface <http://astropy.org/astropy-benchmarks>`__. The
+user-friendly `web interface <https://spacetelescope.github.io/bench/astropy-benchmarks/>`__. The
 benchmarks are run using `airspeed velocity <https://asv.readthedocs.io>`__ on
 dedicated physical machines belonging to members of the Astropy developer community.
 
