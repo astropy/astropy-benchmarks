@@ -10,34 +10,42 @@ x_no_units_big = np.linspace(-4, 300, 5000000)
 
 
 def time_init_7_no_units():
-    m = (models.Shift(-10.5) & models.Shift(-13.2) |
-         models.AffineTransformation2D(matrix=[[1, 0], [0, 1]],
-                                       translation=[0, 0]) |
-         models.Scale(.01) & models.Scale(.04) |
-         models.Pix2Sky_TAN() |
-         models.RotateNative2Celestial(5.6, -72.05, 180))
+    (
+        models.Shift(-10.5) & models.Shift(-13.2)
+        | models.AffineTransformation2D(matrix=[[1, 0], [0, 1]], translation=[0, 0])
+        | models.Scale(0.01) & models.Scale(0.04)
+        | models.Pix2Sky_TAN()
+        | models.RotateNative2Celestial(5.6, -72.05, 180)
+    )
 
 
 def time_init_7_with_units():
-    aff = models.AffineTransformation2D(matrix=[[1, 0], [0, 1]]*u.arcsec,
-                                        translation=[0, 0]*u.arcsec)
-    aff.input_units_equivalencies = {'x': u.pixel_scale(1*u.arcsec/u.pix),
-                                     'y': u.pixel_scale(1*u.arcsec/u.pix)}
-    m = (models.Shift(-10.5*u.pix) & models.Shift(-13.2*u.pix) |
-         aff |
-         models.Scale(.01*u.arcsec) & models.Scale(.04*u.arcsec) |
-         models.Pix2Sky_TAN() |
-         models.RotateNative2Celestial(5.6*u.deg, -72.05*u.deg, 180*u.deg))
+    aff = models.AffineTransformation2D(
+        matrix=[[1, 0], [0, 1]] * u.arcsec, translation=[0, 0] * u.arcsec
+    )
+    aff.input_units_equivalencies = {
+        "x": u.pixel_scale(1 * u.arcsec / u.pix),
+        "y": u.pixel_scale(1 * u.arcsec / u.pix),
+    }
+    (
+        models.Shift(-10.5 * u.pix) & models.Shift(-13.2 * u.pix)
+        | aff
+        | models.Scale(0.01 * u.arcsec) & models.Scale(0.04 * u.arcsec)
+        | models.Pix2Sky_TAN()
+        | models.RotateNative2Celestial(5.6 * u.deg, -72.05 * u.deg, 180 * u.deg)
+    )
 
 
 class EvaluateCompoundModelNoUnits:
     def setup(self):
-        aff = models.AffineTransformation2D(matrix=[[1, 0], [0, 1]],
-                                            translation=[0, 0])
-        self.model = (models.Shift(-10.5) & models.Shift(-13.2) | aff |
-                      models.Scale(.01) & models.Scale(.04) |
-                      models.Pix2Sky_TAN() |
-                      models.RotateNative2Celestial(5.6, -72.05, 180))
+        aff = models.AffineTransformation2D(matrix=[[1, 0], [0, 1]], translation=[0, 0])
+        self.model = (
+            models.Shift(-10.5) & models.Shift(-13.2)
+            | aff
+            | models.Scale(0.01) & models.Scale(0.04)
+            | models.Pix2Sky_TAN()
+            | models.RotateNative2Celestial(5.6, -72.05, 180)
+        )
 
     def time_scalar(self):
         r, d = self.model(x_no_units_scalar, x_no_units_scalar)
@@ -54,15 +62,20 @@ class EvaluateCompoundModelNoUnits:
 
 class EvaluateCompoundModelWithUnits:
     def setup(self):
-        aff = models.AffineTransformation2D(matrix=[[1, 0], [0, 1]] * u.arcsec,
-                                            translation=[0, 0] * u.arcsec)
-        aff.input_units_equivalencies = {'x': u.pixel_scale(1 * u.arcsec/u.pix),
-                                         'y': u.pixel_scale(1 * u.arcsec/u.pix)}
-        self.model = (models.Shift(-10.5 * u.pix) & models.Shift(-13.2 * u.pix) |
-                      aff |
-                      models.Scale(.01 * u.arcsec) & models.Scale(.04 * u.deg) |
-                      models.Pix2Sky_TAN() |
-                      models.RotateNative2Celestial(5.6 * u.deg, -72.05 * u.deg, 180 * u.deg))
+        aff = models.AffineTransformation2D(
+            matrix=[[1, 0], [0, 1]] * u.arcsec, translation=[0, 0] * u.arcsec
+        )
+        aff.input_units_equivalencies = {
+            "x": u.pixel_scale(1 * u.arcsec / u.pix),
+            "y": u.pixel_scale(1 * u.arcsec / u.pix),
+        }
+        self.model = (
+            models.Shift(-10.5 * u.pix) & models.Shift(-13.2 * u.pix)
+            | aff
+            | models.Scale(0.01 * u.arcsec) & models.Scale(0.04 * u.deg)
+            | models.Pix2Sky_TAN()
+            | models.RotateNative2Celestial(5.6 * u.deg, -72.05 * u.deg, 180 * u.deg)
+        )
 
     def time_scalar(self):
         r, d = self.model(x_no_units_scalar * u.pix, x_no_units_scalar * u.pix)
@@ -74,4 +87,7 @@ class EvaluateCompoundModelWithUnits:
         r, d = self.model(x_no_units_medium * u.pix, x_no_units_medium * u.pix)
 
     def time_big(self):
-        r, d, = self.model(x_no_units_big * u.pix, x_no_units_big * u.pix)
+        (
+            r,
+            d,
+        ) = self.model(x_no_units_big * u.pix, x_no_units_big * u.pix)

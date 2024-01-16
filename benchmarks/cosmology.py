@@ -13,8 +13,7 @@ class LambdaCDMBenchmarks:
         LambdaCDM(H0, 0.4, 0.2, TCMB0, 3.04),
         FlatLambdaCDM(H0, 0.25, 0),
         FlatLambdaCDM(H0, 0.25, TCMB0, 3.04),
-        FlatLambdaCDM(H0, 0.25, TCMB0, 3.04,
-                      [0.05, 0.1, 0.15] * u.eV)
+        FlatLambdaCDM(H0, 0.25, TCMB0, 3.04, [0.05, 0.1, 0.15] * u.eV),
     ]
 
     def setup(self, cosmo):

@@ -8,14 +8,16 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 
 class IPACSuite:
     def setup(self):
-
         self.vals = [str(i + 1) for i in range(1000)]
         self.widths = [i + 1 for i in range(1000)]
-        f = open(os.path.join(HERE, 'files', 'ipac', 'string.txt'))
-        self.lines = f.read().split('\n')
+        f = open(os.path.join(HERE, "files", "ipac", "string.txt"))
+        self.lines = f.read().split("\n")
         f.close()
-        self.table = ascii.read(os.path.join(HERE, 'files', 'ipac', 'string.txt'),
-                                format='ipac', guess=False)
+        self.table = ascii.read(
+            os.path.join(HERE, "files", "ipac", "string.txt"),
+            format="ipac",
+            guess=False,
+        )
         self.reader = Ipac()
         self.header = self.reader.header
         self.data = self.reader.data

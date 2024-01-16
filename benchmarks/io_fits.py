@@ -14,48 +14,46 @@ class FITSHighLevelTableBenchmarks:
     """
 
     def setup(self):
-
         N = 2_000_000
 
         with NamedTemporaryFile(delete=False) as temp:
             self.table_file = temp.name
             t = Table()
-            t['floats'] = np.random.random(N)
-            t['ints'] = np.random.randint(0, 100, N)
-            t['strings'] = b'some strings'
-            t['booleans'] = t['floats'] > 0.5
-            t.write(temp, format='fits')
+            t["floats"] = np.random.random(N)
+            t["ints"] = np.random.randint(0, 100, N)
+            t["strings"] = b"some strings"
+            t["booleans"] = t["floats"] > 0.5
+            t.write(temp, format="fits")
 
     def time_read_nommap(self):
         try:
-            Table.read(self.table_file, format='fits', memmap=False)
+            Table.read(self.table_file, format="fits", memmap=False)
         except TypeError:
-            Table.read(self.table_file, format='fits')
+            Table.read(self.table_file, format="fits")
 
     def time_write(self):
         N = 1_000_000
         table_bytes = BytesIO()
         t = Table()
-        t['floats'] = np.random.random(N)
-        t['ints'] = np.random.randint(0, 100, N)
-        t['strings'] = b'some strings'
-        t['booleans'] = t['floats'] > 0.5
-        t.write(table_bytes, format='fits')
+        t["floats"] = np.random.random(N)
+        t["ints"] = np.random.randint(0, 100, N)
+        t["strings"] = b"some strings"
+        t["booleans"] = t["floats"] > 0.5
+        t.write(table_bytes, format="fits")
 
 
 class FITSBinTableHDU:
-
     def time_from_columns_bytes(self):
-        x = np.repeat(b'a', 2_000_000)
-        array = np.array(x, dtype=[('col', 'S1')])
+        x = np.repeat(b"a", 2_000_000)
+        array = np.array(x, dtype=[("col", "S1")])
         fits.BinTableHDU.from_columns(array)
 
 
 def make_header(ncards=1000):
-    cards = {'INT%d' % i: i for i in range(ncards)}
-    cards.update({'FLT%d' % i: (i + i/10) for i in range(ncards)})
-    cards.update({'STR%d' % i: 'VALUE %d' % i for i in range(ncards)})
-    cards.update({'HIERARCH FOO BAR %d' % i: i for i in range(ncards)})
+    cards = {"INT%d" % i: i for i in range(ncards)}
+    cards.update({"FLT%d" % i: (i + i / 10) for i in range(ncards)})
+    cards.update({"STR%d" % i: "VALUE %d" % i for i in range(ncards)})
+    cards.update({"HIERARCH FOO BAR %d" % i: i for i in range(ncards)})
     return fits.Header(cards)
 
 
@@ -69,16 +67,16 @@ class FITSHeader:
         self.hdr_string = self.hdr.tostring()
 
     def time_get_int(self):
-        self.hdr.get('INT999')
+        self.hdr.get("INT999")
 
     def time_get_float(self):
-        self.hdr.get('FLT999')
+        self.hdr.get("FLT999")
 
     def time_get_str(self):
-        self.hdr.get('STR999')
+        self.hdr.get("STR999")
 
     def time_get_hierarch(self):
-        self.hdr.get('HIERARCH FOO BAR 999')
+        self.hdr.get("HIERARCH FOO BAR 999")
 
     def time_tostring(self):
         self.hdr.tostring()
@@ -92,12 +90,14 @@ class FITSHDUList:
     Tests of the HDUList interface
     """
 
-    filename = 'many_hdu.fits'
+    filename = "many_hdu.fits"
 
     def setup_cache(self):
         hdr = make_header()
-        hdul = fits.HDUList([fits.PrimaryHDU(header=hdr)] +
-                            [fits.ImageHDU(header=hdr) for _ in range(30)])
+        hdul = fits.HDUList(
+            [fits.PrimaryHDU(header=hdr)]
+            + [fits.ImageHDU(header=hdr) for _ in range(30)]
+        )
         hdul.writeto(self.filename)
 
     def time_getheader(self):

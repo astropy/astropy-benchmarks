@@ -21,10 +21,10 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 
-MSX_HEADER = fits.Header.fromtextfile(os.path.join(ROOT, 'msx_header'))
+MSX_HEADER = fits.Header.fromtextfile(os.path.join(ROOT, "msx_header"))
 MSX_WCS = WCS(MSX_HEADER)
 
-TWOMASS_HEADER = fits.Header.fromtextfile(os.path.join(ROOT, '2mass_header'))
+TWOMASS_HEADER = fits.Header.fromtextfile(os.path.join(ROOT, "2mass_header"))
 TWOMASS_WCS = WCS(TWOMASS_HEADER)
 
 with NumpyRNGContext(12345):
@@ -32,7 +32,6 @@ with NumpyRNGContext(12345):
 
 
 def time_basic_plot():
-
     fig = Figure()
     canvas = FigureCanvas(fig)
 
@@ -46,14 +45,13 @@ def time_basic_plot():
 
 
 def time_basic_plot_with_grid():
-
     fig = Figure()
     canvas = FigureCanvas(fig)
 
     ax = WCSAxes(fig, [0.15, 0.15, 0.7, 0.7], wcs=MSX_WCS)
     fig.add_axes(ax)
 
-    ax.grid(color='red', alpha=0.5, linestyle='solid')
+    ax.grid(color="red", alpha=0.5, linestyle="solid")
 
     ax.set_xlim(-0.5, 148.5)
     ax.set_ylim(-0.5, 148.5)
@@ -62,26 +60,24 @@ def time_basic_plot_with_grid():
 
 
 def time_basic_plot_with_grid_and_overlay():
-
     fig = Figure()
     canvas = FigureCanvas(fig)
 
     ax = WCSAxes(fig, [0.15, 0.15, 0.7, 0.7], wcs=MSX_WCS)
     fig.add_axes(ax)
 
-    ax.grid(color='red', alpha=0.5, linestyle='solid')
+    ax.grid(color="red", alpha=0.5, linestyle="solid")
 
     ax.set_xlim(-0.5, 148.5)
     ax.set_ylim(-0.5, 148.5)
 
-    overlay = ax.get_coords_overlay('fk5')
-    overlay.grid(color='purple', ls='dotted')
+    overlay = ax.get_coords_overlay("fk5")
+    overlay.grid(color="purple", ls="dotted")
 
     canvas.draw()
 
 
 def time_contour_with_transform():
-
     fig = Figure()
     canvas = FigureCanvas(fig)
 
@@ -98,7 +94,6 @@ def time_contour_with_transform():
 
 
 def time_contourf_with_transform():
-
     fig = Figure()
     canvas = FigureCanvas(fig)
 
