@@ -32,9 +32,6 @@ class Convolve:
     param_names = ['ndim', 'size', 'boundary', 'nan_treatment']
 
     def setup(self, ndim, size, boundary, nan_treatment):
-
-        print(ndim, size, boundary, nan_treatment)
-
         np.random.seed(12345)
 
         self.kernel = np.random.random(kernel_shapes[ndim][size])

@@ -1,5 +1,5 @@
 from io import BytesIO
-from tempfile import mktemp
+from tempfile import NamedTemporaryFile
 
 import numpy as np
 from astropy.table import Table
@@ -17,21 +17,20 @@ class FITSHighLevelTableBenchmarks:
 
         N = 2_000_000
 
-        self.table_bytes = BytesIO()
-
-        t = Table()
-        t['floats'] = np.random.random(N)
-        t['ints'] = np.random.randint(0, 100, N)
-        t['strings'] = b'some strings'
-        t['booleans'] = t['floats'] > 0.5
-        t.write(self.table_bytes, format='fits')
+        with NamedTemporaryFile(delete=False) as temp:
+            self.table_file = temp.name
+            t = Table()
+            t['floats'] = np.random.random(N)
+            t['ints'] = np.random.randint(0, 100, N)
+            t['strings'] = b'some strings'
+            t['booleans'] = t['floats'] > 0.5
+            t.write(temp, format='fits')
 
     def time_read_nommap(self):
-        self.table_bytes.seek(0)
         try:
-            Table.read(self.table_bytes, format='fits', memmap=False)
+            Table.read(self.table_file, format='fits', memmap=False)
         except TypeError:
-            Table.read(self.table_bytes, format='fits')
+            Table.read(self.table_file, format='fits')
 
     def time_write(self):
         N = 1_000_000

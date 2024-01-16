@@ -96,28 +96,9 @@ class TimeTable:
 
     def time_add_row(self):
         self.table.add_row(self.extra_row)
-    time_add_row.number = 1
-    time_add_row.repeat = 1
-
-    def time_remove_row(self):
-        self.table.remove_row(6)
-    time_remove_row.number = 1
-    time_remove_row.repeat = 1
-
-    def time_remove_rows(self):
-        self.table.remove_rows(self.row_indices)
-    time_remove_rows.number = 1
-    time_remove_rows.repeat = 1
 
     def time_add_column(self):
         self.table['e'] = self.extra_column
-    time_add_column.number = 1
-    time_add_column.repeat = 1
-
-    def time_remove_column(self):
-        self.table.remove_column('a')
-    time_remove_column.number = 1
-    time_remove_column.repeat = 1
 
     def time_init_from_np_array_no_copy(self):
         Table(self.np_table, copy=False)

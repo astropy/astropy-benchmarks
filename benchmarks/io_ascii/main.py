@@ -40,7 +40,7 @@ class _ASCIISuite:
         return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)
 
     def write(self):
-        ascii.write(self.table, self.output, Writer=self.writers[self.file_format])
+        ascii.write(self.table, self.output, format=self.file_format)
 
 
 class CsvString(_ASCIISuite):
