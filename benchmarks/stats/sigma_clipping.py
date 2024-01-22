@@ -3,9 +3,7 @@ from astropy.utils.misc import NumpyRNGContext
 
 
 class SigmaClipBenchmarks:
-
     def setup(self):
-
         # Avoid top-level module import to make sure that the benchmarks are
         # compatible with versions of astropy that did not have this functionality.
         from astropy.stats import SigmaClip
@@ -20,9 +18,9 @@ class SigmaClipBenchmarks:
             zbad = np.random.randint(low=0, high=size[0] - 1, size=nbad)
             ybad = np.random.randint(low=0, high=size[1] - 1, size=nbad)
             xbad = np.random.randint(low=0, high=size[2] - 1, size=nbad)
-            self.data[zbad, ybad, xbad] = (
-                np.random.choice([-1, 1], size=nbad) *
-                (10 + np.random.rand(nbad)))
+            self.data[zbad, ybad, xbad] = np.random.choice([-1, 1], size=nbad) * (
+                10 + np.random.rand(nbad)
+            )
 
             # The defaults use median as the cenfunc and standard
             # deviation as the stdfunc.  The default iters is 5.

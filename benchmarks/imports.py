@@ -80,12 +80,6 @@ def timeraw_import_astropy_io_misc_yaml():
     """
 
 
-def timeraw_import_astropy_io_misc_asdf():
-    return """
-    from astropy.io.misc import asdf
-    """
-
-
 def timeraw_import_astropy_io_misc_pandas():
     return """
     from astropy.io.misc import pandas

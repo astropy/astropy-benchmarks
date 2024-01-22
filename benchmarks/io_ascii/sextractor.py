@@ -1,12 +1,15 @@
 from astropy.io.ascii import sextractor
 import random
+
 try:
     from string import uppercase
 except ImportError:
     from string import ascii_uppercase as uppercase
 
+
 def randword():
-    return ''.join([random.choice(uppercase) for i in range(10)])
+    return "".join([random.choice(uppercase) for i in range(10)])
+
 
 class SExtractorSuite:
     def setup(self):
@@ -17,9 +20,8 @@ class SExtractorSuite:
             if i % 20 == 0 and i != 0:
                 i += 4
             i += 1
-            self.lines.append('# {} {} Description [pixel**2]'.format(
-                                                        i, randword()))
-        self.lines.append('Non-header line')
+            self.lines.append("# {} {} Description [pixel**2]".format(i, randword()))
+        self.lines.append("Non-header line")
 
     def time_header(self):
         self.header.get_cols(self.lines)

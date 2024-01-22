@@ -6,5 +6,5 @@ __all__ = [
     "ipac",
     "rdb",
     "sextractor",
-    "table"
+    "table",
 ]

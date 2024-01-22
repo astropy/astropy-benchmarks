@@ -6,6 +6,7 @@ from astropy import units as u
 
 # Unit tests
 
+
 def time_unit_compose():
     u.Ry.compose()
 
@@ -15,15 +16,15 @@ def time_unit_to():
 
 
 def time_unit_parse():
-    u.Unit('1e-07 kg m2 / s2')
+    u.Unit("1e-07 kg m2 / s2")
 
 
 def time_simple_unit_parse():
-    u.Unit('1 d')
+    u.Unit("1 d")
 
 
 def time_very_simple_unit_parse():
-    u.Unit('d')
+    u.Unit("d")
 
 
 def mem_unit():
@@ -37,15 +38,15 @@ def time_compose_to_bases():
 
 def time_compose_complex():
     # Composing a complex unit can be very inefficient
-    (u.kg / u.s ** 3 * u.au ** 2.5 / u.yr ** 0.5 / u.sr ** 2).compose()
+    (u.kg / u.s**3 * u.au**2.5 / u.yr**0.5 / u.sr**2).compose()
 
 
 # Quantity tests
 
-a = np.arange(100000.)
-b1 = [1., 2., 3.]
+a = np.arange(100000.0)
+b1 = [1.0, 2.0, 3.0]
 b2 = np.asarray(b1)
-q0 = u.Quantity(1., u.s)
+q0 = u.Quantity(1.0, u.s)
 q1 = u.Quantity(a, u.m)
 q2 = u.Quantity(a[:10000], u.deg)
 
@@ -63,7 +64,7 @@ def time_quantity_view():
 
 
 def time_quantity_init_scalar():
-    3. * u.m / u.s
+    3.0 * u.m / u.s
 
 
 def time_quantity_init_array():
@@ -87,7 +88,7 @@ def time_quantity_init_small_array():
 
 
 def time_quantity_scalar_conversion():
-    (3. * u.m / u.s).to(u.km / u.hour)
+    (3.0 * u.m / u.s).to(u.km / u.hour)
 
 
 def time_quantity_array_conversion():
@@ -111,14 +112,15 @@ class TimeQuantityOpSmallArray:
     Operator benchmarks from https://github.com/astropy/astropy/issues/7546
     for a small Numpy array.
     """
+
     def setup(self):
-        data = np.array([1., 2., 3.])
+        data = np.array([1.0, 2.0, 3.0])
         self.data = data * u.g
-        self.out_sq = data * u.g ** 2
-        self.out_sqrt = data * u.g ** 0.5
+        self.out_sq = data * u.g**2
+        self.out_sqrt = data * u.g**0.5
 
     def time_quantity_square(self):
-        self.data ** 2
+        self.data**2
 
     def time_quantity_np_square(self):
         np.power(self.data, 2)
@@ -127,7 +129,7 @@ class TimeQuantityOpSmallArray:
         np.power(self.data, 2, out=self.out_sq)
 
     def time_quantity_sqrt(self):
-        self.data ** 0.5
+        self.data**0.5
 
     def time_quantity_np_sqrt(self):
         np.sqrt(self.data)
@@ -140,11 +142,12 @@ class TimeQuantityOpLargeArray(TimeQuantityOpSmallArray):
     """
     Like :class:`TimeQuantityOpSmallArray` but for a large Numpy array.
     """
+
     def setup(self):
         data = np.arange(1e6) + 1
         self.data = data * u.g
-        self.out_sq = data * u.g ** 2
-        self.out_sqrt = data * u.g ** 0.5
+        self.out_sq = data * u.g**2
+        self.out_sqrt = data * u.g**0.5
 
 
 class TimeQuantityOpSmallArrayDiffUnit:
@@ -152,8 +155,9 @@ class TimeQuantityOpSmallArrayDiffUnit:
     Operator benchmarks from https://github.com/astropy/astropy/issues/7546
     for small Numpy arrays with different units.
     """
+
     def setup(self):
-        data = np.array([1., 2., 3.])
+        data = np.array([1.0, 2.0, 3.0])
         self.data = data * u.g
 
         # A different but dimensionally compatible unit
@@ -201,8 +205,9 @@ class TimeQuantityOpSmallArraySameUnit(TimeQuantityOpSmallArrayDiffUnit):
     Operator benchmarks from https://github.com/astropy/astropy/issues/7546
     for small Numpy arrays with same units.
     """
+
     def setup(self):
-        data = np.array([1., 2., 3.])
+        data = np.array([1.0, 2.0, 3.0])
         self.data = data * u.g
         self.data2 = self.data.copy()
 
@@ -211,6 +216,7 @@ class TimeQuantityOpLargeArrayDiffUnit(TimeQuantityOpSmallArrayDiffUnit):
     """
     Like :class:`TimeQuantityOpSmallArrayDiffUnit` but for large Numpy arrays.
     """
+
     def setup(self):
         data = np.arange(1e6) + 1
         self.data = data * u.g
@@ -223,6 +229,7 @@ class TimeQuantityOpLargeArraySameUnit(TimeQuantityOpSmallArrayDiffUnit):
     """
     Like :class:`TimeQuantityOpSmallArraySameUnit` but for large Numpy arrays.
     """
+
     def setup(self):
         data = np.arange(1e6) + 1
         self.data = data * u.g
