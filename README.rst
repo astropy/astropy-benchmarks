@@ -29,7 +29,7 @@ branch, which is large.
 The easiest/fastest way to try out the benchmarks is to make sure you have
 either a stable or a developer version of astropy installed, then run::
 
-    $ asv dev
+    $ asv run --python=same --quick --show-stderr --dry-run
 
 This will run the benchmarks against the local astropy version and will do some
 basic timing, but the timing will not be very accurate, because this only runs
@@ -101,14 +101,14 @@ a benchmark to test unit conversion:
 
 Once you have added a benchmark, you can make sure it runs by running::
 
-    $ asv dev
+    $ asv run --python=same --quick --show-stderr --dry-run
 
 As mentioned in `Running the benchmarks locally`_, this will run all the
 benchmarks in fast mode (running each function once).
 
 You can select just the benchmark you have written using the ``--bench`` option::
 
-    $ asv dev --bench time_my_benchmark
+    $ asv run --python=same --quick --show-stderr --dry-run --bench time_my_benchmark
 
 Running benchmarks against a local commit
 -----------------------------------------
