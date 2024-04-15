@@ -167,11 +167,9 @@ asv run --python=same --quick --show-stderr --dry-run --bench time_my_benchmark
 Running benchmarks against a local commit
 -----------------------------------------
 
-If you are trying to improve the performance of astropy and you have made some
-commits in your local repository that you want to test before opening a pull
-request to astropy (or before a pull request is merged). To do this, we need
-to switch from using the upstream repository to the repository on your computer,
-which is done by editing `asv.conf.json`:
+Say you have a local clone of `astropy`, and you would like to run benchmarks 
+against your local changes. To do this, edit `asv.conf.json` to switch the 
+`repo` entry from the upstream repository to your local repository:
 
 ```diff
 {
@@ -190,9 +188,8 @@ which is done by editing `asv.conf.json`:
 }
 ```
 
-Comment out the first “repo” line and uncomment the second, replacing the path
-with the absolute path to your local clone of Astropy. You will then be able to
-run the benchmarks for a commit in your local repository using e.g.
+You will then be able to run the benchmarks against a commit in your local 
+repository, e.g.
 
 ```shell
 asv run 827f322b^!
@@ -201,8 +198,8 @@ asv run 827f322b^!
 Comparing commits
 -----------------
 
-If you want to compare two commits (e.g. the latest upstream commit and a local
-commit), you can use e.g.
+To compare two commits (e.g. the latest upstream commit and a local commit), 
+use `asv compare`:
 
 ```shell
 asv compare 88fbbc33 827f322b
