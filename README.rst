@@ -96,11 +96,15 @@ installed dependency or dependencies, add the ``matrix.req`` entry to
         "pip install . matplotlib scipy"
       ],
     + "matrix": {
-    +   "req": [
-    +       "matplotlib==3.5.1",
-    +       "numpy==1.26.0",
-    +       "numpy==2.0.0rc1"
-    +   ]
+    +   "req": {
+    +     "matplotlib": [
+    +       "3.5.1"
+    +     ],
+    +     "numpy": [
+    +       "1.26.0",
+    +       "2.0.0rc1"
+    +     ]
+    +   }
     + },
       "branches": ["main"],
       "show_commit_url": "http://github.com/astropy/astropy/commit/",
