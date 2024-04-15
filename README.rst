@@ -82,34 +82,25 @@ Running benchmarks with specific versions of dependencies
 ---------------------------------------------------------
 
 If you would like to run the benchmarks against specific version(s) of an
-installed dependency or dependencies, add the ``matrix.req`` entry to 
-``asv.conf.json``, including the version(s) you wish to run benchmarks against:
+installed dependency (or dependencies), modify ``asv.conf.json`` to add 
+``matrix.req`` with the desired version(s):
 
-.. code-block:: diff
+.. code-block:: json
 
     {
-      "version": 1,
-      "project": "astropy",
-      "project_url": "http://www.astropy.org/",
-      "repo": "https://github.com/astropy/astropy.git",
-      "install_command": [
-        "pip install . matplotlib scipy"
-      ],
-    + "matrix": {
-    +   "req": {
-    +     "matplotlib": [
-    +       "3.5.1"
-    +     ],
-    +     "numpy": [
-    +       "1.26.0",
-    +       "2.0.0rc1"
-    +     ]
-    +   }
-    + },
-      "branches": ["main"],
-      "show_commit_url": "http://github.com/astropy/astropy/commit/",
-      "pythons": ["3.11"],
-      "environment_type": "virtualenv"
+      ...,
+      "matrix": {
+        "req": {
+          "matplotlib": [
+            "3.5.1"
+          ],
+          "numpy": [
+            "1.26.0",
+            "2.0.0rc1"
+          ]
+        }
+      },
+      ...
     }
 
 Writing a benchmark
