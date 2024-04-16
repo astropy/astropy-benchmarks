@@ -233,8 +233,8 @@ Once you are happy with your benchmark(s), open a pull request to the
 astropy-benchmarks repository. You do not need to add any result files for the
 benchmarks - we have machines that automatically do this every night.
 
-Notes to maintainers
---------------------
+Notes to maintainers (outdated)
+-------------------------------
 
 The `main` branch in this repository should not contain any results or built
 website. Results should be added to the `results` branch, and commits to the
