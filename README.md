@@ -91,7 +91,7 @@ asv preview
 ```
 
 The `asv preview` command will give the URL of the local web server (e.g.
-http://127.0.0.1:21331) - go to this address in your favorite browser to see
+`http://127.0.0.1:21331`) - go to this address in your favorite browser to see
 the results.
 
 Running benchmarks with specific versions of dependencies
