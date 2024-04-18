@@ -23,5 +23,8 @@ class SExtractorSuite:
             self.lines.append("# {} {} Description [pixel**2]".format(i, randword()))
         self.lines.append("Non-header line")
 
+    # pytest compat
+    setup_method = setup
+
     def time_header(self):
         self.header.get_cols(self.lines)

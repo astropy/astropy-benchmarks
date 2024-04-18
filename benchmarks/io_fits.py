@@ -25,6 +25,9 @@ class FITSHighLevelTableBenchmarks:
             t["booleans"] = t["floats"] > 0.5
             t.write(temp, format="fits")
 
+    # pytest compat
+    setup_method = setup
+
     def time_read_nommap(self):
         try:
             Table.read(self.table_file, format="fits", memmap=False)
@@ -42,7 +45,7 @@ class FITSHighLevelTableBenchmarks:
         t.write(table_bytes, format="fits")
 
 
-class FITSBinTableHDU:
+class FITSBinTableHDUBenchmarks:
     def time_from_columns_bytes(self):
         x = np.repeat(b"a", 2_000_000)
         array = np.array(x, dtype=[("col", "S1")])
@@ -57,7 +60,7 @@ def make_header(ncards=1000):
     return fits.Header(cards)
 
 
-class FITSHeader:
+class FITSHeaderBenchmarks:
     """
     Tests of the Header interface
     """
@@ -65,6 +68,9 @@ class FITSHeader:
     def setup(self):
         self.hdr = make_header()
         self.hdr_string = self.hdr.tostring()
+
+    # pytest compat
+    setup_method = setup
 
     def time_get_int(self):
         self.hdr.get("INT999")
@@ -85,20 +91,22 @@ class FITSHeader:
         fits.Header.fromstring(self.hdr_string)
 
 
-class FITSHDUList:
+class FITSHDUListBenchmarks:
     """
     Tests of the HDUList interface
     """
 
-    filename = "many_hdu.fits"
-
     def setup_cache(self):
+        self.filename = NamedTemporaryFile(delete=False).name
         hdr = make_header()
         hdul = fits.HDUList(
             [fits.PrimaryHDU(header=hdr)]
             + [fits.ImageHDU(header=hdr) for _ in range(30)]
         )
         hdul.writeto(self.filename)
+
+    # pytest compat
+    setup_method = setup_cache
 
     def time_getheader(self):
         fits.getheader(self.filename)
