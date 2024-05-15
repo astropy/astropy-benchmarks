@@ -1,1 +1,15 @@
 name: CI
+
+on:
+  pull_request:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  test:
+    uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@v1
+    with:
+      envs: |
+        - linux: py311-astropystable
+        - linux: py311-astropydev
