@@ -17,5 +17,7 @@ jobs:
         python-version: 3.12
     - name: Install asv
       run: python -m pip install asv
+    - name: Configure asv
+      run: asv machine --machine GA --os unknown --arch unknown --cpu unknown --ram unknown
     - name: Run benchmarks in quick mode
       run: asv run --quick
