@@ -8,16 +8,13 @@ on:
 
 jobs:
   test:
-    name: Run benchmarks
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
-      with:
-        python-version: 3.11
-    - name: Install asv
-      run: python -m pip install asv
-    - name: Configure asv
-      run: asv machine --machine GA --os unknown --arch unknown --cpu unknown --ram unknown
-    - name: Run benchmarks in quick mode
-      run: asv run --quick
+    uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@v1
+    with:
+      envs: |
+        - linux: py311-astropy50
+        - macos: py311-astropy51
+        - windows: py311-astropy52
+        - linux: py311-astropy53
+        - macos: py311-astropy60
+        - windows: py311-astropy61
+        - linux: py311-astropydev
