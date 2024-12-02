@@ -26,6 +26,9 @@ class IPACSuite:
         self.data.cols = list(self.table.columns.values())
         self.data._set_fill_values(self.data.cols)
 
+    # pytest compat
+    setup_method = setup
+
     def time_splitter(self):
         self.splitter.join(self.vals, self.widths)
 
