@@ -1,5 +1,5 @@
 import numpy as np
-from astropy.convolution import convolve
+from astropy.convolution import convolve, convolve_fft
 
 # What is considered small or large in terms of kernels/arrays depends on the
 # dimensionality of the kernel, so we simply parameterize as 'small' and 'large'
@@ -10,6 +10,9 @@ from astropy.convolution import convolve
 DIMENSIONS = [1, 2, 3]
 SIZES = ["small", "large"]
 BOUNDARIES = [None, "fill", "wrap", "extend"]
+
+# None is equivalent to 'fill', and 'extend' isn't available as of astropy 7.0
+BOUNDARIES_FFT = ["fill", "wrap"]
 NAN_TREATMENTS = ["fill", "interpolate"]
 
 kernel_shapes = {
@@ -38,5 +41,20 @@ class Convolve:
 
     def time_convolve(self, ndim, size, boundary, nan_treatment):
         convolve(
+            self.array, self.kernel, boundary=boundary, nan_treatment=nan_treatment
+        )
+
+class ConvolveFFT:
+    params = (DIMENSIONS, SIZES, BOUNDARIES_FFT, NAN_TREATMENTS)
+    param_names = ["ndim", "size", "boundary", "nan_treatment"]
+
+    def setup(self, ndim, size, boundary, nan_treatment):
+        np.random.seed(12345)
+
+        self.kernel = np.random.random(kernel_shapes[ndim][size])
+        self.array = np.random.random(array_shapes[ndim][size])
+
+    def time_convolve_fft(self, ndim, size, boundary, nan_treatment):
+        convolve_fft(
             self.array, self.kernel, boundary=boundary, nan_treatment=nan_treatment
         )
