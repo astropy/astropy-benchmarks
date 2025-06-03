@@ -20,12 +20,14 @@ class TimeSeriesBenchmarks:
         ts["a"] = np.random.random(num_samples)  # plain Column
 
         ts["a_mc"] = MaskedColumn(ts["a"].value, mask=False)
-        ts["a_mc"][1] = True  # just to ensure some value is masked
+        ts["a_mc"].mask[1] = True  # just to ensure some value is masked
+        ts["a_mc"][2] = np.nan  # some nan values
 
         ts["a_q"] = ts["a"] * u.dimensionless_unscaled  # Quantity
 
         ts["a_mq"] = Masked(ts["a_q"])  # MaskedQuantity
-        ts["a_mq"][1] = True  # just to ensure some value is masked
+        ts["a_mq"].mask[1] = True  # just to ensure some value is masked
+        ts["a_mq"][2] = np.nan  # some nan values
 
         self.ts = ts
 
