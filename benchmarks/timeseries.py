@@ -1,6 +1,6 @@
 import numpy as np
 
-from astropy.table import MaskedColumn
+from astropy.table import Column, MaskedColumn
 from astropy.time import Time
 from astropy.timeseries import TimeSeries, aggregate_downsample
 import astropy.units as u
@@ -8,7 +8,23 @@ from astropy.utils.masked import Masked
 
 
 class TimeSeriesBenchmarks:
-    def setup(self):
+    params = [
+        [  # col_type, for column type
+            "col",  # plain column
+            "mcol",  # MaskedColumn
+            "qty",  # Quantity
+            "mqty",  # MaskedQuantity
+        ],
+        [  # aggregate_func to be used
+            None,  # default, optimized in astropy v7.1.0+
+            np.nanmean,  # non-optimized
+            np.add,  # optimized (with np.add.reduceat)
+        ],
+    ]
+
+    param_names = ["col_type", "aggregate_func"]  # for ASV UI
+
+    def setup(self, col_type, aggregate_func):
         num_samples = 1000
         time_diff = np.linspace(1, num_samples, num=num_samples)
 
@@ -17,36 +33,33 @@ class TimeSeriesBenchmarks:
         # Columns with various column types
         np.random.seed(12345)
 
-        ts["a"] = np.random.random(num_samples)  # plain Column
+        vals = np.random.random(num_samples)
+        vals[1] = np.nan  # some nan values
 
-        ts["a_mc"] = MaskedColumn(ts["a"].value, mask=False)
-        ts["a_mc"].mask[1] = True  # just to ensure some value is masked
-        ts["a_mc"][2] = np.nan  # some nan values
-
-        ts["a_q"] = ts["a"] * u.dimensionless_unscaled  # Quantity
-
-        ts["a_mq"] = Masked(ts["a_q"])  # MaskedQuantity
-        ts["a_mq"].mask[1] = True  # just to ensure some value is masked
-        ts["a_mq"][2] = np.nan  # some nan values
+        if col_type == "col":  # plain Column
+            ts["a"] = Column(vals)
+        elif col_type == "mcol":  # MaskedColumn
+            ts["a"] = MaskedColumn(vals, mask=False)
+            ts["a"].mask[2] = True  # some value masked
+        elif col_type == "qty":  # Quantity
+            ts["a"] = vals * u.dimensionless_unscaled
+        elif col_type == "mqty":  # MaskedQuantity
+            ts["a"] = Masked(vals * u.dimensionless_unscaled)
+            ts["a"].mask[2] = True  # some value masked
+        else:
+            raise ValueError(f"Unsupported col_type: {col_type}")
 
         self.ts = ts
 
-    def _do_time_aggregate_downsample(self, aggregate_func):
+    def time_aggregate_downsample(self, col_type, aggregate_func):
+        if col_type == "mqty" and aggregate_func is np.add:
+            # FIXME: it hits the known issue in astropy/utils/masked/core.py
+            #   NotImplementedError: masked instances cannot yet deal with 'reduceat' or 'at'.
+            # tracked at the meta-issue  https://github.com/astropy/astropy/issues/11539
+            #
+            # Ideally we should tell asv to skip this combination,
+            # use a simple return as a workaround.
+            return
         aggregate_downsample(
             self.ts, time_bin_size=5 * u.d, aggregate_func=aggregate_func
         )
-
-    def time_aggregate_downsample_default(self):
-        # case default aggregate_func (optimized in v7.1.0+)
-        self._do_time_aggregate_downsample(None)
-
-    def time_aggregate_downsample_np_nanmean(self):
-        # case non-optimized aggregate_func
-        self._do_time_aggregate_downsample(np.nanmean)
-
-    # FIXME: it hits the known issue in astropy/utils/masked/core.py
-    #   NotImplementedError: masked instances cannot yet deal with 'reduceat' or 'at'.
-    #   relevant PR: https://github.com/astropy/astropy/pull/17875
-    # def time_aggregate_downsample_np_add(self):
-    #     # case aggregate_func is optimized (with `.reduceat`)
-    #     self._do_time_aggregate_downsample(np.add)
