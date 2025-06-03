@@ -6,6 +6,8 @@ from astropy.timeseries import TimeSeries, aggregate_downsample
 import astropy.units as u
 from astropy.utils.masked import Masked
 
+from asv_runner.benchmarks.mark import skip_for_params
+
 
 class TimeSeriesBenchmarks:
     params = [
@@ -51,15 +53,16 @@ class TimeSeriesBenchmarks:
 
         self.ts = ts
 
+    # FIXME: for case MaskedQuantity with np.add,
+    # it hits the known issue in astropy/utils/masked/core.py
+    #   NotImplementedError: masked instances cannot yet deal with 'reduceat' or 'at'.
+    # tracked at the meta-issue  https://github.com/astropy/astropy/issues/11539
+    @skip_for_params(
+        [
+            ("mqty", np.add),
+        ]
+    )
     def time_aggregate_downsample(self, col_type, aggregate_func):
-        if col_type == "mqty" and aggregate_func is np.add:
-            # FIXME: it hits the known issue in astropy/utils/masked/core.py
-            #   NotImplementedError: masked instances cannot yet deal with 'reduceat' or 'at'.
-            # tracked at the meta-issue  https://github.com/astropy/astropy/issues/11539
-            #
-            # Ideally we should tell asv to skip this combination,
-            # use a simple return as a workaround.
-            return
         aggregate_downsample(
             self.ts, time_bin_size=5 * u.d, aggregate_func=aggregate_func
         )
