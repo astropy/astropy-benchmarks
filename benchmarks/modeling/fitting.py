@@ -356,5 +356,9 @@ def time_uncertanty_Linear1D_LinearLSQFitter():
 
 
 if __name__ == "__main__":
-    z = z_base + np.random.normal(0.0, 0.2, z_base.shape)
-    fit_SLSQPLSQFitter(large_gauss_combined_2d, x_grid, y_grid, z)
+    warnings.filterwarnings("error")
+    try:
+        z = z_base + np.random.normal(0.0, 0.2, z_base.shape)
+        fit_SLSQPLSQFitter(large_gauss_combined_2d, x_grid, y_grid, z)
+    except Warning as err:
+        print(f"***** HERE: {repr(err)}")
