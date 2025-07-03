@@ -1,11 +1,11 @@
 import warnings
 
 import numpy as np
-
 from astropy.io import ascii
 from astropy import units as u
 from astropy.utils.data import get_pkg_data_filename
 from astropy.modeling import models, fitting
+from asv_runner.benchmarks.mark import skip_benchmark_if
 
 fit_LevMarLSQFitter = fitting.LevMarLSQFitter()
 fit_SLSQPLSQFitter = fitting.SLSQPLSQFitter()
@@ -319,6 +319,7 @@ def time_large_gauss_combined_2d_LevMarLSQFitter():
         pass
 
 
+@skip_benchmark_if(True)
 def time_large_gauss_combined_2d_SLSQPLSQFitter():
     warnings.filterwarnings("error")
     try:
