@@ -1,8 +1,9 @@
 """Benchmarks for VOTable binary/binary2 parsing performance."""
 import io
-import numpy as np
-import tempfile
 import os
+import tempfile
+
+import numpy as np
 from astropy.io.votable import parse, from_table
 from astropy.table import Table
 
@@ -13,7 +14,7 @@ LARGE_SIZE = 200000
 
 ra_data = np.random.uniform(0, 360, LARGE_SIZE).astype(np.float32)
 dec_data = np.random.uniform(-90, 90, LARGE_SIZE).astype(np.float32)
-mag_data = np.random.uniform(10, 25, LARGE_SIZE).astype(np.float32) 
+mag_data = np.random.uniform(10, 25, LARGE_SIZE).astype(np.float32)
 flux_data = np.random.lognormal(0, 2, LARGE_SIZE)
 count_data = np.random.poisson(100, LARGE_SIZE).astype(np.int32)
 id_data = np.arange(LARGE_SIZE, dtype=np.int64)
@@ -36,8 +37,6 @@ def create_votable_bytes(table_data, format_type='binary2'):
     with tempfile.NamedTemporaryFile(delete=False, suffix='.xml') as tmp:
         try:
             votable = from_table(table_data)
-            votable.to_xml(tmp.name)
-            votable = parse(tmp.name)
             votable.get_first_table().format = format_type
             votable.to_xml(tmp.name)
             with open(tmp.name, 'rb') as f:
@@ -185,7 +184,6 @@ class TimeVOTableBooleanFields:
 
 class TimeVOTableMixed:
     """Benchmark for a table with mixed fields types."""
-    timeout = 360.0
 
     def setup(self):
         table = Table(
