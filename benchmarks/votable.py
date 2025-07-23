@@ -11,9 +11,9 @@ np.random.seed(42)
 SMALL_SIZE = 1000
 LARGE_SIZE = 200000
 
-ra_data = np.random.uniform(0, 360, LARGE_SIZE)
-dec_data = np.random.uniform(-90, 90, LARGE_SIZE)
-mag_data = np.random.uniform(10, 25, LARGE_SIZE).astype(np.float32)
+ra_data = np.random.uniform(0, 360, LARGE_SIZE).astype(np.float32)
+dec_data = np.random.uniform(-90, 90, LARGE_SIZE).astype(np.float32)
+mag_data = np.random.uniform(10, 25, LARGE_SIZE).astype(np.float32) 
 flux_data = np.random.lognormal(0, 2, LARGE_SIZE)
 count_data = np.random.poisson(100, LARGE_SIZE).astype(np.int32)
 id_data = np.arange(LARGE_SIZE, dtype=np.int64)
@@ -22,9 +22,14 @@ quality_data = np.random.randint(0, 256, LARGE_SIZE, dtype=np.uint8)
 
 short_names = np.array([f"OBJ_{i:08d}" for i in range(LARGE_SIZE)])
 filter_names = np.random.choice(['u', 'g', 'r', 'i', 'z', 'Y'], LARGE_SIZE)
-classifications = np.random.choice(['STAR', 'GALAXY', 'QSO', 'UNKNOWN'], LARGE_SIZE)
-long_descriptions = np.array([f"Extend description about a field"
-                              f" {i//1000:04d}" for i in range(LARGE_SIZE)])
+classifications = np.random.choice(
+    ['STAR', 'GALAXY', 'QSO', 'UNKNOWN'], LARGE_SIZE
+)
+long_descriptions = np.array([
+    f"Extend description about a field {i//1000:04d}"
+    for i in range(LARGE_SIZE)
+])
+
 
 def create_votable_bytes(table_data, format_type='binary2'):
     """Helper to create VOTables with a specific serialization."""
@@ -40,19 +45,23 @@ def create_votable_bytes(table_data, format_type='binary2'):
         finally:
             os.unlink(tmp.name)
 
+
 class TimeVOTableNumeric:
     """Benchmark purely numeric fields."""
 
     def setup(self):
-        table = Table([
-            ra_data[:LARGE_SIZE],
-            dec_data[:LARGE_SIZE],
-            mag_data[:LARGE_SIZE],
-            flux_data[:LARGE_SIZE],
-            count_data[:LARGE_SIZE],
-            id_data[:LARGE_SIZE],
-            quality_data[:LARGE_SIZE]
-        ], names=['ra', 'dec', 'mag', 'flux', 'counts', 'id', 'quality'])
+        table = Table(
+            [
+                ra_data[:LARGE_SIZE],
+                dec_data[:LARGE_SIZE],
+                mag_data[:LARGE_SIZE],
+                flux_data[:LARGE_SIZE],
+                count_data[:LARGE_SIZE],
+                id_data[:LARGE_SIZE],
+                quality_data[:LARGE_SIZE]
+            ],
+            names=['ra', 'dec', 'mag', 'flux', 'counts', 'id', 'quality']
+        )
 
         self.binary_data = create_votable_bytes(table, 'binary')
         self.binary2_data = create_votable_bytes(table, 'binary2')
@@ -63,18 +72,22 @@ class TimeVOTableNumeric:
     def time_numeric_binary2(self):
         parse(io.BytesIO(self.binary2_data))
 
+
 class TimeVOTableShortStrings:
     """Benchmark short-length strings."""
 
     def setup(self):
-        table = Table([
-            ra_data[:LARGE_SIZE],
-            dec_data[:LARGE_SIZE],
-            short_names[:LARGE_SIZE],
-            filter_names[:LARGE_SIZE],
-            classifications[:LARGE_SIZE],
-            mag_data[:LARGE_SIZE]
-        ], names=['ra', 'dec', 'object_id', 'filter', 'class', 'mag'])
+        table = Table(
+            [
+                ra_data[:LARGE_SIZE],
+                dec_data[:LARGE_SIZE],
+                short_names[:LARGE_SIZE],
+                filter_names[:LARGE_SIZE],
+                classifications[:LARGE_SIZE],
+                mag_data[:LARGE_SIZE]
+            ],
+            names=['ra', 'dec', 'object_id', 'filter', 'class', 'mag']
+        )
 
         self.binary_data = create_votable_bytes(table, 'binary')
         self.binary2_data = create_votable_bytes(table, 'binary2')
@@ -85,16 +98,20 @@ class TimeVOTableShortStrings:
     def time_short_strings_binary2(self):
         parse(io.BytesIO(self.binary2_data))
 
+
 class TimeVOTableLongStrings:
     """Benchmark long variable-length strings."""
 
     def setup(self):
-        table = Table([
-            ra_data[:LARGE_SIZE],
-            dec_data[:LARGE_SIZE],
-            long_descriptions[:LARGE_SIZE],
-            mag_data[:LARGE_SIZE]
-        ], names=['ra', 'dec', 'description', 'mag'])
+        table = Table(
+            [
+                ra_data[:LARGE_SIZE],
+                dec_data[:LARGE_SIZE],
+                long_descriptions[:LARGE_SIZE],
+                mag_data[:LARGE_SIZE]
+            ],
+            names=['ra', 'dec', 'description', 'mag']
+        )
 
         self.binary_data = create_votable_bytes(table, 'binary')
         self.binary2_data = create_votable_bytes(table, 'binary2')
@@ -105,45 +122,56 @@ class TimeVOTableLongStrings:
     def time_long_strings_binary2(self):
         parse(io.BytesIO(self.binary2_data))
 
+
 class TimeVOTableStringIntensive:
     """Benchmark table with string fields of various lengths."""
 
     def setup(self):
-        table = Table([
-            short_names[:LARGE_SIZE],
-            filter_names[:LARGE_SIZE],
-            classifications[:LARGE_SIZE],
-            np.random.choice(['A', 'B', 'C', 'D'], LARGE_SIZE),
-            np.random.choice(['HIGH', 'MED', 'LOW'], LARGE_SIZE),
-            long_descriptions[:LARGE_SIZE],
-            ra_data[:LARGE_SIZE],
-            dec_data[:LARGE_SIZE]
-        ], names=['id', 'filter', 'class', 'grade', 'priority', 'desc', 'ra', 'dec'])
+        table = Table(
+            [
+                short_names[:LARGE_SIZE],
+                filter_names[:LARGE_SIZE],
+                classifications[:LARGE_SIZE],
+                np.random.choice(['A', 'B', 'C', 'D'], LARGE_SIZE),
+                np.random.choice(['HIGH', 'MED', 'LOW'], LARGE_SIZE),
+                long_descriptions[:LARGE_SIZE],
+                ra_data[:LARGE_SIZE],
+                dec_data[:LARGE_SIZE]
+            ],
+            names=[
+                'id', 'filter', 'class', 'grade',
+                'priority', 'desc', 'ra', 'dec'
+            ]
+        )
 
         self.binary2_data = create_votable_bytes(table, 'binary2')
 
     def time_string_intensive_binary2(self):
         parse(io.BytesIO(self.binary2_data))
 
+
 class TimeVOTableBooleanFields:
     """Benchmark boolean/bit fields specifically."""
 
     def setup(self):
-        table = Table([
-            ra_data[:LARGE_SIZE],
-            dec_data[:LARGE_SIZE],
-            np.random.choice([True, False], LARGE_SIZE),
-            np.random.choice([True, False], LARGE_SIZE),
-            np.random.choice([True, False], LARGE_SIZE),
-            np.random.choice([True, False], LARGE_SIZE),
-            np.random.choice([True, False], LARGE_SIZE),
-            np.random.choice([True, False], LARGE_SIZE),
-            np.random.choice([True, False], LARGE_SIZE),
-            np.random.choice([True, False], LARGE_SIZE),
-        ], names=[
-            'ra', 'dec', 'saturated', 'flagged', 'edge_pixel',
-            'cosmic_ray', 'variable', 'extended', 'public', 'calibrated'
-        ])
+        table = Table(
+            [
+                ra_data[:LARGE_SIZE],
+                dec_data[:LARGE_SIZE],
+                np.random.choice([True, False], LARGE_SIZE),
+                np.random.choice([True, False], LARGE_SIZE),
+                np.random.choice([True, False], LARGE_SIZE),
+                np.random.choice([True, False], LARGE_SIZE),
+                np.random.choice([True, False], LARGE_SIZE),
+                np.random.choice([True, False], LARGE_SIZE),
+                np.random.choice([True, False], LARGE_SIZE),
+                np.random.choice([True, False], LARGE_SIZE),
+            ],
+            names=[
+                'ra', 'dec', 'saturated', 'flagged', 'edge_pixel',
+                'cosmic_ray', 'variable', 'extended', 'public', 'calibrated'
+            ]
+        )
 
         self.binary_data = create_votable_bytes(table, 'binary')
         self.binary2_data = create_votable_bytes(table, 'binary2')
@@ -154,24 +182,30 @@ class TimeVOTableBooleanFields:
     def time_booleans_binary2(self):
         parse(io.BytesIO(self.binary2_data))
 
+
 class TimeVOTableMixed:
     """Benchmark for a table with mixed fields types."""
     timeout = 360.0
 
     def setup(self):
-        table = Table([
-            ra_data[:LARGE_SIZE],
-            dec_data[:LARGE_SIZE],
-            short_names[:LARGE_SIZE],
-            mag_data[:LARGE_SIZE],
-            flux_data[:LARGE_SIZE],
-            filter_names[:LARGE_SIZE],
-            classifications[:LARGE_SIZE],
-            count_data[:LARGE_SIZE],
-            quality_data[:LARGE_SIZE],
-            flag_data[:LARGE_SIZE],
-        ], names=['ra', 'dec', 'id', 'mag', 'flux', 'filter', 'class',
-                  'counts', 'quality', 'detected'])
+        table = Table(
+            [
+                ra_data[:LARGE_SIZE],
+                dec_data[:LARGE_SIZE],
+                short_names[:LARGE_SIZE],
+                mag_data[:LARGE_SIZE],
+                flux_data[:LARGE_SIZE],
+                filter_names[:LARGE_SIZE],
+                classifications[:LARGE_SIZE],
+                count_data[:LARGE_SIZE],
+                quality_data[:LARGE_SIZE],
+                flag_data[:LARGE_SIZE],
+            ],
+            names=[
+                'ra', 'dec', 'id', 'mag', 'flux',
+                'filter', 'class', 'counts', 'quality', 'detected'
+            ]
+        )
 
         self.binary_data = create_votable_bytes(table, 'binary')
         self.binary2_data = create_votable_bytes(table, 'binary2')
@@ -182,15 +216,19 @@ class TimeVOTableMixed:
     def time_mixed_binary2(self):
         parse(io.BytesIO(self.binary2_data))
 
+
 class TimeVOTableSmallOverhead:
     """Measure parsing overhead with small tables."""
 
     def setup(self):
-        table = Table([
-            ra_data[:SMALL_SIZE],
-            dec_data[:SMALL_SIZE],
-            mag_data[:SMALL_SIZE]
-        ], names=['ra', 'dec', 'mag'])
+        table = Table(
+            [
+                ra_data[:SMALL_SIZE],
+                dec_data[:SMALL_SIZE],
+                mag_data[:SMALL_SIZE]
+            ],
+            names=['ra', 'dec', 'mag']
+        )
 
         self.binary_data = create_votable_bytes(table, 'binary')
         self.binary2_data = create_votable_bytes(table, 'binary2')
