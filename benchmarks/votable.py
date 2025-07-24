@@ -34,15 +34,10 @@ long_descriptions = np.array([
 
 def create_votable_bytes(table_data, format_type='binary2'):
     """Helper to create VOTables with a specific serialization."""
-    with tempfile.NamedTemporaryFile(delete=False, suffix='.xml') as tmp:
-        try:
-            votable = from_table(table_data)
-            votable.get_first_table().format = format_type
-            votable.to_xml(tmp.name)
-            with open(tmp.name, 'rb') as f:
-                return f.read()
-        finally:
-            os.unlink(tmp.name)
+    votable = from_table(table_data)
+    output = io.BytesIO()
+    votable.to_xml(output, tabledata_format=format_type)
+    return output.getvalue()
 
 
 class TimeVOTableNumeric:
