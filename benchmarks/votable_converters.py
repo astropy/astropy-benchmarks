@@ -10,11 +10,12 @@ class TimeBitArrayConverters:
     """Direct converter function benchmarks."""
 
     def setup(self):
+        rng = np.random.default_rng(42)
 
-        self.small_bool = np.random.randint(0, 2, SMALL_SIZE).astype(bool)
-        self.large_bool = np.random.randint(0, 2, LARGE_SIZE).astype(bool)
+        self.small_bool = rng.integers(0, 2, SMALL_SIZE, dtype=bool)
+        self.large_bool = rng.integers(0, 2, LARGE_SIZE, dtype=bool)
 
-        mask = np.random.random(LARGE_SIZE) < 0.2
+        mask = rng.random(LARGE_SIZE) < 0.2
         self.masked_bool = ma.array(self.large_bool, mask=mask)
 
         self.small_bits = bool_to_bitarray(self.small_bool)
