@@ -1,13 +1,11 @@
 """Benchmarks for VOTable binary/binary2 parsing performance."""
 import io
-import os
-import tempfile
-
 import numpy as np
 from astropy.io.votable import parse, from_table
 from astropy.table import Table
 
 np.random.seed(42)
+rng = np.random.default_rng(42)
 
 SMALL_SIZE = 1000
 LARGE_SIZE = 200000
@@ -20,6 +18,7 @@ count_data = np.random.poisson(100, LARGE_SIZE).astype(np.int32)
 id_data = np.arange(LARGE_SIZE, dtype=np.int64)
 flag_data = np.random.choice([True, False], LARGE_SIZE)
 quality_data = np.random.randint(0, 256, LARGE_SIZE, dtype=np.uint8)
+bool_data = rng.integers(0, 2, LARGE_SIZE, dtype=bool)
 
 short_names = np.array([f"OBJ_{i:08d}" for i in range(LARGE_SIZE)])
 filter_names = np.random.choice(['u', 'g', 'r', 'i', 'z', 'Y'], LARGE_SIZE)
@@ -32,9 +31,18 @@ long_descriptions = np.array([
 ])
 
 
-def create_votable_bytes(table_data, format_type='binary2'):
+def create_votable_bytes(
+        table_data,
+        format_type="binary2",
+        bitarray_size=None):
     """Helper to create VOTables with a specific serialization."""
     votable = from_table(table_data)
+
+    if bitarray_size is not None:
+        for field in votable.get_first_table().fields:
+            if field.datatype == "bit":
+                field.arraysize = str(bitarray_size)
+
     output = io.BytesIO()
     votable.to_xml(output, tabledata_format=format_type)
     return output.getvalue()
@@ -57,8 +65,10 @@ class TimeVOTableNumeric:
             names=['ra', 'dec', 'mag', 'flux', 'counts', 'id', 'quality']
         )
 
-        self.binary_data = create_votable_bytes(table, 'binary')
-        self.binary2_data = create_votable_bytes(table, 'binary2')
+        self.binary_data = create_votable_bytes(
+            table, "binary", bitarray_size=8)
+        self.binary2_data = create_votable_bytes(
+            table, "binary2", bitarray_size=8)
 
     def time_numeric_binary(self):
         parse(io.BytesIO(self.binary_data))
@@ -175,6 +185,48 @@ class TimeVOTableBooleanFields:
 
     def time_booleans_binary2(self):
         parse(io.BytesIO(self.binary2_data))
+
+
+class TimeVOTableBitArrayOptimization:
+    """Benchmark BitArray columns in Binary/Binary2 VOTables."""
+
+    def setup(self):
+        table = Table(
+            {
+                "ra": ra_data[:LARGE_SIZE],
+                "dec": dec_data[:LARGE_SIZE],
+                "mag": mag_data[:LARGE_SIZE],
+                "detected": rng.integers(0, 2, LARGE_SIZE).astype(bool),
+                "saturated": rng.integers(0, 2, LARGE_SIZE).astype(bool),
+                "edge_pixel": rng.integers(0, 2, LARGE_SIZE).astype(bool),
+                "cosmic_ray": rng.integers(0, 2, LARGE_SIZE).astype(bool),
+            }
+        )
+
+        self.binary_bitarray_8_data = create_votable_bytes(
+            table, "binary", "8")
+        self.binary_bitarray_16_data = create_votable_bytes(
+            table, "binary", "16")
+        self.binary2_bitarray_8_data = create_votable_bytes(
+            table, "binary2", "8")
+        self.binary2_bitarray_16_data = create_votable_bytes(
+            table, "binary2", "16")
+
+    def time_bitarray_8bit_binary(self):
+        """Parse BitArray with 8-bit arraysize."""
+        parse(io.BytesIO(self.binary_bitarray_8_data))
+
+    def time_bitarray_16bit_binary(self):
+        """Parse BitArray with 16-bit arraysize."""
+        parse(io.BytesIO(self.binary_bitarray_16_data))
+
+    def time_bitarray_8bit_binary2(self):
+        """Parse binary2 BitArray with 8-bit arraysize."""
+        parse(io.BytesIO(self.binary2_bitarray_8_data))
+
+    def time_bitarray_16bit_binary2(self):
+        """Parse binary2 BitArray with 16-bit arraysize."""
+        parse(io.BytesIO(self.binary2_bitarray_16_data))
 
 
 class TimeVOTableMixed:
