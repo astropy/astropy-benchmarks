@@ -41,6 +41,9 @@ class CoreSuite:
         for col, x in izip(self.cols, lst):
             col.str_vals = [str(s) for s in x]
 
+    # pytest compat
+    setup_method = setup
+
     def time_continuation_inputter(self):
         core.ContinuationLinesInputter().process_lines(self.lines)
 

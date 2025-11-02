@@ -47,6 +47,9 @@ class EvaluateCompoundModelNoUnits:
             | models.RotateNative2Celestial(5.6, -72.05, 180)
         )
 
+    # pytest compat
+    setup_method = setup
+
     def time_scalar(self):
         r, d = self.model(x_no_units_scalar, x_no_units_scalar)
 
@@ -76,6 +79,9 @@ class EvaluateCompoundModelWithUnits:
             | models.Pix2Sky_TAN()
             | models.RotateNative2Celestial(5.6 * u.deg, -72.05 * u.deg, 180 * u.deg)
         )
+
+    # pytest compat
+    setup_method = setup
 
     def time_scalar(self):
         r, d = self.model(x_no_units_scalar * u.pix, x_no_units_scalar * u.pix)
