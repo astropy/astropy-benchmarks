@@ -191,26 +191,37 @@ class TimeVOTableBitArrayOptimization:
     """Benchmark BitArray columns in Binary/Binary2 VOTables."""
 
     def setup(self):
-        table = Table(
-            {
-                "ra": ra_data[:LARGE_SIZE],
-                "dec": dec_data[:LARGE_SIZE],
-                "mag": mag_data[:LARGE_SIZE],
-                "detected": rng.integers(0, 2, LARGE_SIZE).astype(bool),
-                "saturated": rng.integers(0, 2, LARGE_SIZE).astype(bool),
-                "edge_pixel": rng.integers(0, 2, LARGE_SIZE).astype(bool),
-                "cosmic_ray": rng.integers(0, 2, LARGE_SIZE).astype(bool),
-            }
-        )
+        flags_8 = rng.integers(0, 2, (LARGE_SIZE, 8)).astype(bool)
+        table_8 = Table({
+            "ra": ra_data[:LARGE_SIZE],
+            "dec": dec_data[:LARGE_SIZE],
+            "mag": mag_data[:LARGE_SIZE],
+            "flags": flags_8,
+        })
+
+        flags_16 = rng.integers(0, 2, (LARGE_SIZE, 16)).astype(bool)
+        table_16 = Table({
+            "ra": ra_data[:LARGE_SIZE],
+            "dec": dec_data[:LARGE_SIZE],
+            "mag": mag_data[:LARGE_SIZE],
+            "flags": flags_16,
+        })
 
         self.binary_bitarray_8_data = create_votable_bytes(
-            table, "binary", "8")
+            table_8, "binary", "8"
+        )
+
         self.binary_bitarray_16_data = create_votable_bytes(
-            table, "binary", "16")
+            table_16, "binary", "16"
+        )
+
         self.binary2_bitarray_8_data = create_votable_bytes(
-            table, "binary2", "8")
+            table_8, "binary2", "8"
+        )
+
         self.binary2_bitarray_16_data = create_votable_bytes(
-            table, "binary2", "16")
+            table_16, "binary2", "16"
+        )
 
     def time_bitarray_8bit_binary(self):
         """Parse BitArray with 8-bit arraysize."""
