@@ -80,12 +80,14 @@ class ConvolveThreaded:
     param_names = ["ndim", "n_threads"]
 
     def setup(self, ndim, n_threads):
-        np.random.seed(12345)
-        self.kernel = np.random.random(kernel_shapes[ndim]["large"])
+        # Use ``default_rng`` so we don't mutate the legacy global seed
+        # state shared with other benchmarks running in the same process.
+        rng = np.random.default_rng(12345)
+        self.kernel = rng.random(kernel_shapes[ndim]["large"])
         # Distinct array per call so we measure independent convolutions
         # rather than shared-data contention.
         self.arrays = [
-            np.random.random(array_shapes[ndim]["large"]) for _ in range(NUM_CALLS)
+            rng.random(array_shapes[ndim]["large"]) for _ in range(NUM_CALLS)
         ]
         self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=n_threads)
 
