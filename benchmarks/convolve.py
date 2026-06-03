@@ -1,3 +1,5 @@
+import concurrent.futures
+
 import numpy as np
 from astropy.convolution import convolve, convolve_fft
 
@@ -58,3 +60,44 @@ class ConvolveFFT:
         convolve_fft(
             self.array, self.kernel, boundary=boundary, nan_treatment=nan_treatment
         )
+
+
+# ConvolveThreaded measures how well ``astropy.convolution.convolve`` scales
+# under a threaded executor. We submit a fixed amount of work (``NUM_CALLS``
+# independent ``convolve`` calls) and vary the worker thread count: with the
+# GIL held in the Cython wrapper the workers serialize and the wall-clock is
+# the same regardless of ``n_threads``; with the GIL released around the C
+# call the wall-clock drops roughly linearly with ``n_threads`` up to the
+# available core count. The ratio of the ``n_threads=1`` to ``n_threads=4``
+# rows is the measurable scaling signal.
+
+THREAD_COUNTS = [1, 4]
+NUM_CALLS = 4
+
+
+class ConvolveThreaded:
+    params = (DIMENSIONS, THREAD_COUNTS)
+    param_names = ["ndim", "n_threads"]
+
+    def setup(self, ndim, n_threads):
+        # Use ``default_rng`` so we don't mutate the legacy global seed
+        # state shared with other benchmarks running in the same process.
+        rng = np.random.default_rng(12345)
+        self.kernel = rng.random(kernel_shapes[ndim]["large"])
+        # Distinct array per call so we measure independent convolutions
+        # rather than shared-data contention.
+        self.arrays = [
+            rng.random(array_shapes[ndim]["large"]) for _ in range(NUM_CALLS)
+        ]
+        self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=n_threads)
+
+    def teardown(self, ndim, n_threads):
+        self.executor.shutdown()
+
+    def time_convolve_threaded(self, ndim, n_threads):
+        futures = [
+            self.executor.submit(convolve, array, self.kernel)
+            for array in self.arrays
+        ]
+        for future in futures:
+            future.result()
