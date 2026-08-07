@@ -43,6 +43,9 @@ class _ASCIISuite:
         if self.file_format != "sextractor":
             self.table = self.read()
 
+    # pytest compat
+    setup_method = setup
+
     def read(self):
         return ascii.read(BytesIO(self.data), format=self.file_format, guess=False)
 

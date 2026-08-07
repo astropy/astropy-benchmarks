@@ -42,6 +42,9 @@ class TimeTable:
 
         self.bool_mask = self.table["a"] > 0.6
 
+    # pytest compat
+    setup_method = setup
+
     def time_table_slice_bool(self):
         self.table[self.bool_mask]
 
@@ -148,6 +151,9 @@ class TimeMaskedColumn:
     def setup(self):
         self.dat = np.arange(1e7)
 
+    # pytest compat
+    setup_method = setup
+
     def time_masked_column_init(self):
         MaskedColumn(self.dat)
 
@@ -155,6 +161,9 @@ class TimeMaskedColumn:
 class TimeTableInitWithLists:
     def setup(self):
         self.dat = list(range(100_000))
+
+    # pytest compat
+    setup_method = setup
 
     def time_init_lists(self):
         Table([self.dat, self.dat, self.dat], names=["time", "rate", "error"])
@@ -182,6 +191,9 @@ class TimeTableInitWithMultiDimLists:
 
         self.data_str_masked_1d = self.data_str_1d.copy()
         self.data_str_masked_1d[-1] = np.ma.masked
+
+    # pytest compat
+    setup_method = setup
 
     def time_init_int_1d(self):
         Table([self.data_int_1d])

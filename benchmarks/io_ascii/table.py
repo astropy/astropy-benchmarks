@@ -28,6 +28,9 @@ class TableSuite:
         self.outputter = core.TableOutputter()
         self.table = table.Table()
 
+    # pytest compat
+    setup_method = setup
+
     def time_table_outputter(self):
         self.outputter(self.cols, {"table": {}})
 

@@ -26,6 +26,9 @@ class SigmaClipBenchmarks:
             # deviation as the stdfunc.  The default iters is 5.
             self.sigclip = SigmaClip(sigma=3)
 
+    # pytest compat
+    setup_method = setup
+
     def time_3d_array(self):
         self.sigclip(self.data[:, :1024, :1024])
 
