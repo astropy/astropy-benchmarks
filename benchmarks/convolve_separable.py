@@ -26,12 +26,16 @@ def _make_gaussian_1d(size, sigma=None):
 
 @contextlib.contextmanager
 def _disable_separable_fast_path(convolve_mod):
-    original = convolve_mod._factor_separable_kernel_2d
-    convolve_mod._factor_separable_kernel_2d = lambda _kernel: None
-    try:
+    original = getattr(convolve_mod, "_factor_separable_kernel_2d", None)
+    if original is None:
+        # Older Astropy versions already use the direct implementation.
         yield
-    finally:
-        convolve_mod._factor_separable_kernel_2d = original
+    else:
+        convolve_mod._factor_separable_kernel_2d = lambda _kernel: None
+        try:
+            yield
+        finally:
+            convolve_mod._factor_separable_kernel_2d = original
 
 
 class ConvolveSeparable2D:
