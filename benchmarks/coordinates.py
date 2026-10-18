@@ -51,6 +51,9 @@ class RepresentationBenchmarks:
         self.array_rep = CartesianRepresentation(np.ones((3, 1000)) * u.kpc)
         self.array_dif = CartesianDifferential(np.ones((3, 1000)) * u.km / u.s)
 
+    # pytest compat
+    setup_method = setup
+
     def time_with_differentials_scalar(self):
         self.scalar_rep.with_differentials(self.scalar_dif)
 
@@ -129,6 +132,9 @@ class FrameBenchmarks:
             xyz_clustered2, representation_type=CartesianRepresentation
         )
 
+    # pytest compat
+    setup_method = setup
+
     def time_init_nodata(self):
         FK5()
 
@@ -187,6 +193,9 @@ class SkyCoordBenchmarks:
         self.array_repr = UnitSphericalRepresentation(
             lat=self.array_q_dec, lon=self.array_q_ra
         )
+
+    # pytest compat
+    setup_method = setup
 
     def time_init_scalar(self):
         SkyCoord(1, 2, unit="deg", frame="icrs")
