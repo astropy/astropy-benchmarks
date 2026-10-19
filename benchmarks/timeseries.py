@@ -1,4 +1,5 @@
 import numpy as np
+from asv_runner.benchmarks.mark import SkipNotImplemented
 
 from astropy.table import Column, MaskedColumn
 from astropy.time import Time
@@ -28,7 +29,7 @@ class TimeSeriesBenchmarks:
         # MaskedQuantity does not support np.add.reduceat yet.
         # https://github.com/astropy/astropy/issues/11539
         if col_type == "mqty" and aggregate_func is np.add:
-            raise NotImplementedError("MaskedQuantity does not support reduceat")
+            raise SkipNotImplemented("MaskedQuantity does not support reduceat")
 
         num_samples = 1000
         time_diff = np.linspace(1, num_samples, num=num_samples)
