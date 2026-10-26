@@ -18,6 +18,9 @@ class FixedWidthSuite:
         self.splitter.cols = self.header.cols
         self.data = ascii.FixedWidthData()
 
+    # pytest compat
+    setup_method = setup
+
     def time_splitter(self):
         self.splitter(self.lines[1:])
 
