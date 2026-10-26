@@ -1,12 +1,11 @@
 import numpy as np
+from asv_runner.benchmarks.mark import SkipNotImplemented
 
 from astropy.table import Column, MaskedColumn
 from astropy.time import Time
 from astropy.timeseries import TimeSeries, aggregate_downsample
 import astropy.units as u
 from astropy.utils.masked import Masked
-
-from asv_runner.benchmarks.mark import skip_for_params
 
 
 class TimeSeriesBenchmarks:
@@ -27,6 +26,11 @@ class TimeSeriesBenchmarks:
     param_names = ["col_type", "aggregate_func"]  # for ASV UI
 
     def setup(self, col_type, aggregate_func):
+        # MaskedQuantity does not support np.add.reduceat yet.
+        # https://github.com/astropy/astropy/issues/11539
+        if col_type == "mqty" and aggregate_func is np.add:
+            raise SkipNotImplemented("MaskedQuantity does not support reduceat")
+
         num_samples = 1000
         time_diff = np.linspace(1, num_samples, num=num_samples)
 
@@ -53,15 +57,6 @@ class TimeSeriesBenchmarks:
 
         self.ts = ts
 
-    # FIXME: for case MaskedQuantity with np.add,
-    # it hits the known issue in astropy/utils/masked/core.py
-    #   NotImplementedError: masked instances cannot yet deal with 'reduceat' or 'at'.
-    # tracked at the meta-issue  https://github.com/astropy/astropy/issues/11539
-    @skip_for_params(
-        [
-            ("mqty", np.add),
-        ]
-    )
     def time_aggregate_downsample(self, col_type, aggregate_func):
         aggregate_downsample(
             self.ts, time_bin_size=5 * u.d, aggregate_func=aggregate_func

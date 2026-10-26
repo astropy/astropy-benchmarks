@@ -1,5 +1,7 @@
-"""Benchmarks for VOTable binary/binary2 parsing performance."""
+"""Benchmarks for VOTable parsing speed and memory use."""
+import ctypes
 import io
+import sys
 import numpy as np
 from astropy.io.votable import parse, from_table
 from astropy.table import Table
@@ -8,6 +10,7 @@ np.random.seed(42)
 rng = np.random.default_rng(42)
 
 SMALL_SIZE = 1000
+MEDIUM_SIZE = 50000
 LARGE_SIZE = 200000
 
 ra_data = np.random.uniform(0, 360, LARGE_SIZE).astype(np.float32)
@@ -19,6 +22,7 @@ id_data = np.arange(LARGE_SIZE, dtype=np.int64)
 flag_data = np.random.choice([True, False], LARGE_SIZE)
 quality_data = np.random.randint(0, 256, LARGE_SIZE, dtype=np.uint8)
 bool_data = rng.integers(0, 2, LARGE_SIZE, dtype=bool)
+spectrum_data = rng.normal(size=(MEDIUM_SIZE, 50))
 
 short_names = np.array([f"OBJ_{i:08d}" for i in range(LARGE_SIZE)])
 filter_names = np.random.choice(['u', 'g', 'r', 'i', 'z', 'Y'], LARGE_SIZE)
@@ -294,3 +298,63 @@ class TimeVOTableSmallOverhead:
 
     def time_small_binary2(self):
         parse(io.BytesIO(self.binary2_data))
+
+
+def peak_added_bytes(func, *args):
+    """Call ``func(*args)`` and return the peak memory it added, in bytes.
+
+    The result is the process's peak memory after the call minus its memory
+    use just before it, so the interpreter, imported modules and asv itself
+    are left out. This assumes the process has not used more memory earlier
+    than it uses when the call starts. That holds in the fresh process asv
+    starts for each benchmark, as long as ``setup`` does not create and then
+    free large temporary data. Build such data in ``setup_cache`` instead,
+    which runs in a separate process. Data that ``setup`` creates and keeps
+    is fine.
+
+    Both Linux and macOS report peak resident set size (RSS). macOS reports
+    ``ru_maxrss`` in bytes, while Linux reports it in KiB. On macOS, pages
+    held in the compressed-memory store are not included in this metric.
+    """
+    if sys.platform not in ('linux', 'darwin'):
+        raise NotImplementedError('peak_added_bytes needs Linux or macOS')
+
+    # not available on Windows
+    import resource
+
+    # With the assumption above, the peak so far is the current use.
+    before = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    func(*args)
+    after = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    scale = 1024 if sys.platform == 'linux' else 1
+    return (after - before) * scale
+
+
+class TrackMemoryTimeVOTableArrays:
+    """Peak memory and time while parsing a table with an array column."""
+
+    params = ['tabledata', 'binary', 'binary2']
+    param_names = ['tabledata_format']
+    unit = 'bytes'
+
+    def setup_cache(self):
+        # Runs in a separate process, so building the table and writing
+        # the files does not count toward the peak memory measured below.
+        table = Table(
+            [
+                ra_data[:MEDIUM_SIZE],
+                dec_data[:MEDIUM_SIZE],
+                spectrum_data[:MEDIUM_SIZE]
+            ],
+            names=['ra', 'dec', 'spectrum']
+        )
+        votable = from_table(table)
+        votable.to_xml('arrays_tabledata.vot', tabledata_format='tabledata')
+        votable.to_xml('arrays_binary.vot', tabledata_format='binary')
+        votable.to_xml('arrays_binary2.vot', tabledata_format='binary2')
+
+    def track_peak_memory_parse(self, tabledata_format):
+        return peak_added_bytes(parse, f'arrays_{tabledata_format}.vot')
+
+    def time_parse(self, tabledata_format):
+        parse(f'arrays_{tabledata_format}.vot')
