@@ -8,6 +8,26 @@ on:
       - '*'
 
 jobs:
+  check-lock-file:
+    # validate uv.lock against requirements
+    # a failure indicates that the lock file is out of sync
+    # with requirements and needs to be updated
+    name: Check uv.lock
+    runs-on: ubuntu-slim
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - name: Set up uv
+      uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      with:
+        # pin uv to avoid the lock file format going out-of-sync
+        version: ">=0.13.6,<0.14.0"
+        python-version: '3.15'
+        cache-suffix: lockcheck
+    - run: uv lock --check
+
   test:
     uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@8d5ad7efc8e84a051639373f6ea0d10441eafee1  # v3.2.1
     with:
