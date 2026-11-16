@@ -6,22 +6,11 @@ import inspect
 
 import numpy as np
 
-from astropy.convolution import convolve
+from astropy.convolution import Gaussian1DKernel, convolve
 
 IMAGE_SIZES = [128, 256, 512]
 KERNEL_SIZES = [11, 21, 31]
 BOUNDARIES = ["fill"]
-
-
-def _make_gaussian_1d(size, sigma=None):
-    if size % 2 == 0:
-        raise ValueError("Kernel size must be odd.")
-    if sigma is None:
-        sigma = size / 6.0
-    x = np.arange(size, dtype=float) - size // 2
-    kernel = np.exp(-(x * x) / (2.0 * sigma * sigma))
-    kernel /= kernel.sum()
-    return kernel
 
 
 @contextlib.contextmanager
@@ -45,7 +34,7 @@ class ConvolveSeparable2D:
     def setup(self, image_size, kernel_size, boundary):
         rng = np.random.default_rng(12345)
         self.array = rng.random((image_size, image_size))
-        k1d = _make_gaussian_1d(kernel_size)
+        k1d = Gaussian1DKernel(kernel_size / 6.0, x_size=kernel_size).array
         self.kernel = np.outer(k1d, k1d)
         self.boundary = boundary
 
