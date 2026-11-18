@@ -14,7 +14,7 @@ class FITSHighLevelTableBenchmarks:
     """
 
     def setup(self):
-        rng = np.random.default_rng(01337)
+        rng = np.random.default_rng(1337)
         N_1mil = 1_000_000
         N_2mil = 2_000_000
 
