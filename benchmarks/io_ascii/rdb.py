@@ -13,5 +13,8 @@ class RDBSuite:
         self.lines = f.read().split("\n")
         f.close()
 
+    # pytest compat
+    setup_method = setup
+
     def time_get_cols(self):
         self.header.get_cols(self.lines)

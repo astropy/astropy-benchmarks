@@ -119,6 +119,9 @@ class TimeQuantityOpSmallArray:
         self.out_sq = data * u.g**2
         self.out_sqrt = data * u.g**0.5
 
+    # pytest compat
+    setup_method = setup
+
     def time_quantity_square(self):
         self.data**2
 
@@ -149,6 +152,8 @@ class TimeQuantityOpLargeArray(TimeQuantityOpSmallArray):
         self.out_sq = data * u.g**2
         self.out_sqrt = data * u.g**0.5
 
+    # pytest compat
+    setup_method = setup
 
 class TimeQuantityOpSmallArrayDiffUnit:
     """
@@ -162,6 +167,9 @@ class TimeQuantityOpSmallArrayDiffUnit:
 
         # A different but dimensionally compatible unit
         self.data2 = 0.001 * data * u.kg
+
+    # pytest compat
+    setup_method = setup
 
     def time_quantity_equal(self):
         # Same as operator.eq
@@ -211,6 +219,8 @@ class TimeQuantityOpSmallArraySameUnit(TimeQuantityOpSmallArrayDiffUnit):
         self.data = data * u.g
         self.data2 = self.data.copy()
 
+    # pytest compat
+    setup_method = setup
 
 class TimeQuantityOpLargeArrayDiffUnit(TimeQuantityOpSmallArrayDiffUnit):
     """
@@ -224,6 +234,8 @@ class TimeQuantityOpLargeArrayDiffUnit(TimeQuantityOpSmallArrayDiffUnit):
         # A different but dimensionally compatible unit
         self.data2 = 0.001 * data * u.kg
 
+    # pytest compat
+    setup_method = setup
 
 class TimeQuantityOpLargeArraySameUnit(TimeQuantityOpSmallArrayDiffUnit):
     """
@@ -234,3 +246,6 @@ class TimeQuantityOpLargeArraySameUnit(TimeQuantityOpSmallArrayDiffUnit):
         data = np.arange(1e6) + 1
         self.data = data * u.g
         self.data2 = self.data.copy()
+
+    # pytest compat
+    setup_method = setup
