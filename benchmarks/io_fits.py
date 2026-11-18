@@ -2,8 +2,8 @@ from io import BytesIO
 from tempfile import NamedTemporaryFile
 
 import numpy as np
-from astropy.table import Table
 from astropy.io import fits
+from astropy.table import Table
 
 # Note that we use BytesIO here to avoid being sensitive to disk access times
 
@@ -14,16 +14,24 @@ class FITSHighLevelTableBenchmarks:
     """
 
     def setup(self):
-        N = 2_000_000
+        rng = np.random.default_rng(01337)
+        N_1mil = 1_000_000
+        N_2mil = 2_000_000
 
         with NamedTemporaryFile(delete=False) as temp:
             self.table_file = temp.name
             t = Table()
-            t["floats"] = np.random.random(N)
-            t["ints"] = np.random.randint(0, 100, N)
+            t["floats"] = rng.random(N_2mil)
+            t["ints"] = rng.integers(low=0, high=100, size=N_2mil)
             t["strings"] = b"some strings"
             t["booleans"] = t["floats"] > 0.5
             t.write(temp, format="fits")
+
+        self.out_t = Table()
+        self.out_t["floats"] = rng.random(N_1mil)
+        self.out_t["ints"] = rng.integers(low=0, high=100, size=N_1mil)
+        self.out_t["strings"] = b"some strings"
+        self.out_t["booleans"] = self.out_t["floats"] > 0.5
 
     def time_read_nommap(self):
         try:
@@ -32,21 +40,17 @@ class FITSHighLevelTableBenchmarks:
             Table.read(self.table_file, format="fits")
 
     def time_write(self):
-        N = 1_000_000
         table_bytes = BytesIO()
-        t = Table()
-        t["floats"] = np.random.random(N)
-        t["ints"] = np.random.randint(0, 100, N)
-        t["strings"] = b"some strings"
-        t["booleans"] = t["floats"] > 0.5
-        t.write(table_bytes, format="fits")
+        self.out_t.write(table_bytes, format="fits")
 
 
 class FITSBinTableHDU:
-    def time_from_columns_bytes(self):
+    def setup(self):
         x = np.repeat(b"a", 2_000_000)
-        array = np.array(x, dtype=[("col", "S1")])
-        fits.BinTableHDU.from_columns(array)
+        self.array = np.array(x, dtype=[("col", "S1")])
+
+    def time_from_columns_bytes(self):
+        fits.BinTableHDU.from_columns(self.array)
 
 
 def make_header(ncards=1000):
