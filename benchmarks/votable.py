@@ -4,7 +4,7 @@ import io
 import sys
 import numpy as np
 from astropy.io.votable import parse, from_table
-from astropy.table import Table
+from astropy.table import MaskedColumn, Table
 
 np.random.seed(42)
 rng = np.random.default_rng(42)
@@ -52,22 +52,87 @@ def create_votable_bytes(
     return output.getvalue()
 
 
+def numeric_table():
+    return Table(
+        [
+            ra_data[:LARGE_SIZE],
+            dec_data[:LARGE_SIZE],
+            mag_data[:LARGE_SIZE],
+            flux_data[:LARGE_SIZE],
+            count_data[:LARGE_SIZE],
+            id_data[:LARGE_SIZE],
+            quality_data[:LARGE_SIZE]
+        ],
+        names=['ra', 'dec', 'mag', 'flux', 'counts', 'id', 'quality']
+    )
+
+
+def short_strings_table():
+    return Table(
+        [
+            ra_data[:LARGE_SIZE],
+            dec_data[:LARGE_SIZE],
+            short_names[:LARGE_SIZE],
+            filter_names[:LARGE_SIZE],
+            classifications[:LARGE_SIZE],
+            mag_data[:LARGE_SIZE]
+        ],
+        names=['ra', 'dec', 'object_id', 'filter', 'class', 'mag']
+    )
+
+
+def mixed_table():
+    return Table(
+        [
+            ra_data[:LARGE_SIZE],
+            dec_data[:LARGE_SIZE],
+            short_names[:LARGE_SIZE],
+            mag_data[:LARGE_SIZE],
+            flux_data[:LARGE_SIZE],
+            filter_names[:LARGE_SIZE],
+            classifications[:LARGE_SIZE],
+            count_data[:LARGE_SIZE],
+            quality_data[:LARGE_SIZE],
+            flag_data[:LARGE_SIZE],
+        ],
+        names=[
+            'ra', 'dec', 'id', 'mag', 'flux',
+            'filter', 'class', 'counts', 'quality', 'detected'
+        ]
+    )
+
+
+def empty_cells_table():
+    """The mixed table with some cells empty, as in service query results."""
+    table = mixed_table()
+    # The share of empty cells per column type is close to that in the
+    # TABLEDATA tables of the pyvo and astroquery test data.
+    empty_share = {
+        'mag': 0.4, 'flux': 0.2, 'filter': 0.15, 'class': 0.15, 'counts': 0.05
+    }
+    mask_rng = np.random.default_rng(42)
+    for name, share in empty_share.items():
+        mask = mask_rng.random(len(table)) < share
+        table[name] = MaskedColumn(table[name], mask=mask)
+    return table
+
+
+def small_table():
+    return Table(
+        [
+            ra_data[:SMALL_SIZE],
+            dec_data[:SMALL_SIZE],
+            mag_data[:SMALL_SIZE]
+        ],
+        names=['ra', 'dec', 'mag']
+    )
+
+
 class TimeVOTableNumeric:
     """Benchmark purely numeric fields."""
 
     def setup(self):
-        table = Table(
-            [
-                ra_data[:LARGE_SIZE],
-                dec_data[:LARGE_SIZE],
-                mag_data[:LARGE_SIZE],
-                flux_data[:LARGE_SIZE],
-                count_data[:LARGE_SIZE],
-                id_data[:LARGE_SIZE],
-                quality_data[:LARGE_SIZE]
-            ],
-            names=['ra', 'dec', 'mag', 'flux', 'counts', 'id', 'quality']
-        )
+        table = numeric_table()
 
         self.binary_data = create_votable_bytes(
             table, "binary", bitarray_size=8)
@@ -85,17 +150,7 @@ class TimeVOTableShortStrings:
     """Benchmark short-length strings."""
 
     def setup(self):
-        table = Table(
-            [
-                ra_data[:LARGE_SIZE],
-                dec_data[:LARGE_SIZE],
-                short_names[:LARGE_SIZE],
-                filter_names[:LARGE_SIZE],
-                classifications[:LARGE_SIZE],
-                mag_data[:LARGE_SIZE]
-            ],
-            names=['ra', 'dec', 'object_id', 'filter', 'class', 'mag']
-        )
+        table = short_strings_table()
 
         self.binary_data = create_votable_bytes(table, 'binary')
         self.binary2_data = create_votable_bytes(table, 'binary2')
@@ -248,24 +303,7 @@ class TimeVOTableMixed:
     """Benchmark for a table with mixed fields types."""
 
     def setup(self):
-        table = Table(
-            [
-                ra_data[:LARGE_SIZE],
-                dec_data[:LARGE_SIZE],
-                short_names[:LARGE_SIZE],
-                mag_data[:LARGE_SIZE],
-                flux_data[:LARGE_SIZE],
-                filter_names[:LARGE_SIZE],
-                classifications[:LARGE_SIZE],
-                count_data[:LARGE_SIZE],
-                quality_data[:LARGE_SIZE],
-                flag_data[:LARGE_SIZE],
-            ],
-            names=[
-                'ra', 'dec', 'id', 'mag', 'flux',
-                'filter', 'class', 'counts', 'quality', 'detected'
-            ]
-        )
+        table = mixed_table()
 
         self.binary_data = create_votable_bytes(table, 'binary')
         self.binary2_data = create_votable_bytes(table, 'binary2')
@@ -281,14 +319,7 @@ class TimeVOTableSmallOverhead:
     """Measure parsing overhead with small tables."""
 
     def setup(self):
-        table = Table(
-            [
-                ra_data[:SMALL_SIZE],
-                dec_data[:SMALL_SIZE],
-                mag_data[:SMALL_SIZE]
-            ],
-            names=['ra', 'dec', 'mag']
-        )
+        table = small_table()
 
         self.binary_data = create_votable_bytes(table, 'binary')
         self.binary2_data = create_votable_bytes(table, 'binary2')
@@ -298,6 +329,34 @@ class TimeVOTableSmallOverhead:
 
     def time_small_binary2(self):
         parse(io.BytesIO(self.binary2_data))
+
+
+TABLEDATA_TABLES = {
+    'numeric': numeric_table,
+    'short_strings': short_strings_table,
+    'mixed': mixed_table,
+    'empty_cells': empty_cells_table,
+    'small': small_table,
+}
+
+
+class TimeVOTableTabledata:
+    """Benchmark parsing tables stored as TABLEDATA."""
+
+    params = list(TABLEDATA_TABLES)
+    param_names = ['table']
+
+    def setup_cache(self):
+        # Runs once, in a separate process. Writing these files in setup
+        # would use up most of each benchmark's time budget, leaving few
+        # timing samples.
+        for name, make_table in TABLEDATA_TABLES.items():
+            from_table(make_table()).to_xml(
+                f'{name}_tabledata.vot', tabledata_format='tabledata'
+            )
+
+    def time_parse(self, table):
+        parse(f'{table}_tabledata.vot')
 
 
 def peak_added_bytes(func, *args):
